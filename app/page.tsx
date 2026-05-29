@@ -55,8 +55,8 @@ export default function Home() {
         <div className="flex items-center gap-4">
           <Link
             href="/setup"
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-white text-sm font-medium rounded-lg transition-opacity hover:opacity-90"
-            style={{ background: "#4b6afc" }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-90"
+            style={{ background: "#4b6afc", color: "#ffffff" }}
           >
             Começar agora →
           </Link>
