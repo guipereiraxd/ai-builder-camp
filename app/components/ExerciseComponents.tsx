@@ -53,14 +53,14 @@ export function Prompt({ children }: { children: string }) {
         className="flex items-center justify-between px-4 py-2"
         style={{ background: "rgba(255,255,255,0.03)", borderBottom: `1px solid ${BORDER}` }}
       >
-        <div className="flex items-center gap-2 text-xs" style={{ color: "#3d3d3d" }}>
+        <div className="flex items-center gap-2 text-xs" style={{ color: "#64687a" }}>
           <Terminal size={12} />
           <span>Prompt para o Claude Code</span>
         </div>
         <button
           onClick={copy}
           className="flex items-center gap-1.5 text-xs transition-colors"
-          style={{ color: copied ? "#4b6afc" : "#3d3d3d" }}
+          style={{ color: copied ? "#4b6afc" : "#64687a" }}
         >
           {copied ? <Check size={12} /> : <Copy size={12} />}
           {copied ? "Copiado!" : "Copiar"}
@@ -119,7 +119,7 @@ export function Command({ children }: { children: string }) {
       <code className="flex-1 text-sm font-mono" style={{ background: "transparent", padding: 0, color: "#e8e8eb" }}>
         {children}
       </code>
-      <span className="transition-opacity opacity-0 group-hover:opacity-100" style={{ color: "#3d3d3d" }}>
+      <span className="transition-opacity opacity-0 group-hover:opacity-100" style={{ color: "#64687a" }}>
         {copied ? <Check size={14} style={{ color: BRAND }} /> : <Copy size={14} />}
       </span>
     </div>
@@ -149,7 +149,7 @@ export function ExerciseHeader({
           {act}
         </span>
         <span style={{ color: "#33363e" }}>·</span>
-        <span className="text-xs" style={{ color: "#3d3d3d" }}>{duration}</span>
+        <span className="text-xs" style={{ color: "#64687a" }}>{duration}</span>
       </div>
       <h1 className="text-2xl md:text-3xl font-bold text-white mb-4">
         <span className="font-normal mr-2" style={{ color: "#33363e" }}>{number}</span>

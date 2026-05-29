@@ -56,7 +56,7 @@ export default function Sidebar() {
               <div key={i} className="pt-5 pb-1.5 px-2">
                 <p
                   className="text-[10px] font-semibold uppercase tracking-widest"
-                  style={{ color: "#3d3d3d" }}
+                  style={{ color: "#64687a" }}
                 >
                   {item.label}
                 </p>
@@ -90,7 +90,7 @@ export default function Sidebar() {
             >
               <span>{item.label}</span>
               {item.duration && (
-                <span className="text-[11px] ml-2 shrink-0" style={{ color: "#3d3d3d" }}>
+                <span className="text-[11px] ml-2 shrink-0" style={{ color: "#64687a" }}>
                   {item.duration}
                 </span>
               )}
@@ -101,7 +101,7 @@ export default function Sidebar() {
 
       {/* Footer */}
       <div className="p-4" style={{ borderTop: "1px solid #33363e" }}>
-        <p className="text-[11px] leading-relaxed" style={{ color: "#3d3d3d" }}>
+        <p className="text-[11px] leading-relaxed" style={{ color: "#64687a" }}>
           Use apenas em ambientes sandbox. Não faça upload de dados confidenciais.
         </p>
       </div>

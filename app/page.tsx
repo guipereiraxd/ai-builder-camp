@@ -82,7 +82,7 @@ export default function Home() {
         ].map((s) => (
           <div key={s.label}>
             <p className="text-2xl font-bold text-white">{s.value}</p>
-            <p className="text-sm mt-0.5" style={{ color: "#3d3d3d" }}>{s.label}</p>
+            <p className="text-sm mt-0.5" style={{ color: "#64687a" }}>{s.label}</p>
           </div>
         ))}
       </div>
@@ -93,7 +93,7 @@ export default function Home() {
           <div className="flex items-center gap-3 mb-4">
             <h2
               className="text-xs font-semibold uppercase tracking-widest shrink-0"
-              style={{ color: "#3d3d3d" }}
+              style={{ color: "#64687a" }}
             >
               {group.label}
             </h2>
@@ -113,7 +113,7 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-xs" style={{ color: "#3d3d3d" }}>{item.duration}</span>
+                  <span className="text-xs" style={{ color: "#64687a" }}>{item.duration}</span>
                   <span className="exercise-card-arrow" style={{ color: "#33363e" }}>→</span>
                 </div>
               </Link>
@@ -128,7 +128,7 @@ export default function Home() {
         style={{ border: "1px solid #33363e", background: "rgba(255,255,255,0.02)" }}
       >
         <h3 className="text-sm font-semibold text-white mb-2">O que você vai precisar</h3>
-        <ul className="text-sm space-y-1.5" style={{ color: "#3d3d3d" }}>
+        <ul className="text-sm space-y-1.5" style={{ color: "#64687a" }}>
           <li>· Node.js instalado na máquina</li>
           <li>· Uma conta na Anthropic (claude.ai)</li>
           <li>· Claude Code CLI configurado</li>
