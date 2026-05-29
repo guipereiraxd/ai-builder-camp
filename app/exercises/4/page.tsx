@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
 
 export default function Exercise4() {
   return (
@@ -23,12 +23,14 @@ export default function Exercise4() {
       </div>
 
       <Step n={1} title="Defina o pipeline de conteúdo">
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          mkdir ~/ai-builder-camp/ex-4 && cd ~/ai-builder-camp/ex-4
-        </code>
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10 mt-1">
-          cp ~/ai-builder-camp/ex-1-2/CLAUDE.md .
-        </code>
+        <OSTabs
+          mac="mkdir ~/ai-builder-camp/ex-4 && cd ~/ai-builder-camp/ex-4"
+          windows="mkdir $HOME\ai-builder-camp\ex-4; cd $HOME\ai-builder-camp\ex-4"
+        />
+        <OSTabs
+          mac="cp ~/ai-builder-camp/ex-1-2/CLAUDE.md ."
+          windows="copy $HOME\ai-builder-camp\ex-1-2\CLAUDE.md ."
+        />
         <p className="mt-3">
           Vamos criar um pipeline para o principal canal de conteúdo da maioria das empresas: LinkedIn.
           Crie o arquivo <code>pipeline-config.md</code>:

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
 
 export default function Exercise11() {
   return (
@@ -24,14 +24,11 @@ export default function Exercise11() {
 
       <Step n={1} title="Abra o terminal e crie uma pasta de trabalho">
         <p>Todo exercício tem sua própria pasta. Isso ajuda o Claude Code a manter o contexto.</p>
-        <div className="space-y-1 mt-2">
-          <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-            mkdir ~/ai-builder-camp/ex-1-1 && cd ~/ai-builder-camp/ex-1-1
-          </code>
-          <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-            claude
-          </code>
-        </div>
+        <OSTabs
+          mac="mkdir ~/ai-builder-camp/ex-1-1 && cd ~/ai-builder-camp/ex-1-1"
+          windows="mkdir $HOME\ai-builder-camp\ex-1-1; cd $HOME\ai-builder-camp\ex-1-1"
+        />
+        <Command>claude</Command>
       </Step>
 
       <Step n={2} title="Cole este prompt no Claude Code">
@@ -66,10 +63,8 @@ Use um design escuro e profissional. A lógica de extração deve usar a API do 
           Quando o Claude Code terminar, ele vai ter criado um arquivo <code>index.html</code>.
           Abra-o no navegador:
         </p>
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10 mt-2">
-          open index.html
-        </code>
-        <p className="mt-3">Ou simplesmente navegue até a pasta e dê dois cliques no arquivo.</p>
+        <OSTabs mac="open index.html" windows="start index.html" />
+        <p className="mt-1">Ou simplesmente navegue até a pasta e dê dois cliques no arquivo.</p>
       </Step>
 
       <Step n={4} title="Teste com um exemplo real">

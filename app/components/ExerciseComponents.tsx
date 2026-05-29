@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Copy, Check, Terminal, Lightbulb, AlertTriangle } from "lucide-react";
 
 const BRAND = "#4b6afc";
@@ -122,6 +122,77 @@ export function Command({ children }: { children: string }) {
       <span className="transition-opacity opacity-0 group-hover:opacity-100" style={{ color: "#64687a" }}>
         {copied ? <Check size={14} style={{ color: BRAND }} /> : <Copy size={14} />}
       </span>
+    </div>
+  );
+}
+
+const OS_KEY = "preferred-os";
+
+export function OSTabs({ mac, windows }: { mac: string; windows: string }) {
+  const [os, setOs] = useState<"mac" | "windows">("mac");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem(OS_KEY);
+    if (saved === "windows") setOs("windows");
+    setMounted(true);
+  }, []);
+
+  const select = (val: "mac" | "windows") => {
+    setOs(val);
+    localStorage.setItem(OS_KEY, val);
+  };
+
+  const active = {
+    background: "rgba(75,106,252,0.12)",
+    color: "#4b6afc",
+    borderColor: "rgba(75,106,252,0.3)",
+  };
+  const inactive = {
+    background: "transparent",
+    color: "#64687a",
+    borderColor: "transparent",
+  };
+
+  return (
+    <div className="my-3">
+      {/* Tab bar */}
+      <div
+        className="inline-flex rounded-t-md overflow-hidden"
+        style={{ border: `1px solid ${BORDER}`, borderBottom: "none" }}
+      >
+        {(["mac", "windows"] as const).map((val) => (
+          <button
+            key={val}
+            onClick={() => select(val)}
+            className="px-4 py-1.5 text-xs font-medium transition-all"
+            style={os === val ? active : inactive}
+          >
+            {val === "mac" ? "Mac / Linux" : "Windows"}
+          </button>
+        ))}
+      </div>
+      {/* Command with copy */}
+      {mounted && (
+        <div
+          className="flex items-center gap-3 px-4 py-3 rounded-b-lg rounded-tr-lg group cursor-pointer"
+          style={{ background: "#0d0d10", border: `1px solid ${BORDER}` }}
+          onClick={() => {
+            navigator.clipboard.writeText(os === "mac" ? mac : windows);
+          }}
+        >
+          <span className="font-mono text-sm shrink-0" style={{ color: "#4b6afc" }}>$</span>
+          <code
+            className="flex-1 text-sm font-mono"
+            style={{ background: "transparent", padding: 0, color: "#e8e8eb" }}
+          >
+            {os === "mac" ? mac : windows}
+          </code>
+          <span className="transition-opacity opacity-0 group-hover:opacity-100" style={{ color: "#64687a" }}>
+            <Copy size={14} />
+          </span>
+        </div>
+      )}
     </div>
   );
 }

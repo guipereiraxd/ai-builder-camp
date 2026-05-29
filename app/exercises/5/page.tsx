@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
 
 export default function Exercise5() {
   return (
@@ -23,12 +23,14 @@ export default function Exercise5() {
       </div>
 
       <Step n={1} title="Defina o escopo da due diligence">
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          mkdir ~/ai-builder-camp/ex-5 && cd ~/ai-builder-camp/ex-5
-        </code>
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10 mt-1">
-          cp ~/ai-builder-camp/ex-1-2/CLAUDE.md .
-        </code>
+        <OSTabs
+          mac="mkdir ~/ai-builder-camp/ex-5 && cd ~/ai-builder-camp/ex-5"
+          windows="mkdir $HOME\ai-builder-camp\ex-5; cd $HOME\ai-builder-camp\ex-5"
+        />
+        <OSTabs
+          mac="cp ~/ai-builder-camp/ex-1-2/CLAUDE.md ."
+          windows="copy $HOME\ai-builder-camp\ex-1-2\CLAUDE.md ."
+        />
         <p className="mt-3">
           Escolha um alvo para a due diligence. Pode ser:
           um potencial parceiro, um fornecedor crítico, uma empresa para aquisição,
