@@ -43,7 +43,7 @@ export default function Home() {
 
         <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
           IA na prática,<br />
-          <span style={{ color: "#33363e" }}>para quem quer transformar ideia em entrega.</span>
+          <span style={{ color: "#d1a476" }}>para quem quer transformar ideia em entrega.</span>
         </h1>
 
         <p className="text-base md:text-lg leading-relaxed max-w-2xl mb-8" style={{ color: "#cfd2d8" }}>
