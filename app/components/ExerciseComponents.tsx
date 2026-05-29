@@ -126,7 +126,7 @@ export function Command({ children }: { children: string }) {
   );
 }
 
-const OS_KEY = "preferred-os";
+export const OS_KEY = "preferred-os";
 
 export function OSTabs({ mac, windows }: { mac: string; windows: string }) {
   const [os, setOs] = useState<"mac" | "windows">("mac");
@@ -136,6 +136,14 @@ export function OSTabs({ mac, windows }: { mac: string; windows: string }) {
     const saved = localStorage.getItem(OS_KEY);
     if (saved === "windows") setOs("windows");
     setMounted(true);
+
+    const handler = (e: StorageEvent) => {
+      if (e.key === OS_KEY && (e.newValue === "mac" || e.newValue === "windows")) {
+        setOs(e.newValue);
+      }
+    };
+    window.addEventListener("storage", handler);
+    return () => window.removeEventListener("storage", handler);
   }, []);
 
   const select = (val: "mac" | "windows") => {
