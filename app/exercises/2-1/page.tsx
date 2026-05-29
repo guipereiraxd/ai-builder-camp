@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
 
 export default function Exercise21() {
   return (
@@ -23,19 +23,19 @@ export default function Exercise21() {
       </div>
 
       <Step n={1} title="Prepare o ambiente">
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          mkdir ~/ai-builder-camp/ex-2-1 && cd ~/ai-builder-camp/ex-2-1
-        </code>
+        <OSTabs
+          mac="mkdir ~/ai-builder-camp/ex-2-1 && cd ~/ai-builder-camp/ex-2-1"
+          windows="mkdir $HOME\ai-builder-camp\ex-2-1; cd $HOME\ai-builder-camp\ex-2-1"
+        />
         <p className="mt-2">
           Copie o <code>CLAUDE.md</code> do exercício anterior para esta pasta — assim
           o agente já conhece o contexto da sua empresa:
         </p>
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10 mt-2">
-          cp ~/ai-builder-camp/ex-1-2/CLAUDE.md .
-        </code>
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10 mt-1">
-          claude
-        </code>
+        <OSTabs
+          mac="cp ~/ai-builder-camp/ex-1-2/CLAUDE.md ."
+          windows="copy $HOME\ai-builder-camp\ex-1-2\CLAUDE.md ."
+        />
+        <Command>claude</Command>
       </Step>
 
       <Step n={2} title="Crie o template de análise competitiva">

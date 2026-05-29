@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
 
 export default function Exercise5() {
   return (
@@ -70,9 +70,7 @@ Para seguir em frente, precisamos de:
       </Step>
 
       <Step n={2} title="Inicie o research loop">
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          claude
-        </code>
+        <Command>claude</Command>
         <Prompt>{`Vamos executar um research loop de due diligence sobre o alvo descrito em alvo-dd.md.
 
 Siga este processo iterativo:

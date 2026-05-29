@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
 
 const SAMPLE_CSV = `data,produto,regiao,vendedor,valor,status
 2025-07-01,Plano Pro,Sul,Maria,4800,fechado
@@ -35,9 +35,10 @@ export default function Exercise23() {
       </div>
 
       <Step n={1} title="Prepare os dados">
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          mkdir ~/ai-builder-camp/ex-2-3 && cd ~/ai-builder-camp/ex-2-3
-        </code>
+        <OSTabs
+          mac="mkdir ~/ai-builder-camp/ex-2-3 && cd ~/ai-builder-camp/ex-2-3"
+          windows="mkdir $HOME\ai-builder-camp\ex-2-3; cd $HOME\ai-builder-camp\ex-2-3"
+        />
         <p className="mt-3">
           Crie um arquivo <code>dados.csv</code> com seus dados reais. Se não tiver dados
           disponíveis agora, use o exemplo abaixo (copie e salve como <code>dados.csv</code>):
@@ -52,9 +53,7 @@ export default function Exercise23() {
       </Step>
 
       <Step n={2} title="Abra o Claude Code e analise os dados">
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          claude
-        </code>
+        <Command>claude</Command>
         <p className="mt-3">Primeiro, peça ao agente para entender os dados:</p>
         <Prompt>{`Leia o arquivo dados.csv e me dê:
 1. Um resumo do que temos: quantas linhas, quais colunas, que período cobre
@@ -89,9 +88,7 @@ Salve tudo em index.html e diga quando terminar.`}</Prompt>
       </Step>
 
       <Step n={4} title="Abra e itere">
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          open index.html
-        </code>
+        <OSTabs mac="open index.html" windows="start index.html" />
         <p className="mt-3">
           Visualize o dashboard e peça ajustes. Experimente:
         </p>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
 
 export default function Exercise4() {
   return (
@@ -72,9 +72,7 @@ Post tipo C — Bastidores/cultura
       </Step>
 
       <Step n={2} title="Construa o pipeline com checkpoint de aprovação">
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          claude
-        </code>
+        <Command>claude</Command>
         <Prompt>{`Vou te dar os inputs da semana. Você vai executar o pipeline de conteúdo em etapas, parando para minha aprovação antes de avançar.
 
 INPUTS DESTA SEMANA:

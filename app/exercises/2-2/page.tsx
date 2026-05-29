@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
 
 export default function Exercise22() {
   return (
@@ -24,12 +24,14 @@ export default function Exercise22() {
       </div>
 
       <Step n={1} title="Prepare o ambiente e defina o tom de voz">
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          mkdir ~/ai-builder-camp/ex-2-2 && cd ~/ai-builder-camp/ex-2-2
-        </code>
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10 mt-1">
-          cp ~/ai-builder-camp/ex-1-2/CLAUDE.md .
-        </code>
+        <OSTabs
+          mac="mkdir ~/ai-builder-camp/ex-2-2 && cd ~/ai-builder-camp/ex-2-2"
+          windows="mkdir $HOME\ai-builder-camp\ex-2-2; cd $HOME\ai-builder-camp\ex-2-2"
+        />
+        <OSTabs
+          mac="cp ~/ai-builder-camp/ex-1-2/CLAUDE.md ."
+          windows="copy $HOME\ai-builder-camp\ex-1-2\CLAUDE.md ."
+        />
         <p className="mt-3">
           Primeiro, vamos criar um arquivo com exemplos reais de emails bons da sua empresa.
           Crie um arquivo <code>exemplos-email.md</code> e cole 2-3 emails que você considera
@@ -46,9 +48,10 @@ export default function Exercise22() {
         <p>
           Comandos personalizados ficam na pasta <code>.claude/commands/</code>. Vamos criar o nosso:
         </p>
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          mkdir -p .claude/commands
-        </code>
+        <OSTabs
+          mac="mkdir -p .claude/commands"
+          windows="mkdir .claude\commands"
+        />
         <Prompt>{`Crie o arquivo .claude/commands/email.md com as instruções para o comando /email.
 
 O comando deve:
@@ -63,9 +66,7 @@ Inclua no arquivo as regras de tom que identificamos, para que o comando funcion
 
       <Step n={3} title="Teste o comando com casos reais">
         <p>Feche e reabra o Claude Code para carregar o novo comando:</p>
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          claude
-        </code>
+        <Command>claude</Command>
         <p className="mt-3">Agora teste com situações que você enfrenta regularmente:</p>
         <Prompt>{`/email
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
 
 export default function Exercise24() {
   return (
@@ -23,15 +23,15 @@ export default function Exercise24() {
       </div>
 
       <Step n={1} title="Defina a estrutura do seu briefing ideal">
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          mkdir ~/ai-builder-camp/ex-2-4 && cd ~/ai-builder-camp/ex-2-4
-        </code>
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10 mt-1">
-          cp ~/ai-builder-camp/ex-1-2/CLAUDE.md .
-        </code>
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10 mt-1">
-          claude
-        </code>
+        <OSTabs
+          mac="mkdir ~/ai-builder-camp/ex-2-4 && cd ~/ai-builder-camp/ex-2-4"
+          windows="mkdir $HOME\ai-builder-camp\ex-2-4; cd $HOME\ai-builder-camp\ex-2-4"
+        />
+        <OSTabs
+          mac="cp ~/ai-builder-camp/ex-1-2/CLAUDE.md ."
+          windows="copy $HOME\ai-builder-camp\ex-1-2\CLAUDE.md ."
+        />
+        <Command>claude</Command>
         <p className="mt-3">Primeiro, vamos definir o que um briefing excelente contém:</p>
         <Prompt>{`Vou criar um briefing semanal executivo. Me ajude a definir a estrutura ideal.
 
@@ -51,9 +51,7 @@ Depois vamos usar essa estrutura para criar o comando /briefing.`}</Prompt>
           Crie uma estrutura de pasta simples para organizar os inputs da semana.
           O agente vai ler todos eles:
         </p>
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          mkdir semana-atual
-        </code>
+        <Command>mkdir semana-atual</Command>
         <p className="mt-3">Dentro da pasta, crie arquivos de texto com as atualizações da semana:</p>
         <div className="space-y-1 mt-2 text-sm font-mono text-white/50">
           <p><code>semana-atual/metricas.md</code> — KPIs e números da semana</p>
@@ -70,9 +68,10 @@ Depois vamos usar essa estrutura para criar o comando /briefing.`}</Prompt>
       </Step>
 
       <Step n={3} title="Crie o comando /briefing">
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          mkdir -p .claude/commands
-        </code>
+        <OSTabs
+          mac="mkdir -p .claude/commands"
+          windows="mkdir .claude\commands"
+        />
         <Prompt>{`Crie o arquivo .claude/commands/briefing.md com as instruções para o comando /briefing.
 
 O comando deve:
@@ -87,9 +86,7 @@ Output: arquivo briefing-AAAA-MM-DD.md com a data de hoje`}</Prompt>
 
       <Step n={4} title="Execute o briefing">
         <p>Feche e reabra o Claude Code para carregar o novo comando:</p>
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          claude
-        </code>
+        <Command>claude</Command>
         <Prompt>{`/briefing`}</Prompt>
         <p className="mt-3">
           O agente vai ler todos os arquivos, sintetizar e gerar o briefing formatado.

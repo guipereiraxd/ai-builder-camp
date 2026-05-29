@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
 
 export default function Exercise12() {
   return (
@@ -24,9 +24,10 @@ export default function Exercise12() {
       </div>
 
       <Step n={1} title="Crie uma pasta e o arquivo CLAUDE.md">
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          mkdir ~/ai-builder-camp/ex-1-2 && cd ~/ai-builder-camp/ex-1-2
-        </code>
+        <OSTabs
+          mac="mkdir ~/ai-builder-camp/ex-1-2 && cd ~/ai-builder-camp/ex-1-2"
+          windows="mkdir $HOME\ai-builder-camp\ex-1-2; cd $HOME\ai-builder-camp\ex-1-2"
+        />
         <p className="mt-3">Abra um editor de texto qualquer e crie o arquivo <code>CLAUDE.md</code>.
         Use o template abaixo como ponto de partida — e customize com informações reais da sua empresa:</p>
         <Prompt>{`# Contexto da Empresa
@@ -67,9 +68,7 @@ Estágio: [Ex: Série A / Bootstrapped / Empresa estabelecida há 15 anos]
       </Step>
 
       <Step n={2} title="Abra o Claude Code na pasta">
-        <code className="block text-sm font-mono text-white/80 bg-[#0d1117] px-4 py-3 rounded-lg border border-white/10">
-          claude
-        </code>
+        <Command>claude</Command>
         <p className="mt-3">
           O Claude Code vai ler o <code>CLAUDE.md</code> automaticamente.
           Para confirmar, pergunte:
