@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://guipereiraxd.github.io/ai-builder-camp"),
   title: "AI Builder Camp",
   description: "Curso prático de IA com a mão na massa. Construa soluções reais, automatize tarefas e transforme problemas do dia a dia em entregas.",
 };
