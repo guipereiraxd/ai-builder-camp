@@ -67,7 +67,7 @@ export function Prompt({ children }: { children: string }) {
         </button>
       </div>
       <pre
-        className="p-4 text-sm overflow-x-auto m-0 rounded-none border-0 font-mono leading-relaxed whitespace-pre-wrap"
+        className="p-3 md:p-4 text-xs md:text-sm overflow-x-auto m-0 rounded-none border-0 font-mono leading-relaxed whitespace-pre-wrap"
         style={{ background: "#0d0d10", color: "#e8e8eb" }}
       >
         {children}
@@ -151,11 +151,11 @@ export function ExerciseHeader({
         <span style={{ color: "#33363e" }}>·</span>
         <span className="text-xs" style={{ color: "#3d3d3d" }}>{duration}</span>
       </div>
-      <h1 className="text-3xl font-bold text-white mb-4">
+      <h1 className="text-2xl md:text-3xl font-bold text-white mb-4">
         <span className="font-normal mr-2" style={{ color: "#33363e" }}>{number}</span>
         {title}
       </h1>
-      <p className="text-lg leading-relaxed" style={{ color: "#cfd2d8" }}>{description}</p>
+      <p className="text-base md:text-lg leading-relaxed" style={{ color: "#cfd2d8" }}>{description}</p>
       <div className="mt-6" style={{ borderTop: `1px solid ${BORDER}` }} />
     </div>
   );

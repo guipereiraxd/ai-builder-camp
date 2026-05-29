@@ -41,28 +41,28 @@ export default function Home() {
           Curso prático · 9 exercícios · ~5 horas
         </div>
 
-        <h1 className="text-4xl font-bold text-white leading-tight mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
           IA na prática,<br />
           <span style={{ color: "#33363e" }}>para quem quer criar e colocar de pé resultado!</span>
         </h1>
 
-        <p className="text-lg leading-relaxed max-w-2xl mb-8" style={{ color: "#cfd2d8" }}>
+        <p className="text-base md:text-lg leading-relaxed max-w-2xl mb-8" style={{ color: "#cfd2d8" }}>
           Este curso é para quem quer experimentar IA com a mão na massa. Aqui, você vai
           construir coisas reais, testar possibilidades, automatizar tarefas e transformar
           problemas do dia a dia em soluções aplicáveis para a operação.
         </p>
 
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           <Link
             href="/setup"
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-90"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-90"
             style={{ background: "#4b6afc", color: "#ffffff" }}
           >
             Começar agora →
           </Link>
           <Link
             href="/exercises"
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-colors hover:text-white"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-colors hover:text-white"
             style={{ background: "rgba(255,255,255,0.04)", border: "1px solid #33363e", color: "#cfd2d8" }}
           >
             Ver exercícios
@@ -72,7 +72,7 @@ export default function Home() {
 
       {/* Stats */}
       <div
-        className="grid grid-cols-3 gap-4 mb-12 p-5 rounded-xl"
+        className="grid grid-cols-3 gap-2 md:gap-4 mb-10 md:mb-12 p-4 md:p-5 rounded-xl"
         style={{ background: "rgba(255,255,255,0.02)", border: "1px solid #33363e" }}
       >
         {[

@@ -1,12 +1,62 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar";
+import MobileHeader from "./MobileHeader";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Close drawer on route change
+  useEffect(() => {
+    setDrawerOpen(false);
+  }, [pathname]);
+
   return (
-    <div className="flex min-h-screen">
-      <Sidebar />
-      <main className="flex-1 overflow-y-auto">
-        <div className="max-w-3xl mx-auto px-8 py-12">{children}</div>
-      </main>
+    <div className="flex min-h-screen" style={{ background: "#0f0f0f" }}>
+      {/* Sidebar — always visible on desktop */}
+      <div className="hidden md:block">
+        <Sidebar />
+      </div>
+
+      {/* Mobile drawer — always mounted, slides in/out via CSS */}
+      <div className="md:hidden">
+        {/* Backdrop */}
+        <div
+          onClick={() => setDrawerOpen(false)}
+          className="fixed inset-0 z-30 transition-opacity duration-300"
+          style={{
+            background: "rgba(0,0,0,0.6)",
+            backdropFilter: "blur(2px)",
+            opacity: drawerOpen ? 1 : 0,
+            pointerEvents: drawerOpen ? "auto" : "none",
+          }}
+        />
+        {/* Drawer panel */}
+        <div
+          className="fixed top-0 left-0 bottom-0 z-40 transition-transform duration-300 ease-out"
+          style={{
+            width: "280px",
+            transform: drawerOpen ? "translateX(0)" : "translateX(-100%)",
+          }}
+        >
+          <Sidebar />
+        </div>
+      </div>
+
+      <div className="flex-1 min-w-0 flex flex-col">
+        {/* Mobile header */}
+        <MobileHeader onMenuClick={() => setDrawerOpen(true)} />
+
+        {/* Page content */}
+        <main className="flex-1">
+          <div className="max-w-3xl mx-auto px-4 py-8 md:px-8 md:py-12">
+            {children}
+          </div>
+        </main>
+      </div>
     </div>
   );
 }
