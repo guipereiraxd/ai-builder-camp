@@ -13,7 +13,23 @@
       "Bash(gh auth *)",
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "WebFetch(domain:alun.com.br)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(open \"https://alun.com.br/alunbusiness/\")",
+      "Bash(curl -s \"https://alun.com.br/alunbusiness/\")",
+      "Bash(curl -s \"https://alun.com.br/_astro/index.B-qw3PPj.css\")",
+      "Bash(grep -oE '#[0-9a-fA-F]{3,6}|rgb\\\\\\([^\\)]+\\\\\\)|rgba\\\\\\([^\\)]+\\\\\\)')",
+      "Bash(curl -s \"https://alun.com.br/_astro/dev-upgrade.BweXlXcy.css\")",
+      "Bash(grep -oE '--color-[a-z-]+:\\\\s*#[0-9a-fA-F]+|--color-[a-z-]+:\\\\s*rgb[^;]+')",
+      "Bash(open \"http://localhost:3000/ai-builder-camp/\")",
+      "Bash(curl -s \"http://localhost:3000/ai-builder-camp/\")",
+      "Bash(curl -sv \"http://localhost:3000/ai-builder-camp/\")",
+      "Bash(curl -sL \"http://localhost:3000/ai-builder-camp\")",
+      "Bash(cat /tmp/nextjs-dev.log 2>/dev/null | tail -30 || npm run dev 2>&1 | head -50 &)",
+      "Bash(open \"http://localhost:3000/ai-builder-camp\")",
+      "Bash(curl -sI \"http://localhost:3000/ai-builder-camp/logo-alun-white.svg\")"
     ]
   }
 }

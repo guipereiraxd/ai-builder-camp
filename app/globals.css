@@ -1,33 +1,83 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --color-black-atomic: #0f0f0f;
+  --color-caltrop-water: #33363e;
+  --color-meteorite: #3d3d3d;
+  --color-blue-laser: #4b6afc;
+  --color-dye-indigo: #0a1e9d;
+  --color-cooper-american: #d1a476;
+  --color-white-marble: #e8e8eb;
+  --color-gray-blue: #cfd2d8;
+}
+
+@theme inline {
+  --color-brand: #4b6afc;
+  --color-brand-dark: #0a1e9d;
+  --color-brand-gold: #d1a476;
+  --color-surface: #0f0f0f;
+  --color-surface-2: #161618;
+  --color-border: #33363e;
+  --color-text-muted: #cfd2d8;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--color-black-atomic);
+  color: var(--color-white-marble);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 pre {
-  background: #111827;
-  border: 1px solid #1f2937;
+  background: #0d0d10;
+  border: 1px solid var(--color-caltrop-water);
   border-radius: 8px;
   padding: 1rem;
   overflow-x: auto;
 }
 
 code {
-  background: #1f2937;
+  background: rgba(75, 106, 252, 0.12);
+  color: #8fa8ff;
   padding: 0.125rem 0.375rem;
   border-radius: 4px;
-  font-size: 0.875rem;
+  font-size: 0.875em;
   font-family: "JetBrains Mono", "Fira Code", "Courier New", monospace;
 }
 
 pre code {
   background: transparent;
+  color: #e8e8eb;
   padding: 0;
+}
+
+a {
+  color: var(--color-blue-laser);
+}
+
+a:hover {
+  color: #7b95ff;
+}
+
+.exercise-card {
+  border: 1px solid #33363e;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.exercise-card:hover {
+  border-color: #4b6afc;
+  background: rgba(75, 106, 252, 0.05);
+}
+
+.exercise-card:hover .exercise-card-arrow {
+  color: #4b6afc;
+}
+
+.exercise-card:hover .exercise-card-title {
+  color: #e8e8eb;
 }
