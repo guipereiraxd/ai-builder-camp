@@ -113,7 +113,7 @@ O README deve ser acessível para alguém não-técnico.`}</Prompt>
 
       <div className="mt-6 flex justify-between">
         <Link href="/exercises/2-1" className="inline-flex items-center gap-2 px-4 py-2 text-white/50 hover:text-white text-sm transition-colors">← 2.1</Link>
-        <Link href="/exercises/2-3" className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition-colors">
+        <Link href="/exercises/2-3" className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-90" style={{ background: "#4b6afc", color: "#ffffff" }}>
           Próximo: 2.3 Dashboard executivo →
         </Link>
       </div>

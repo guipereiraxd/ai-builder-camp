@@ -108,7 +108,7 @@ próxima reunião semana que vem mesma hora`}
       <div className="mt-6 flex justify-end">
         <Link
           href="/exercises/1-2"
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-90" style={{ background: "#4b6afc", color: "#ffffff" }}
         >
           Próximo: 1.2 Com contexto da empresa →
         </Link>
