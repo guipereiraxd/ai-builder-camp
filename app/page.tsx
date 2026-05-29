@@ -43,13 +43,13 @@ export default function Home() {
 
         <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
           IA na prática,<br />
-          <span style={{ color: "#33363e" }}>para quem quer criar e colocar de pé resultado!</span>
+          <span style={{ color: "#33363e" }}>para quem quer transformar ideia em entrega.</span>
         </h1>
 
         <p className="text-base md:text-lg leading-relaxed max-w-2xl mb-8" style={{ color: "#cfd2d8" }}>
-          Este curso é para quem quer experimentar IA com a mão na massa. Aqui, você vai
-          construir coisas reais, testar possibilidades, automatizar tarefas e transformar
-          problemas do dia a dia em soluções aplicáveis para a operação.
+          Este curso é para quem quer experimentar IA com a mão na massa e sair com algo construído.
+          Você vai criar soluções reais, testar possibilidades, automatizar tarefas e transformar
+          problemas do dia a dia em entregas aplicáveis para a operação.
         </p>
 
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">

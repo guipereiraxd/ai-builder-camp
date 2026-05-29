@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "AI Builder Camp",
-  description: "Curso prático de IA para executivos e líderes",
+  description: "Curso prático de IA com a mão na massa. Construa soluções reais, automatize tarefas e transforme problemas do dia a dia em entregas.",
 };
 
 export default function RootLayout({

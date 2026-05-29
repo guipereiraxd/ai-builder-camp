@@ -41,10 +41,13 @@ export default function SetupPage() {
           >
             nodejs.org
           </a>{" "}
-          e baixe a versão LTS (recomendada).
+          e baixe a versão LTS.
         </p>
         <Tip>
-          No Mac, a forma mais fácil é via Homebrew: <code>brew install node</code>
+          <strong>Mac:</strong> via Homebrew: <code>brew install node</code>
+          <br />
+          <strong>Windows:</strong> baixe o instalador <code>.msi</code> em nodejs.org ou use o winget:{" "}
+          <code>winget install OpenJS.NodeJS.LTS</code>
         </Tip>
       </Step>
 
@@ -58,7 +61,11 @@ export default function SetupPage() {
         <p>Confirme que funcionou:</p>
         <Command>claude --version</Command>
         <Tip>
-          Se aparecer erro de permissão no Mac, tente com <code>sudo npm install -g @anthropic-ai/claude-code</code>
+          <strong>Mac/Linux:</strong> se aparecer erro de permissão, use{" "}
+          <code>sudo npm install -g @anthropic-ai/claude-code</code>
+          <br />
+          <strong>Windows:</strong> abra o PowerShell ou o Prompt de Comando como{" "}
+          <strong>Administrador</strong> e rode o comando novamente.
         </Tip>
       </Step>
 
@@ -143,9 +150,13 @@ export default function SetupPage() {
 
       <Step n={5} title="Verifique a instalação">
         <p>
-          Crie uma pasta para os seus experimentos e abra o Claude Code pela primeira vez:
+          Crie uma pasta para os seus experimentos e abra o Claude Code pela primeira vez.
         </p>
+        <p className="mt-2"><strong className="text-white">Mac/Linux</strong> — no Terminal:</p>
         <Command>mkdir ~/ai-builder-camp && cd ~/ai-builder-camp</Command>
+        <p className="mt-2"><strong className="text-white">Windows</strong> — no PowerShell:</p>
+        <Command>mkdir $HOME\ai-builder-camp; cd $HOME\ai-builder-camp</Command>
+        <p className="mt-3">Em seguida, inicie o Claude Code:</p>
         <Command>claude</Command>
         <p className="mt-2">
           Se tudo estiver configurado, o Claude Code vai abrir uma interface interativa
