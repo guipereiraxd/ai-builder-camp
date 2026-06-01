@@ -33,7 +33,7 @@ export default function Exercise6() {
         act="Ato III — Conecte ao Mundo Real"
         number="6"
         title="Busca em tempo real com Brave Search"
-        duration="25 min"
+        duration="20 min"
         description="Até agora, o Claude trabalhava só com o que você colava e com o que ele já sabia — dados de treinamento de meses atrás. Neste exercício você conecta o agente à internet e ele passa a pesquisar agora, em tempo real."
       />
 
@@ -49,6 +49,41 @@ export default function Exercise6() {
           A configuração é feita uma vez. Depois disso, o Claude usa a ferramenta automaticamente
           quando precisar — você não precisa fazer nada diferente nos prompts.
         </p>
+      </div>
+
+      {/* MCP registry callout */}
+      <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid #2a3a2a", background: "rgba(75,200,100,0.04)" }}>
+        <p className="text-sm font-semibold text-white mb-2">Atalho: o Claude já tem conectores prontos para centenas de ferramentas</p>
+        <p className="text-sm leading-relaxed mb-3" style={{ color: "#cfd2d8" }}>
+          Antes de configurar qualquer MCP manualmente, vale checar se já existe um conector
+          pronto para a ferramenta que você usa. O ecossistema de MCPs cresceu rápido —
+          hoje há conectores oficiais e da comunidade para Notion, HubSpot, Salesforce, Jira,
+          Linear, GitHub, Figma, Airtable, Stripe, e dezenas de outros softwares de mercado.
+        </p>
+        <p className="text-sm leading-relaxed mb-4" style={{ color: "#cfd2d8" }}>
+          Se a ferramenta mais importante para você está nessa lista, pode pular direto para ela
+          em vez de seguir a trilha do Ato III. O processo de configuração é sempre o mesmo:
+          encontrar o conector, adicionar ao <code>settings.json</code>, reiniciar o Claude Code.
+        </p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {["Notion", "HubSpot", "Salesforce", "GitHub", "Linear", "Jira", "Figma", "Airtable", "Stripe", "Postgres", "MongoDB", "Zapier"].map(tool => (
+            <span key={tool} className="text-xs px-2.5 py-1 rounded-full font-medium" style={{ background: "rgba(75,106,252,0.12)", color: "#8ba3ff", border: "1px solid rgba(75,106,252,0.2)" }}>
+              {tool}
+            </span>
+          ))}
+          <span className="text-xs px-2.5 py-1 rounded-full font-medium" style={{ background: "rgba(255,255,255,0.05)", color: "#64687a", border: "1px solid rgba(255,255,255,0.08)" }}>
+            + muito mais
+          </span>
+        </div>
+        <a
+          href="https://www.claudemcp.com/servers"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg transition-opacity hover:opacity-80"
+          style={{ background: "rgba(75,106,252,0.15)", color: "#8ba3ff", border: "1px solid rgba(75,106,252,0.25)" }}
+        >
+          Explorar conectores disponíveis →
+        </a>
       </div>
 
       <div className="mb-8 p-4 rounded-lg bg-white/3 border border-white/8">
