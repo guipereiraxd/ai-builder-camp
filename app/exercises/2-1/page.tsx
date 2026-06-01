@@ -9,7 +9,7 @@ export default function Exercise21() {
         act="Ato I — Sinta o Poder"
         number="2.1"
         title="Análise de concorrentes ao vivo"
-        duration="25 min"
+        duration="15 min"
         description="Monitorar concorrentes é crítico mas consome tempo. Neste exercício você vai criar um pipeline que pesquisa, sintetiza e formata uma análise competitiva completa — o tipo de trabalho que levaria horas de um analista."
       />
 

@@ -21,7 +21,7 @@ export default function Exercise23() {
         act="Ato I — Sinta o Poder"
         number="2.3"
         title="Dashboard executivo"
-        duration="30 min"
+        duration="20 min"
         description="Dados em planilha não comunicam. Neste exercício você vai transformar dados brutos em um dashboard interativo e visual — sem depender de IT, BI ou Tableau. Em 30 minutos."
       />
 

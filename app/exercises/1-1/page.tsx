@@ -9,7 +9,7 @@ export default function Exercise11() {
         act="Ato I — Sinta o Poder"
         number="1.1"
         title="Seu primeiro produto digital"
-        duration="15 min"
+        duration="10 min"
         description="Você vai criar uma aplicação web funcional com um único prompt. Nenhum conhecimento de programação necessário. O objetivo é sentir o que é possível — e entender por que isso muda tudo."
       />
 

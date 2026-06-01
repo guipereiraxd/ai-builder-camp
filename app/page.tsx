@@ -6,28 +6,28 @@ const exercises = [
     act: "Ato I",
     label: "Ato I — Sinta o Que É Possível",
     items: [
-      { n: "1.1", title: "Seu primeiro produto digital", href: "/exercises/1-1", duration: "15 min" },
+      { n: "1.1", title: "Seu primeiro produto digital", href: "/exercises/1-1", duration: "10 min" },
       { n: "1.2", title: "Com contexto da sua empresa", href: "/exercises/1-2", duration: "20 min" },
-      { n: "2.1", title: "Análise de concorrentes ao vivo", href: "/exercises/2-1", duration: "25 min" },
+      { n: "2.1", title: "Análise de concorrentes ao vivo", href: "/exercises/2-1", duration: "15 min" },
       { n: "2.2", title: "Email com tom da empresa", href: "/exercises/2-2", duration: "20 min" },
-      { n: "2.3", title: "Dashboard executivo", href: "/exercises/2-3", duration: "30 min" },
-      { n: "2.4", title: "Briefing semanal automatizado", href: "/exercises/2-4", duration: "25 min" },
+      { n: "2.3", title: "Dashboard executivo", href: "/exercises/2-3", duration: "20 min" },
+      { n: "2.4", title: "Briefing semanal automatizado", href: "/exercises/2-4", duration: "20 min" },
     ],
   },
   {
     act: "Ato II",
     label: "Ato II — Construa Seu Primeiro Agente",
     items: [
-      { n: "3", title: "Agente de monitoramento de mercado", href: "/exercises/3", duration: "45 min" },
-      { n: "4", title: "Pipeline de conteúdo com revisão humana", href: "/exercises/4", duration: "45 min" },
-      { n: "5", title: "Research loop para due diligence", href: "/exercises/5", duration: "60 min" },
+      { n: "3", title: "Agente de monitoramento de mercado", href: "/exercises/3", duration: "30 min" },
+      { n: "4", title: "Pipeline de conteúdo com revisão humana", href: "/exercises/4", duration: "35 min" },
+      { n: "5", title: "Research loop para due diligence", href: "/exercises/5", duration: "45 min" },
     ],
   },
   {
     act: "Ato III",
     label: "Ato III — Conecte ao Mundo Real",
     items: [
-      { n: "6", title: "Busca em tempo real com Brave Search", href: "/exercises/6", duration: "25 min" },
+      { n: "6", title: "Busca em tempo real com Brave Search", href: "/exercises/6", duration: "20 min" },
       { n: "7", title: "Claude no Google Drive", href: "/exercises/7", duration: "30 min" },
       { n: "8", title: "Claude no Slack", href: "/exercises/8", duration: "35 min" },
     ],
@@ -47,7 +47,7 @@ export default function Home() {
             className="w-1.5 h-1.5 rounded-full animate-pulse"
             style={{ background: "#4b6afc" }}
           />
-          Curso prático · 12 exercícios · ~7 horas
+          Curso prático · 12 exercícios · ~5 horas
         </div>
 
         <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
@@ -87,7 +87,7 @@ export default function Home() {
         {[
           { value: "12", label: "exercícios" },
           { value: "3", label: "atos" },
-          { value: "~7h", label: "de conteúdo" },
+          { value: "~5h", label: "de conteúdo" },
         ].map((s) => (
           <div key={s.label}>
             <p className="text-2xl font-bold text-white">{s.value}</p>

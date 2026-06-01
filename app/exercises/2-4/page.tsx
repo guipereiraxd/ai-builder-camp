@@ -9,7 +9,7 @@ export default function Exercise24() {
         act="Ato I — Sinta o Poder"
         number="2.4"
         title="Briefing semanal automatizado"
-        duration="25 min"
+        duration="20 min"
         description="O briefing semanal é o ritual mais valioso de um executivo — e o que mais tempo consome para montar. Aqui você vai criar um comando que gera automaticamente seu briefing a partir de notas e dados dispersos."
       />
 
