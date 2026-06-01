@@ -9,7 +9,7 @@ export default function Exercise3() {
         act="Ato II — Construa o Agente"
         number="3"
         title="Agente de monitoramento de mercado"
-        duration="45 min"
+        duration="30 min"
         description="Até agora, você deu um prompt e recebeu um resultado. Agora vamos construir algo diferente: um agente que executa múltiplos passos de forma autônoma, toma pequenas decisões sozinho, e entrega um relatório completo sem intervenção a cada etapa."
       />
 
@@ -126,7 +126,7 @@ O documento deve ser seguível por qualquer membro do time de estratégia.`}</Pr
           Você acabou de construir o que seria equivalente a contratar um analista
           de inteligência competitiva — que trabalha toda semana, sem reclamar,
           no formato exato que você quer. No próximo exercício, vamos criar
-          um pipeline completo com revisão humana no meio.
+          um pipeline de conteúdo completo com revisão humana no meio.
         </p>
       </div>
 

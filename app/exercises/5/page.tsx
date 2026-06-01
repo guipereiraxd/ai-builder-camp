@@ -9,7 +9,7 @@ export default function Exercise5() {
         act="Ato II — Construa o Agente"
         number="5"
         title="Research loop para due diligence"
-        duration="60 min"
+        duration="45 min"
         description="O exercício mais avançado do curso. Você vai construir um agente de research que conduz uma due diligence completa de forma autônoma — o tipo de análise que uma consultoria cobraria R$50.000 para fazer."
       />
 
@@ -170,25 +170,22 @@ O documento deve cobrir:
 Tom: prático, sem jargão. Deve funcionar para um analista de 25 anos ou para o próprio CEO.`}</Prompt>
       </Step>
 
-      <div className="mt-8 p-6 rounded-xl border border-blue-500/20 bg-blue-500/5">
-        <p className="text-blue-400 font-semibold mb-3">Você concluiu o AI Builder Camp.</p>
+      <div className="mt-8 p-6 rounded-xl border border-white/10 bg-white/3">
+        <p className="text-sm font-semibold text-white mb-2">Você concluiu o Ato II.</p>
         <p className="text-white/60 text-sm leading-relaxed mb-4">
-          Em 9 exercícios, você foi de zero a construir agentes autônomos com revisão humana.
-          Criou produtos, automações, análises e pipelines que mudam a forma como você e seu
-          time trabalham. Isso não é teoria — é o que está acontecendo nas empresas que vão
-          liderar os próximos 10 anos.
+          Em 5 exercícios, você construiu agentes autônomos com revisão humana, pipelines de
+          conteúdo e due diligence de qualidade consultoria. Tudo sem código — só prompts bem estruturados.
         </p>
         <p className="text-white/40 text-sm leading-relaxed">
-          O próximo passo é identificar os 3 processos mais dolorosos da sua operação e
-          aplicar o que você aprendeu aqui. Comece pelo menor, documente o que funciona,
-          e escale.
+          No Ato III, o Claude vai além do seu computador: conectamos ele à internet,
+          aos seus documentos no Drive e ao canal do seu time no Slack.
         </p>
       </div>
 
       <div className="mt-6 flex justify-between">
         <Link href="/exercises/4" className="inline-flex items-center gap-2 px-4 py-2 text-white/50 hover:text-white text-sm transition-colors">← 4</Link>
-        <Link href="/" className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 hover:bg-white/10 text-white text-sm font-medium rounded-lg transition-colors border border-white/10">
-          ← Voltar ao início
+        <Link href="/exercises/6" className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-90" style={{ background: "#4b6afc", color: "#ffffff" }}>
+          Começar Ato III: 6. Busca em tempo real →
         </Link>
       </div>
     </AppShell>

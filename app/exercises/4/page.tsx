@@ -9,7 +9,7 @@ export default function Exercise4() {
         act="Ato II — Construa o Agente"
         number="4"
         title="Pipeline de conteúdo com revisão humana"
-        duration="45 min"
+        duration="35 min"
         description="IA sem supervisão humana é arriscado. IA com supervisão humana bem projetada é poderoso. Neste exercício você vai construir um pipeline que gera conteúdo, aguarda sua aprovação, e só então finaliza — com rastreabilidade completa."
       />
 
@@ -146,15 +146,15 @@ Para cada canal, adapte: tom, formato, regras absolutas, e o que constitui aprov
           Você construiu um sistema editorial que escala sem perder qualidade.
           O agente faz o trabalho pesado, você faz o julgamento final.
           Essa divisão de trabalho — IA executa, humano decide — é o padrão
-          que define as empresas que vão ganhar com IA. No último exercício,
-          vamos aprofundar isso com o caso de uso mais sofisticado do curso.
+          que define as empresas que vão ganhar com IA. No próximo exercício,
+          vamos aprofundar isso com o caso de uso mais sofisticado do Ato II.
         </p>
       </div>
 
       <div className="mt-6 flex justify-between">
         <Link href="/exercises/3" className="inline-flex items-center gap-2 px-4 py-2 text-white/50 hover:text-white text-sm transition-colors">← 3</Link>
         <Link href="/exercises/5" className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-90" style={{ background: "#4b6afc", color: "#ffffff" }}>
-          Último exercício: 5. Research loop →
+          Próximo: 5. Research loop →
         </Link>
       </div>
     </AppShell>
