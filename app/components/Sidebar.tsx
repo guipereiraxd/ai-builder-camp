@@ -18,6 +18,10 @@ const nav = [
   { label: "3 Agente de monitoramento", href: "/exercises/3", duration: "45 min" },
   { label: "4 Pipeline com revisão humana", href: "/exercises/4", duration: "45 min" },
   { label: "5 Research loop executivo", href: "/exercises/5", duration: "60 min" },
+  { type: "divider", label: "Ato III — Conecte ao Mundo Real" },
+  { label: "6 Busca em tempo real", href: "/exercises/6", duration: "25 min" },
+  { label: "7 Claude no Google Drive", href: "/exercises/7", duration: "30 min" },
+  { label: "8 Claude no Slack", href: "/exercises/8", duration: "35 min" },
 ];
 
 export default function Sidebar() {
