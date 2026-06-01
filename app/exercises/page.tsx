@@ -5,24 +5,34 @@ const acts = [
   {
     title: "Ato I — Sinta o Que É Possível",
     description: "Exercícios rápidos que produzem resultados reais. Sem código, sem setup complexo. Só você, o Claude Code e um terminal.",
-    totalTime: "~2h",
+    totalTime: "~1h45",
     exercises: [
-      { n: "1.1", title: "Seu primeiro produto digital", href: "/exercises/1-1", duration: "15 min", description: "Crie uma aplicação web completa com um único prompt." },
+      { n: "1.1", title: "Seu primeiro produto digital", href: "/exercises/1-1", duration: "10 min", description: "Crie uma aplicação web completa com um único prompt." },
       { n: "1.2", title: "Com contexto da sua empresa", href: "/exercises/1-2", duration: "20 min", description: "Ensine o agente quem você é e o que sua empresa faz." },
-      { n: "2.1", title: "Análise de concorrentes ao vivo", href: "/exercises/2-1", duration: "25 min", description: "Research competitivo estruturado, em minutos." },
+      { n: "2.1", title: "Análise de concorrentes ao vivo", href: "/exercises/2-1", duration: "15 min", description: "Research competitivo estruturado, em minutos." },
       { n: "2.2", title: "Email com tom da empresa", href: "/exercises/2-2", duration: "20 min", description: "Um comando que gera emails no estilo exato da sua empresa." },
-      { n: "2.3", title: "Dashboard executivo", href: "/exercises/2-3", duration: "30 min", description: "De CSV bagunçado a dashboard interativo, sem BI." },
-      { n: "2.4", title: "Briefing semanal automatizado", href: "/exercises/2-4", duration: "25 min", description: "Seu ritual de segunda-feira, em segundos." },
+      { n: "2.3", title: "Dashboard executivo", href: "/exercises/2-3", duration: "20 min", description: "De CSV bagunçado a dashboard interativo, sem BI." },
+      { n: "2.4", title: "Briefing semanal automatizado", href: "/exercises/2-4", duration: "20 min", description: "Seu ritual de segunda-feira, em segundos." },
     ],
   },
   {
     title: "Ato II — Construa Seu Primeiro Agente",
     description: "Você para de executar e começa a arquitetar. O agente trabalha de forma autônoma; você revisa e decide.",
-    totalTime: "~2h30",
+    totalTime: "~1h50",
     exercises: [
-      { n: "3", title: "Agente de monitoramento de mercado", href: "/exercises/3", duration: "45 min", description: "Um analista de inteligência competitiva que nunca tira férias." },
-      { n: "4", title: "Pipeline com revisão humana", href: "/exercises/4", duration: "45 min", description: "Conteúdo de qualidade com você no controle editorial." },
-      { n: "5", title: "Research loop para due diligence", href: "/exercises/5", duration: "60 min", description: "Due diligence completa conduzida por um agente autônomo." },
+      { n: "3", title: "Agente de monitoramento de mercado", href: "/exercises/3", duration: "30 min", description: "Um analista de inteligência competitiva que nunca tira férias." },
+      { n: "4", title: "Pipeline com revisão humana", href: "/exercises/4", duration: "35 min", description: "Conteúdo de qualidade com você no controle editorial." },
+      { n: "5", title: "Research loop para due diligence", href: "/exercises/5", duration: "45 min", description: "Due diligence completa conduzida por um agente autônomo." },
+    ],
+  },
+  {
+    title: "Ato III — Conecte ao Mundo Real",
+    description: "O Claude vai buscar os dados onde eles estão. Sem copiar, sem colar — ele acessa a web, o Drive e o Slack por conta própria.",
+    totalTime: "~1h25",
+    exercises: [
+      { n: "6", title: "Busca em tempo real com Brave Search", href: "/exercises/6", duration: "20 min", description: "Conecte o agente à internet para pesquisas com dados de hoje." },
+      { n: "7", title: "Claude no Google Drive", href: "/exercises/7", duration: "30 min", description: "Acesse documentos, contratos e apresentações direto pelo agente." },
+      { n: "8", title: "Claude no Slack", href: "/exercises/8", duration: "35 min", description: "Leia canais, envie mensagens e orquestre os três MCPs juntos." },
     ],
   },
 ];
@@ -33,7 +43,7 @@ export default function ExercisesPage() {
       <div className="mb-10">
         <h1 className="text-3xl font-bold text-white mb-3">Exercícios</h1>
         <p className="text-white/50 text-base">
-          9 exercícios. 2 atos. Do primeiro prompt ao primeiro agente autônomo.
+          12 exercícios. 3 atos. Do primeiro prompt ao agente conectado ao mundo real.
         </p>
         <div className="mt-6 border-t border-white/10" />
       </div>
