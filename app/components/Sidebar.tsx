@@ -22,8 +22,10 @@ const nav = [
   { label: "5 Research loop executivo", href: "/exercises/5", duration: "45 min" },
   { type: "divider", label: "Ato III — Conecte ao Mundo Real" },
   { label: "6 Busca em tempo real", href: "/exercises/6", duration: "20 min" },
-  { label: "7 Claude no Google Drive", href: "/exercises/7", duration: "30 min" },
-  { label: "8 Claude no Slack", href: "/exercises/8", duration: "35 min" },
+  { label: "7 Agente com seus documentos", href: "/exercises/7", duration: "30 min" },
+  { label: "8 Agente no Slack", href: "/exercises/8", duration: "35 min" },
+  { type: "divider", label: "Ato IV — Continue Praticando", gold: true },
+  { label: "M1 Automatize uma reunião", href: "/exercises/m1", duration: "15 min", mission: true },
 ];
 
 function LLMSwitcher() {
@@ -128,7 +130,7 @@ export default function Sidebar() {
               <div key={i} className="pt-5 pb-1.5 px-2">
                 <p
                   className="text-[10px] font-semibold uppercase tracking-widest"
-                  style={{ color: "#64687a" }}
+                  style={{ color: item.gold ? "rgba(209,164,118,0.6)" : "#64687a" }}
                 >
                   {item.label}
                 </p>
@@ -137,6 +139,7 @@ export default function Sidebar() {
           }
 
           const active = pathname === item.href;
+          const isMission = item.mission;
           return (
             <Link
               key={item.href}
@@ -144,7 +147,7 @@ export default function Sidebar() {
               className="flex items-center justify-between px-3 py-2 rounded-md text-sm transition-all"
               style={
                 active
-                  ? { background: "rgba(75,106,252,0.12)", color: "#4b6afc" }
+                  ? { background: isMission ? "rgba(209,164,118,0.12)" : "rgba(75,106,252,0.12)", color: isMission ? "#d1a476" : "#4b6afc" }
                   : { color: "#cfd2d8" }
               }
               onMouseEnter={(e) => {
@@ -160,7 +163,10 @@ export default function Sidebar() {
                 }
               }}
             >
-              <span>{item.label}</span>
+              <span className="flex items-center gap-1.5">
+                {isMission && <span style={{ color: active ? "#d1a476" : "rgba(209,164,118,0.5)" }}>◈</span>}
+                {item.label}
+              </span>
               {item.duration && (
                 <span className="text-[11px] ml-2 shrink-0" style={{ color: "#64687a" }}>
                   {item.duration}

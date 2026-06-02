@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import AppShell from "../components/AppShell";
 import { LLMSelector } from "../components/ExerciseComponents";
@@ -28,12 +30,12 @@ const acts = [
   },
   {
     title: "Ato III — Conecte ao Mundo Real",
-    description: "O Claude vai buscar os dados onde eles estão. Sem copiar, sem colar — ele acessa a web, o Drive e o Slack por conta própria.",
+    description: "O agente vai buscar os dados onde eles estão. Sem copiar, sem colar — acessa a web, documentos e Slack por conta própria.",
     totalTime: "~1h25",
     exercises: [
-      { n: "6", title: "Busca em tempo real com Brave Search", href: "/exercises/6", duration: "20 min", description: "Conecte o agente à internet para pesquisas com dados de hoje." },
-      { n: "7", title: "Claude no Google Drive", href: "/exercises/7", duration: "30 min", description: "Acesse documentos, contratos e apresentações direto pelo agente." },
-      { n: "8", title: "Claude no Slack", href: "/exercises/8", duration: "35 min", description: "Leia canais, envie mensagens e orquestre os três MCPs juntos." },
+      { n: "6", title: "Busca em tempo real", href: "/exercises/6", duration: "20 min", description: "Conecte o agente à internet para pesquisas com dados de hoje." },
+      { n: "7", title: "Agente com seus documentos", href: "/exercises/7", duration: "30 min", description: "Acesse documentos, contratos e apresentações direto pelo agente." },
+      { n: "8", title: "Agente no Slack", href: "/exercises/8", duration: "35 min", description: "Entregue resultados direto no canal da sua equipe." },
     ],
   },
 ];
@@ -83,7 +85,7 @@ export default function ExercisesPage() {
 
       <div className="mb-6">
         <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#33363e" }}>
-          12 exercícios · 3 atos · ~5 horas
+          12 exercícios · 3 atos · ~5 horas + missões complementares
         </p>
       </div>
 
@@ -120,6 +122,49 @@ export default function ExercisesPage() {
           </div>
         </div>
       ))}
+
+      {/* Act IV — Missions */}
+      <div className="mb-12">
+        <div className="mb-5">
+          <div className="flex items-baseline justify-between mb-1">
+            <h2 className="text-sm font-semibold" style={{ color: "#d1a476" }}>Ato IV — Continue Praticando</h2>
+            <span className="text-xs" style={{ color: "rgba(209,164,118,0.4)" }}>Missões</span>
+          </div>
+          <p className="text-sm" style={{ color: "#64687a" }}>
+            Exercícios complementares sem ordem obrigatória. Cada missão resolve um problema real e concreto.
+            Novas missões são adicionadas periodicamente.
+          </p>
+        </div>
+        <div className="space-y-2">
+          <Link
+            href="/exercises/m1"
+            className="flex items-start gap-5 p-4 rounded-lg group transition-all"
+            style={{ border: "1px solid rgba(209,164,118,0.15)", background: "rgba(209,164,118,0.03)" }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "rgba(209,164,118,0.07)";
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(209,164,118,0.3)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "rgba(209,164,118,0.03)";
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(209,164,118,0.15)";
+            }}
+          >
+            <span className="text-sm font-mono pt-0.5 w-6 shrink-0" style={{ color: "rgba(209,164,118,0.4)" }}>M1</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium transition-colors" style={{ color: "rgba(255,255,255,0.8)" }}>
+                Automatize uma reunião
+              </p>
+              <p className="text-xs mt-0.5" style={{ color: "#64687a" }}>
+                Notas brutas → ata profissional + próximos passos + dono por tarefa.
+              </p>
+            </div>
+            <div className="flex items-center gap-3 pt-0.5 shrink-0">
+              <span className="text-xs" style={{ color: "rgba(209,164,118,0.5)" }}>15 min</span>
+              <span className="text-sm transition-colors" style={{ color: "rgba(209,164,118,0.3)" }}>→</span>
+            </div>
+          </Link>
+        </div>
+      </div>
 
       <div className="mt-4 p-4 rounded-lg border border-white/8 bg-white/2">
         <p className="text-xs text-white/30 leading-relaxed">
