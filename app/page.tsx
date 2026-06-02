@@ -7,10 +7,10 @@ import { db, REGISTERED_KEY } from "../lib/firebase";
 import { ThemeToggle } from "./components/ThemeToggle";
 
 const deliverables = [
-  { label: "Produto digital funcional", detail: "Criado com um único prompt, sem escrever uma linha de código" },
-  { label: "Agente de inteligência competitiva", detail: "Monitora concorrentes e entrega relatório toda semana" },
-  { label: "Pipeline de conteúdo com revisão humana", detail: "Gera, revisa e publica — você só aprova" },
-  { label: "Agente conectado ao Drive, Slack e à internet", detail: "Busca dados onde estão, sem você copiar nada" },
+  { label: "Criar ferramentas internas com uso de IA", detail: "De ideia a app funcionando em menos de 15 minutos" },
+  { label: "Monitorar concorrentes e gerar inteligência de mercado", detail: "Um agente busca, analisa e entrega o resumo toda semana" },
+  { label: "Criar conteúdo de qualidade", detail: "O agente gera, você revisa em minutos e aprova" },
+  { label: "Nunca mais copiar e colar informações", detail: "Automatize fluxos de trabalho com agentes" },
 ];
 
 const personas = [
@@ -145,7 +145,7 @@ export default function Home() {
           </div>
 
           {/* What you'll build */}
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>O que você vai entregar</p>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>O que você vai conseguir fazer</p>
           <div className="space-y-3 mb-8">
             {deliverables.map(({ label, detail }) => (
               <div key={label} className="flex items-start gap-3">
