@@ -41,27 +41,30 @@ export default function Home() {
     }
   }, [router]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.company.trim()) return;
-    setStatus("loading");
-    setErrorMsg("");
-    try {
-      await addDoc(collection(db, "registrations"), {
-        name: form.name.trim(),
-        email: form.email.trim().toLowerCase(),
-        company: form.company.trim(),
-        registeredAt: new Date().toISOString(),
-      });
-      localStorage.setItem(REGISTERED_KEY, "true");
-      localStorage.setItem("user_name", form.name.trim());
-      setStatus("success");
-      setTimeout(() => router.push("/exercises"), 1200);
-    } catch (err) {
-      console.error(err);
-      setErrorMsg("Algo deu errado. Tente novamente.");
-      setStatus("error");
-    }
+
+    // Grant access immediately — never block UX on Firebase availability
+    localStorage.setItem(REGISTERED_KEY, "true");
+    localStorage.setItem("user_name", form.name.trim());
+    setStatus("success");
+    setTimeout(() => router.push("/exercises"), 1200);
+
+    // Save to Firebase in background (fire-and-forget with 8s timeout)
+    const payload = {
+      name: form.name.trim(),
+      email: form.email.trim().toLowerCase(),
+      company: form.company.trim(),
+      registeredAt: new Date().toISOString(),
+    };
+    const save = addDoc(collection(db, "registrations"), payload);
+    const timeout = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("timeout")), 8000)
+    );
+    Promise.race([save, timeout]).catch((err) =>
+      console.warn("Firebase save failed (non-blocking):", err)
+    );
   };
 
   if (!mounted) return null;
