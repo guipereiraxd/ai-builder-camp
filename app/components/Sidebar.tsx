@@ -26,8 +26,10 @@ const nav = [
   { label: "8 Claude no Slack", href: "/exercises/8", duration: "35 min" },
 ];
 
-function LLMBadge() {
+function LLMSwitcher() {
   const [llm, setLlm] = useState<LLMChoice>("claude");
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     const saved = localStorage.getItem(LLM_KEY);
     if (saved === "claude" || saved === "openai" || saved === "gemini") setLlm(saved);
@@ -38,12 +40,54 @@ function LLMBadge() {
     window.addEventListener("storage", handler);
     return () => window.removeEventListener("storage", handler);
   }, []);
+
+  const select = (val: LLMChoice) => {
+    setLlm(val);
+    setOpen(false);
+    localStorage.setItem(LLM_KEY, val);
+    window.dispatchEvent(new StorageEvent("storage", { key: LLM_KEY, newValue: val }));
+  };
+
   const cfg = LLM_CONFIG[llm];
+
   return (
-    <div className="flex items-center gap-2 px-3 py-2 rounded-md" style={{ background: cfg.bg }}>
-      <span className="w-2 h-2 rounded-full shrink-0" style={{ background: cfg.color }} />
-      <span className="text-xs font-medium" style={{ color: cfg.color }}>{cfg.vendor}</span>
-      <code className="text-[10px] ml-auto" style={{ color: cfg.color, opacity: 0.7 }}>{cfg.command}</code>
+    <div className="relative">
+      {/* Current selection — click to open */}
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center gap-2 px-3 py-2 rounded-md transition-opacity hover:opacity-80"
+        style={{ background: cfg.bg }}
+      >
+        <span className="w-2 h-2 rounded-full shrink-0" style={{ background: cfg.color }} />
+        <span className="text-xs font-medium flex-1 text-left" style={{ color: cfg.color }}>{cfg.vendor}</span>
+        <code className="text-[10px]" style={{ color: cfg.color, opacity: 0.7 }}>{cfg.command}</code>
+        <span className="text-[10px] ml-1" style={{ color: cfg.color, opacity: 0.5 }}>▾</span>
+      </button>
+
+      {/* Dropdown */}
+      {open && (
+        <div
+          className="absolute bottom-full left-0 right-0 mb-1 rounded-lg overflow-hidden z-50"
+          style={{ border: "1px solid #33363e", background: "#161618" }}
+        >
+          {(["claude", "openai", "gemini"] as LLMChoice[]).map((key) => {
+            const c = LLM_CONFIG[key];
+            const active = llm === key;
+            return (
+              <button
+                key={key}
+                onClick={() => select(key)}
+                className="w-full flex items-center gap-2.5 px-3 py-2.5 text-xs transition-colors hover:bg-white/5"
+                style={{ color: active ? c.color : "#8b8f9a" }}
+              >
+                <span className="w-2 h-2 rounded-full shrink-0" style={{ background: active ? c.color : "#33363e" }} />
+                <span className="font-medium">{c.vendor}</span>
+                <code className="ml-auto text-[10px] opacity-60">{c.command}</code>
+              </button>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
@@ -130,7 +174,7 @@ export default function Sidebar() {
       {/* LLM indicator */}
       <div className="px-3 pb-2">
         <p className="text-[10px] uppercase tracking-widest mb-1.5 px-1" style={{ color: "#33363e" }}>Ferramenta</p>
-        <LLMBadge />
+        <LLMSwitcher />
       </div>
 
       {/* Footer */}
