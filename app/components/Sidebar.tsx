@@ -122,6 +122,12 @@ export default function Sidebar() {
         </Link>
       </div>
 
+      {/* LLM Switcher — pinned below logo */}
+      <div className="px-3 py-3" style={{ borderBottom: "1px solid #33363e" }}>
+        <p className="text-[10px] uppercase tracking-widest mb-1.5 px-1" style={{ color: "#33363e" }}>Ferramenta de IA</p>
+        <LLMSwitcher />
+      </div>
+
       {/* Nav */}
       <nav className="flex-1 p-3 space-y-0.5">
         {nav.map((item, i) => {
@@ -176,12 +182,6 @@ export default function Sidebar() {
           );
         })}
       </nav>
-
-      {/* LLM indicator */}
-      <div className="px-3 pb-2">
-        <p className="text-[10px] uppercase tracking-widest mb-1.5 px-1" style={{ color: "#33363e" }}>Ferramenta</p>
-        <LLMSwitcher />
-      </div>
 
       {/* Footer */}
       <div className="p-4" style={{ borderTop: "1px solid #33363e" }}>
