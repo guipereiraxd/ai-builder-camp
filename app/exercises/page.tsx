@@ -40,12 +40,47 @@ const acts = [
 export default function ExercisesPage() {
   return (
     <AppShell>
+      {/* Intro */}
       <div className="mb-10">
-        <h1 className="text-3xl font-bold text-white mb-3">Exercícios</h1>
-        <p className="text-white/50 text-base">
-          12 exercícios. 3 atos. Do primeiro prompt ao agente conectado ao mundo real.
+        <h1 className="text-3xl font-bold text-white mb-4">Bem-vindo ao AI Builder Camp</h1>
+        <p className="text-base leading-relaxed mb-3" style={{ color: "#cfd2d8" }}>
+          Este curso é sobre fazer. Cada exercício tem um objetivo claro, prompts prontos
+          e um resultado concreto no final — algo que você pode usar na sua operação agora.
         </p>
-        <div className="mt-6 border-t border-white/10" />
+        <p className="text-base leading-relaxed" style={{ color: "#64687a" }}>
+          Você vai passar por 3 atos: primeiro sentir o que é possível com IA, depois
+          construir seu primeiro agente autônomo, e por fim conectar o Claude às ferramentas
+          que sua equipe já usa no dia a dia.
+        </p>
+      </div>
+
+      {/* Setup CTA */}
+      <div
+        className="mb-10 p-5 rounded-xl flex flex-col sm:flex-row sm:items-center gap-4"
+        style={{ border: "1px solid #2a3a2a", background: "rgba(75,200,100,0.04)" }}
+      >
+        <div className="flex-1">
+          <p className="text-sm font-semibold text-white mb-1">Antes de começar: configure sua máquina</p>
+          <p className="text-sm leading-relaxed" style={{ color: "#64687a" }}>
+            O curso usa o Claude Code — uma ferramenta de linha de comando da Anthropic.
+            Se você ainda não instalou, o guia de setup leva menos de 15 minutos e cobre Mac e Windows.
+          </p>
+        </div>
+        <Link
+          href="/setup"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium whitespace-nowrap transition-opacity hover:opacity-80 shrink-0"
+          style={{ background: "rgba(75,200,100,0.15)", color: "#6ee87a", border: "1px solid rgba(75,200,100,0.25)" }}
+        >
+          Guia de instalação →
+        </Link>
+      </div>
+
+      <div className="mb-8 border-t" style={{ borderColor: "#1e2026" }} />
+
+      <div className="mb-6">
+        <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#33363e" }}>
+          12 exercícios · 3 atos · ~5 horas
+        </p>
       </div>
 
       {acts.map((act) => (
