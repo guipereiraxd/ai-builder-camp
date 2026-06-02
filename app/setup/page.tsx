@@ -228,9 +228,13 @@ export default function SetupPage() {
           <br />
           <strong>Windows sem winget?</strong> Baixe o instalador <code>.msi</code> direto em nodejs.org — é só clicar e avançar.
         </Tip>
+        <Warning>
+          <strong>Windows:</strong> após o comando acima terminar, <strong>feche o PowerShell e abra novamente</strong> antes de continuar.
+          O Windows só reconhece o Node.js em sessões novas do terminal — na mesma janela, o comando vai dar erro mesmo a instalação tendo funcionado.
+        </Warning>
         <p className="mt-3">Confirme que a instalação funcionou:</p>
         <Command>node --version</Command>
-        <p>Deve aparecer um número de versão. Se aparecer, avance para o passo 3.</p>
+        <p>Deve aparecer um número de versão como <code>v22.x.x</code>. Se aparecer, avance para o passo 3.</p>
       </Step>
 
       {/* Step 3 */}
