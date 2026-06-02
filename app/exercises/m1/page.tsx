@@ -27,7 +27,7 @@ export default function Mission1() {
         >
           ◈ Missão 01
         </span>
-        <span className="text-xs" style={{ color: "#33363e" }}>Ato IV — Continue Praticando</span>
+        <span className="text-xs" style={{ color: "var(--border)" }}>Ato IV — Continue Praticando</span>
       </div>
 
       <ExerciseHeader
@@ -40,7 +40,7 @@ export default function Mission1() {
 
       <div className="mb-8 p-4 rounded-lg" style={{ border: "1px solid rgba(209,164,118,0.15)", background: "rgba(209,164,118,0.04)" }}>
         <p className="text-sm font-semibold mb-1" style={{ color: "#d1a476" }}>O que é uma Missão?</p>
-        <p className="text-sm leading-relaxed" style={{ color: "#8b8f9a" }}>
+        <p className="text-sm leading-relaxed" style={{ color: "var(--text-3)" }}>
           Missões são exercícios complementares que você pode fazer a qualquer momento —
           não seguem a ordem dos Atos e não têm pré-requisito além do setup.
           Cada uma resolve um problema real e concreto do dia a dia executivo.
@@ -58,11 +58,11 @@ export default function Mission1() {
           Crie um arquivo <code>notas.md</code> e cole suas notas brutas de uma reunião real.
           Ou use o exemplo abaixo para testar agora:
         </p>
-        <div className="my-4 rounded-lg overflow-hidden" style={{ border: "1px solid #33363e" }}>
-          <div className="flex items-center justify-between px-4 py-2" style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid #33363e" }}>
-            <span className="text-xs font-mono" style={{ color: "#64687a" }}>exemplo — notas.md</span>
+        <div className="my-4 rounded-lg overflow-hidden" style={{ border: "1px solid var(--border)" }}>
+          <div className="flex items-center justify-between px-4 py-2" style={{ background: "var(--tint-3)", borderBottom: "1px solid var(--border)" }}>
+            <span className="text-xs font-mono" style={{ color: "var(--text-4)" }}>exemplo — notas.md</span>
           </div>
-          <pre className="p-4 text-sm overflow-x-auto m-0 font-mono leading-relaxed whitespace-pre-wrap" style={{ background: "#0d0d10", color: "#8b8f9a" }}>
+          <pre className="p-4 text-sm overflow-x-auto m-0 font-mono leading-relaxed whitespace-pre-wrap" style={{ background: "var(--code-bg)", color: "var(--text-3)" }}>
             {EXAMPLE_NOTES}
           </pre>
         </div>
@@ -171,21 +171,21 @@ Tom direto, sem floreios. Não inventar informações que não estejam nas notas
         </p>
         <LLMTabs
           claude={
-            <div className="mt-2 p-3 rounded-lg font-mono text-sm" style={{ background: "#0d0d10", border: "1px solid #33363e", color: "#cfd2d8" }}>
+            <div className="mt-2 p-3 rounded-lg font-mono text-sm" style={{ background: "var(--code-bg)", border: "1px solid var(--border)", color: "var(--text-2)" }}>
               1. Crie <code>notas.md</code> com suas notas brutas<br />
               2. <code className="text-blue-400">claude</code><br />
               3. <code style={{ color: "#d1a476" }}>/reuniao</code>
             </div>
           }
           openai={
-            <div className="mt-2 p-3 rounded-lg font-mono text-sm" style={{ background: "#0d0d10", border: "1px solid #33363e", color: "#cfd2d8" }}>
+            <div className="mt-2 p-3 rounded-lg font-mono text-sm" style={{ background: "var(--code-bg)", border: "1px solid var(--border)", color: "var(--text-2)" }}>
               1. Crie <code>notas.md</code> com suas notas brutas<br />
               2. <code className="text-green-400">codex</code><br />
               3. <code style={{ color: "#d1a476" }}>processar reunião</code>
             </div>
           }
           gemini={
-            <div className="mt-2 p-3 rounded-lg font-mono text-sm" style={{ background: "#0d0d10", border: "1px solid #33363e", color: "#cfd2d8" }}>
+            <div className="mt-2 p-3 rounded-lg font-mono text-sm" style={{ background: "var(--code-bg)", border: "1px solid var(--border)", color: "var(--text-2)" }}>
               1. Crie <code>notas.md</code> com suas notas brutas<br />
               2. <code style={{ color: "#8ab4f8" }}>gemini</code><br />
               3. <code style={{ color: "#d1a476" }}>processar reunião</code>
@@ -199,7 +199,7 @@ Tom direto, sem floreios. Não inventar informações que não estejam nas notas
           Se seu time grava as reuniões, você pode eliminar até a etapa de tomar notas.
           O fluxo fica:
         </p>
-        <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: "1px solid #33363e", background: "rgba(255,255,255,0.02)" }}>
+        <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: "1px solid var(--border)", background: "var(--tint-2)" }}>
           {[
             <>Grave a reunião (Zoom, Meet, Teams — todos têm gravação nativa).</>,
             <>Transcreva o áudio com <a href="https://otter.ai" target="_blank" rel="noopener noreferrer">Otter.ai</a>, <a href="https://fireflies.ai" target="_blank" rel="noopener noreferrer">Fireflies</a> ou <a href="https://whisper.openai.com" target="_blank" rel="noopener noreferrer">Whisper (OpenAI)</a> — todos têm plano gratuito.</>,
@@ -208,7 +208,7 @@ Tom direto, sem floreios. Não inventar informações que não estejam nas notas
           ].map((text, i) => (
             <div key={i} className="flex gap-3 items-start">
               <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5" style={{ background: "rgba(75,106,252,0.15)", color: "#4b6afc" }}>{i + 1}</span>
-              <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>{text}</p>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>{text}</p>
             </div>
           ))}
         </div>
@@ -220,7 +220,7 @@ Tom direto, sem floreios. Não inventar informações que não estejam nas notas
 
       <div className="mt-8 p-5 rounded-xl" style={{ border: "1px solid rgba(209,164,118,0.2)", background: "rgba(209,164,118,0.04)" }}>
         <p className="text-sm font-semibold mb-2" style={{ color: "#d1a476" }}>✓ Missão 01 concluída</p>
-        <p className="text-sm leading-relaxed" style={{ color: "#64687a" }}>
+        <p className="text-sm leading-relaxed" style={{ color: "var(--text-4)" }}>
           Você tem agora um sistema de reunião completo: notas brutas entram, ata profissional
           e checklist saem. Aplique na próxima reunião real e compartilhe o resultado com o time.
           Novas missões são adicionadas periodicamente — volte sempre.
@@ -228,7 +228,7 @@ Tom direto, sem floreios. Não inventar informações que não estejam nas notas
       </div>
 
       <div className="mt-6 flex justify-start">
-        <Link href="/exercises" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "#64687a" }}>
+        <Link href="/exercises" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "var(--text-4)" }}>
           ← Ver todos os exercícios
         </Link>
       </div>

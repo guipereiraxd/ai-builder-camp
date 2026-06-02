@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LLM_KEY, LLM_CONFIG, type LLMChoice } from "./ExerciseComponents";
+import { ThemeToggle } from "./ThemeToggle";
 
 const nav = [
   { label: "Início", href: "/" },
@@ -70,7 +71,7 @@ function LLMSwitcher() {
       {open && (
         <div
           className="absolute bottom-full left-0 right-0 mb-1 rounded-lg overflow-hidden z-50"
-          style={{ border: "1px solid #33363e", background: "#161618" }}
+          style={{ border: "1px solid var(--border)", background: "var(--surface)" }}
         >
           {(["claude", "openai", "gemini"] as LLMChoice[]).map((key) => {
             const c = LLM_CONFIG[key];
@@ -80,9 +81,9 @@ function LLMSwitcher() {
                 key={key}
                 onClick={() => select(key)}
                 className="w-full flex items-center gap-2.5 px-3 py-2.5 text-xs transition-colors hover:bg-white/5"
-                style={{ color: active ? c.color : "#8b8f9a" }}
+                style={{ color: active ? c.color : "var(--text-3)" }}
               >
-                <span className="w-2 h-2 rounded-full shrink-0" style={{ background: active ? c.color : "#33363e" }} />
+                <span className="w-2 h-2 rounded-full shrink-0" style={{ background: active ? c.color : "var(--border)" }} />
                 <span className="font-medium">{c.vendor}</span>
                 <code className="ml-auto text-[10px] opacity-60">{c.command}</code>
               </button>
@@ -100,10 +101,10 @@ export default function Sidebar() {
   return (
     <aside
       className="w-64 shrink-0 h-screen sticky top-0 overflow-y-auto flex flex-col"
-      style={{ background: "#0f0f0f", borderRight: "1px solid #33363e" }}
+      style={{ background: "var(--bg)", borderRight: "1px solid var(--border)" }}
     >
-      {/* Logo */}
-      <div className="px-5 py-4" style={{ borderBottom: "1px solid #33363e" }}>
+      {/* Logo + theme toggle */}
+      <div className="px-5 py-4 flex items-start justify-between" style={{ borderBottom: "1px solid var(--border)" }}>
         <Link href="/" className="flex flex-col gap-2 group">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -120,11 +121,12 @@ export default function Sidebar() {
             AI Builder Camp
           </span>
         </Link>
+        <ThemeToggle />
       </div>
 
       {/* LLM Switcher — pinned below logo */}
-      <div className="px-3 py-3" style={{ borderBottom: "1px solid #33363e" }}>
-        <p className="text-[10px] uppercase tracking-widest mb-1.5 px-1" style={{ color: "#33363e" }}>Ferramenta de IA</p>
+      <div className="px-3 py-3" style={{ borderBottom: "1px solid var(--border)" }}>
+        <p className="text-[10px] uppercase tracking-widest mb-1.5 px-1" style={{ color: "var(--border)" }}>Ferramenta de IA</p>
         <LLMSwitcher />
       </div>
 
@@ -136,7 +138,7 @@ export default function Sidebar() {
               <div key={i} className="pt-5 pb-1.5 px-2">
                 <p
                   className="text-[10px] font-semibold uppercase tracking-widest"
-                  style={{ color: item.gold ? "rgba(209,164,118,0.6)" : "#64687a" }}
+                  style={{ color: item.gold ? "rgba(209,164,118,0.6)" : "var(--text-4)" }}
                 >
                   {item.label}
                 </p>
@@ -154,18 +156,18 @@ export default function Sidebar() {
               style={
                 active
                   ? { background: isMission ? "rgba(209,164,118,0.12)" : "rgba(75,106,252,0.12)", color: isMission ? "#d1a476" : "#4b6afc" }
-                  : { color: "#cfd2d8" }
+                  : { color: "var(--text-2)" }
               }
               onMouseEnter={(e) => {
                 if (!active) {
-                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
-                  (e.currentTarget as HTMLElement).style.color = "#e8e8eb";
+                  (e.currentTarget as HTMLElement).style.background = "var(--tint-4)";
+                  (e.currentTarget as HTMLElement).style.color = "var(--code-text)";
                 }
               }}
               onMouseLeave={(e) => {
                 if (!active) {
                   (e.currentTarget as HTMLElement).style.background = "transparent";
-                  (e.currentTarget as HTMLElement).style.color = "#cfd2d8";
+                  (e.currentTarget as HTMLElement).style.color = "var(--text-2)";
                 }
               }}
             >
@@ -174,7 +176,7 @@ export default function Sidebar() {
                 {item.label}
               </span>
               {item.duration && (
-                <span className="text-[11px] ml-2 shrink-0" style={{ color: "#64687a" }}>
+                <span className="text-[11px] ml-2 shrink-0" style={{ color: "var(--text-4)" }}>
                   {item.duration}
                 </span>
               )}
@@ -184,8 +186,8 @@ export default function Sidebar() {
       </nav>
 
       {/* Footer */}
-      <div className="p-4" style={{ borderTop: "1px solid #33363e" }}>
-        <p className="text-[11px] leading-relaxed" style={{ color: "#64687a" }}>
+      <div className="p-4" style={{ borderTop: "1px solid var(--border)" }}>
+        <p className="text-[11px] leading-relaxed" style={{ color: "var(--text-4)" }}>
           Use apenas em ambientes sandbox. Não faça upload de dados confidenciais.
         </p>
       </div>

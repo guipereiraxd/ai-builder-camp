@@ -5,12 +5,12 @@ export default function PrivacyPage() {
   return (
     <AppShell>
       <div className="mb-10">
-        <p className="text-xs uppercase tracking-widest mb-3" style={{ color: "#33363e" }}>Grupo Alun</p>
+        <p className="text-xs uppercase tracking-widest mb-3" style={{ color: "var(--border)" }}>Grupo Alun</p>
         <h1 className="text-2xl font-bold text-white mb-2">Política de Privacidade</h1>
-        <p className="text-sm" style={{ color: "#64687a" }}>Última atualização: junho de 2025</p>
+        <p className="text-sm" style={{ color: "var(--text-4)" }}>Última atualização: junho de 2025</p>
       </div>
 
-      <div className="space-y-8 text-sm leading-relaxed" style={{ color: "#8b8f9a" }}>
+      <div className="space-y-8 text-sm leading-relaxed" style={{ color: "var(--text-3)" }}>
 
         <section>
           <h2 className="text-base font-semibold text-white mb-3">1. Quem somos</h2>
@@ -26,10 +26,10 @@ export default function PrivacyPage() {
           <h2 className="text-base font-semibold text-white mb-3">2. Quais dados coletamos</h2>
           <p className="mb-3">Ao se cadastrar no AI Builder Camp, coletamos:</p>
           <ul className="space-y-1.5 ml-4">
-            <li style={{ color: "#8b8f9a" }}>· <strong className="text-white/70">Nome completo</strong> — para personalizar sua experiência</li>
-            <li style={{ color: "#8b8f9a" }}>· <strong className="text-white/70">Endereço de e-mail</strong> — para comunicação e acesso ao curso</li>
-            <li style={{ color: "#8b8f9a" }}>· <strong className="text-white/70">Empresa ou organização</strong> — para entender o perfil dos nossos participantes</li>
-            <li style={{ color: "#8b8f9a" }}>· <strong className="text-white/70">Data e hora do cadastro</strong> — registro automático para fins de segurança</li>
+            <li style={{ color: "var(--text-3)" }}>· <strong className="text-white/70">Nome completo</strong> — para personalizar sua experiência</li>
+            <li style={{ color: "var(--text-3)" }}>· <strong className="text-white/70">Endereço de e-mail</strong> — para comunicação e acesso ao curso</li>
+            <li style={{ color: "var(--text-3)" }}>· <strong className="text-white/70">Empresa ou organização</strong> — para entender o perfil dos nossos participantes</li>
+            <li style={{ color: "var(--text-3)" }}>· <strong className="text-white/70">Data e hora do cadastro</strong> — registro automático para fins de segurança</li>
           </ul>
           <p className="mt-3">
             Não coletamos dados de navegação, cookies de rastreamento ou informações de pagamento.
@@ -128,7 +128,7 @@ export default function PrivacyPage() {
       </div>
 
       <div className="mt-12 pt-6" style={{ borderTop: "1px solid #1e2026" }}>
-        <Link href="/" className="text-sm transition-colors" style={{ color: "#33363e" }}>
+        <Link href="/" className="text-sm transition-colors" style={{ color: "var(--border)" }}>
           ← Voltar ao início
         </Link>
       </div>

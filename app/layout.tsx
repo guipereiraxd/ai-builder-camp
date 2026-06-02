@@ -14,7 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="h-full antialiased">
-      <body className="min-h-full bg-[#0a0a0a] text-[#ededed]">{children}</body>
+      <head>
+        {/* Prevent flash of wrong theme */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('aibc-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');}())` }} />
+      </head>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }

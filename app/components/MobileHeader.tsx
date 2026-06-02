@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
 import { LLM_KEY, LLM_CONFIG, type LLMChoice } from "./ExerciseComponents";
+import { ThemeToggle } from "./ThemeToggle";
 
 function MobileLLMPill() {
   const [llm, setLlm] = useState<LLMChoice>("claude");
@@ -47,7 +48,7 @@ function MobileLLMPill() {
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
           <div
             className="absolute top-full right-0 mt-1 rounded-lg overflow-hidden z-50 min-w-[140px]"
-            style={{ border: "1px solid #33363e", background: "#161618" }}
+            style={{ border: "1px solid var(--border)", background: "var(--surface)" }}
           >
             {(["claude", "openai", "gemini"] as LLMChoice[]).map((key) => {
               const c = LLM_CONFIG[key];
@@ -57,9 +58,9 @@ function MobileLLMPill() {
                   key={key}
                   onClick={() => select(key)}
                   className="w-full flex items-center gap-2 px-3 py-2.5 text-xs transition-colors hover:bg-white/5"
-                  style={{ color: active ? c.color : "#8b8f9a" }}
+                  style={{ color: active ? c.color : "var(--text-3)" }}
                 >
-                  <span className="w-2 h-2 rounded-full shrink-0" style={{ background: active ? c.color : "#33363e" }} />
+                  <span className="w-2 h-2 rounded-full shrink-0" style={{ background: active ? c.color : "var(--border)" }} />
                   <span className="font-medium">{c.vendor}</span>
                   <code className="ml-auto opacity-60">{c.command}</code>
                 </button>
@@ -76,7 +77,7 @@ export default function MobileHeader({ onMenuClick }: { onMenuClick: () => void 
   return (
     <header
       className="sticky top-0 z-20 flex items-center justify-between px-4 py-3 md:hidden"
-      style={{ background: "#0f0f0f", borderBottom: "1px solid #33363e" }}
+      style={{ background: "var(--bg)", borderBottom: "1px solid var(--border)" }}
     >
       <Link href="/" className="flex flex-col gap-0.5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -88,10 +89,11 @@ export default function MobileHeader({ onMenuClick }: { onMenuClick: () => void 
 
       <div className="flex items-center gap-2">
         <MobileLLMPill />
+        <ThemeToggle />
         <button
           onClick={onMenuClick}
           className="flex items-center justify-center w-9 h-9 rounded-lg transition-colors"
-          style={{ color: "#cfd2d8", background: "rgba(255,255,255,0.05)" }}
+          style={{ color: "var(--text-2)", background: "var(--tint-5)" }}
           aria-label="Abrir menu"
         >
           <Menu size={18} />

@@ -46,11 +46,11 @@ export default function ExercisesPage() {
       {/* Intro */}
       <div className="mb-10">
         <h1 className="text-3xl font-bold text-white mb-4">Bem-vindo ao AI Builder Camp</h1>
-        <p className="text-base leading-relaxed mb-3" style={{ color: "#cfd2d8" }}>
+        <p className="text-base leading-relaxed mb-3" style={{ color: "var(--text-2)" }}>
           Este curso é sobre fazer. Cada exercício tem um objetivo claro, prompts prontos
           e um resultado concreto no final — algo que você pode usar na sua operação agora.
         </p>
-        <p className="text-base leading-relaxed" style={{ color: "#64687a" }}>
+        <p className="text-base leading-relaxed" style={{ color: "var(--text-4)" }}>
           Você vai passar por 3 atos: primeiro sentir o que é possível com IA, depois
           construir seu primeiro agente autônomo, e por fim conectar o agente às ferramentas
           que sua equipe já usa no dia a dia.
@@ -67,7 +67,7 @@ export default function ExercisesPage() {
       >
         <div className="flex-1">
           <p className="text-sm font-semibold text-white mb-1">Antes de começar: configure sua máquina</p>
-          <p className="text-sm leading-relaxed" style={{ color: "#64687a" }}>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-4)" }}>
             O curso usa uma ferramenta de IA de linha de comando — Claude Code (Anthropic), OpenAI Codex ou Gemini CLI.
             Se você ainda não instalou, o guia de setup leva menos de 15 minutos e cobre Mac e Windows.
           </p>
@@ -81,10 +81,10 @@ export default function ExercisesPage() {
         </Link>
       </div>
 
-      <div className="mb-8 border-t" style={{ borderColor: "#1e2026" }} />
+      <div className="mb-8 border-t" style={{ borderColor: "var(--border-sub)" }} />
 
       <div className="mb-6">
-        <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#33363e" }}>
+        <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--border)" }}>
           12 exercícios · 3 atos · ~5 horas + missões complementares
         </p>
       </div>
@@ -130,7 +130,7 @@ export default function ExercisesPage() {
             <h2 className="text-sm font-semibold" style={{ color: "#d1a476" }}>Ato IV — Continue Praticando</h2>
             <span className="text-xs" style={{ color: "rgba(209,164,118,0.4)" }}>Missões</span>
           </div>
-          <p className="text-sm" style={{ color: "#64687a" }}>
+          <p className="text-sm" style={{ color: "var(--text-4)" }}>
             Exercícios complementares sem ordem obrigatória. Cada missão resolve um problema real e concreto.
             Novas missões são adicionadas periodicamente.
           </p>
@@ -154,7 +154,7 @@ export default function ExercisesPage() {
               <p className="text-sm font-medium transition-colors" style={{ color: "rgba(255,255,255,0.8)" }}>
                 Automatize uma reunião
               </p>
-              <p className="text-xs mt-0.5" style={{ color: "#64687a" }}>
+              <p className="text-xs mt-0.5" style={{ color: "var(--text-4)" }}>
                 Notas brutas → ata profissional + próximos passos + dono por tarefa.
               </p>
             </div>

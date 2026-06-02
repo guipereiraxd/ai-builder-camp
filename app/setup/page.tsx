@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import AppShell from "../components/AppShell";
 import { Step, Command, OSTabs, Tip, Warning, Prompt, OS_KEY, LLMSelector, LLMTabs, LLM_CONFIG, type LLMChoice } from "../components/ExerciseComponents";
 
-const BORDER = "#33363e";
+const BORDER = "var(--border)";
 const BRAND = "#4b6afc";
 
 function OSSelector() {
@@ -26,10 +26,10 @@ function OSSelector() {
   return (
     <div
       className="rounded-xl p-5 mb-10"
-      style={{ border: `1px solid ${BORDER}`, background: "rgba(255,255,255,0.02)" }}
+      style={{ border: `1px solid ${BORDER}`, background: "var(--tint-2)" }}
     >
       <p className="text-sm font-semibold text-white mb-1">Qual é o seu sistema operacional?</p>
-      <p className="text-xs mb-4" style={{ color: "#64687a" }}>
+      <p className="text-xs mb-4" style={{ color: "var(--text-4)" }}>
         Os comandos ao longo desta página vão se adaptar à sua escolha.
       </p>
       <div className="flex gap-3">
@@ -43,7 +43,7 @@ function OSSelector() {
               style={
                 active
                   ? { background: "rgba(75,106,252,0.12)", border: `1px solid rgba(75,106,252,0.4)`, color: "#4b6afc" }
-                  : { background: "transparent", border: `1px solid ${BORDER}`, color: "#64687a" }
+                  : { background: "transparent", border: `1px solid ${BORDER}`, color: "var(--text-4)" }
               }
             >
               {val === "mac" ? (
@@ -67,8 +67,8 @@ function OSSelector() {
         })}
       </div>
       {os && (
-        <p className="text-xs mt-3" style={{ color: "#64687a" }}>
-          ✓ Mostrando instruções para <strong style={{ color: "#cfd2d8" }}>{os === "mac" ? "Mac / Linux" : "Windows"}</strong>.
+        <p className="text-xs mt-3" style={{ color: "var(--text-4)" }}>
+          ✓ Mostrando instruções para <strong style={{ color: "var(--text-2)" }}>{os === "mac" ? "Mac / Linux" : "Windows"}</strong>.
           Você pode mudar a qualquer momento.
         </p>
       )}
@@ -98,7 +98,7 @@ function TerminalHelp() {
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between px-4 py-3 text-sm transition-colors hover:bg-white/5"
-        style={{ background: "rgba(255,255,255,0.02)", color: "#cfd2d8" }}
+        style={{ background: "var(--tint-2)", color: "var(--text-2)" }}
       >
         <span>💡 Como abrir o terminal no {os === "mac" ? "Mac" : "Windows"}</span>
         <span className="text-xs px-2 py-0.5 rounded font-medium" style={{ background: "rgba(75,106,252,0.15)", color: "#8ba3ff" }}>
@@ -106,28 +106,28 @@ function TerminalHelp() {
         </span>
       </button>
       {open && (
-        <div className="px-4 py-4 text-sm space-y-2" style={{ color: "#cfd2d8", background: "#0d0d10" }}>
+        <div className="px-4 py-4 text-sm space-y-2" style={{ color: "var(--text-2)", background: "var(--code-bg)" }}>
           {os === "mac" ? (
             <>
               <p>O terminal no Mac se chama <strong className="text-white">Terminal</strong>. Para abri-lo:</p>
-              <ol className="space-y-1.5 ml-4 list-decimal" style={{ color: "#cfd2d8" }}>
-                <li>Pressione <kbd className="px-1.5 py-0.5 rounded text-xs font-mono" style={{ background: BORDER, color: "#e8e8eb" }}>⌘ Cmd</kbd> + <kbd className="px-1.5 py-0.5 rounded text-xs font-mono" style={{ background: BORDER, color: "#e8e8eb" }}>Espaço</kbd> para abrir o Spotlight</li>
+              <ol className="space-y-1.5 ml-4 list-decimal" style={{ color: "var(--text-2)" }}>
+                <li>Pressione <kbd className="px-1.5 py-0.5 rounded text-xs font-mono" style={{ background: BORDER, color: "var(--code-text)" }}>⌘ Cmd</kbd> + <kbd className="px-1.5 py-0.5 rounded text-xs font-mono" style={{ background: BORDER, color: "var(--code-text)" }}>Espaço</kbd> para abrir o Spotlight</li>
                 <li>Digite <strong className="text-white">Terminal</strong> e pressione Enter</li>
                 <li>Uma janela escura vai abrir — esse é o terminal</li>
               </ol>
-              <p className="mt-2 text-xs" style={{ color: "#64687a" }}>
+              <p className="mt-2 text-xs" style={{ color: "var(--text-4)" }}>
                 Alternativa: Finder → Aplicativos → Utilitários → Terminal
               </p>
             </>
           ) : (
             <>
               <p>No Windows, vamos usar o <strong className="text-white">PowerShell</strong>. Para abri-lo:</p>
-              <ol className="space-y-1.5 ml-4 list-decimal" style={{ color: "#cfd2d8" }}>
-                <li>Pressione <kbd className="px-1.5 py-0.5 rounded text-xs font-mono" style={{ background: BORDER, color: "#e8e8eb" }}>⊞ Win</kbd> e digite <strong className="text-white">PowerShell</strong></li>
+              <ol className="space-y-1.5 ml-4 list-decimal" style={{ color: "var(--text-2)" }}>
+                <li>Pressione <kbd className="px-1.5 py-0.5 rounded text-xs font-mono" style={{ background: BORDER, color: "var(--code-text)" }}>⊞ Win</kbd> e digite <strong className="text-white">PowerShell</strong></li>
                 <li>Clique com o botão direito em <strong className="text-white">Windows PowerShell</strong></li>
                 <li>Escolha <strong className="text-white">"Executar como administrador"</strong></li>
               </ol>
-              <p className="mt-2 text-xs" style={{ color: "#64687a" }}>
+              <p className="mt-2 text-xs" style={{ color: "var(--text-4)" }}>
                 Rodar como administrador evita erros de permissão durante a instalação.
               </p>
             </>
@@ -151,10 +151,10 @@ export default function SetupPage() {
             Pré-requisito
           </span>
           <span style={{ color: BORDER }}>·</span>
-          <span className="text-xs" style={{ color: "#64687a" }}>~20 min</span>
+          <span className="text-xs" style={{ color: "var(--text-4)" }}>~20 min</span>
         </div>
         <h1 className="text-2xl md:text-3xl font-bold text-white mb-4">Configuração inicial</h1>
-        <p className="text-base leading-relaxed" style={{ color: "#cfd2d8" }}>
+        <p className="text-base leading-relaxed" style={{ color: "var(--text-2)" }}>
           Você vai instalar o <strong className="text-white">Node.js</strong> (base técnica),
           a <strong className="text-white">ferramenta de IA</strong> da sua escolha (Claude, OpenAI ou Gemini)
           e configurar sua <strong className="text-white">chave de API</strong>. Leva cerca de 20 minutos.
@@ -170,11 +170,11 @@ export default function SetupPage() {
             <div
               key={item.label}
               className="flex flex-col gap-1 p-3 rounded-lg"
-              style={{ border: `1px solid ${BORDER}`, background: "rgba(255,255,255,0.02)" }}
+              style={{ border: `1px solid ${BORDER}`, background: "var(--tint-2)" }}
             >
               <span className="text-lg">{item.icon}</span>
               <span className="text-xs font-semibold text-white">{item.label}</span>
-              <span className="text-xs" style={{ color: "#64687a" }}>{item.desc}</span>
+              <span className="text-xs" style={{ color: "var(--text-4)" }}>{item.desc}</span>
             </div>
           ))}
         </div>
@@ -291,7 +291,7 @@ export default function SetupPage() {
         </p>
         <LLMTabs
           claude={
-            <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: `1px solid ${BORDER}`, background: "rgba(255,255,255,0.02)" }}>
+            <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: `1px solid ${BORDER}`, background: "var(--tint-2)" }}>
               {[
                 <><a href="https://console.anthropic.com" target="_blank" rel="noopener noreferrer">console.anthropic.com</a> → crie uma conta.</>,
                 <>Menu lateral → <strong className="text-white">API Keys</strong> → <strong className="text-white">Create Key</strong>.</>,
@@ -300,13 +300,13 @@ export default function SetupPage() {
               ].map((text, i) => (
                 <div key={i} className="flex gap-3 items-start">
                   <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5" style={{ background: "rgba(75,106,252,0.15)", color: BRAND }}>{i + 1}</span>
-                  <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>{text}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>{text}</p>
                 </div>
               ))}
             </div>
           }
           openai={
-            <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: `1px solid ${BORDER}`, background: "rgba(255,255,255,0.02)" }}>
+            <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: `1px solid ${BORDER}`, background: "var(--tint-2)" }}>
               {[
                 <><a href="https://platform.openai.com" target="_blank" rel="noopener noreferrer">platform.openai.com</a> → crie uma conta.</>,
                 <>Menu lateral → <strong className="text-white">API Keys</strong> → <strong className="text-white">Create new secret key</strong>.</>,
@@ -315,13 +315,13 @@ export default function SetupPage() {
               ].map((text, i) => (
                 <div key={i} className="flex gap-3 items-start">
                   <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5" style={{ background: "rgba(75,106,252,0.15)", color: BRAND }}>{i + 1}</span>
-                  <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>{text}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>{text}</p>
                 </div>
               ))}
             </div>
           }
           gemini={
-            <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: `1px solid ${BORDER}`, background: "rgba(255,255,255,0.02)" }}>
+            <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: `1px solid ${BORDER}`, background: "var(--tint-2)" }}>
               {[
                 <><a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer">aistudio.google.com</a> → faça login com sua conta Google.</>,
                 <>No topo da página → <strong className="text-white">Get API key</strong> → <strong className="text-white">Create API key</strong>.</>,
@@ -330,7 +330,7 @@ export default function SetupPage() {
               ].map((text, i) => (
                 <div key={i} className="flex gap-3 items-start">
                   <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5" style={{ background: "rgba(75,106,252,0.15)", color: BRAND }}>{i + 1}</span>
-                  <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>{text}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>{text}</p>
                 </div>
               ))}
             </div>
@@ -431,7 +431,7 @@ export default function SetupPage() {
         style={{ border: "1px solid rgba(74,222,128,0.2)", background: "rgba(74,222,128,0.05)" }}
       >
         <p className="font-semibold text-sm mb-2" style={{ color: "#4ade80" }}>✓ Setup completo</p>
-        <p className="text-sm leading-relaxed" style={{ color: "#64687a" }}>
+        <p className="text-sm leading-relaxed" style={{ color: "var(--text-4)" }}>
           Você está pronto para começar. O primeiro exercício leva 15 minutos e você
           vai criar uma aplicação web funcional com um único prompt — sem escrever código.
         </p>

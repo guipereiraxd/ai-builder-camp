@@ -40,21 +40,21 @@ export default function Exercise6() {
       <LLMTabs
         claude={
           <>
-            <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid #33363e", background: "rgba(255,255,255,0.02)" }}>
+            <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid var(--border)", background: "var(--tint-2)" }}>
               <p className="text-sm font-semibold text-white mb-2">O que é um MCP?</p>
-              <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>
                 MCP (Model Context Protocol) é um conector que dá ao Claude acesso a ferramentas externas.
                 Pense como uma tomada: você encaixa o conector certo e o Claude passa a "enxergar"
                 e agir dentro daquela ferramenta — busca web, Google Drive, Slack, CRM.
               </p>
-              <p className="text-sm leading-relaxed mt-2" style={{ color: "#cfd2d8" }}>
+              <p className="text-sm leading-relaxed mt-2" style={{ color: "var(--text-2)" }}>
                 A configuração é feita uma vez. Depois disso, o Claude usa a ferramenta automaticamente
                 quando precisar — você não precisa fazer nada diferente nos prompts.
               </p>
             </div>
             <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid #2a3a2a", background: "rgba(75,200,100,0.04)" }}>
               <p className="text-sm font-semibold text-white mb-2">Atalho: o Claude já tem conectores prontos para centenas de ferramentas</p>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "#cfd2d8" }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-2)" }}>
                 Antes de configurar qualquer MCP manualmente, vale checar se já existe um conector
                 pronto. O ecossistema cresceu rápido — há conectores para Notion, HubSpot, Salesforce,
                 Jira, GitHub, Figma, Airtable, Stripe e dezenas de outros.
@@ -70,12 +70,12 @@ export default function Exercise6() {
         openai={
           <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid #2a3a4a", background: "rgba(16,163,127,0.05)" }}>
             <p className="text-sm font-semibold text-white mb-2">✓ OpenAI Codex tem busca web nativa</p>
-            <p className="text-sm leading-relaxed mb-2" style={{ color: "#cfd2d8" }}>
+            <p className="text-sm leading-relaxed mb-2" style={{ color: "var(--text-2)" }}>
               Os modelos recentes da OpenAI (GPT-4o e superiores) têm acesso à internet integrado.
               O <code>codex</code> usa esses modelos — você não precisa configurar nada adicional.
               Basta pedir uma pesquisa e o agente faz.
             </p>
-            <p className="text-sm leading-relaxed" style={{ color: "#64687a" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-4)" }}>
               Diferente do Claude (que usa o protocolo MCP), o Codex CLI usa a capacidade de
               busca nativa da API da OpenAI. O resultado prático é o mesmo: pesquisas em tempo real.
             </p>
@@ -84,12 +84,12 @@ export default function Exercise6() {
         gemini={
           <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid #2a3040", background: "rgba(138,180,248,0.05)" }}>
             <p className="text-sm font-semibold text-white mb-2">✓ Gemini tem Google Search integrado</p>
-            <p className="text-sm leading-relaxed mb-2" style={{ color: "#cfd2d8" }}>
+            <p className="text-sm leading-relaxed mb-2" style={{ color: "var(--text-2)" }}>
               O Gemini CLI usa o Google Search diretamente — sem configuração adicional.
               É uma das maiores vantagens do Gemini: acesso nativo e atualizado à web do Google,
               com resultados mais frescos que qualquer outra ferramenta.
             </p>
-            <p className="text-sm leading-relaxed" style={{ color: "#64687a" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-4)" }}>
               Enquanto o Claude precisa de um MCP separado para pesquisar, o Gemini já vem com
               busca embutida. Para este exercício, você só precisa abrir o agente e pedir.
             </p>
@@ -114,7 +114,7 @@ export default function Exercise6() {
                 O Brave Search oferece uma API de busca web. O plano gratuito inclui{" "}
                 <strong className="text-white">2.000 buscas por mês</strong> — suficiente para o curso inteiro.
               </p>
-              <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: "1px solid #33363e", background: "rgba(255,255,255,0.02)" }}>
+              <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: "1px solid var(--border)", background: "var(--tint-2)" }}>
                 {[
                   <><a href="https://api.search.brave.com" target="_blank" rel="noopener noreferrer">api.search.brave.com</a> → clique em <strong className="text-white">Get Started</strong>.</>,
                   <>Crie uma conta (pode usar Google ou email).</>,
@@ -123,7 +123,7 @@ export default function Exercise6() {
                 ].map((text, i) => (
                   <div key={i} className="flex gap-3 items-start">
                     <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5" style={{ background: "rgba(75,106,252,0.15)", color: "#4b6afc" }}>{i + 1}</span>
-                    <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>{text}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>{text}</p>
                   </div>
                 ))}
               </div>
@@ -134,11 +134,11 @@ export default function Exercise6() {
               <p>Verifique e abra o arquivo de configuração do Claude Code:</p>
               <OSTabs mac="code ~/.claude/settings.json" windows="code $HOME\.claude\settings.json" />
               <p className="mt-3">Cole o conteúdo abaixo, substituindo <code>sua-chave-aqui</code> pela chave copiada:</p>
-              <div className="my-4 rounded-lg overflow-hidden" style={{ border: "1px solid #33363e" }}>
-                <div className="px-4 py-2" style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid #33363e" }}>
-                  <span className="text-xs font-mono" style={{ color: "#64687a" }}>~/.claude/settings.json</span>
+              <div className="my-4 rounded-lg overflow-hidden" style={{ border: "1px solid var(--border)" }}>
+                <div className="px-4 py-2" style={{ background: "var(--tint-3)", borderBottom: "1px solid var(--border)" }}>
+                  <span className="text-xs font-mono" style={{ color: "var(--text-4)" }}>~/.claude/settings.json</span>
                 </div>
-                <pre className="p-4 text-sm overflow-x-auto m-0 font-mono leading-relaxed" style={{ background: "#0d0d10", color: "#e8e8eb" }}>{SETTINGS_MAC}</pre>
+                <pre className="p-4 text-sm overflow-x-auto m-0 font-mono leading-relaxed" style={{ background: "var(--code-bg)", color: "var(--code-text)" }}>{SETTINGS_MAC}</pre>
               </div>
               <Tip>
                 Se o arquivo já tinha conteúdo, adicione apenas o bloco <code>"mcpServers"</code> dentro das chaves existentes.
@@ -213,9 +213,9 @@ export default function Exercise6() {
         <Prompt>{SHARED_PROMPT_SECTOR}</Prompt>
       </Step>
 
-      <div className="mt-6 p-5 rounded-xl" style={{ border: "1px solid #33363e", background: "rgba(255,255,255,0.02)" }}>
+      <div className="mt-6 p-5 rounded-xl" style={{ border: "1px solid var(--border)", background: "var(--tint-2)" }}>
         <p className="text-sm font-semibold text-white mb-2">Reflexão</p>
-        <p className="text-sm leading-relaxed" style={{ color: "#64687a" }}>
+        <p className="text-sm leading-relaxed" style={{ color: "var(--text-4)" }}>
           Você eliminou a principal limitação dos agentes de IA: dados desatualizados.
           Nos próximos exercícios, vamos conectar o agente aos documentos da sua empresa
           e ao canal da sua equipe.
@@ -223,7 +223,7 @@ export default function Exercise6() {
       </div>
 
       <div className="mt-6 flex justify-between">
-        <Link href="/exercises/5" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "#64687a" }}>← 5</Link>
+        <Link href="/exercises/5" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "var(--text-4)" }}>← 5</Link>
         <Link href="/exercises/7" className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-90" style={{ background: "#4b6afc", color: "#ffffff" }}>
           Próximo: 7. Agente com seus documentos →
         </Link>

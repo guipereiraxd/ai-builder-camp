@@ -63,7 +63,7 @@ export default function Exercise7() {
         openai={
           <div className="mb-8 p-4 rounded-lg" style={{ border: "1px solid #2a3a4a", background: "rgba(16,163,127,0.05)" }}>
             <p className="text-sm font-semibold text-white mb-1">Abordagem para OpenAI Codex</p>
-            <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>
               O Codex CLI não tem integração direta com Google Drive. A abordagem prática é exportar
               os documentos-chave do Drive para uma pasta local e apontar o agente para essa pasta.
               O resultado analítico é o mesmo — só o processo de sincronização é manual.
@@ -73,7 +73,7 @@ export default function Exercise7() {
         gemini={
           <div className="mb-8 p-4 rounded-lg" style={{ border: "1px solid #2a3040", background: "rgba(138,180,248,0.05)" }}>
             <p className="text-sm font-semibold text-white mb-1">Abordagem para Gemini CLI</p>
-            <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>
               O Gemini CLI não tem integração automática com Google Drive. A abordagem prática é
               exportar os documentos-chave para uma pasta local e apontar o agente para essa pasta.
               Como o Gemini conhece bem os formatos Google (Docs, Sheets), a análise é excelente.
@@ -93,7 +93,7 @@ export default function Exercise7() {
 
             <Step n={1} title="Crie um projeto no Google Cloud">
               <p>O Google exige um "projeto" para liberar acesso à API. É gratuito e leva 3 minutos.</p>
-              <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: "1px solid #33363e", background: "rgba(255,255,255,0.02)" }}>
+              <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: "1px solid var(--border)", background: "var(--tint-2)" }}>
                 {[
                   <><a href="https://console.cloud.google.com" target="_blank" rel="noopener noreferrer">console.cloud.google.com</a> com sua conta Google.</>,
                   <>Clique em <strong className="text-white">Selecionar projeto</strong> → <strong className="text-white">Novo projeto</strong>.</>,
@@ -102,14 +102,14 @@ export default function Exercise7() {
                 ].map((text, i) => (
                   <div key={i} className="flex gap-3 items-start">
                     <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5" style={{ background: "rgba(75,106,252,0.15)", color: "#4b6afc" }}>{i + 1}</span>
-                    <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>{text}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>{text}</p>
                   </div>
                 ))}
               </div>
             </Step>
 
             <Step n={2} title="Ative a API do Google Drive">
-              <div className="space-y-3 mt-2 p-4 rounded-lg" style={{ border: "1px solid #33363e", background: "rgba(255,255,255,0.02)" }}>
+              <div className="space-y-3 mt-2 p-4 rounded-lg" style={{ border: "1px solid var(--border)", background: "var(--tint-2)" }}>
                 {[
                   <>Menu lateral → <strong className="text-white">APIs e serviços</strong> → <strong className="text-white">Biblioteca</strong>.</>,
                   <>Pesquise por <strong className="text-white">Google Drive API</strong> e clique no resultado.</>,
@@ -117,7 +117,7 @@ export default function Exercise7() {
                 ].map((text, i) => (
                   <div key={i} className="flex gap-3 items-start">
                     <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5" style={{ background: "rgba(75,106,252,0.15)", color: "#4b6afc" }}>{i + 1}</span>
-                    <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>{text}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>{text}</p>
                   </div>
                 ))}
               </div>
@@ -125,7 +125,7 @@ export default function Exercise7() {
 
             <Step n={3} title="Crie as credenciais OAuth">
               <p>As credenciais autorizam o Claude a acessar o Drive em seu nome.</p>
-              <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: "1px solid #33363e", background: "rgba(255,255,255,0.02)" }}>
+              <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: "1px solid var(--border)", background: "var(--tint-2)" }}>
                 {[
                   <><strong className="text-white">APIs e serviços</strong> → <strong className="text-white">Credenciais</strong> → <strong className="text-white">Criar credenciais</strong> → <strong className="text-white">ID do cliente OAuth</strong>.</>,
                   <>Se pedir "Configurar tela de consentimento": escolha <strong className="text-white">Externo</strong>, preencha nome do app (<code>ai-builder-camp</code>) e email. Avance até o fim.</>,
@@ -134,7 +134,7 @@ export default function Exercise7() {
                 ].map((text, i) => (
                   <div key={i} className="flex gap-3 items-start">
                     <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5" style={{ background: "rgba(75,106,252,0.15)", color: "#4b6afc" }}>{i + 1}</span>
-                    <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>{text}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>{text}</p>
                   </div>
                 ))}
               </div>
@@ -148,17 +148,17 @@ export default function Exercise7() {
             <Step n={4} title="Adicione o MCP do Google Drive ao settings.json">
               <OSTabs mac="code ~/.claude/settings.json" windows="code $HOME\.claude\settings.json" />
               <p className="mt-3">Adicione o bloco <code>"gdrive"</code> dentro de <code>mcpServers</code>, substituindo o caminho real:</p>
-              <div className="my-4 rounded-lg overflow-hidden" style={{ border: "1px solid #33363e" }}>
-                <div className="px-4 py-2" style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid #33363e" }}>
-                  <span className="text-xs font-mono" style={{ color: "#64687a" }}>Mac/Linux — ~/.claude/settings.json</span>
+              <div className="my-4 rounded-lg overflow-hidden" style={{ border: "1px solid var(--border)" }}>
+                <div className="px-4 py-2" style={{ background: "var(--tint-3)", borderBottom: "1px solid var(--border)" }}>
+                  <span className="text-xs font-mono" style={{ color: "var(--text-4)" }}>Mac/Linux — ~/.claude/settings.json</span>
                 </div>
-                <pre className="p-4 text-sm overflow-x-auto m-0 font-mono leading-relaxed" style={{ background: "#0d0d10", color: "#e8e8eb" }}>{MCP_CONFIG}</pre>
+                <pre className="p-4 text-sm overflow-x-auto m-0 font-mono leading-relaxed" style={{ background: "var(--code-bg)", color: "var(--code-text)" }}>{MCP_CONFIG}</pre>
               </div>
-              <div className="my-4 rounded-lg overflow-hidden" style={{ border: "1px solid #33363e" }}>
-                <div className="px-4 py-2" style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid #33363e" }}>
-                  <span className="text-xs font-mono" style={{ color: "#64687a" }}>Windows — %USERPROFILE%\.claude\settings.json</span>
+              <div className="my-4 rounded-lg overflow-hidden" style={{ border: "1px solid var(--border)" }}>
+                <div className="px-4 py-2" style={{ background: "var(--tint-3)", borderBottom: "1px solid var(--border)" }}>
+                  <span className="text-xs font-mono" style={{ color: "var(--text-4)" }}>Windows — %USERPROFILE%\.claude\settings.json</span>
                 </div>
-                <pre className="p-4 text-sm overflow-x-auto m-0 font-mono leading-relaxed" style={{ background: "#0d0d10", color: "#e8e8eb" }}>{MCP_CONFIG_WIN}</pre>
+                <pre className="p-4 text-sm overflow-x-auto m-0 font-mono leading-relaxed" style={{ background: "var(--code-bg)", color: "var(--code-text)" }}>{MCP_CONFIG_WIN}</pre>
               </div>
               <Tip>No Windows, use <code>\\</code> (barra dupla) dentro do JSON — cada <code>\</code> real precisa de <code>\\</code>.</Tip>
             </Step>
@@ -249,9 +249,9 @@ export default function Exercise7() {
         </Tip>
       </Step>
 
-      <div className="mt-6 p-5 rounded-xl" style={{ border: "1px solid #33363e", background: "rgba(255,255,255,0.02)" }}>
+      <div className="mt-6 p-5 rounded-xl" style={{ border: "1px solid var(--border)", background: "var(--tint-2)" }}>
         <p className="text-sm font-semibold text-white mb-2">Reflexão</p>
-        <p className="text-sm leading-relaxed" style={{ color: "#64687a" }}>
+        <p className="text-sm leading-relaxed" style={{ color: "var(--text-4)" }}>
           Você acabou de dar ao agente acesso ao conhecimento acumulado da sua empresa.
           Relatórios, contratos, apresentações — tudo vira contexto que ele pode usar.
           No próximo exercício, vamos fechar o loop: os resultados saem direto para o Slack da sua equipe.
@@ -259,7 +259,7 @@ export default function Exercise7() {
       </div>
 
       <div className="mt-6 flex justify-between">
-        <Link href="/exercises/6" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "#64687a" }}>← 6</Link>
+        <Link href="/exercises/6" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "var(--text-4)" }}>← 6</Link>
         <Link href="/exercises/8" className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-90" style={{ background: "#4b6afc", color: "#ffffff" }}>
           Próximo: 8. Agente no Slack →
         </Link>

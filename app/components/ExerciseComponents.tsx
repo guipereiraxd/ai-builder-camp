@@ -5,8 +5,8 @@ import { Copy, Check, Terminal, Lightbulb, AlertTriangle } from "lucide-react";
 
 const BRAND = "#4b6afc";
 const GOLD = "#d1a476";
-const SURFACE = "#161618";
-const BORDER = "#33363e";
+const SURFACE = "var(--surface)";
+const BORDER = "var(--border)";
 
 export function Step({
   n,
@@ -30,7 +30,7 @@ export function Step({
       </div>
       <div className="flex-1 pb-8">
         <h3 className="font-semibold text-white mb-3 mt-0.5">{title}</h3>
-        <div className="text-sm leading-relaxed space-y-3" style={{ color: "#cfd2d8" }}>
+        <div className="text-sm leading-relaxed space-y-3" style={{ color: "var(--text-2)" }}>
           {children}
         </div>
       </div>
@@ -51,16 +51,16 @@ export function Prompt({ children }: { children: string }) {
     <div className="my-4 rounded-lg overflow-hidden" style={{ border: `1px solid ${BORDER}` }}>
       <div
         className="flex items-center justify-between px-4 py-2"
-        style={{ background: "rgba(255,255,255,0.03)", borderBottom: `1px solid ${BORDER}` }}
+        style={{ background: "var(--tint-3)", borderBottom: `1px solid ${BORDER}` }}
       >
-        <div className="flex items-center gap-2 text-xs" style={{ color: "#64687a" }}>
+        <div className="flex items-center gap-2 text-xs" style={{ color: "var(--text-4)" }}>
           <Terminal size={12} />
           <span>Prompt para o agente</span>
         </div>
         <button
           onClick={copy}
           className="flex items-center gap-1.5 text-xs transition-colors"
-          style={{ color: copied ? "#4b6afc" : "#64687a" }}
+          style={{ color: copied ? "#4b6afc" : "var(--text-4)" }}
         >
           {copied ? <Check size={12} /> : <Copy size={12} />}
           {copied ? "Copiado!" : "Copiar"}
@@ -68,7 +68,7 @@ export function Prompt({ children }: { children: string }) {
       </div>
       <pre
         className="p-3 md:p-4 text-xs md:text-sm overflow-x-auto m-0 rounded-none border-0 font-mono leading-relaxed whitespace-pre-wrap"
-        style={{ background: "#0d0d10", color: "#e8e8eb" }}
+        style={{ background: "var(--code-bg)", color: "var(--code-text)" }}
       >
         {children}
       </pre>
@@ -112,14 +112,14 @@ export function Command({ children }: { children: string }) {
   return (
     <div
       className="flex items-center gap-3 px-4 py-3 rounded-lg my-3 group cursor-pointer"
-      style={{ background: "#0d0d10", border: `1px solid ${BORDER}` }}
+      style={{ background: "var(--code-bg)", border: `1px solid ${BORDER}` }}
       onClick={copy}
     >
       <span className="font-mono text-sm shrink-0" style={{ color: "#4b6afc" }}>$</span>
-      <code className="flex-1 text-sm font-mono" style={{ background: "transparent", padding: 0, color: "#e8e8eb" }}>
+      <code className="flex-1 text-sm font-mono" style={{ background: "transparent", padding: 0, color: "var(--code-text)" }}>
         {children}
       </code>
-      <span className="transition-opacity opacity-0 group-hover:opacity-100" style={{ color: "#64687a" }}>
+      <span className="transition-opacity opacity-0 group-hover:opacity-100" style={{ color: "var(--text-4)" }}>
         {copied ? <Check size={14} style={{ color: BRAND }} /> : <Copy size={14} />}
       </span>
     </div>
@@ -158,7 +158,7 @@ export function OSTabs({ mac, windows }: { mac: string; windows: string }) {
   };
   const inactive = {
     background: "transparent",
-    color: "#64687a",
+    color: "var(--text-4)",
     borderColor: "transparent",
   };
 
@@ -184,7 +184,7 @@ export function OSTabs({ mac, windows }: { mac: string; windows: string }) {
       {mounted && (
         <div
           className="flex items-center gap-3 px-4 py-3 rounded-b-lg rounded-tr-lg group cursor-pointer"
-          style={{ background: "#0d0d10", border: `1px solid ${BORDER}` }}
+          style={{ background: "var(--code-bg)", border: `1px solid ${BORDER}` }}
           onClick={() => {
             navigator.clipboard.writeText(os === "mac" ? mac : windows);
           }}
@@ -192,11 +192,11 @@ export function OSTabs({ mac, windows }: { mac: string; windows: string }) {
           <span className="font-mono text-sm shrink-0" style={{ color: "#4b6afc" }}>$</span>
           <code
             className="flex-1 text-sm font-mono"
-            style={{ background: "transparent", padding: 0, color: "#e8e8eb" }}
+            style={{ background: "transparent", padding: 0, color: "var(--code-text)" }}
           >
             {os === "mac" ? mac : windows}
           </code>
-          <span className="transition-opacity opacity-0 group-hover:opacity-100" style={{ color: "#64687a" }}>
+          <span className="transition-opacity opacity-0 group-hover:opacity-100" style={{ color: "var(--text-4)" }}>
             <Copy size={14} />
           </span>
         </div>
@@ -227,14 +227,14 @@ export function ExerciseHeader({
         >
           {act}
         </span>
-        <span style={{ color: "#33363e" }}>·</span>
-        <span className="text-xs" style={{ color: "#64687a" }}>{duration}</span>
+        <span style={{ color: "var(--border)" }}>·</span>
+        <span className="text-xs" style={{ color: "var(--text-4)" }}>{duration}</span>
       </div>
       <h1 className="text-2xl md:text-3xl font-bold text-white mb-4">
-        <span className="font-normal mr-2" style={{ color: "#33363e" }}>{number}</span>
+        <span className="font-normal mr-2" style={{ color: "var(--border)" }}>{number}</span>
         {title}
       </h1>
-      <p className="text-base md:text-lg leading-relaxed" style={{ color: "#cfd2d8" }}>{description}</p>
+      <p className="text-base md:text-lg leading-relaxed" style={{ color: "var(--text-2)" }}>{description}</p>
       <div className="mt-6" style={{ borderTop: `1px solid ${BORDER}` }} />
       <div className="mt-6">
         <LLMSelector />
@@ -312,9 +312,9 @@ export function LLMSelector() {
   if (!mounted) return null;
 
   return (
-    <div className="mb-8 p-5 rounded-xl" style={{ border: `1px solid ${BORDER}`, background: "rgba(255,255,255,0.02)" }}>
+    <div className="mb-8 p-5 rounded-xl" style={{ border: `1px solid ${BORDER}`, background: "var(--tint-2)" }}>
       <p className="text-sm font-semibold text-white mb-1">Qual ferramenta de IA você vai usar?</p>
-      <p className="text-xs mb-4" style={{ color: "#64687a" }}>
+      <p className="text-xs mb-4" style={{ color: "var(--text-4)" }}>
         Os comandos dos exercícios vão se adaptar à sua escolha.
       </p>
       <div className="flex gap-3 flex-wrap">
@@ -328,7 +328,7 @@ export function LLMSelector() {
               className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all"
               style={active
                 ? { background: cfg.bg, border: `1px solid ${cfg.color}`, color: cfg.color }
-                : { background: "transparent", border: `1px solid ${BORDER}`, color: "#64687a" }
+                : { background: "transparent", border: `1px solid ${BORDER}`, color: "var(--text-4)" }
               }
             >
               <span className="w-2 h-2 rounded-full shrink-0" style={{ background: active ? cfg.color : BORDER }} />
@@ -337,8 +337,8 @@ export function LLMSelector() {
           );
         })}
       </div>
-      <p className="text-xs mt-3" style={{ color: "#64687a" }}>
-        ✓ Usando <strong style={{ color: "#cfd2d8" }}>{LLM_CONFIG[llm].name}</strong> — comando:{" "}
+      <p className="text-xs mt-3" style={{ color: "var(--text-4)" }}>
+        ✓ Usando <strong style={{ color: "var(--text-2)" }}>{LLM_CONFIG[llm].name}</strong> — comando:{" "}
         <code style={{ color: LLM_CONFIG[llm].color }}>{LLM_CONFIG[llm].command}</code>.
         Você pode mudar a qualquer momento.
       </p>
