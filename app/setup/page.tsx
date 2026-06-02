@@ -237,6 +237,17 @@ export default function SetupPage() {
         <p className="mt-3">Confirme que a instalação funcionou:</p>
         <Command>node --version</Command>
         <p>Deve aparecer um número de versão como <code>v22.x.x</code>. Se aparecer, avance para o passo 3.</p>
+        <Tip>
+          <strong>Windows — "node não é reconhecido" mesmo após reabrir?</strong> O instalador pode ter
+          atualizado o PATH sem que o PowerShell tenha carregado. Tente duas coisas em ordem:
+          <br /><br />
+          1. Rode este comando para forçar o reload do PATH na sessão atual:
+          <br />
+          <code>$env:PATH = [System.Environment]::GetEnvironmentVariable('PATH','Machine') + ';' + [System.Environment]::GetEnvironmentVariable('PATH','User')</code>
+          <br /><br />
+          2. Se ainda não funcionar, <strong>faça logout e login novamente</strong> no Windows — em alguns
+          casos o PATH do sistema só é carregado completamente ao iniciar uma nova sessão de usuário.
+        </Tip>
       </Step>
 
       {/* Step 3 */}
