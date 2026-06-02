@@ -96,8 +96,57 @@ function LLMSwitcher() {
   );
 }
 
+const COLLAPSED_KEY = "aibc-sidebar-collapsed";
+
+// Annotate each nav item with the label of its parent divider group
+const processedNav = nav.map((item, i) => {
+  let group = "";
+  for (let j = i - 1; j >= 0; j--) {
+    if (nav[j].type === "divider") { group = nav[j].label!; break; }
+  }
+  return { ...item, group };
+});
+
 export default function Sidebar() {
   const pathname = usePathname();
+  const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
+  const [mounted, setMounted] = useState(false);
+
+  // Which group contains the currently active page
+  const activeGroup = processedNav.find(
+    (item) => !item.type && item.href === pathname
+  )?.group ?? "";
+
+  useEffect(() => {
+    const saved = localStorage.getItem(COLLAPSED_KEY);
+    if (saved) {
+      try { setCollapsed(new Set(JSON.parse(saved))); } catch {}
+    }
+    setMounted(true);
+  }, []);
+
+  // Auto-expand the group that contains the active page
+  useEffect(() => {
+    if (activeGroup && collapsed.has(activeGroup)) {
+      setCollapsed(prev => {
+        const next = new Set(prev);
+        next.delete(activeGroup);
+        localStorage.setItem(COLLAPSED_KEY, JSON.stringify([...next]));
+        return next;
+      });
+    }
+  }, [activeGroup]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const toggle = (label: string) => {
+    setCollapsed(prev => {
+      const next = new Set(prev);
+      if (next.has(label)) next.delete(label); else next.add(label);
+      localStorage.setItem(COLLAPSED_KEY, JSON.stringify([...next]));
+      return next;
+    });
+  };
+
+  const isOpen = (label: string) => !mounted || !collapsed.has(label);
 
   return (
     <aside
@@ -108,24 +157,15 @@ export default function Sidebar() {
       <div className="px-5 py-4 flex items-start justify-between" style={{ borderBottom: "1px solid var(--border)" }}>
         <Link href="/" className="flex flex-col gap-2 group">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/ai-builder-camp/logo-alun-white.svg"
-            alt="Alun Business"
-            width={110}
-            height={13}
-            style={{ opacity: 0.9 }}
-          />
-          <span
-            className="text-[10px] font-medium tracking-[0.18em] uppercase"
-            style={{ color: "#d1a476" }}
-          >
+          <img src="/ai-builder-camp/logo-alun-white.svg" alt="Alun Business" width={110} height={13} style={{ opacity: 0.9 }} />
+          <span className="text-[10px] font-medium tracking-[0.18em] uppercase" style={{ color: "#d1a476" }}>
             AI Builder Camp
           </span>
         </Link>
         <ThemeToggle />
       </div>
 
-      {/* LLM Switcher — pinned below logo */}
+      {/* LLM Switcher */}
       <div className="px-3 py-3" style={{ borderBottom: "1px solid var(--border)" }}>
         <p className="text-[10px] uppercase tracking-widest mb-1.5 px-1" style={{ color: "var(--text-5)" }}>Ferramenta de IA</p>
         <LLMSwitcher />
@@ -133,19 +173,36 @@ export default function Sidebar() {
 
       {/* Nav */}
       <nav className="flex-1 p-3 space-y-0.5">
-        {nav.map((item, i) => {
+        {processedNav.map((item, i) => {
           if (item.type === "divider") {
+            const open = isOpen(item.label!);
             return (
-              <div key={i} className="pt-5 pb-1.5 px-2">
+              <button
+                key={i}
+                onClick={() => toggle(item.label!)}
+                className="w-full flex items-center justify-between pt-5 pb-1.5 px-2 group"
+              >
                 <p
                   className="text-[10px] font-semibold uppercase tracking-widest"
                   style={{ color: item.gold ? "rgba(209,164,118,0.6)" : "var(--text-4)" }}
                 >
                   {item.label}
                 </p>
-              </div>
+                <svg
+                  width="10" height="10" viewBox="0 0 10 10" fill="none"
+                  className="transition-transform duration-200 shrink-0"
+                  style={{
+                    transform: open ? "rotate(0deg)" : "rotate(-90deg)",
+                    color: item.gold ? "rgba(209,164,118,0.4)" : "var(--text-5)",
+                  }}
+                >
+                  <path d="M1.5 3.5L5 7L8.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
             );
           }
+
+          if (!isOpen(item.group)) return null;
 
           const active = pathname === item.href;
           const isMission = item.mission;
