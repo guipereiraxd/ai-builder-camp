@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Exercise3() {
   return (
@@ -126,6 +126,8 @@ O documento deve ser seguível por qualquer membro do time de estratégia.`}</Pr
           um pipeline de conteúdo completo com revisão humana no meio.
         </p>
       </div>
+
+      <CompletedButton />
 
       <div className="mt-6 flex justify-between">
         <Link href="/exercises/2-4" className="inline-flex items-center gap-2 px-4 py-2 text-white/50 hover:text-white text-sm transition-colors">← 2.4</Link>

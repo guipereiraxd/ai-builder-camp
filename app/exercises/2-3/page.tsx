@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
 
 const SAMPLE_CSV = `data,produto,regiao,vendedor,valor,status
 2025-07-01,Plano Pro,Sul,Maria,4800,fechado
@@ -115,6 +115,8 @@ Salve tudo em index.html e diga quando terminar.`}</Prompt>
           de executivos: o briefing semanal.
         </p>
       </div>
+
+      <CompletedButton />
 
       <div className="mt-6 flex justify-between">
         <Link href="/exercises/2-2" className="inline-flex items-center gap-2 px-4 py-2 text-white/50 hover:text-white text-sm transition-colors">← 2.2</Link>

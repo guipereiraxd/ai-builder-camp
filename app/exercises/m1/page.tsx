@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, LLMTabs } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
 
 const EXAMPLE_NOTES = `reunião de planejamento q3 — terça 15h
 presentes: ana (produto), carlos (tech), beatriz (comercial), renata (ceo)
@@ -226,6 +226,8 @@ Tom direto, sem floreios. Não inventar informações que não estejam nas notas
           Novas missões são adicionadas periodicamente — volte sempre.
         </p>
       </div>
+
+      <CompletedButton />
 
       <div className="mt-6 flex justify-start">
         <Link href="/exercises" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "var(--text-4)" }}>

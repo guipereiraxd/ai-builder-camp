@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Copy, Check, Terminal, Lightbulb, AlertTriangle } from "lucide-react";
 
 const BRAND = "#4b6afc";
@@ -378,5 +379,80 @@ export function CopyContextFile({ from = "ex-1-2" }: { from?: string }) {
       mac={`cp ~/ai-builder-camp/${from}/${file} .`}
       windows={`copy $HOME\\ai-builder-camp\\${from}\\${file} .`}
     />
+  );
+}
+
+// ─────────────────────────────────────────────
+// Progress tracking
+// ─────────────────────────────────────────────
+
+export const PROGRESS_KEY = "aibc-progress";
+
+export function useProgress() {
+  const [completed, setCompleted] = useState<Set<string>>(new Set());
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const load = () => {
+      const saved = localStorage.getItem(PROGRESS_KEY);
+      if (saved) { try { setCompleted(new Set(JSON.parse(saved))); } catch {} }
+    };
+    load();
+    setMounted(true);
+    const handler = (e: StorageEvent) => { if (e.key === PROGRESS_KEY) load(); };
+    window.addEventListener("storage", handler);
+    return () => window.removeEventListener("storage", handler);
+  }, []);
+
+  const mark = (href: string, done: boolean) => {
+    setCompleted(prev => {
+      const next = new Set(prev);
+      if (done) next.add(href); else next.delete(href);
+      const arr = [...next];
+      localStorage.setItem(PROGRESS_KEY, JSON.stringify(arr));
+      window.dispatchEvent(new StorageEvent("storage", { key: PROGRESS_KEY, newValue: JSON.stringify(arr) }));
+      return next;
+    });
+  };
+
+  return { mounted, isCompleted: (href: string) => completed.has(href), mark };
+}
+
+export function CompletedButton() {
+  const pathname = usePathname();
+  const { isCompleted, mark, mounted } = useProgress();
+  const [flash, setFlash] = useState(false);
+
+  if (!mounted) return null;
+  const done = isCompleted(pathname);
+
+  const handleClick = () => {
+    if (!done) {
+      mark(pathname, true);
+      setFlash(true);
+      setTimeout(() => setFlash(false), 2000);
+    } else {
+      mark(pathname, false);
+    }
+  };
+
+  return (
+    <div className="mt-8 flex justify-center">
+      <button
+        onClick={handleClick}
+        className="flex items-center gap-2.5 px-5 py-2.5 rounded-lg text-sm font-medium transition-all"
+        style={done
+          ? { background: "rgba(74,222,128,0.1)", color: "#4ade80", border: "1px solid rgba(74,222,128,0.25)" }
+          : { background: "var(--tint-4)", color: "var(--text-3)", border: "1px solid var(--border)" }
+        }
+      >
+        <span style={{ fontSize: "15px", lineHeight: 1 }}>{done ? "✓" : "○"}</span>
+        <span>
+          {done
+            ? (flash ? "Marcado como concluído!" : "Concluído — clique para desfazer")
+            : "Marcar exercício como concluído"}
+        </span>
+      </button>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader, AgentCommand, LLMTabs } from "../../components/ExerciseComponents";
+import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader, AgentCommand, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
 
 const MCP_CONFIG = `{
   "mcpServers": {
@@ -257,6 +257,8 @@ export default function Exercise7() {
           No próximo exercício, vamos fechar o loop: os resultados saem direto para o Slack da sua equipe.
         </p>
       </div>
+
+      <CompletedButton />
 
       <div className="mt-6 flex justify-between">
         <Link href="/exercises/6" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "var(--text-4)" }}>← 6</Link>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { LLM_KEY, LLM_CONFIG, type LLMChoice } from "./ExerciseComponents";
+import { LLM_KEY, LLM_CONFIG, type LLMChoice, useProgress } from "./ExerciseComponents";
 import { ThemeToggle } from "./ThemeToggle";
 
 const nav = [
@@ -111,6 +111,7 @@ export default function Sidebar() {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
   const [mounted, setMounted] = useState(false);
+  const { isCompleted } = useProgress();
 
   // Which group contains the currently active page
   const activeGroup = processedNav.find(
@@ -229,15 +230,20 @@ export default function Sidebar() {
                 }
               }}
             >
-              <span className="flex items-center gap-1.5">
+              <span className="flex items-center gap-1.5 min-w-0 truncate">
                 {isMission && <span style={{ color: active ? "#d1a476" : "rgba(209,164,118,0.5)" }}>◈</span>}
                 {item.label}
               </span>
-              {item.duration && (
-                <span className="text-[11px] ml-2 shrink-0" style={{ color: "var(--text-4)" }}>
-                  {item.duration}
-                </span>
-              )}
+              <span className="flex items-center gap-1.5 shrink-0 ml-1">
+                {isCompleted(item.href!) && (
+                  <span className="text-[11px] font-bold" style={{ color: "#4ade80" }}>✓</span>
+                )}
+                {item.duration && (
+                  <span className="text-[11px]" style={{ color: "var(--text-4)" }}>
+                    {item.duration}
+                  </span>
+                )}
+              </span>
             </Link>
           );
         })}

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Exercise21() {
   return (
@@ -115,6 +115,8 @@ Salve como resumo-executivo.md`}</Prompt>
           a comunicação externa — com o tom exato da sua empresa.
         </p>
       </div>
+
+      <CompletedButton />
 
       <div className="mt-6 flex justify-between">
         <Link href="/exercises/1-2" className="inline-flex items-center gap-2 px-4 py-2 text-white/50 hover:text-white text-sm transition-colors">← 1.2</Link>

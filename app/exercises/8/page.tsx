@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader, AgentCommand, LLMTabs } from "../../components/ExerciseComponents";
+import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader, AgentCommand, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
 
 const MCP_CONFIG = `{
   "mcpServers": {
@@ -264,6 +264,8 @@ export default function Exercise8() {
           A IA não vai substituir sua capacidade de decisão. Vai amplificar a velocidade com que você age sobre ela.
         </p>
       </div>
+
+      <CompletedButton />
 
       <div className="mt-6 flex justify-start">
         <Link href="/exercises/7" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "var(--text-4)" }}>← 7</Link>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, LLMTabs, ContextFileName } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, LLMTabs, ContextFileName, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Exercise12() {
   return (
@@ -133,6 +133,8 @@ Ao receber qualquer pedido:
           para produzir outputs cada vez mais específicos e úteis.
         </p>
       </div>
+
+      <CompletedButton />
 
       <div className="mt-6 flex justify-between">
         <Link

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Exercise11() {
   return (
@@ -104,6 +104,8 @@ próxima reunião semana que vem mesma hora`}
           o agente sobre o contexto específico da sua empresa.
         </p>
       </div>
+
+      <CompletedButton />
 
       <div className="mt-6 flex justify-end">
         <Link
