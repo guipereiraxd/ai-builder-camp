@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import AppShell from "../components/AppShell";
-import { Step, Command, OSTabs, Tip, Warning, Prompt, OS_KEY } from "../components/ExerciseComponents";
+import { Step, Command, OSTabs, Tip, Warning, Prompt, OS_KEY, LLMSelector, LLMTabs, LLM_CONFIG, type LLMChoice } from "../components/ExerciseComponents";
 
 const BORDER = "#33363e";
 const BRAND = "#4b6afc";
@@ -164,7 +164,7 @@ export default function SetupPage() {
         <div className="grid grid-cols-3 gap-2 mt-6">
           {[
             { icon: "⬡", label: "Node.js", desc: "Base técnica" },
-            { icon: "◈", label: "Claude Code", desc: "O agente de IA" },
+            { icon: "◈", label: "CLI de IA", desc: "O agente de IA" },
             { icon: "🔑", label: "API Key", desc: "Sua credencial" },
           ].map((item) => (
             <div
@@ -184,6 +184,9 @@ export default function SetupPage() {
 
       {/* OS Selector */}
       <OSSelector />
+
+      {/* LLM Selector */}
+      <LLMSelector />
 
       {/* Step 1 */}
       <Step n={1} title="Abra o terminal">
@@ -206,7 +209,7 @@ export default function SetupPage() {
       {/* Step 2 */}
       <Step n={2} title="Instale o Node.js">
         <p>
-          O Node.js é a "infraestrutura" que o Claude Code precisa para rodar. Pense nele como
+          O Node.js é a "infraestrutura" que as ferramentas de IA precisam para rodar. Pense nele como
           o motor de um carro — você não interage com ele diretamente, mas tudo depende dele.
         </p>
         <p className="mt-3">
@@ -237,12 +240,12 @@ export default function SetupPage() {
       </Step>
 
       {/* Step 3 */}
-      <Step n={3} title="Instale o Claude Code">
-        <p>
-          O Claude Code é o agente que vamos usar em todos os exercícios. Ele transforma
-          seu terminal em um assistente que entende linguagem natural, lê arquivos,
-          escreve código e executa tarefas — tudo a partir de uma conversa.
-        </p>
+      <Step n={3} title="Instale a ferramenta de IA">
+        <LLMTabs
+          claude={<p>O <strong className="text-white">Claude Code</strong> da Anthropic transforma seu terminal em um agente que entende linguagem natural, lê arquivos e executa tarefas.</p>}
+          openai={<p>O <strong className="text-white">OpenAI Codex CLI</strong> é a ferramenta agêntica open source da OpenAI — funciona de forma similar ao Claude Code, direto no terminal.</p>}
+          gemini={<p>O <strong className="text-white">Gemini CLI</strong> do Google é a ferramenta agêntica lançada em 2025 — funciona de forma similar ao Claude Code, direto no terminal.</p>}
+        />
         <p className="mt-3">
           Se estiver no <strong className="text-white">Windows</strong>, rode este comando primeiro para
           liberar a execução de scripts no PowerShell:
@@ -251,17 +254,24 @@ export default function SetupPage() {
           mac="# Não é necessário no Mac"
           windows="Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"
         />
-        <p className="mt-3">Agora instale o Claude Code:</p>
-        <Command>npm install -g @anthropic-ai/claude-code</Command>
+        <p className="mt-3">Instale a ferramenta:</p>
+        <LLMTabs
+          claude={<Command>npm install -g @anthropic-ai/claude-code</Command>}
+          openai={<Command>npm install -g @openai/codex</Command>}
+          gemini={<Command>npm install -g @google/gemini-cli</Command>}
+        />
         <Warning>
           <strong>Windows:</strong> após a instalação terminar, <strong>feche e reabra o PowerShell</strong> antes de continuar.
-          Assim como aconteceu com o Node.js, o terminal precisa de uma nova sessão para reconhecer o comando <code>claude</code>.
+          O terminal precisa de uma nova sessão para reconhecer o novo comando.
         </Warning>
         <p className="mt-3">Confirme que funcionou:</p>
-        <Command>claude --version</Command>
+        <LLMTabs
+          claude={<Command>claude --version</Command>}
+          openai={<Command>codex --version</Command>}
+          gemini={<Command>gemini --version</Command>}
+        />
         <Tip>
-          <strong>Erro de permissão no Mac/Linux?</strong> Use:{" "}
-          <code>sudo npm install -g @anthropic-ai/claude-code</code>
+          <strong>Erro de permissão no Mac/Linux?</strong> Adicione <code>sudo</code> antes do comando de instalação.
           <br />
           <strong>Erro "scripts disabled" no Windows?</strong> Rode primeiro:{" "}
           <code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code>
@@ -269,57 +279,63 @@ export default function SetupPage() {
       </Step>
 
       {/* Step 4 */}
-      <Step n={4} title="Crie sua conta na Anthropic e obtenha a API Key">
+      <Step n={4} title="Crie sua conta e obtenha a API Key">
         <p>
-          A API Key é como uma senha que identifica você para os servidores da Anthropic.
-          O Claude Code usa ela para fazer as chamadas de IA. Você paga pelo uso — o curso
-          completo custa aproximadamente <strong className="text-white">$5–10</strong>.
+          A API Key é como uma senha que identifica você para os servidores da IA.
+          A ferramenta usa ela para fazer as chamadas. Você paga pelo uso —{" "}
+          <LLMTabs
+            claude={<span>o curso completo custa aproximadamente <strong className="text-white">$5–10</strong> na Anthropic.</span>}
+            openai={<span>o custo é similar ao Claude para o curso completo na OpenAI.</span>}
+            gemini={<span>o Google AI Studio tem um <strong className="text-white">plano gratuito generoso</strong> — suficiente para o curso inteiro.</span>}
+          />
         </p>
-
-        <div
-          className="space-y-3 mt-4 p-4 rounded-lg"
-          style={{ border: `1px solid ${BORDER}`, background: "rgba(255,255,255,0.02)" }}
-        >
-          {[
-            <>
-              Acesse{" "}
-              <a href="https://console.anthropic.com" target="_blank" rel="noopener noreferrer">
-                console.anthropic.com
-              </a>{" "}
-              e crie uma conta (ou faça login).
-            </>,
-            <>
-              No menu lateral, clique em <strong className="text-white">API Keys</strong> →{" "}
-              <strong className="text-white">Create Key</strong>.
-            </>,
-            <>
-              Dê um nome (ex: <code>ai-builder-camp</code>) e clique em criar.{" "}
-              <strong className="text-white">Copie a chave agora</strong> — ela aparece só uma vez.
-            </>,
-            <>
-              Em{" "}
-              <a
-                href="https://console.anthropic.com/settings/billing"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Billing
-              </a>
-              , adicione créditos. Mínimo recomendado: <strong className="text-white">$10</strong>.
-            </>,
-          ].map((text, i) => (
-            <div key={i} className="flex gap-3 items-start">
-              <span
-                className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5"
-                style={{ background: "rgba(75,106,252,0.15)", color: BRAND }}
-              >
-                {i + 1}
-              </span>
-              <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>{text}</p>
+        <LLMTabs
+          claude={
+            <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: `1px solid ${BORDER}`, background: "rgba(255,255,255,0.02)" }}>
+              {[
+                <><a href="https://console.anthropic.com" target="_blank" rel="noopener noreferrer">console.anthropic.com</a> → crie uma conta.</>,
+                <>Menu lateral → <strong className="text-white">API Keys</strong> → <strong className="text-white">Create Key</strong>.</>,
+                <>Dê um nome (ex: <code>ai-builder-camp</code>). <strong className="text-white">Copie a chave agora</strong> — ela aparece só uma vez.</>,
+                <><a href="https://console.anthropic.com/settings/billing" target="_blank" rel="noopener noreferrer">Billing</a> → adicione créditos. Mínimo recomendado: <strong className="text-white">$10</strong>.</>,
+              ].map((text, i) => (
+                <div key={i} className="flex gap-3 items-start">
+                  <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5" style={{ background: "rgba(75,106,252,0.15)", color: BRAND }}>{i + 1}</span>
+                  <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>{text}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-
+          }
+          openai={
+            <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: `1px solid ${BORDER}`, background: "rgba(255,255,255,0.02)" }}>
+              {[
+                <><a href="https://platform.openai.com" target="_blank" rel="noopener noreferrer">platform.openai.com</a> → crie uma conta.</>,
+                <>Menu lateral → <strong className="text-white">API Keys</strong> → <strong className="text-white">Create new secret key</strong>.</>,
+                <>Dê um nome (ex: <code>ai-builder-camp</code>). <strong className="text-white">Copie a chave agora</strong> — ela aparece só uma vez.</>,
+                <><a href="https://platform.openai.com/settings/organization/billing" target="_blank" rel="noopener noreferrer">Billing</a> → adicione créditos. Mínimo recomendado: <strong className="text-white">$10</strong>.</>,
+              ].map((text, i) => (
+                <div key={i} className="flex gap-3 items-start">
+                  <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5" style={{ background: "rgba(75,106,252,0.15)", color: BRAND }}>{i + 1}</span>
+                  <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>{text}</p>
+                </div>
+              ))}
+            </div>
+          }
+          gemini={
+            <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: `1px solid ${BORDER}`, background: "rgba(255,255,255,0.02)" }}>
+              {[
+                <><a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer">aistudio.google.com</a> → faça login com sua conta Google.</>,
+                <>No topo da página → <strong className="text-white">Get API key</strong> → <strong className="text-white">Create API key</strong>.</>,
+                <>Selecione ou crie um projeto. <strong className="text-white">Copie a chave gerada</strong> — ela aparece só uma vez.</>,
+                <>O plano gratuito é suficiente para o curso. Você pode fazer upgrade em <a href="https://aistudio.google.com/plan_information" target="_blank" rel="noopener noreferrer">AI Studio</a> se precisar.</>,
+              ].map((text, i) => (
+                <div key={i} className="flex gap-3 items-start">
+                  <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5" style={{ background: "rgba(75,106,252,0.15)", color: BRAND }}>{i + 1}</span>
+                  <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>{text}</p>
+                </div>
+              ))}
+            </div>
+          }
+        />
         <Warning>
           Nunca compartilhe sua API Key. Não coloque ela em e-mails, documentos compartilhados
           ou arquivos que vão para o Git. Trate como uma senha bancária.
@@ -329,17 +345,32 @@ export default function SetupPage() {
       {/* Step 5 */}
       <Step n={5} title="Configure a API Key no terminal">
         <p>
-          O Claude Code precisa encontrar sua chave automaticamente toda vez que você abre
+          A ferramenta de IA precisa encontrar sua chave automaticamente toda vez que você abre
           o terminal. Para isso, vamos salvá-la como uma{" "}
-          <strong className="text-white">variável de ambiente</strong> — um valor que fica
-          disponível em segundo plano, sem que você precise digitar a cada vez.
+          <strong className="text-white">variável de ambiente</strong>.
         </p>
         <p className="mt-3">
-          Substitua <code>sua-chave-aqui</code> pela chave que você copiou no passo anterior:
+          Substitua <code>sua-chave-aqui</code> pela chave que você copiou:
         </p>
-        <OSTabs
-          mac={`echo 'export ANTHROPIC_API_KEY="sua-chave-aqui"' >> ~/.zshrc && source ~/.zshrc`}
-          windows={`[System.Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY","sua-chave-aqui","User")`}
+        <LLMTabs
+          claude={
+            <OSTabs
+              mac={`echo 'export ANTHROPIC_API_KEY="sua-chave-aqui"' >> ~/.zshrc && source ~/.zshrc`}
+              windows={`[System.Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY","sua-chave-aqui","User")`}
+            />
+          }
+          openai={
+            <OSTabs
+              mac={`echo 'export OPENAI_API_KEY="sua-chave-aqui"' >> ~/.zshrc && source ~/.zshrc`}
+              windows={`[System.Environment]::SetEnvironmentVariable("OPENAI_API_KEY","sua-chave-aqui","User")`}
+            />
+          }
+          gemini={
+            <OSTabs
+              mac={`echo 'export GEMINI_API_KEY="sua-chave-aqui"' >> ~/.zshrc && source ~/.zshrc`}
+              windows={`[System.Environment]::SetEnvironmentVariable("GEMINI_API_KEY","sua-chave-aqui","User")`}
+            />
+          }
         />
         <Tip>
           <strong>Mac:</strong> se o seu terminal usar bash em vez de zsh, troque{" "}
@@ -351,15 +382,19 @@ export default function SetupPage() {
       </Step>
 
       {/* Step 6 */}
-      <Step n={6} title="Teste: abra o Claude Code pela primeira vez">
-        <p>Crie uma pasta para os exercícios e abra o Claude Code:</p>
+      <Step n={6} title="Teste: abra o agente pela primeira vez">
+        <p>Crie uma pasta para os exercícios e abra o agente:</p>
         <OSTabs
           mac="mkdir ~/ai-builder-camp && cd ~/ai-builder-camp"
           windows="mkdir $HOME\ai-builder-camp; cd $HOME\ai-builder-camp"
         />
-        <Command>claude</Command>
+        <LLMTabs
+          claude={<Command>claude</Command>}
+          openai={<Command>codex</Command>}
+          gemini={<Command>gemini</Command>}
+        />
         <p className="mt-2">
-          O Claude Code vai abrir uma interface interativa no terminal.
+          O agente vai abrir uma interface interativa no terminal.
           Envie a mensagem abaixo para confirmar que está tudo funcionando:
         </p>
         <Prompt>{`Olá! Me diga em uma frase o que você consegue fazer por mim hoje.`}</Prompt>
@@ -368,7 +403,7 @@ export default function SetupPage() {
           <code>Ctrl+C</code> para sair.
         </p>
         <Tip>
-          Nos exercícios, sempre abra o Claude Code de dentro da pasta do projeto.
+          Nos exercícios, sempre abra o agente de dentro da pasta do projeto.
           O agente usa os arquivos presentes para entender o contexto do que você está construindo.
         </Tip>
       </Step>
@@ -378,7 +413,7 @@ export default function SetupPage() {
         <p>
           Para os exercícios do Ato II, vai ser útil ter um editor de código para
           ver os arquivos que o agente cria. O VS Code é gratuito, popular e funciona
-          bem junto com o Claude Code.
+          bem junto com os agentes de IA.
         </p>
         <p className="mt-2">
           Baixe em{" "}

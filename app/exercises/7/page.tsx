@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader, AgentCommand, CopyContextFile, LLMTabs } from "../../components/ExerciseComponents";
 
 const MCP_CONFIG = `{
   "mcpServers": {
@@ -37,6 +37,26 @@ export default function Exercise7() {
         title="Claude no Google Drive"
         duration="30 min"
         description="Você tem documentos no Drive. O Claude tem inteligência para analisá-los. Neste exercício você conecta os dois — o Claude passa a ler contratos, relatórios e apresentações diretamente da sua pasta, sem você precisar copiar nada."
+      />
+
+      <LLMTabs
+        claude={null}
+        openai={
+          <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid #2a3a4a", background: "rgba(16,163,127,0.05)" }}>
+            <p className="text-sm font-semibold text-white mb-2">⚠️ Este exercício usa MCP — exclusivo do Claude Code</p>
+            <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>
+              A integração com Google Drive neste exercício usa o MCP do Claude Code. Para o OpenAI Codex CLI, a abordagem alternativa é usar a <strong className="text-white">Google Drive API</strong> diretamente ou configurar um <strong className="text-white">GPT Action</strong> com OAuth. Você pode acompanhar o exercício para entender o conceito.
+            </p>
+          </div>
+        }
+        gemini={
+          <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid #2a3040", background: "rgba(138,180,248,0.05)" }}>
+            <p className="text-sm font-semibold text-white mb-2">⚠️ Este exercício usa MCP — exclusivo do Claude Code</p>
+            <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>
+              A integração com Google Drive neste exercício usa o MCP do Claude Code. O Gemini tem acesso nativo ao Google Workspace via <strong className="text-white">Gemini for Workspace</strong> e <strong className="text-white">Google AI Studio</strong>, que são alternativas mais diretas para usuários Google. Você pode acompanhar o exercício para entender o conceito.
+            </p>
+          </div>
+        }
       />
 
       <div className="mb-8 p-4 rounded-lg bg-white/3 border border-white/8">

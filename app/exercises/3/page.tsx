@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile } from "../../components/ExerciseComponents";
 
 export default function Exercise3() {
   return (
@@ -27,10 +27,7 @@ export default function Exercise3() {
           mac="mkdir ~/ai-builder-camp/ex-3 && cd ~/ai-builder-camp/ex-3"
           windows="mkdir $HOME\ai-builder-camp\ex-3; cd $HOME\ai-builder-camp\ex-3"
         />
-        <OSTabs
-          mac="cp ~/ai-builder-camp/ex-1-2/CLAUDE.md ."
-          windows="copy $HOME\ai-builder-camp\ex-1-2\CLAUDE.md ."
-        />
+        <CopyContextFile />
         <p className="mt-3">
           Antes de abrir o Claude Code, vamos criar o arquivo de configuração do agente.
           Crie um arquivo <code>config-agente.md</code>:
@@ -65,7 +62,7 @@ Produzir um relatório semanal de inteligência de mercado que permita ao CEO to
       </Step>
 
       <Step n={2} title="Construa o agente em modo autônomo">
-        <Command>claude</Command>
+        <AgentCommand />
         <Prompt>{`Leia o arquivo config-agente.md e execute o processo de monitoramento de mercado completo.
 
 Etapas que você deve executar autonomamente:

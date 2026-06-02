@@ -29,7 +29,9 @@
       "Bash(curl -sL \"http://localhost:3000/ai-builder-camp\")",
       "Bash(cat /tmp/nextjs-dev.log 2>/dev/null | tail -30 || npm run dev 2>&1 | head -50 &)",
       "Bash(open \"http://localhost:3000/ai-builder-camp\")",
-      "Bash(curl -sI \"http://localhost:3000/ai-builder-camp/logo-alun-white.svg\")"
+      "Bash(curl -sI \"http://localhost:3000/ai-builder-camp/logo-alun-white.svg\")",
+      "Bash(gh run *)",
+      "Bash(git commit -m 'fix: replace unreadable Mac SVG icon with ⌘ symbol in OS selector *)"
     ]
   }
 }

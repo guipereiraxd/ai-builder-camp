@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile } from "../../components/ExerciseComponents";
 
 export default function Exercise11() {
   return (
@@ -28,7 +28,7 @@ export default function Exercise11() {
           mac="mkdir ~/ai-builder-camp/ex-1-1 && cd ~/ai-builder-camp/ex-1-1"
           windows="mkdir $HOME\ai-builder-camp\ex-1-1; cd $HOME\ai-builder-camp\ex-1-1"
         />
-        <Command>claude</Command>
+        <AgentCommand />
       </Step>
 
       <Step n={2} title="Cole este prompt no Claude Code">

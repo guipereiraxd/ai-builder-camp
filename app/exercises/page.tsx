@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AppShell from "../components/AppShell";
+import { LLMSelector } from "../components/ExerciseComponents";
 
 const acts = [
   {
@@ -49,10 +50,13 @@ export default function ExercisesPage() {
         </p>
         <p className="text-base leading-relaxed" style={{ color: "#64687a" }}>
           Você vai passar por 3 atos: primeiro sentir o que é possível com IA, depois
-          construir seu primeiro agente autônomo, e por fim conectar o Claude às ferramentas
+          construir seu primeiro agente autônomo, e por fim conectar o agente às ferramentas
           que sua equipe já usa no dia a dia.
         </p>
       </div>
+
+      {/* LLM Selector */}
+      <LLMSelector />
 
       {/* Setup CTA */}
       <div

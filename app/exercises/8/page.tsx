@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader, AgentCommand, CopyContextFile, LLMTabs } from "../../components/ExerciseComponents";
 
 const MCP_CONFIG = `{
   "mcpServers": {
@@ -26,6 +26,26 @@ export default function Exercise8() {
         title="Claude no Slack"
         duration="35 min"
         description="O último elo da cadeia: o Claude não só analisa e gera — ele entrega os resultados direto onde sua equipe trabalha. Neste exercício você configura o MCP do Slack e o briefing semanal passa a ser postado automaticamente no canal certo."
+      />
+
+      <LLMTabs
+        claude={null}
+        openai={
+          <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid #2a3a4a", background: "rgba(16,163,127,0.05)" }}>
+            <p className="text-sm font-semibold text-white mb-2">⚠️ Este exercício usa MCP — exclusivo do Claude Code</p>
+            <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>
+              A integração com Slack neste exercício usa o sistema de MCPs do Claude Code. Para OpenAI, a abordagem equivalente é usar a <strong className="text-white">Slack API</strong> diretamente via chamadas de função ou configurar um <strong className="text-white">GPT Action</strong>. Você pode acompanhar para entender o conceito de orquestrar múltiplas ferramentas.
+            </p>
+          </div>
+        }
+        gemini={
+          <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid #2a3040", background: "rgba(138,180,248,0.05)" }}>
+            <p className="text-sm font-semibold text-white mb-2">⚠️ Este exercício usa MCP — exclusivo do Claude Code</p>
+            <p className="text-sm leading-relaxed" style={{ color: "#cfd2d8" }}>
+              A integração com Slack neste exercício usa o sistema de MCPs do Claude Code. Para Gemini, a abordagem equivalente é usar a <strong className="text-white">Slack API</strong> via Function Calling da Gemini API. Você pode acompanhar para entender o conceito de orquestrar múltiplas ferramentas.
+            </p>
+          </div>
+        }
       />
 
       <div className="mb-8 p-4 rounded-lg bg-white/3 border border-white/8">

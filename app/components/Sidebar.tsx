@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { LLM_KEY, LLM_CONFIG, type LLMChoice } from "./ExerciseComponents";
 
 const nav = [
   { label: "Início", href: "/" },
@@ -23,6 +25,28 @@ const nav = [
   { label: "7 Claude no Google Drive", href: "/exercises/7", duration: "30 min" },
   { label: "8 Claude no Slack", href: "/exercises/8", duration: "35 min" },
 ];
+
+function LLMBadge() {
+  const [llm, setLlm] = useState<LLMChoice>("claude");
+  useEffect(() => {
+    const saved = localStorage.getItem(LLM_KEY);
+    if (saved === "claude" || saved === "openai" || saved === "gemini") setLlm(saved);
+    const handler = (e: StorageEvent) => {
+      if (e.key === LLM_KEY && (e.newValue === "claude" || e.newValue === "openai" || e.newValue === "gemini"))
+        setLlm(e.newValue);
+    };
+    window.addEventListener("storage", handler);
+    return () => window.removeEventListener("storage", handler);
+  }, []);
+  const cfg = LLM_CONFIG[llm];
+  return (
+    <div className="flex items-center gap-2 px-3 py-2 rounded-md" style={{ background: cfg.bg }}>
+      <span className="w-2 h-2 rounded-full shrink-0" style={{ background: cfg.color }} />
+      <span className="text-xs font-medium" style={{ color: cfg.color }}>{cfg.vendor}</span>
+      <code className="text-[10px] ml-auto" style={{ color: cfg.color, opacity: 0.7 }}>{cfg.command}</code>
+    </div>
+  );
+}
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -102,6 +126,12 @@ export default function Sidebar() {
           );
         })}
       </nav>
+
+      {/* LLM indicator */}
+      <div className="px-3 pb-2">
+        <p className="text-[10px] uppercase tracking-widest mb-1.5 px-1" style={{ color: "#33363e" }}>Ferramenta</p>
+        <LLMBadge />
+      </div>
 
       {/* Footer */}
       <div className="p-4" style={{ borderTop: "1px solid #33363e" }}>

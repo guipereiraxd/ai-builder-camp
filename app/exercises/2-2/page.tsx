@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile, LLMTabs } from "../../components/ExerciseComponents";
 
 export default function Exercise22() {
   return (
@@ -28,10 +28,7 @@ export default function Exercise22() {
           mac="mkdir ~/ai-builder-camp/ex-2-2 && cd ~/ai-builder-camp/ex-2-2"
           windows="mkdir $HOME\ai-builder-camp\ex-2-2; cd $HOME\ai-builder-camp\ex-2-2"
         />
-        <OSTabs
-          mac="cp ~/ai-builder-camp/ex-1-2/CLAUDE.md ."
-          windows="copy $HOME\ai-builder-camp\ex-1-2\CLAUDE.md ."
-        />
+        <CopyContextFile />
         <p className="mt-3">
           Primeiro, vamos criar um arquivo com exemplos reais de emails bons da sua empresa.
           Crie um arquivo <code>exemplos-email.md</code> e cole 2-3 emails que você considera
@@ -45,28 +42,30 @@ export default function Exercise22() {
       </Step>
 
       <Step n={2} title="Crie o comando /email">
-        <p>
-          Comandos personalizados ficam na pasta <code>.claude/commands/</code>. Vamos criar o nosso:
-        </p>
-        <OSTabs
-          mac="mkdir -p .claude/commands"
-          windows="mkdir .claude\commands"
+        <LLMTabs
+          claude={<>
+            <p>Comandos personalizados ficam na pasta <code>.claude/commands/</code>. Vamos criar o nosso:</p>
+            <OSTabs mac="mkdir -p .claude/commands" windows="mkdir .claude\commands" />
+            <Prompt>{`Crie o arquivo .claude/commands/email.md com as instruções para o comando /email.\n\nO comando deve:\n1. Receber como input: [destinatário], [objetivo do email], [contexto relevante]\n2. Gerar um email completo com assunto, corpo e assinatura\n3. Usar o tom de voz identificado nos exemplos\n4. Ter 3 variações de extensão: curto (3 parágrafos), médio (5 parágrafos), longo (detalhado)\n5. Por padrão, gerar a versão curta e oferecer as outras\n\nInclua no arquivo as regras de tom que identificamos, para que o comando funcione mesmo sem os exemplos.`}</Prompt>
+          </>}
+          openai={<>
+            <p>O OpenAI Codex CLI não tem o sistema de <code>/commands</code> do Claude Code. A abordagem equivalente é guardar as instruções de email no <code>AGENTS.md</code> e invocar pelo próprio prompt. Peça ao agente para criar uma seção de templates:</p>
+            <Prompt>{`Adicione ao AGENTS.md uma seção "## Template de Email" com as regras de tom que identificamos, incluindo estrutura, variações (curto/médio/longo) e exemplos de frases a usar e evitar. A partir de agora, sempre que eu pedir para redigir um email, use essas regras automaticamente.`}</Prompt>
+          </>}
+          gemini={<>
+            <p>O Gemini CLI não tem o sistema de <code>/commands</code> do Claude Code. A abordagem equivalente é guardar as instruções de email no <code>GEMINI.md</code> e invocar pelo próprio prompt. Peça ao agente para criar uma seção de templates:</p>
+            <Prompt>{`Adicione ao GEMINI.md uma seção "## Template de Email" com as regras de tom que identificamos, incluindo estrutura, variações (curto/médio/longo) e exemplos de frases a usar e evitar. A partir de agora, sempre que eu pedir para redigir um email, use essas regras automaticamente.`}</Prompt>
+          </>}
         />
-        <Prompt>{`Crie o arquivo .claude/commands/email.md com as instruções para o comando /email.
-
-O comando deve:
-1. Receber como input: [destinatário], [objetivo do email], [contexto relevante]
-2. Gerar um email completo com assunto, corpo e assinatura
-3. Usar o tom de voz identificado nos exemplos
-4. Ter 3 variações de extensão: curto (3 parágrafos), médio (5 parágrafos), longo (detalhado)
-5. Por padrão, gerar a versão curta e oferecer as outras
-
-Inclua no arquivo as regras de tom que identificamos, para que o comando funcione mesmo sem os exemplos.`}</Prompt>
       </Step>
 
       <Step n={3} title="Teste o comando com casos reais">
-        <p>Feche e reabra o Claude Code para carregar o novo comando:</p>
-        <Command>claude</Command>
+        <LLMTabs
+          claude={<p>Feche e reabra o Claude Code para carregar o novo comando:</p>}
+          openai={<p>Abra uma nova sessão do Codex:</p>}
+          gemini={<p>Abra uma nova sessão do Gemini:</p>}
+        />
+        <AgentCommand />
         <p className="mt-3">Agora teste com situações que você enfrenta regularmente:</p>
         <Prompt>{`/email
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, LLMTabs, ContextFileName } from "../../components/ExerciseComponents";
 
 export default function Exercise12() {
   return (
@@ -10,25 +10,24 @@ export default function Exercise12() {
         number="1.2"
         title="Com contexto da sua empresa"
         duration="20 min"
-        description="Um agente sem contexto é genérico. Um agente com contexto é seu. Neste exercício você vai criar um arquivo CLAUDE.md — a memória permanente do agente — e ver como isso transforma completamente a qualidade das respostas."
+        description="Um agente sem contexto é genérico. Um agente com contexto é seu. Neste exercício você vai criar o arquivo de contexto do agente — a memória permanente — e ver como isso transforma completamente a qualidade das respostas."
       />
 
       <div className="mb-8 p-4 rounded-lg bg-white/3 border border-white/8">
         <p className="text-sm text-white/50 font-medium mb-1">O conceito central</p>
-        <p className="text-sm text-white/70 leading-relaxed">
-          O <code>CLAUDE.md</code> é um arquivo de texto que o Claude Code lê automaticamente
-          ao ser iniciado em uma pasta. Tudo que você colocar lá — tom de voz, regras,
-          contexto da empresa — fica disponível para o agente em todas as conversas daquela pasta.
-          É como briefar um funcionário novo uma única vez.
-        </p>
+        <LLMTabs
+          claude={<p className="text-sm text-white/70 leading-relaxed">O <code>CLAUDE.md</code> é um arquivo de texto que o Claude Code lê automaticamente ao ser iniciado em uma pasta. Tudo que você colocar lá — tom de voz, regras, contexto da empresa — fica disponível para o agente em todas as conversas daquela pasta. É como briefar um funcionário novo uma única vez.</p>}
+          openai={<p className="text-sm text-white/70 leading-relaxed">O <code>AGENTS.md</code> é o arquivo de contexto do OpenAI Codex CLI. Ele funciona da mesma forma: coloque ali o tom de voz, regras e contexto da empresa e o agente vai ler tudo automaticamente ao ser iniciado na pasta. É como briefar um funcionário novo uma única vez.</p>}
+          gemini={<p className="text-sm text-white/70 leading-relaxed">O <code>GEMINI.md</code> é o arquivo de contexto do Gemini CLI. Ele funciona da mesma forma: coloque ali o tom de voz, regras e contexto da empresa e o agente vai ler tudo automaticamente ao ser iniciado na pasta. É como briefar um funcionário novo uma única vez.</p>}
+        />
       </div>
 
-      <Step n={1} title="Crie uma pasta e o arquivo CLAUDE.md">
+      <Step n={1} title="Crie uma pasta e o arquivo de contexto">
         <OSTabs
           mac="mkdir ~/ai-builder-camp/ex-1-2 && cd ~/ai-builder-camp/ex-1-2"
           windows="mkdir $HOME\ai-builder-camp\ex-1-2; cd $HOME\ai-builder-camp\ex-1-2"
         />
-        <p className="mt-3">Abra um editor de texto qualquer e crie o arquivo <code>CLAUDE.md</code>.
+        <p className="mt-3">Abra um editor de texto qualquer e crie o arquivo <ContextFileName />.
         Use o template abaixo como ponto de partida — e customize com informações reais da sua empresa:</p>
         <Prompt>{`# Contexto da Empresa
 
@@ -67,10 +66,10 @@ Estágio: [Ex: Série A / Bootstrapped / Empresa estabelecida há 15 anos]
         </Tip>
       </Step>
 
-      <Step n={2} title="Abra o Claude Code na pasta">
-        <Command>claude</Command>
+      <Step n={2} title="Abra o agente na pasta">
+        <AgentCommand />
         <p className="mt-3">
-          O Claude Code vai ler o <code>CLAUDE.md</code> automaticamente.
+          O agente vai ler o <ContextFileName /> automaticamente.
           Para confirmar, pergunte:
         </p>
         <Prompt>{`O que você sabe sobre nossa empresa?`}</Prompt>
@@ -93,7 +92,7 @@ Estágio: [Ex: Série A / Bootstrapped / Empresa estabelecida há 15 anos]
 
       <Step n={4} title="Adicione uma instrução de comportamento">
         <p>
-          Além de contexto sobre a empresa, o <code>CLAUDE.md</code> pode conter regras
+          Além de contexto sobre a empresa, o arquivo <ContextFileName /> pode conter regras
           de comportamento do agente. Adicione ao final do arquivo:
         </p>
         <Prompt>{`## Instruções para o agente
@@ -104,7 +103,7 @@ Ao receber qualquer pedido:
 3. Ao final de cada tarefa, sugira uma próxima ação relacionada
 4. Se detectar que estou pedindo algo que pode ser automatizado, me avise`}</Prompt>
         <p className="mt-3">
-          Salve o arquivo e reinicie o Claude Code (<code>Ctrl+C</code> e depois <code>claude</code> novamente).
+          Salve o arquivo e reinicie o agente (<code>Ctrl+C</code> e depois <AgentCommand /> novamente).
           Agora teste um pedido ambíguo:
         </p>
         <Prompt>{`Preciso de um relatório sobre nossa performance.`}</Prompt>
@@ -112,24 +111,24 @@ Ao receber qualquer pedido:
           O agente deve pedir uma clarificação antes de sair fazendo — porque você instruiu isso.
         </p>
         <Warning>
-          O CLAUDE.md é lido por qualquer pessoa que abrir o Claude Code nessa pasta.
+          O arquivo de contexto é lido por qualquer pessoa que abrir o agente nessa pasta.
           Não inclua senhas, chaves de API ou dados confidenciais nele.
         </Warning>
       </Step>
 
-      <Step n={5} title="Crie o CLAUDE.md do seu projeto real">
+      <Step n={5} title="Refine o arquivo de contexto do seu projeto real">
         <p>
           Este é o exercício mais importante do Ato I. Reserve 5 minutos para refinar
-          seu CLAUDE.md com informações reais. Quanto mais você investir aqui, mais
+          seu arquivo de contexto com informações reais. Quanto mais você investir aqui, mais
           úteis serão todos os próximos exercícios.
         </p>
-        <Prompt>{`Revise o meu CLAUDE.md e me faça 5 perguntas para torná-lo mais útil para um assistente de IA executivo.`}</Prompt>
+        <Prompt>{`Revise o meu arquivo de contexto e me faça 5 perguntas para torná-lo mais útil para um assistente de IA executivo.`}</Prompt>
       </Step>
 
       <div className="mt-6 p-5 rounded-xl border border-white/10 bg-white/3">
         <p className="text-sm font-semibold text-white mb-2">Reflexão</p>
         <p className="text-sm text-white/50 leading-relaxed">
-          O CLAUDE.md transforma um assistente genérico em um colaborador que entende
+          O arquivo de contexto transforma um assistente genérico em um colaborador que entende
           o seu negócio. Nos próximos exercícios, vamos continuar usando esse contexto
           para produzir outputs cada vez mais específicos e úteis.
         </p>

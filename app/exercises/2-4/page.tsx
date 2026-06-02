@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile, LLMTabs } from "../../components/ExerciseComponents";
 
 export default function Exercise24() {
   return (
@@ -27,11 +27,8 @@ export default function Exercise24() {
           mac="mkdir ~/ai-builder-camp/ex-2-4 && cd ~/ai-builder-camp/ex-2-4"
           windows="mkdir $HOME\ai-builder-camp\ex-2-4; cd $HOME\ai-builder-camp\ex-2-4"
         />
-        <OSTabs
-          mac="cp ~/ai-builder-camp/ex-1-2/CLAUDE.md ."
-          windows="copy $HOME\ai-builder-camp\ex-1-2\CLAUDE.md ."
-        />
-        <Command>claude</Command>
+        <CopyContextFile />
+        <AgentCommand />
         <p className="mt-3">Primeiro, vamos definir o que um briefing excelente contém:</p>
         <Prompt>{`Vou criar um briefing semanal executivo. Me ajude a definir a estrutura ideal.
 
@@ -67,27 +64,35 @@ Depois vamos usar essa estrutura para criar o comando /briefing.`}</Prompt>
         </Tip>
       </Step>
 
-      <Step n={3} title="Crie o comando /briefing">
-        <OSTabs
-          mac="mkdir -p .claude/commands"
-          windows="mkdir .claude\commands"
+      <Step n={3} title="Crie o comando de briefing">
+        <LLMTabs
+          claude={<>
+            <OSTabs mac="mkdir -p .claude/commands" windows="mkdir .claude\commands" />
+            <Prompt>{`Crie o arquivo .claude/commands/briefing.md com as instruções para o comando /briefing.\n\nO comando deve:\n1. Ler todos os arquivos dentro da pasta semana-atual/\n2. Sintetizar as informações usando a estrutura que definimos\n3. Identificar automaticamente: o que avançou, o que está travado, o que precisa de decisão minha\n4. Calcular o "estado da empresa" nessa semana: Verde (no caminho), Amarelo (atenção), Vermelho (problema)\n5. Terminar com 3 decisões que preciso tomar nesta semana, ordenadas por urgência\n\nOutput: arquivo briefing-AAAA-MM-DD.md com a data de hoje`}</Prompt>
+          </>}
+          openai={<>
+            <p>O Codex CLI não tem <code>/commands</code>. Adicione as instruções do briefing no <code>AGENTS.md</code> e dispare com um prompt direto:</p>
+            <Prompt>{`Adicione ao AGENTS.md uma seção "## Briefing Semanal" com as instruções completas: ler pasta semana-atual/, sintetizar, identificar o que avançou/travou/precisa de decisão, calcular estado Verde/Amarelo/Vermelho e listar 3 decisões da semana. Output: briefing-AAAA-MM-DD.md.`}</Prompt>
+          </>}
+          gemini={<>
+            <p>O Gemini CLI não tem <code>/commands</code>. Adicione as instruções do briefing no <code>GEMINI.md</code> e dispare com um prompt direto:</p>
+            <Prompt>{`Adicione ao GEMINI.md uma seção "## Briefing Semanal" com as instruções completas: ler pasta semana-atual/, sintetizar, identificar o que avançou/travou/precisa de decisão, calcular estado Verde/Amarelo/Vermelho e listar 3 decisões da semana. Output: briefing-AAAA-MM-DD.md.`}</Prompt>
+          </>}
         />
-        <Prompt>{`Crie o arquivo .claude/commands/briefing.md com as instruções para o comando /briefing.
-
-O comando deve:
-1. Ler todos os arquivos dentro da pasta semana-atual/
-2. Sintetizar as informações usando a estrutura que definimos
-3. Identificar automaticamente: o que avançou, o que está travado, o que precisa de decisão minha
-4. Calcular o "estado da empresa" nessa semana: Verde (no caminho), Amarelo (atenção), Vermelho (problema)
-5. Terminar com 3 decisões que preciso tomar nesta semana, ordenadas por urgência
-
-Output: arquivo briefing-AAAA-MM-DD.md com a data de hoje`}</Prompt>
       </Step>
 
       <Step n={4} title="Execute o briefing">
-        <p>Feche e reabra o Claude Code para carregar o novo comando:</p>
-        <Command>claude</Command>
-        <Prompt>{`/briefing`}</Prompt>
+        <LLMTabs
+          claude={<p>Feche e reabra o Claude Code para carregar o novo comando:</p>}
+          openai={<p>Abra uma nova sessão do Codex:</p>}
+          gemini={<p>Abra uma nova sessão do Gemini:</p>}
+        />
+        <AgentCommand />
+        <LLMTabs
+          claude={<Prompt>{`/briefing`}</Prompt>}
+          openai={<Prompt>{`Execute o briefing semanal conforme as instruções no AGENTS.md. Leia todos os arquivos de semana-atual/ e gere o relatório completo.`}</Prompt>}
+          gemini={<Prompt>{`Execute o briefing semanal conforme as instruções no GEMINI.md. Leia todos os arquivos de semana-atual/ e gere o relatório completo.`}</Prompt>}
+        />
         <p className="mt-3">
           O agente vai ler todos os arquivos, sintetizar e gerar o briefing formatado.
           Abra o arquivo gerado e avalie:

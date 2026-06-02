@@ -55,7 +55,7 @@ export function Prompt({ children }: { children: string }) {
       >
         <div className="flex items-center gap-2 text-xs" style={{ color: "#64687a" }}>
           <Terminal size={12} />
-          <span>Prompt para o Claude Code</span>
+          <span>Prompt para o agente</span>
         </div>
         <button
           onClick={copy}
@@ -237,5 +237,143 @@ export function ExerciseHeader({
       <p className="text-base md:text-lg leading-relaxed" style={{ color: "#cfd2d8" }}>{description}</p>
       <div className="mt-6" style={{ borderTop: `1px solid ${BORDER}` }} />
     </div>
+  );
+}
+
+// ─────────────────────────────────────────────
+// LLM System
+// ─────────────────────────────────────────────
+
+export const LLM_KEY = "preferred-llm";
+export type LLMChoice = "claude" | "openai" | "gemini";
+
+export const LLM_CONFIG: Record<LLMChoice, {
+  name: string; vendor: string; command: string;
+  contextFile: string; apiKeyVar: string;
+  installPkg: string; accountUrl: string; accountLabel: string;
+  pricingNote: string; color: string; bg: string;
+}> = {
+  claude: {
+    name: "Claude", vendor: "Anthropic", command: "claude",
+    contextFile: "CLAUDE.md", apiKeyVar: "ANTHROPIC_API_KEY",
+    installPkg: "@anthropic-ai/claude-code",
+    accountUrl: "https://console.anthropic.com", accountLabel: "console.anthropic.com",
+    pricingNote: "Pague pelo uso — o curso completo custa aproximadamente $5–10.",
+    color: "#d1a476", bg: "rgba(209,164,118,0.1)",
+  },
+  openai: {
+    name: "ChatGPT", vendor: "OpenAI", command: "codex",
+    contextFile: "AGENTS.md", apiKeyVar: "OPENAI_API_KEY",
+    installPkg: "@openai/codex",
+    accountUrl: "https://platform.openai.com", accountLabel: "platform.openai.com",
+    pricingNote: "Pague pelo uso — custo similar ao Claude para o curso completo.",
+    color: "#10a37f", bg: "rgba(16,163,127,0.1)",
+  },
+  gemini: {
+    name: "Gemini", vendor: "Google", command: "gemini",
+    contextFile: "GEMINI.md", apiKeyVar: "GEMINI_API_KEY",
+    installPkg: "@google/gemini-cli",
+    accountUrl: "https://aistudio.google.com", accountLabel: "aistudio.google.com",
+    pricingNote: "O Google AI Studio tem um plano gratuito generoso — suficiente para o curso inteiro.",
+    color: "#8ab4f8", bg: "rgba(138,180,248,0.1)",
+  },
+};
+
+function useLLMPreference(): [LLMChoice, (v: LLMChoice) => void, boolean] {
+  const [llm, setLlm] = useState<LLMChoice>("claude");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem(LLM_KEY);
+    if (saved === "claude" || saved === "openai" || saved === "gemini") setLlm(saved);
+    setMounted(true);
+    const handler = (e: StorageEvent) => {
+      if (e.key === LLM_KEY && (e.newValue === "claude" || e.newValue === "openai" || e.newValue === "gemini"))
+        setLlm(e.newValue);
+    };
+    window.addEventListener("storage", handler);
+    return () => window.removeEventListener("storage", handler);
+  }, []);
+
+  const select = (val: LLMChoice) => {
+    setLlm(val);
+    localStorage.setItem(LLM_KEY, val);
+    window.dispatchEvent(new StorageEvent("storage", { key: LLM_KEY, newValue: val }));
+  };
+
+  return [llm, select, mounted];
+}
+
+export function LLMSelector() {
+  const [llm, select, mounted] = useLLMPreference();
+  if (!mounted) return null;
+
+  return (
+    <div className="mb-8 p-5 rounded-xl" style={{ border: `1px solid ${BORDER}`, background: "rgba(255,255,255,0.02)" }}>
+      <p className="text-sm font-semibold text-white mb-1">Qual ferramenta de IA você vai usar?</p>
+      <p className="text-xs mb-4" style={{ color: "#64687a" }}>
+        Os comandos dos exercícios vão se adaptar à sua escolha.
+      </p>
+      <div className="flex gap-3 flex-wrap">
+        {(["claude", "openai", "gemini"] as LLMChoice[]).map((key) => {
+          const cfg = LLM_CONFIG[key];
+          const active = llm === key;
+          return (
+            <button
+              key={key}
+              onClick={() => select(key)}
+              className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all"
+              style={active
+                ? { background: cfg.bg, border: `1px solid ${cfg.color}`, color: cfg.color }
+                : { background: "transparent", border: `1px solid ${BORDER}`, color: "#64687a" }
+              }
+            >
+              <span className="w-2 h-2 rounded-full shrink-0" style={{ background: active ? cfg.color : BORDER }} />
+              {cfg.vendor}
+            </button>
+          );
+        })}
+      </div>
+      <p className="text-xs mt-3" style={{ color: "#64687a" }}>
+        ✓ Usando <strong style={{ color: "#cfd2d8" }}>{LLM_CONFIG[llm].name}</strong> — comando:{" "}
+        <code style={{ color: LLM_CONFIG[llm].color }}>{LLM_CONFIG[llm].command}</code>.
+        Você pode mudar a qualquer momento.
+      </p>
+    </div>
+  );
+}
+
+/** Renders the CLI command (claude / codex / gemini) based on preference */
+export function AgentCommand() {
+  const [llm, , mounted] = useLLMPreference();
+  return <Command>{mounted ? LLM_CONFIG[llm].command : "claude"}</Command>;
+}
+
+/** Shows different content per selected LLM */
+export function LLMTabs({
+  claude, openai, gemini,
+}: {
+  claude: React.ReactNode; openai: React.ReactNode; gemini: React.ReactNode;
+}) {
+  const [llm, , mounted] = useLLMPreference();
+  if (!mounted) return <>{claude}</>;
+  return <>{llm === "claude" ? claude : llm === "openai" ? openai : gemini}</>;
+}
+
+/** Inline: renders the context file name (CLAUDE.md / AGENTS.md / GEMINI.md) */
+export function ContextFileName() {
+  const [llm, , mounted] = useLLMPreference();
+  return <code>{mounted ? LLM_CONFIG[llm].contextFile : "CLAUDE.md"}</code>;
+}
+
+/** OSTabs command for copying the context file from ex-1-2 */
+export function CopyContextFile({ from = "ex-1-2" }: { from?: string }) {
+  const [llm, , mounted] = useLLMPreference();
+  const file = mounted ? LLM_CONFIG[llm].contextFile : "CLAUDE.md";
+  return (
+    <OSTabs
+      mac={`cp ~/ai-builder-camp/${from}/${file} .`}
+      windows={`copy $HOME\\ai-builder-camp\\${from}\\${file} .`}
+    />
   );
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile } from "../../components/ExerciseComponents";
 
 export default function Exercise5() {
   return (
@@ -27,10 +27,7 @@ export default function Exercise5() {
           mac="mkdir ~/ai-builder-camp/ex-5 && cd ~/ai-builder-camp/ex-5"
           windows="mkdir $HOME\ai-builder-camp\ex-5; cd $HOME\ai-builder-camp\ex-5"
         />
-        <OSTabs
-          mac="cp ~/ai-builder-camp/ex-1-2/CLAUDE.md ."
-          windows="copy $HOME\ai-builder-camp\ex-1-2\CLAUDE.md ."
-        />
+        <CopyContextFile />
         <p className="mt-3">
           Escolha um alvo para a due diligence. Pode ser:
           um potencial parceiro, um fornecedor crítico, uma empresa para aquisição,
@@ -70,7 +67,7 @@ Para seguir em frente, precisamos de:
       </Step>
 
       <Step n={2} title="Inicie o research loop">
-        <Command>claude</Command>
+        <AgentCommand />
         <Prompt>{`Vamos executar um research loop de due diligence sobre o alvo descrito em alvo-dd.md.
 
 Siga este processo iterativo:

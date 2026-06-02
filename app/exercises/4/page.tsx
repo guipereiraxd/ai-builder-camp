@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile } from "../../components/ExerciseComponents";
 
 export default function Exercise4() {
   return (
@@ -27,10 +27,7 @@ export default function Exercise4() {
           mac="mkdir ~/ai-builder-camp/ex-4 && cd ~/ai-builder-camp/ex-4"
           windows="mkdir $HOME\ai-builder-camp\ex-4; cd $HOME\ai-builder-camp\ex-4"
         />
-        <OSTabs
-          mac="cp ~/ai-builder-camp/ex-1-2/CLAUDE.md ."
-          windows="copy $HOME\ai-builder-camp\ex-1-2\CLAUDE.md ."
-        />
+        <CopyContextFile />
         <p className="mt-3">
           Vamos criar um pipeline para o principal canal de conteúdo da maioria das empresas: LinkedIn.
           Crie o arquivo <code>pipeline-config.md</code>:
@@ -72,7 +69,7 @@ Post tipo C — Bastidores/cultura
       </Step>
 
       <Step n={2} title="Construa o pipeline com checkpoint de aprovação">
-        <Command>claude</Command>
+        <AgentCommand />
         <Prompt>{`Vou te dar os inputs da semana. Você vai executar o pipeline de conteúdo em etapas, parando para minha aprovação antes de avançar.
 
 INPUTS DESTA SEMANA:

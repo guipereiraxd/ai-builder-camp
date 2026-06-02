@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile } from "../../components/ExerciseComponents";
 
 const SAMPLE_CSV = `data,produto,regiao,vendedor,valor,status
 2025-07-01,Plano Pro,Sul,Maria,4800,fechado
@@ -53,7 +53,7 @@ export default function Exercise23() {
       </Step>
 
       <Step n={2} title="Abra o Claude Code e analise os dados">
-        <Command>claude</Command>
+        <AgentCommand />
         <p className="mt-3">Primeiro, peça ao agente para entender os dados:</p>
         <Prompt>{`Leia o arquivo dados.csv e me dê:
 1. Um resumo do que temos: quantas linhas, quais colunas, que período cobre

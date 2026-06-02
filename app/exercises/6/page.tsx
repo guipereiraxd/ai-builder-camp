@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader } from "../../components/ExerciseComponents";
+import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader, AgentCommand, CopyContextFile, LLMTabs } from "../../components/ExerciseComponents";
 
 const SETTINGS_MAC = `{
   "mcpServers": {
@@ -35,6 +35,49 @@ export default function Exercise6() {
         title="Busca em tempo real com Brave Search"
         duration="20 min"
         description="Até agora, o Claude trabalhava só com o que você colava e com o que ele já sabia — dados de treinamento de meses atrás. Neste exercício você conecta o agente à internet e ele passa a pesquisar agora, em tempo real."
+      />
+
+      {/* LLM-specific note for non-Claude tracks */}
+      <LLMTabs
+        claude={null}
+        openai={
+          <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid #2a3a4a", background: "rgba(16,163,127,0.05)" }}>
+            <p className="text-sm font-semibold text-white mb-2">⚠️ Ato III usa tecnologia exclusiva do Claude Code</p>
+            <p className="text-sm leading-relaxed mb-3" style={{ color: "#cfd2d8" }}>
+              Os exercícios 6, 7 e 8 ensinam o sistema de <strong className="text-white">MCP (Model Context Protocol)</strong> — uma forma de conectar o Claude Code a ferramentas externas como busca web, Google Drive e Slack. Esse sistema é específico do Claude Code e não existe no OpenAI Codex CLI.
+            </p>
+            <p className="text-sm leading-relaxed mb-3" style={{ color: "#cfd2d8" }}>
+              O equivalente no ecossistema OpenAI são as <strong className="text-white">Function Calling / Tools</strong> da API e os <strong className="text-white">Actions do GPT</strong>. São abordagens diferentes que requerem código ou configuração via plataforma.
+            </p>
+            <a href="https://platform.openai.com/docs/guides/function-calling" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg"
+              style={{ background: "rgba(16,163,127,0.15)", color: "#10a37f", border: "1px solid rgba(16,163,127,0.3)" }}>
+              Ver documentação de Tools (OpenAI) →
+            </a>
+            <p className="text-sm mt-4" style={{ color: "#64687a" }}>
+              Você pode acompanhar o exercício para entender o conceito de como conectar LLMs a ferramentas externas — a lógica é a mesma, mesmo que a implementação seja diferente.
+            </p>
+          </div>
+        }
+        gemini={
+          <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid #2a3040", background: "rgba(138,180,248,0.05)" }}>
+            <p className="text-sm font-semibold text-white mb-2">⚠️ Ato III usa tecnologia exclusiva do Claude Code</p>
+            <p className="text-sm leading-relaxed mb-3" style={{ color: "#cfd2d8" }}>
+              Os exercícios 6, 7 e 8 ensinam o sistema de <strong className="text-white">MCP (Model Context Protocol)</strong> — uma forma de conectar o Claude Code a ferramentas externas como busca web, Google Drive e Slack. Esse sistema é específico do Claude Code e não existe no Gemini CLI.
+            </p>
+            <p className="text-sm leading-relaxed mb-3" style={{ color: "#cfd2d8" }}>
+              O equivalente no ecossistema Google são as <strong className="text-white">Gemini Extensions</strong> e a <strong className="text-white">Function Calling da Gemini API</strong>. São abordagens diferentes disponíveis via Google AI Studio ou API direta.
+            </p>
+            <a href="https://ai.google.dev/gemini-api/docs/function-calling" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg"
+              style={{ background: "rgba(138,180,248,0.15)", color: "#8ab4f8", border: "1px solid rgba(138,180,248,0.3)" }}>
+              Ver documentação de Function Calling (Gemini) →
+            </a>
+            <p className="text-sm mt-4" style={{ color: "#64687a" }}>
+              Você pode acompanhar o exercício para entender o conceito de como conectar LLMs a ferramentas externas — a lógica é a mesma, mesmo que a implementação seja diferente.
+            </p>
+          </div>
+        }
       />
 
       {/* MCP explainer */}
@@ -168,7 +211,7 @@ export default function Exercise6() {
           mac="mkdir ~/ai-builder-camp/ex-6 && cd ~/ai-builder-camp/ex-6"
           windows="mkdir $HOME\ai-builder-camp\ex-6; cd $HOME\ai-builder-camp\ex-6"
         />
-        <Command>claude</Command>
+        <AgentCommand />
         <p className="mt-2">Confirme que o MCP foi reconhecido:</p>
         <Prompt>{`Quais ferramentas você tem disponíveis agora? Liste os MCPs conectados.`}</Prompt>
         <p className="mt-2">
@@ -202,7 +245,7 @@ Para cada informação, cite a fonte e a data aproximada. Ao final, diga qual é
 
       <Step n={6} title="Vá além: pesquisa contínua">
         <p>Com acesso à internet, o Claude pode monitorar qualquer coisa em tempo real. Experimente:</p>
-        <Prompt>{`Pesquise notícias do setor de [SEU SETOR] dos últimos 7 dias. Filtre apenas o que é relevante para uma empresa do nosso perfil (use o CLAUDE.md como referência). Para cada notícia relevante, diga: o que aconteceu, por que importa para nós, e se exige alguma ação nossa.`}</Prompt>
+        <Prompt>{`Pesquise notícias do setor de [SEU SETOR] dos últimos 7 dias. Filtre apenas o que é relevante para uma empresa do nosso perfil (use o arquivo de contexto da empresa como referência). Para cada notícia relevante, diga: o que aconteceu, por que importa para nós, e se exige alguma ação nossa.`}</Prompt>
       </Step>
 
       <div className="mt-6 p-5 rounded-xl" style={{ border: "1px solid #33363e", background: "rgba(255,255,255,0.02)" }}>
