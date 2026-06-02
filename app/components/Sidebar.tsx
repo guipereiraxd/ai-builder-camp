@@ -27,6 +27,7 @@ const nav = [
   { label: "8 Agente no Slack", href: "/exercises/8", duration: "35 min" },
   { type: "divider", label: "Ato IV — Continue Praticando", gold: true },
   { label: "M1 Automatize uma reunião", href: "/exercises/m1", duration: "15 min", mission: true },
+  { label: "M2 Gerador de propostas", href: "/exercises/m2", duration: "25 min", mission: true },
 ];
 
 function LLMSwitcher() {
