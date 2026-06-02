@@ -37,6 +37,12 @@
   --code-text:   #1e293b;
 }
 
+/* ─── Logo inversion in light mode ───────────────────────────── */
+[data-theme="light"] img[alt="Alun Business"],
+[data-theme="light"] img[alt="Alun"] {
+  filter: invert(1);
+}
+
 /* ─── Tailwind white-opacity overrides for light mode ─────────── */
 [data-theme="light"] .text-white    { color: var(--text-1); }
 [data-theme="light"] .text-white\/80 { color: color-mix(in srgb, var(--text-1) 80%, transparent); }
