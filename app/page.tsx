@@ -14,10 +14,9 @@ const deliverables = [
 ];
 
 const personas = [
-  { icon: "◎", label: "CEOs e fundadores" },
-  { icon: "◎", label: "Gestores e heads" },
-  { icon: "◎", label: "Analistas e consultores" },
-  { icon: "◎", label: "Empreendedores" },
+  { icon: "◎", label: "Líderes de área" },
+  { icon: "◎", label: "Executivos" },
+  { icon: "◎", label: "Founders" },
 ];
 
 const acts = [
@@ -102,10 +101,14 @@ export default function Home() {
             <span style={{ color: "#d1a476" }}>para gerar resultado e entrega direto ao ponto.</span>
           </h1>
 
-          <p className="text-base leading-relaxed mb-6" style={{ color: "var(--text-3)" }}>
-            Um curso prático. Faça primeiro, aprenda no caminho. Você cria produtos,
-            automatiza tarefas e constrói agentes autônomos — tudo sem escrever código.
-            Funciona com <strong className="text-white/70">Claude, OpenAI ou Gemini</strong>. Em até 5 horas.
+          <p className="text-base leading-relaxed mb-2" style={{ color: "var(--text-2)" }}>
+            Para quem lidera uma empresa ou área e precisa de alavancagem real —
+            não de mais teoria sobre IA. Você sai com ferramentas funcionando,
+            não com slides sobre o futuro.
+          </p>
+          <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--text-4)" }}>
+            Funciona com <strong style={{ color: "var(--text-3)" }}>Claude, OpenAI ou Gemini</strong>.
+            Em até 5 horas, sem escrever código.
           </p>
 
           {/* Social proof bar */}
