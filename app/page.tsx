@@ -1,156 +1,230 @@
-import Link from "next/link";
-import AppShell from "./components/AppShell";
+"use client";
 
-const exercises = [
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { collection, addDoc } from "firebase/firestore";
+import { db, REGISTERED_KEY } from "../lib/firebase";
+
+const acts = [
   {
-    act: "Ato I",
-    label: "Ato I — Sinta o Que É Possível",
-    items: [
-      { n: "1.1", title: "Seu primeiro produto digital", href: "/exercises/1-1", duration: "10 min" },
-      { n: "1.2", title: "Com contexto da sua empresa", href: "/exercises/1-2", duration: "20 min" },
-      { n: "2.1", title: "Análise de concorrentes ao vivo", href: "/exercises/2-1", duration: "15 min" },
-      { n: "2.2", title: "Email com tom da empresa", href: "/exercises/2-2", duration: "20 min" },
-      { n: "2.3", title: "Dashboard executivo", href: "/exercises/2-3", duration: "20 min" },
-      { n: "2.4", title: "Briefing semanal automatizado", href: "/exercises/2-4", duration: "20 min" },
-    ],
+    n: "Ato I",
+    title: "Sinta o Que É Possível",
+    description: "Do zero a resultados reais — sem código, sem setup complexo.",
+    time: "~1h45",
   },
   {
-    act: "Ato II",
-    label: "Ato II — Construa Seu Primeiro Agente",
-    items: [
-      { n: "3", title: "Agente de monitoramento de mercado", href: "/exercises/3", duration: "30 min" },
-      { n: "4", title: "Pipeline de conteúdo com revisão humana", href: "/exercises/4", duration: "35 min" },
-      { n: "5", title: "Research loop para due diligence", href: "/exercises/5", duration: "45 min" },
-    ],
+    n: "Ato II",
+    title: "Construa Seu Primeiro Agente",
+    description: "O agente trabalha de forma autônoma. Você revisa e decide.",
+    time: "~1h50",
   },
   {
-    act: "Ato III",
-    label: "Ato III — Conecte ao Mundo Real",
-    items: [
-      { n: "6", title: "Busca em tempo real com Brave Search", href: "/exercises/6", duration: "20 min" },
-      { n: "7", title: "Claude no Google Drive", href: "/exercises/7", duration: "30 min" },
-      { n: "8", title: "Claude no Slack", href: "/exercises/8", duration: "35 min" },
-    ],
+    n: "Ato III",
+    title: "Conecte ao Mundo Real",
+    description: "Claude acessa a web, o Drive e o Slack por conta própria.",
+    time: "~1h25",
   },
 ];
 
 export default function Home() {
+  const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", company: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  useEffect(() => {
+    setMounted(true);
+    if (localStorage.getItem(REGISTERED_KEY) === "true") {
+      router.push("/exercises");
+    }
+  }, [router]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.email.trim() || !form.company.trim()) return;
+
+    setStatus("loading");
+    setErrorMsg("");
+
+    try {
+      await addDoc(collection(db, "registrations"), {
+        name: form.name.trim(),
+        email: form.email.trim().toLowerCase(),
+        company: form.company.trim(),
+        registeredAt: new Date().toISOString(),
+      });
+      localStorage.setItem(REGISTERED_KEY, "true");
+      localStorage.setItem("user_name", form.name.trim());
+      setStatus("success");
+      setTimeout(() => router.push("/exercises"), 1200);
+    } catch (err) {
+      console.error(err);
+      setErrorMsg("Algo deu errado. Tente novamente.");
+      setStatus("error");
+    }
+  };
+
+  if (!mounted) return null;
+
   return (
-    <AppShell>
-      {/* Hero */}
-      <div className="mb-12">
+    <div className="min-h-screen" style={{ background: "#0f0f0f", color: "#cfd2d8" }}>
+      {/* Top bar */}
+      <div className="flex items-center justify-between px-6 py-5 max-w-5xl mx-auto">
+        <div className="flex items-center gap-3">
+          <img src="/ai-builder-camp/logo-alun-white.svg" alt="Alun" className="h-6 w-auto" />
+          <span className="text-sm font-semibold" style={{ color: "#d1a476" }}>AI Builder Camp</span>
+        </div>
         <div
-          className="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full mb-6"
+          className="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full"
           style={{ color: "#4b6afc", background: "rgba(75,106,252,0.1)" }}
         >
-          <span
-            className="w-1.5 h-1.5 rounded-full animate-pulse"
-            style={{ background: "#4b6afc" }}
-          />
-          Curso prático · 12 exercícios · ~5 horas
-        </div>
-
-        <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
-          IA na prática,<br />
-          <span style={{ color: "#d1a476" }}>para quem quer transformar ideia em entrega.</span>
-        </h1>
-
-        <p className="text-base md:text-lg leading-relaxed max-w-2xl mb-8" style={{ color: "#cfd2d8" }}>
-          Este curso é para quem quer experimentar IA com a mão na massa e sair com algo construído.
-          Você vai criar soluções reais, testar possibilidades, automatizar tarefas e transformar
-          problemas do dia a dia em entregas aplicáveis para a operação.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-          <Link
-            href="/setup"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-90"
-            style={{ background: "#4b6afc", color: "#ffffff" }}
-          >
-            Começar agora →
-          </Link>
-          <Link
-            href="/exercises"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium rounded-lg transition-colors hover:text-white"
-            style={{ background: "rgba(255,255,255,0.04)", border: "1px solid #33363e", color: "#cfd2d8" }}
-          >
-            Ver exercícios
-          </Link>
+          <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#4b6afc" }} />
+          12 exercícios · ~5 horas
         </div>
       </div>
 
-      {/* Stats */}
-      <div
-        className="grid grid-cols-3 gap-2 md:gap-4 mb-10 md:mb-12 p-4 md:p-5 rounded-xl"
-        style={{ background: "rgba(255,255,255,0.02)", border: "1px solid #33363e" }}
-      >
-        {[
-          { value: "12", label: "exercícios" },
-          { value: "3", label: "atos" },
-          { value: "~5h", label: "de conteúdo" },
-        ].map((s) => (
-          <div key={s.label}>
-            <p className="text-2xl font-bold text-white">{s.value}</p>
-            <p className="text-sm mt-0.5" style={{ color: "#64687a" }}>{s.label}</p>
-          </div>
-        ))}
-      </div>
+      {/* Hero + Form */}
+      <div className="max-w-5xl mx-auto px-6 pt-12 pb-24 grid md:grid-cols-2 gap-16 items-start">
 
-      {/* Exercise list */}
-      {exercises.map((group) => (
-        <div key={group.act} className="mb-10">
-          <div className="flex items-center gap-3 mb-4">
-            <h2
-              className="text-xs font-semibold uppercase tracking-widest shrink-0"
-              style={{ color: "#64687a" }}
-            >
-              {group.label}
-            </h2>
-            <div className="flex-1 h-px" style={{ background: "#33363e" }} />
+        {/* Left — copy */}
+        <div>
+          <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
+            IA na prática,<br />
+            <span style={{ color: "#d1a476" }}>para quem quer transformar ideia em entrega.</span>
+          </h1>
+          <p className="text-base leading-relaxed mb-8" style={{ color: "#8b8f9a" }}>
+            Curso prático com Claude Code. Você cria produtos, automatiza tarefas e
+            constrói agentes autônomos — tudo sem escrever código. Em ~5 horas.
+          </p>
+
+          {/* Attributes */}
+          <div className="space-y-3 mb-10">
+            {[
+              "12 exercícios com prompts prontos para usar",
+              "3 atos progressivos — do básico ao agente com MCPs",
+              "Comandos para Mac e Windows em cada passo",
+              "Resultados reais no primeiro exercício",
+            ].map((label) => (
+              <div key={label} className="flex items-start gap-3">
+                <span className="text-sm mt-0.5 shrink-0" style={{ color: "#4b6afc" }}>◈</span>
+                <span className="text-sm" style={{ color: "#cfd2d8" }}>{label}</span>
+              </div>
+            ))}
           </div>
+
+          {/* Acts preview */}
           <div className="space-y-2">
-            {group.items.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="exercise-card flex items-center justify-between p-4 rounded-lg"
+            {acts.map((act) => (
+              <div
+                key={act.n}
+                className="flex items-start gap-4 p-3 rounded-lg"
+                style={{ border: "1px solid #1e2026", background: "rgba(255,255,255,0.015)" }}
               >
-                <div className="flex items-center gap-4">
-                  <span className="text-sm font-mono w-6" style={{ color: "#33363e" }}>{item.n}</span>
-                  <span className="exercise-card-title text-sm font-medium" style={{ color: "#cfd2d8" }}>
-                    {item.title}
-                  </span>
+                <span className="text-xs font-mono pt-0.5 shrink-0 w-12" style={{ color: "#33363e" }}>{act.n}</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.7)" }}>{act.title}</p>
+                  <p className="text-xs mt-0.5" style={{ color: "#64687a" }}>{act.description}</p>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-xs" style={{ color: "#64687a" }}>{item.duration}</span>
-                  <span className="exercise-card-arrow" style={{ color: "#33363e" }}>→</span>
-                </div>
-              </Link>
+                <span className="text-xs shrink-0 pt-0.5" style={{ color: "#33363e" }}>{act.time}</span>
+              </div>
             ))}
           </div>
         </div>
-      ))}
 
-      {/* Pre-requisites */}
-      <div
-        className="mt-12 p-5 rounded-xl"
-        style={{ border: "1px solid #33363e", background: "rgba(255,255,255,0.02)" }}
-      >
-        <h3 className="text-sm font-semibold text-white mb-2">O que você vai precisar</h3>
-        <ul className="text-sm space-y-1.5" style={{ color: "#64687a" }}>
-          <li>· Node.js instalado na máquina</li>
-          <li>· Uma conta na Anthropic (claude.ai)</li>
-          <li>· Claude Code CLI configurado</li>
-          <li>· Terminal aberto e vontade de experimentar</li>
-        </ul>
-        <Link
-          href="/setup"
-          className="inline-flex mt-4 text-sm transition-colors"
-          style={{ color: "#4b6afc" }}
-        >
-          Ver guia de instalação →
-        </Link>
+        {/* Right — form */}
+        <div className="md:sticky md:top-10">
+          <div
+            className="p-6 rounded-2xl"
+            style={{ border: "1px solid #2a2d35", background: "rgba(255,255,255,0.03)" }}
+          >
+            {status === "success" ? (
+              <div className="py-10 text-center">
+                <div className="text-4xl mb-4" style={{ color: "#4b6afc" }}>✓</div>
+                <p className="text-white font-semibold mb-1">Acesso liberado!</p>
+                <p className="text-sm" style={{ color: "#64687a" }}>Redirecionando para os exercícios…</p>
+              </div>
+            ) : (
+              <>
+                <p className="text-white font-semibold mb-1">Acesse o curso gratuitamente</p>
+                <p className="text-sm mb-6" style={{ color: "#64687a" }}>
+                  Preencha seus dados para começar agora.
+                </p>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: "#8b8f9a" }}>
+                      Nome completo
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Seu nome"
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-lg text-sm text-white placeholder-white/20 outline-none"
+                      style={{ background: "rgba(255,255,255,0.04)", border: "1px solid #33363e" }}
+                      onFocus={(e) => (e.target.style.borderColor = "#4b6afc")}
+                      onBlur={(e) => (e.target.style.borderColor = "#33363e")}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: "#8b8f9a" }}>
+                      E-mail profissional
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="voce@empresa.com"
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-lg text-sm text-white placeholder-white/20 outline-none"
+                      style={{ background: "rgba(255,255,255,0.04)", border: "1px solid #33363e" }}
+                      onFocus={(e) => (e.target.style.borderColor = "#4b6afc")}
+                      onBlur={(e) => (e.target.style.borderColor = "#33363e")}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: "#8b8f9a" }}>
+                      Empresa / Organização
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Nome da empresa"
+                      value={form.company}
+                      onChange={(e) => setForm({ ...form, company: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-lg text-sm text-white placeholder-white/20 outline-none"
+                      style={{ background: "rgba(255,255,255,0.04)", border: "1px solid #33363e" }}
+                      onFocus={(e) => (e.target.style.borderColor = "#4b6afc")}
+                      onBlur={(e) => (e.target.style.borderColor = "#33363e")}
+                    />
+                  </div>
+
+                  {errorMsg && (
+                    <p className="text-xs" style={{ color: "#f87171" }}>{errorMsg}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={status === "loading"}
+                    className="w-full py-3 rounded-lg text-sm font-semibold transition-opacity hover:opacity-90 disabled:opacity-50"
+                    style={{ background: "#4b6afc", color: "#ffffff" }}
+                  >
+                    {status === "loading" ? "Enviando…" : "Acessar o curso →"}
+                  </button>
+                </form>
+
+                <p className="text-xs text-center mt-4" style={{ color: "#33363e" }}>
+                  Gratuito. Sem spam.
+                </p>
+              </>
+            )}
+          </div>
+        </div>
       </div>
-    </AppShell>
+    </div>
   );
 }

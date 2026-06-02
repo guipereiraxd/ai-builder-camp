@@ -1,18 +1,34 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Sidebar from "./Sidebar";
 import MobileHeader from "./MobileHeader";
+import { REGISTERED_KEY } from "../../lib/firebase";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [authorized, setAuthorized] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   // Close drawer on route change
   useEffect(() => {
     setDrawerOpen(false);
   }, [pathname]);
+
+  // Registration gate for exercise routes
+  useEffect(() => {
+    const isExercise = pathname.startsWith("/exercises");
+    const registered = localStorage.getItem(REGISTERED_KEY) === "true";
+    if (isExercise && !registered) {
+      router.push("/");
+    } else {
+      setAuthorized(true);
+    }
+  }, [pathname, router]);
+
+  if (!authorized) return null;
 
   return (
     <div className="flex min-h-screen" style={{ background: "#0f0f0f" }}>
