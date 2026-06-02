@@ -52,7 +52,7 @@ export default function Exercise23() {
         </Warning>
       </Step>
 
-      <Step n={2} title="Abra o Claude Code e analise os dados">
+      <Step n={2} title="Abra o agente e analise os dados">
         <AgentCommand />
         <p className="mt-3">Primeiro, peça ao agente para entender os dados:</p>
         <Prompt>{`Leia o arquivo dados.csv e me dê:
@@ -82,7 +82,7 @@ Tecnicamente:
 
 Salve tudo em index.html e diga quando terminar.`}</Prompt>
         <Tip>
-          O Claude Code vai criar o arquivo completo. Enquanto ele trabalha,
+          O agente vai criar o arquivo completo. Enquanto ele trabalha,
           observe como ele estrutura o raciocínio: primeiro planeja, depois executa seção por seção.
         </Tip>
       </Step>

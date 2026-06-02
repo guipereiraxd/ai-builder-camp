@@ -77,7 +77,7 @@ Para cada concorrente:
 
 Salve o resultado em relatorio-competitivo.md`}</Prompt>
         <Tip>
-          O Claude Code tem conhecimento até agosto de 2025. Para dados mais recentes,
+          O agente tem conhecimento até a data de corte do modelo. Para dados mais recentes,
           você pode colar manualmente informações de sites, LinkedIn ou press releases
           e pedir para ele incorporar na análise.
         </Tip>
@@ -86,7 +86,7 @@ Salve o resultado em relatorio-competitivo.md`}</Prompt>
       <Step n={4} title="Adicione inteligência de mercado externa">
         <p>
           Abra o site de um concorrente, copie a página de preços ou a homepage
-          e cole no Claude Code para enriquecer a análise:
+          e cole no agente para enriquecer a análise:
         </p>
         <Prompt>{`Acabei de visitar o site do [Concorrente X] e copiei as informações abaixo.
 Incorpore esses dados no relatório que já criamos, atualizando as seções relevantes:
@@ -111,7 +111,7 @@ Salve como resumo-executivo.md`}</Prompt>
         <p className="text-sm font-semibold text-white mb-2">Reflexão</p>
         <p className="text-sm text-white/50 leading-relaxed">
           Você acabou de criar um processo de análise competitiva que pode ser repetido mensalmente
-          em minutos. No próximo exercício, vamos usar o Claude Code para automatizar
+          em minutos. No próximo exercício, vamos usar o agente para automatizar
           a comunicação externa — com o tom exato da sua empresa.
         </p>
       </div>

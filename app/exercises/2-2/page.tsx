@@ -16,7 +16,7 @@ export default function Exercise22() {
       <div className="mb-8 p-4 rounded-lg bg-white/3 border border-white/8">
         <p className="text-sm text-white/50 font-medium mb-1">O conceito: slash commands</p>
         <p className="text-sm text-white/70 leading-relaxed">
-          O Claude Code permite criar comandos personalizados com <code>/</code>.
+          O Claude Code permite criar comandos personalizados com <code>/</code> — nas versões OpenAI e Gemini, o equivalente é salvar instruções no arquivo de contexto.
           Um <code>/email</code> pode virar um atalho que já conhece seu tom de voz,
           suas saudações padrão e suas regras de comunicação — sem você precisar
           explicar tudo de novo cada vez.

@@ -23,7 +23,7 @@ export default function Exercise11() {
       </div>
 
       <Step n={1} title="Abra o terminal e crie uma pasta de trabalho">
-        <p>Todo exercício tem sua própria pasta. Isso ajuda o Claude Code a manter o contexto.</p>
+        <p>Todo exercício tem sua própria pasta. Isso ajuda o agente a manter o contexto.</p>
         <OSTabs
           mac="mkdir ~/ai-builder-camp/ex-1-1 && cd ~/ai-builder-camp/ex-1-1"
           windows="mkdir $HOME\ai-builder-camp\ex-1-1; cd $HOME\ai-builder-camp\ex-1-1"
@@ -31,9 +31,9 @@ export default function Exercise11() {
         <AgentCommand />
       </Step>
 
-      <Step n={2} title="Cole este prompt no Claude Code">
+      <Step n={2} title="Cole este prompt no agente">
         <p>
-          Copie o prompt abaixo e cole diretamente na interface do Claude Code
+          Copie o prompt abaixo e cole diretamente na interface do agente
           (sem modificar nada primeiro). Observe o que acontece.
         </p>
         <Prompt>{`Crie uma aplicação web de página única (HTML + CSS + JavaScript, tudo em um único arquivo index.html) que funcione como um Gerador de Atas de Reunião.
@@ -53,14 +53,14 @@ A aplicação deve ter:
 Use um design escuro e profissional. A lógica de extração deve usar a API do Claude via fetch (deixe um comentário claro onde inserir a API key). Coloque um exemplo de notas no placeholder do campo de texto para eu poder testar imediatamente.`}</Prompt>
 
         <Tip>
-          Enquanto o Claude Code trabalha, observe as etapas que ele executa: planejamento,
+          Enquanto o agente trabalha, observe as etapas que ele executa: planejamento,
           criação de arquivo, escrita do código. Você está vendo um agente de IA em ação.
         </Tip>
       </Step>
 
       <Step n={3} title="Abra o arquivo gerado">
         <p>
-          Quando o Claude Code terminar, ele vai ter criado um arquivo <code>index.html</code>.
+          Quando o agente terminar, ele vai ter criado um arquivo <code>index.html</code>.
           Abra-o no navegador:
         </p>
         <OSTabs mac="open index.html" windows="start index.html" />
@@ -86,7 +86,7 @@ próxima reunião semana que vem mesma hora`}
 
       <Step n={5} title="Itere com linguagem natural">
         <p>
-          Volte ao Claude Code (que ainda está aberto) e peça ajustes. Experimente:
+          Volte ao agente (que ainda está aberto) e peça ajustes. Experimente:
         </p>
         <Prompt>{`Adicione um campo para o nome da empresa no topo do formulário, e inclua ele no cabeçalho da ata gerada. Também adicione a opção de exportar a ata como arquivo .txt.`}</Prompt>
         <p className="mt-2">

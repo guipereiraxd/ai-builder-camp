@@ -5,7 +5,7 @@ import { LLMSelector } from "../components/ExerciseComponents";
 const acts = [
   {
     title: "Ato I — Entenda o poder dos Agentes",
-    description: "Exercícios rápidos que produzem resultados reais. Sem código, sem setup complexo. Só você, o Claude Code e um terminal.",
+    description: "Exercícios rápidos que produzem resultados reais. Sem código, sem setup complexo. Só você, o agente de IA e um terminal.",
     totalTime: "~1h45",
     exercises: [
       { n: "1.1", title: "Seu primeiro produto digital", href: "/exercises/1-1", duration: "10 min", description: "Crie uma aplicação web completa com um único prompt." },
@@ -66,7 +66,7 @@ export default function ExercisesPage() {
         <div className="flex-1">
           <p className="text-sm font-semibold text-white mb-1">Antes de começar: configure sua máquina</p>
           <p className="text-sm leading-relaxed" style={{ color: "#64687a" }}>
-            O curso usa o Claude Code — uma ferramenta de linha de comando da Anthropic.
+            O curso usa uma ferramenta de IA de linha de comando — Claude Code (Anthropic), OpenAI Codex ou Gemini CLI.
             Se você ainda não instalou, o guia de setup leva menos de 15 minutos e cobre Mac e Windows.
           </p>
         </div>

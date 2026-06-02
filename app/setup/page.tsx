@@ -155,9 +155,9 @@ export default function SetupPage() {
         </div>
         <h1 className="text-2xl md:text-3xl font-bold text-white mb-4">Configuração inicial</h1>
         <p className="text-base leading-relaxed" style={{ color: "#cfd2d8" }}>
-          Você vai instalar três ferramentas: <strong className="text-white">Node.js</strong> (base técnica),{" "}
-          <strong className="text-white">Claude Code</strong> (o agente que vamos usar) e configurar sua{" "}
-          <strong className="text-white">chave de API</strong> da Anthropic. Leva cerca de 20 minutos.
+          Você vai instalar o <strong className="text-white">Node.js</strong> (base técnica),
+          a <strong className="text-white">ferramenta de IA</strong> da sua escolha (Claude, OpenAI ou Gemini)
+          e configurar sua <strong className="text-white">chave de API</strong>. Leva cerca de 20 minutos.
         </p>
 
         {/* What you'll need */}

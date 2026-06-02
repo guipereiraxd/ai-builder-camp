@@ -29,7 +29,7 @@ export default function Exercise3() {
         />
         <CopyContextFile />
         <p className="mt-3">
-          Antes de abrir o Claude Code, vamos criar o arquivo de configuração do agente.
+          Antes de abrir o agente, vamos criar o arquivo de configuração.
           Crie um arquivo <code>config-agente.md</code>:
         </p>
         <Prompt>{`# Configuração do Agente de Monitoramento de Mercado
