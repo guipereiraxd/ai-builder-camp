@@ -83,6 +83,7 @@ export default function Home() {
       </div>
 
       {/* Hero + Form */}
+
       <div className="max-w-5xl mx-auto px-6 pt-10 pb-8 grid md:grid-cols-2 gap-14 items-start">
 
         {/* Left — copy */}
@@ -250,6 +251,13 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {/* Footer */}
+      <div className="max-w-5xl mx-auto px-6 pb-8 flex justify-end">
+        <a href="/ai-builder-camp/privacy" className="text-xs transition-colors hover:text-white/30" style={{ color: "#1e2026" }}>
+          Política de Privacidade
+        </a>
+      </div>
+
     </div>
   );
 }

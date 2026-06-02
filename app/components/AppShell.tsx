@@ -72,6 +72,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             {children}
           </div>
         </main>
+
+        {/* Footer */}
+        <div className="px-4 py-4 md:px-8 flex justify-end" style={{ borderTop: "1px solid #0f0f0f" }}>
+          <a href="/ai-builder-camp/privacy" className="text-xs transition-colors hover:text-white/30" style={{ color: "#1e2026" }}>
+            Política de Privacidade
+          </a>
+        </div>
       </div>
     </div>
   );
