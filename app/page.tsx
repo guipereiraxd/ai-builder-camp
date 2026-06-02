@@ -108,7 +108,7 @@ export default function Home() {
               { value: "12", label: "exercícios práticos" },
               { value: "3", label: "atos progressivos" },
               { value: "≤5h", label: "do zero ao agente" },
-              { value: "0", label: "linhas de código" },
+              { value: "—", label: "Sem precisar saber código" },
             ].map(({ value, label }) => (
               <div key={label} className="flex items-baseline gap-1.5">
                 <span className="text-lg font-bold text-white">{value}</span>
