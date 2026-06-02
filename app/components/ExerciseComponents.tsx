@@ -227,11 +227,11 @@ export function ExerciseHeader({
         >
           {act}
         </span>
-        <span style={{ color: "var(--border)" }}>·</span>
+        <span style={{ color: "var(--text-5)" }}>·</span>
         <span className="text-xs" style={{ color: "var(--text-4)" }}>{duration}</span>
       </div>
       <h1 className="text-2xl md:text-3xl font-bold text-white mb-4">
-        <span className="font-normal mr-2" style={{ color: "var(--border)" }}>{number}</span>
+        <span className="font-normal mr-2" style={{ color: "var(--text-5)" }}>{number}</span>
         {title}
       </h1>
       <p className="text-base md:text-lg leading-relaxed" style={{ color: "var(--text-2)" }}>{description}</p>

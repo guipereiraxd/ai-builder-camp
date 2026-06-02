@@ -5,7 +5,7 @@ export default function PrivacyPage() {
   return (
     <AppShell>
       <div className="mb-10">
-        <p className="text-xs uppercase tracking-widest mb-3" style={{ color: "var(--border)" }}>Grupo Alun</p>
+        <p className="text-xs uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>Grupo Alun</p>
         <h1 className="text-2xl font-bold text-white mb-2">Política de Privacidade</h1>
         <p className="text-sm" style={{ color: "var(--text-4)" }}>Última atualização: junho de 2025</p>
       </div>
@@ -128,7 +128,7 @@ export default function PrivacyPage() {
       </div>
 
       <div className="mt-12 pt-6" style={{ borderTop: "1px solid #1e2026" }}>
-        <Link href="/" className="text-sm transition-colors" style={{ color: "var(--border)" }}>
+        <Link href="/" className="text-sm transition-colors" style={{ color: "var(--text-5)" }}>
           ← Voltar ao início
         </Link>
       </div>

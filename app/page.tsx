@@ -124,7 +124,7 @@ export default function Home() {
           </div>
 
           {/* Who it's for */}
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--border)" }}>Para quem é</p>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>Para quem é</p>
           <div className="flex flex-wrap gap-2 mb-8">
             {personas.map(({ icon, label }) => (
               <span
@@ -139,7 +139,7 @@ export default function Home() {
           </div>
 
           {/* What you'll build */}
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--border)" }}>O que você vai entregar</p>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>O que você vai entregar</p>
           <div className="space-y-3 mb-8">
             {deliverables.map(({ label, detail }) => (
               <div key={label} className="flex items-start gap-3">
@@ -154,7 +154,7 @@ export default function Home() {
           </div>
 
           {/* Acts */}
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--border)" }}>Estrutura do curso</p>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>Estrutura do curso</p>
           <div className="space-y-2">
             {acts.map((act) => (
               <div

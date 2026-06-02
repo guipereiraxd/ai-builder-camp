@@ -27,7 +27,7 @@ export default function Mission1() {
         >
           ◈ Missão 01
         </span>
-        <span className="text-xs" style={{ color: "var(--border)" }}>Ato IV — Continue Praticando</span>
+        <span className="text-xs" style={{ color: "var(--text-5)" }}>Ato IV — Continue Praticando</span>
       </div>
 
       <ExerciseHeader

@@ -127,7 +127,7 @@ export default function Sidebar() {
 
       {/* LLM Switcher — pinned below logo */}
       <div className="px-3 py-3" style={{ borderBottom: "1px solid var(--border)" }}>
-        <p className="text-[10px] uppercase tracking-widest mb-1.5 px-1" style={{ color: "var(--border)" }}>Ferramenta de IA</p>
+        <p className="text-[10px] uppercase tracking-widest mb-1.5 px-1" style={{ color: "var(--text-5)" }}>Ferramenta de IA</p>
         <LLMSwitcher />
       </div>
 

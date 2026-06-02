@@ -75,7 +75,7 @@ export default function ExercisesPage() {
         <Link
           href="/setup"
           className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium whitespace-nowrap transition-opacity hover:opacity-80 shrink-0"
-          style={{ background: "rgba(75,200,100,0.15)", color: "#6ee87a", border: "1px solid rgba(75,200,100,0.25)" }}
+          style={{ background: "rgba(75,200,100,0.15)", color: "var(--green-btn)", border: "1px solid rgba(75,200,100,0.25)" }}
         >
           Guia de instalação →
         </Link>
@@ -84,7 +84,7 @@ export default function ExercisesPage() {
       <div className="mb-8 border-t" style={{ borderColor: "var(--border-sub)" }} />
 
       <div className="mb-6">
-        <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--border)" }}>
+        <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--text-5)" }}>
           12 exercícios · 3 atos · ~5 horas + missões complementares
         </p>
       </div>
