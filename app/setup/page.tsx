@@ -100,11 +100,13 @@ function TerminalHelp() {
     <div className="my-3 rounded-lg overflow-hidden" style={{ border: `1px solid ${BORDER}` }}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-4 py-3 text-sm transition-colors"
-        style={{ background: "rgba(255,255,255,0.02)", color: "#64687a" }}
+        className="w-full flex items-center justify-between px-4 py-3 text-sm transition-colors hover:bg-white/5"
+        style={{ background: "rgba(255,255,255,0.02)", color: "#cfd2d8" }}
       >
         <span>💡 Como abrir o terminal no {os === "mac" ? "Mac" : "Windows"}</span>
-        <span style={{ color: BORDER }}>{open ? "▲" : "▼"}</span>
+        <span className="text-xs px-2 py-0.5 rounded font-medium" style={{ background: "rgba(75,106,252,0.15)", color: "#8ba3ff" }}>
+          {open ? "fechar ▲" : "ver ▼"}
+        </span>
       </button>
       {open && (
         <div className="px-4 py-4 text-sm space-y-2" style={{ color: "#cfd2d8", background: "#0d0d10" }}>
