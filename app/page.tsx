@@ -74,7 +74,7 @@ export default function Home() {
           <span className="text-sm font-semibold" style={{ color: "#d1a476" }}>AI Builder Camp</span>
         </div>
         <div
-          className="inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full"
+          className="hidden sm:inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full"
           style={{ color: "#4b6afc", background: "rgba(75,106,252,0.1)" }}
         >
           <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#4b6afc" }} />
@@ -102,14 +102,14 @@ export default function Home() {
 
           {/* Social proof bar */}
           <div
-            className="flex flex-wrap items-center gap-x-5 gap-y-2 mb-8 pb-8"
+            className="grid grid-cols-2 gap-x-6 gap-y-3 mb-8 pb-8"
             style={{ borderBottom: "1px solid #1e2026" }}
           >
             {[
               { value: "12", label: "exercícios práticos" },
               { value: "3", label: "atos progressivos" },
               { value: "≤5h", label: "do zero ao agente" },
-              { value: "—", label: "Sem precisar saber código" },
+              { value: "—", label: "Sem saber código" },
             ].map(({ value, label }) => (
               <div key={label} className="flex items-baseline gap-1.5">
                 <span className="text-lg font-bold text-white">{value}</span>
@@ -157,7 +157,7 @@ export default function Home() {
                 className="flex items-start gap-4 p-3 rounded-lg"
                 style={{ border: "1px solid #1e2026", background: "rgba(255,255,255,0.015)" }}
               >
-                <span className="text-xs font-mono pt-0.5 shrink-0 w-12" style={{ color: "#33363e" }}>{act.n}</span>
+                <span className="text-xs font-mono pt-0.5 shrink-0 w-14 whitespace-nowrap" style={{ color: "#33363e" }}>{act.n}</span>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.75)" }}>{act.title}</p>
                   <p className="text-xs mt-0.5" style={{ color: "#64687a" }}>{act.description}</p>
