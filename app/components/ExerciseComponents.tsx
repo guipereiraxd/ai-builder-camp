@@ -236,6 +236,9 @@ export function ExerciseHeader({
       </h1>
       <p className="text-base md:text-lg leading-relaxed" style={{ color: "#cfd2d8" }}>{description}</p>
       <div className="mt-6" style={{ borderTop: `1px solid ${BORDER}` }} />
+      <div className="mt-6">
+        <LLMSelector />
+      </div>
     </div>
   );
 }
