@@ -244,16 +244,28 @@ export default function SetupPage() {
           seu terminal em um assistente que entende linguagem natural, lê arquivos,
           escreve código e executa tarefas — tudo a partir de uma conversa.
         </p>
-        <p className="mt-3">Instale com este comando:</p>
+        <p className="mt-3">
+          Se estiver no <strong className="text-white">Windows</strong>, rode este comando primeiro para
+          liberar a execução de scripts no PowerShell:
+        </p>
+        <OSTabs
+          mac="# Não é necessário no Mac"
+          windows="Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"
+        />
+        <p className="mt-3">Agora instale o Claude Code:</p>
         <Command>npm install -g @anthropic-ai/claude-code</Command>
-        <p className="mt-2">Confirme que funcionou:</p>
+        <Warning>
+          <strong>Windows:</strong> após a instalação terminar, <strong>feche e reabra o PowerShell</strong> antes de continuar.
+          Assim como aconteceu com o Node.js, o terminal precisa de uma nova sessão para reconhecer o comando <code>claude</code>.
+        </Warning>
+        <p className="mt-3">Confirme que funcionou:</p>
         <Command>claude --version</Command>
         <Tip>
           <strong>Erro de permissão no Mac/Linux?</strong> Use:{" "}
           <code>sudo npm install -g @anthropic-ai/claude-code</code>
           <br />
-          <strong>Erro no Windows?</strong> Feche e reabra o PowerShell como{" "}
-          <strong>Administrador</strong> (botão direito → "Executar como administrador").
+          <strong>Erro "scripts disabled" no Windows?</strong> Rode primeiro:{" "}
+          <code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code>
         </Tip>
       </Step>
 
