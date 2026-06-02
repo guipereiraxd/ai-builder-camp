@@ -4,7 +4,7 @@ import { LLMSelector } from "../components/ExerciseComponents";
 
 const acts = [
   {
-    title: "Ato I — Sinta o Que É Possível",
+    title: "Ato I — Entenda o poder dos Agentes",
     description: "Exercícios rápidos que produzem resultados reais. Sem código, sem setup complexo. Só você, o Claude Code e um terminal.",
     totalTime: "~1h45",
     exercises: [

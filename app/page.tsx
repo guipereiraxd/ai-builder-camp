@@ -20,7 +20,7 @@ const personas = [
 ];
 
 const acts = [
-  { n: "Ato I", title: "Sinta o Que É Possível", description: "Do zero a resultados reais em exercícios rápidos.", time: "~1h45" },
+  { n: "Ato I", title: "Entenda o poder dos Agentes", description: "Do zero a resultados reais em exercícios rápidos.", time: "~1h45" },
   { n: "Ato II", title: "Construa Seu Primeiro Agente", description: "O agente trabalha sozinho. Você revisa e decide.", time: "~1h50" },
   { n: "Ato III", title: "Conecte ao Mundo Real", description: "Claude acessa web, Drive e Slack por conta própria.", time: "~1h25" },
 ];

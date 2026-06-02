@@ -6,7 +6,7 @@ export default function Exercise11() {
   return (
     <AppShell>
       <ExerciseHeader
-        act="Ato I — Sinta o Poder"
+        act="Ato I — Entenda o poder dos Agentes"
         number="1.1"
         title="Seu primeiro produto digital"
         duration="10 min"

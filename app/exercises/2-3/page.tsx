@@ -18,7 +18,7 @@ export default function Exercise23() {
   return (
     <AppShell>
       <ExerciseHeader
-        act="Ato I — Sinta o Poder"
+        act="Ato I — Entenda o poder dos Agentes"
         number="2.3"
         title="Dashboard executivo"
         duration="20 min"

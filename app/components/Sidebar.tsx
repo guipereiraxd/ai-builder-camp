@@ -9,7 +9,7 @@ const nav = [
   { label: "Início", href: "/" },
   { label: "Setup", href: "/setup" },
   { label: "Exercícios", href: "/exercises" },
-  { type: "divider", label: "Ato I — Sinta o Poder" },
+  { type: "divider", label: "Ato I — Entenda o poder dos Agentes" },
   { label: "1.1 Seu primeiro produto", href: "/exercises/1-1", duration: "10 min" },
   { label: "1.2 Com contexto da empresa", href: "/exercises/1-2", duration: "20 min" },
   { label: "2.1 Análise de concorrentes", href: "/exercises/2-1", duration: "15 min" },

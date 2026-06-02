@@ -6,7 +6,7 @@ export default function Exercise24() {
   return (
     <AppShell>
       <ExerciseHeader
-        act="Ato I — Sinta o Poder"
+        act="Ato I — Entenda o poder dos Agentes"
         number="2.4"
         title="Briefing semanal automatizado"
         duration="20 min"

@@ -6,7 +6,7 @@ export default function Exercise22() {
   return (
     <AppShell>
       <ExerciseHeader
-        act="Ato I — Sinta o Poder"
+        act="Ato I — Entenda o poder dos Agentes"
         number="2.2"
         title="Email com tom da empresa"
         duration="20 min"

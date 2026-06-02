@@ -6,7 +6,7 @@ export default function Exercise21() {
   return (
     <AppShell>
       <ExerciseHeader
-        act="Ato I — Sinta o Poder"
+        act="Ato I — Entenda o poder dos Agentes"
         number="2.1"
         title="Análise de concorrentes ao vivo"
         duration="15 min"
