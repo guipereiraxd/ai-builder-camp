@@ -9,7 +9,7 @@ const deliverables = [
   { label: "Produto digital funcional", detail: "Criado com um único prompt, sem escrever uma linha de código" },
   { label: "Agente de inteligência competitiva", detail: "Monitora concorrentes e entrega relatório toda semana" },
   { label: "Pipeline de conteúdo com revisão humana", detail: "Gera, revisa e publica — você só aprova" },
-  { label: "Claude conectado ao Drive, Slack e à internet", detail: "Busca dados onde estão, sem você copiar nada" },
+  { label: "Agente conectado ao Drive, Slack e à internet", detail: "Busca dados onde estão, sem você copiar nada" },
 ];
 
 const personas = [
@@ -22,7 +22,7 @@ const personas = [
 const acts = [
   { n: "Ato I", title: "Entenda o poder dos Agentes", description: "Do zero a resultados reais em exercícios rápidos.", time: "~1h45" },
   { n: "Ato II", title: "Construa Seu Primeiro Agente", description: "O agente trabalha sozinho. Você revisa e decide.", time: "~1h50" },
-  { n: "Ato III", title: "Conecte ao Mundo Real", description: "Claude acessa web, Drive e Slack por conta própria.", time: "~1h25" },
+  { n: "Ato III", title: "Conecte ao Mundo Real", description: "O agente acessa a web, documentos e Slack por conta própria.", time: "~1h25" },
   { n: "Ato IV", title: "Continue Praticando", description: "Missões complementares adicionadas periodicamente.", time: "missões", gold: true },
 ];
 
@@ -98,7 +98,7 @@ export default function Home() {
           <p className="text-base leading-relaxed mb-6" style={{ color: "#8b8f9a" }}>
             Um curso prático. Faça primeiro, aprenda no caminho. Você cria produtos,
             automatiza tarefas e constrói agentes autônomos — tudo sem escrever código.
-            Em até 5 horas.
+            Funciona com <strong className="text-white/70">Claude, OpenAI ou Gemini</strong>. Em até 5 horas.
           </p>
 
           {/* Social proof bar */}
@@ -110,7 +110,7 @@ export default function Home() {
               { value: "12", label: "exercícios práticos" },
               { value: "3", label: "atos progressivos" },
               { value: "≤5h", label: "do zero ao agente" },
-              { value: "—", label: "Sem saber código" },
+              { value: "3", label: "ferramentas compatíveis" },
             ].map(({ value, label }) => (
               <div key={label} className="flex items-baseline gap-1.5">
                 <span className="text-lg font-bold text-white">{value}</span>
@@ -172,8 +172,8 @@ export default function Home() {
           <div className="mt-8 flex flex-wrap gap-4">
             {[
               "Sem pré-requisitos técnicos",
-              "Funciona no Mac e no Windows",
-              "Acesso imediato e gratuito",
+              "Claude, OpenAI ou Gemini — você escolhe",
+              "Mac e Windows · Acesso gratuito",
             ].map((item) => (
               <span key={item} className="flex items-center gap-1.5 text-xs" style={{ color: "#64687a" }}>
                 <span style={{ color: "#4b6afc" }}>✓</span> {item}
