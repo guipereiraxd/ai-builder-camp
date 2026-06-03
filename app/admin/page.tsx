@@ -4,9 +4,14 @@ import { useState, useEffect } from "react";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 
-// Change this password to something only you know
-const ADMIN_PASSWORD = "alunbusiness2025";
-const ADMIN_KEY = "aibc_admin";
+// SHA-256 hash of the admin password — set via NEXT_PUBLIC_ADMIN_HASH GitHub Secret
+const ADMIN_HASH = process.env.NEXT_PUBLIC_ADMIN_HASH ?? "";
+const ADMIN_KEY  = "aibc_admin";
+
+async function hashPassword(pw: string): Promise<string> {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(pw));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
 
 interface Registration {
   id: string;
@@ -61,9 +66,10 @@ export default function AdminPage() {
       .finally(() => setLoading(false));
   }, [authed]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
+    const entered = await hashPassword(password);
+    if (entered === ADMIN_HASH) {
       localStorage.setItem(ADMIN_KEY, "1");
       setAuthed(true);
       setError("");
