@@ -6,6 +6,9 @@ import { collection, addDoc } from "firebase/firestore";
 import { db, REGISTERED_KEY } from "../lib/firebase";
 import { ThemeToggle } from "./components/ThemeToggle";
 
+// Replace with your Cloudflare Worker URL after deploying
+const WORKER_URL = process.env.NEXT_PUBLIC_WORKER_URL ?? "";
+
 const deliverables = [
   { label: "Criar ferramentas internas com uso de IA", detail: "De ideia a app funcionando em menos de 15 minutos" },
   { label: "Monitorar concorrentes e gerar inteligência de mercado", detail: "Um agente busca, analisa e entrega o resumo toda semana" },
@@ -65,6 +68,19 @@ export default function Home() {
       Promise.race([save, timeout]).catch((err) =>
         console.warn("[Firebase] Save failed (non-blocking):", err)
       );
+    }
+
+    // Send welcome email via Cloudflare Worker — fire-and-forget
+    if (WORKER_URL) {
+      fetch(WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          email: form.email.trim().toLowerCase(),
+          company: form.company.trim(),
+        }),
+      }).catch((err) => console.warn("[Worker] Email send failed (non-blocking):", err));
     }
   };
 
