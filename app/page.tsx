@@ -127,13 +127,13 @@ export default function Home() {
   <p style="margin:0;font-size:14px;color:#64748b;line-height:1.6;">
     Qualquer dúvida, responda este email.<br>
     Bom curso,<br>
-    <strong style="color:#0f172a;">Equipe Alun</strong>
+    <strong style="color:#0f172a;">Equipe Alun Business</strong>
   </p>
 </td></tr>
 
 <tr><td style="background:#f8fafc;border-radius:0 0 12px 12px;padding:20px 40px;border-top:1px solid #e2e8f0;">
   <p style="margin:0;font-size:12px;color:#94a3b8;text-align:center;">
-    Você se cadastrou no AI Builder Camp.${company ? ` Empresa: ${company}.` : ""}
+    Você se cadastrou no AI Builder Camp, uma iniciativa da Alun Business.
     Guarde este email — ele tem o link de acesso ao curso.
   </p>
 </td></tr>
