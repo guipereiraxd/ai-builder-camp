@@ -18,6 +18,7 @@ const nav = [
   { label: "2.2 Email com tom da empresa", href: "/exercises/2-2", duration: "20 min" },
   { label: "2.3 Dashboard executivo", href: "/exercises/2-3", duration: "20 min" },
   { label: "2.4 Briefing semanal", href: "/exercises/2-4", duration: "20 min" },
+  { label: "📐 Canvas de Agente de IA", href: "/canvas", canvas: true },
   { type: "divider", label: "Ato II — Construa o Agente" },
   { label: "3 Agente de monitoramento", href: "/exercises/3", duration: "30 min" },
   { label: "4 Pipeline com revisão humana", href: "/exercises/4", duration: "35 min" },
@@ -210,6 +211,7 @@ export default function Sidebar() {
           const active = pathname === item.href;
           const isMission = item.mission;
           const isSecret = item.secret;
+          const isCanvas = item.canvas;
           return (
             <Link
               key={item.href}
@@ -217,8 +219,8 @@ export default function Sidebar() {
               className="flex items-center justify-between px-3 py-2 rounded-md text-sm transition-all"
               style={
                 active
-                  ? { background: isSecret ? "rgba(239,68,68,0.12)" : isMission ? "rgba(209,164,118,0.12)" : "rgba(75,106,252,0.12)", color: isSecret ? "#f87171" : isMission ? "#d1a476" : "#4b6afc" }
-                  : { color: isSecret ? "rgba(239,68,68,0.7)" : "var(--text-2)" }
+                  ? { background: isSecret ? "rgba(239,68,68,0.12)" : isMission ? "rgba(209,164,118,0.12)" : isCanvas ? "rgba(139,92,246,0.12)" : "rgba(75,106,252,0.12)", color: isSecret ? "#f87171" : isMission ? "#d1a476" : isCanvas ? "#a78bfa" : "#4b6afc" }
+                  : { color: isSecret ? "rgba(239,68,68,0.7)" : isCanvas ? "rgba(139,92,246,0.8)" : "var(--text-2)" }
               }
               onMouseEnter={(e) => {
                 if (!active) {
