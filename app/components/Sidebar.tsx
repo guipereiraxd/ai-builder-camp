@@ -184,7 +184,7 @@ export default function Sidebar() {
                 className="w-full flex items-center justify-between pt-5 pb-1.5 px-2 group"
               >
                 <p
-                  className="text-[10px] font-semibold uppercase tracking-widest"
+                  className="text-[10px] font-semibold uppercase tracking-widest text-left"
                   style={{ color: item.gold ? "rgba(209,164,118,0.6)" : "var(--text-4)" }}
                 >
                   {item.label}
