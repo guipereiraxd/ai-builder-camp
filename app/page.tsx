@@ -36,7 +36,7 @@ export default function Home() {
   useEffect(() => {
     setMounted(true);
     if (localStorage.getItem(REGISTERED_KEY) === "true") {
-      router.push("/exercises");
+      router.push("/dashboard");
     }
   }, [router]);
 
@@ -48,7 +48,7 @@ export default function Home() {
     localStorage.setItem(REGISTERED_KEY, "true");
     localStorage.setItem("user_name", form.name.trim());
     setStatus("success");
-    setTimeout(() => router.push("/exercises"), 1200);
+    setTimeout(() => router.push("/dashboard"), 1200);
 
     // Save to Firebase in background — only if db is available
     if (db) {

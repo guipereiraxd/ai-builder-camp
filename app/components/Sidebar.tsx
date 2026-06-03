@@ -7,7 +7,7 @@ import { LLM_KEY, LLM_CONFIG, type LLMChoice, useProgress } from "./ExerciseComp
 import { ThemeToggle } from "./ThemeToggle";
 
 const nav = [
-  { label: "Início", href: "/" },
+  { label: "Início", href: "/dashboard" },
   { label: "Setup", href: "/setup" },
   { label: "Exercícios", href: "/exercises" },
   { label: "🔒 Secret Zone", href: "/secret-zone", secret: true },
