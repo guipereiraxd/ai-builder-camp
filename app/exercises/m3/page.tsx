@@ -239,8 +239,8 @@ Linguagem sempre executiva — clara, direta, sem juridiquês.`}</Prompt>
         <Link href="/exercises/m2" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "var(--text-4)" }}>
           ← M2 Gerador de propostas
         </Link>
-        <Link href="/exercises" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "var(--text-4)" }}>
-          Ver todas as missões →
+        <Link href="/rag" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "#a78bfa" }}>
+          🧠 O que é RAG →
         </Link>
       </div>
     </AppShell>
