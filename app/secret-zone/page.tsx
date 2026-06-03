@@ -109,7 +109,7 @@ export default function SecretZonePage() {
       <Topic n={1} title="Nunca coloque chaves de API em arquivos de projeto" danger>
         <Risk>
           A causa número 1 de vazamento de API keys é colar a chave diretamente no código ou em arquivos
-          como <code>CLAUDE.md</code>, depois <Term def="Salvar e registrar alterações num repositório Git e enviar para a nuvem (ex: GitHub).">commitar</Term> para o <Term def="Plataforma online para armazenar, versionar e compartilhar código-fonte. Repositórios públicos são visíveis para qualquer pessoa na internet.">GitHub</Term>. Bots varrem <Term def="Pastas de projeto versionadas com Git. Podem ser públicos (visíveis a todos) ou privados.">repositórios públicos</Term>
+          como <code>CLAUDE.md</code>, depois <Term def="Salvar e registrar alterações num repositório Git e enviar para a nuvem (ex: GitHub).">commitar</Term> para o <Term def="Plataforma online para armazenar, versionar e compartilhar código-fonte. Repositórios públicos são visíveis para qualquer pessoa na internet.">GitHub</Term>. Bots varrem <Term def="Pastas de projeto versionadas com Git. Podem ser públicos (visíveis a todos) ou privados.">repositórios públicos</Term>{" "}
           em minutos e usam chaves expostas — você recebe uma fatura de milhares de dólares.
         </Risk>
         <Safe>
