@@ -28,6 +28,7 @@ const nav = [
   { type: "divider", label: "Ato IV — Continue Praticando", gold: true },
   { label: "M1 Automatize uma reunião", href: "/exercises/m1", duration: "15 min", mission: true },
   { label: "M2 Gerador de propostas", href: "/exercises/m2", duration: "25 min", mission: true },
+  { label: "M3 Analise um contrato", href: "/exercises/m3", duration: "20 min", mission: true },
 ];
 
 function LLMSwitcher() {

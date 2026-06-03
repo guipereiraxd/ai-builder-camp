@@ -190,6 +190,33 @@ export default function ExercisesPage() {
               <span className="text-sm transition-colors" style={{ color: "rgba(209,164,118,0.6)" }}>→</span>
             </div>
           </Link>
+          <Link
+            href="/exercises/m3"
+            className="flex items-start gap-5 p-4 rounded-lg group transition-all"
+            style={{ border: "1px solid rgba(209,164,118,0.15)", background: "rgba(209,164,118,0.03)" }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "rgba(209,164,118,0.07)";
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(209,164,118,0.3)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "rgba(209,164,118,0.03)";
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(209,164,118,0.15)";
+            }}
+          >
+            <span className="text-sm font-mono pt-0.5 w-6 shrink-0" style={{ color: "rgba(209,164,118,0.75)" }}>M3</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium transition-colors" style={{ color: "var(--text-1)" }}>
+                Analise um contrato em minutos
+              </p>
+              <p className="text-xs mt-0.5" style={{ color: "var(--text-4)" }}>
+                NDA, SaaS, fornecedor → resumo claro, red flags e brief de negociação.
+              </p>
+            </div>
+            <div className="flex items-center gap-3 pt-0.5 shrink-0">
+              <span className="text-xs" style={{ color: "rgba(209,164,118,0.75)" }}>20 min</span>
+              <span className="text-sm transition-colors" style={{ color: "rgba(209,164,118,0.6)" }}>→</span>
+            </div>
+          </Link>
         </div>
       </div>
 

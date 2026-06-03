@@ -32,7 +32,11 @@
       "Bash(curl -sI \"http://localhost:3000/ai-builder-camp/logo-alun-white.svg\")",
       "Bash(gh run *)",
       "Bash(git commit -m 'fix: replace unreadable Mac SVG icon with ⌘ symbol in OS selector *)",
-      "Bash(git commit -m 'fix: add PATH refresh fallback for Windows node not found after install *)"
+      "Bash(git commit -m 'fix: add PATH refresh fallback for Windows node not found after install *)",
+      "Bash(git commit -m 'fix: update stat label '\\\\''≤5h do zero ao agente'\\\\'' → '\\\\''5h do zero à IA Agêntica'\\\\'' *)",
+      "Bash(git commit -m 'feat: update hero deliverables section copy and title *)",
+      "Bash(gh workflow *)",
+      "Bash(git commit -m 'fix: light mode contrast in exercises page — mission cards and exercise list *)"
     ]
   }
 }
