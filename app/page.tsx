@@ -50,20 +50,22 @@ export default function Home() {
     setStatus("success");
     setTimeout(() => router.push("/exercises"), 1200);
 
-    // Save to Firebase in background (fire-and-forget with 8s timeout)
-    const payload = {
-      name: form.name.trim(),
-      email: form.email.trim().toLowerCase(),
-      company: form.company.trim(),
-      registeredAt: new Date().toISOString(),
-    };
-    const save = addDoc(collection(db, "registrations"), payload);
-    const timeout = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error("timeout")), 8000)
-    );
-    Promise.race([save, timeout]).catch((err) =>
-      console.warn("Firebase save failed (non-blocking):", err)
-    );
+    // Save to Firebase in background — only if db is available
+    if (db) {
+      const payload = {
+        name: form.name.trim(),
+        email: form.email.trim().toLowerCase(),
+        company: form.company.trim(),
+        registeredAt: new Date().toISOString(),
+      };
+      const save = addDoc(collection(db, "registrations"), payload);
+      const timeout = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("timeout")), 8000)
+      );
+      Promise.race([save, timeout]).catch((err) =>
+        console.warn("[Firebase] Save failed (non-blocking):", err)
+      );
+    }
   };
 
   if (!mounted) return null;
