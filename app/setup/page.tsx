@@ -138,6 +138,73 @@ function TerminalHelp() {
   );
 }
 
+function WhyCLI() {
+  const [open, setOpen] = useState(false);
+
+  const rows = [
+    ["Você copia e cola arquivos manualmente",                      "O agente lê arquivos direto do seu computador"],
+    ["Uma conversa por vez, sem memória entre sessões",             "Um arquivo de contexto mantém o perfil da sua empresa para sempre"],
+    ["Sem automação real — cada passo precisa de um prompt seu",    "Executa tarefas em sequência, cria arquivos, roda scripts"],
+    ["Sem comandos personalizados",                                  "Crie atalhos como /email, /briefing ou /contrato"],
+    ["Conectores disponíveis, mas limitados ao que a plataforma oferece", "Conecta a qualquer ferramenta ou API — você controla a lógica, não o provedor"],
+  ];
+
+  return (
+    <div className="mb-8 rounded-xl overflow-hidden" style={{ border: `1px solid ${BORDER}` }}>
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between px-5 py-4 text-sm text-left transition-colors hover:bg-white/5"
+        style={{ background: "rgba(255,255,255,0.02)", color: "var(--text-3)" }}
+      >
+        <span>💡 Por que CLI e não a interface web de IA?</span>
+        <span
+          className="text-xs px-2 py-0.5 rounded font-medium transition-transform"
+          style={{ background: "rgba(75,106,252,0.12)", color: "#8ba3ff" }}
+        >
+          {open ? "fechar ▲" : "ver ▼"}
+        </span>
+      </button>
+
+      {open && (
+        <div className="px-5 pb-5 pt-4" style={{ background: "#0d0d10" }}>
+          <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-3)" }}>
+            Você provavelmente já usa alguma ferramenta de IA pelo navegador. São ótimas para conversas
+            e rascunhos rápidos. Mas têm uma limitação fundamental: elas vivem dentro de uma janela do browser.
+            Os agentes em linha de comando vivem no seu terminal — e isso muda o que é possível construir:
+          </p>
+
+          <div className="rounded-lg overflow-hidden mb-5" style={{ border: `1px solid ${BORDER}` }}>
+            <div className="grid grid-cols-2 text-xs font-semibold uppercase tracking-widest"
+              style={{ background: "rgba(255,255,255,0.03)", borderBottom: `1px solid ${BORDER}` }}>
+              <div className="px-4 py-2.5" style={{ color: "var(--text-4)", borderRight: `1px solid ${BORDER}` }}>Interface web</div>
+              <div className="px-4 py-2.5" style={{ color: "#4b6afc" }}>Agente CLI</div>
+            </div>
+            {rows.map(([web, cli], i) => (
+              <div
+                key={i}
+                className="grid grid-cols-2 text-xs"
+                style={{ borderBottom: i < rows.length - 1 ? `1px solid ${BORDER}` : "none" }}
+              >
+                <div className="px-4 py-3 leading-relaxed" style={{ color: "var(--text-4)", borderRight: `1px solid ${BORDER}` }}>{web}</div>
+                <div className="px-4 py-3 leading-relaxed" style={{ color: "var(--text-2)" }}>{cli}</div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-sm leading-relaxed mb-2" style={{ color: "var(--text-3)" }}>
+            <strong style={{ color: "var(--text-2)" }}>A analogia:</strong> uma interface web é como pedir conselho
+            a um especialista numa ligação. Um agente CLI é como ter esse especialista trabalhando dentro da
+            sua empresa — com acesso aos seus arquivos e sistemas.
+          </p>
+          <p className="text-sm" style={{ color: "var(--text-4)" }}>
+            O setup leva 20 minutos. O que você ganha em capacidade não tem comparação.
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function SetupPage() {
   return (
     <AppShell>
@@ -181,6 +248,9 @@ export default function SetupPage() {
 
         <div className="mt-8" style={{ borderTop: `1px solid ${BORDER}` }} />
       </div>
+
+      {/* Why CLI accordion */}
+      <WhyCLI />
 
       {/* OS Selector */}
       <OSSelector />
