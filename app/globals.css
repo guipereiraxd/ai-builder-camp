@@ -53,6 +53,8 @@
 [data-theme="light"] .text-white\/50 { color: color-mix(in srgb, var(--text-1) 50%, transparent); }
 [data-theme="light"] .text-white\/40 { color: color-mix(in srgb, var(--text-1) 40%, transparent); }
 [data-theme="light"] .text-white\/30 { color: color-mix(in srgb, var(--text-1) 30%, transparent); }
+[data-theme="light"] .text-white\/35 { color: color-mix(in srgb, var(--text-1) 35%, transparent); }
+[data-theme="light"] .text-white\/25 { color: color-mix(in srgb, var(--text-1) 25%, transparent); }
 [data-theme="light"] .text-white\/20 { color: color-mix(in srgb, var(--text-1) 20%, transparent); }
 [data-theme="light"] .bg-white\/2  { background-color: var(--tint-2); }
 [data-theme="light"] .bg-white\/3  { background-color: var(--tint-3); }

@@ -128,7 +128,7 @@ export default function ExercisesPage() {
         <div className="mb-5">
           <div className="flex items-baseline justify-between mb-1">
             <h2 className="text-sm font-semibold" style={{ color: "#d1a476" }}>Ato IV — Continue Praticando</h2>
-            <span className="text-xs" style={{ color: "rgba(209,164,118,0.4)" }}>Missões</span>
+            <span className="text-xs" style={{ color: "rgba(209,164,118,0.75)" }}>Missões</span>
           </div>
           <p className="text-sm" style={{ color: "var(--text-4)" }}>
             Exercícios complementares sem ordem obrigatória. Cada missão resolve um problema real e concreto.
@@ -149,9 +149,9 @@ export default function ExercisesPage() {
               (e.currentTarget as HTMLElement).style.borderColor = "rgba(209,164,118,0.15)";
             }}
           >
-            <span className="text-sm font-mono pt-0.5 w-6 shrink-0" style={{ color: "rgba(209,164,118,0.4)" }}>M1</span>
+            <span className="text-sm font-mono pt-0.5 w-6 shrink-0" style={{ color: "rgba(209,164,118,0.75)" }}>M1</span>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium transition-colors" style={{ color: "rgba(255,255,255,0.8)" }}>
+              <p className="text-sm font-medium transition-colors" style={{ color: "var(--text-1)" }}>
                 Automatize uma reunião
               </p>
               <p className="text-xs mt-0.5" style={{ color: "var(--text-4)" }}>
@@ -159,8 +159,8 @@ export default function ExercisesPage() {
               </p>
             </div>
             <div className="flex items-center gap-3 pt-0.5 shrink-0">
-              <span className="text-xs" style={{ color: "rgba(209,164,118,0.5)" }}>15 min</span>
-              <span className="text-sm transition-colors" style={{ color: "rgba(209,164,118,0.3)" }}>→</span>
+              <span className="text-xs" style={{ color: "rgba(209,164,118,0.75)" }}>15 min</span>
+              <span className="text-sm transition-colors" style={{ color: "rgba(209,164,118,0.6)" }}>→</span>
             </div>
           </Link>
           <Link
@@ -176,9 +176,9 @@ export default function ExercisesPage() {
               (e.currentTarget as HTMLElement).style.borderColor = "rgba(209,164,118,0.15)";
             }}
           >
-            <span className="text-sm font-mono pt-0.5 w-6 shrink-0" style={{ color: "rgba(209,164,118,0.4)" }}>M2</span>
+            <span className="text-sm font-mono pt-0.5 w-6 shrink-0" style={{ color: "rgba(209,164,118,0.75)" }}>M2</span>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium transition-colors" style={{ color: "rgba(255,255,255,0.8)" }}>
+              <p className="text-sm font-medium transition-colors" style={{ color: "var(--text-1)" }}>
                 Gerador de propostas comerciais
               </p>
               <p className="text-xs mt-0.5" style={{ color: "var(--text-4)" }}>
@@ -186,8 +186,8 @@ export default function ExercisesPage() {
               </p>
             </div>
             <div className="flex items-center gap-3 pt-0.5 shrink-0">
-              <span className="text-xs" style={{ color: "rgba(209,164,118,0.5)" }}>25 min</span>
-              <span className="text-sm transition-colors" style={{ color: "rgba(209,164,118,0.3)" }}>→</span>
+              <span className="text-xs" style={{ color: "rgba(209,164,118,0.75)" }}>25 min</span>
+              <span className="text-sm transition-colors" style={{ color: "rgba(209,164,118,0.6)" }}>→</span>
             </div>
           </Link>
         </div>
