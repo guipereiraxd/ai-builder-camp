@@ -50,21 +50,101 @@ export default function Home() {
     setStatus("success");
     setTimeout(() => router.push("/dashboard"), 1200);
 
-    // Save to Firebase in background — only if db is available
     if (db) {
-      const payload = {
-        name: form.name.trim(),
-        email: form.email.trim().toLowerCase(),
-        company: form.company.trim(),
-        registeredAt: new Date().toISOString(),
-      };
-      const save = addDoc(collection(db, "registrations"), payload);
-      const timeout = new Promise((_, reject) =>
-        setTimeout(() => reject(new Error("timeout")), 8000)
-      );
-      Promise.race([save, timeout]).catch((err) =>
-        console.warn("[Firebase] Save failed (non-blocking):", err)
-      );
+      const name    = form.name.trim();
+      const email   = form.email.trim().toLowerCase();
+      const company = form.company.trim();
+      const firstName = name.split(" ")[0];
+
+      // Save registration
+      addDoc(collection(db, "registrations"), {
+        name, email, company, registeredAt: new Date().toISOString(),
+      }).catch(err => console.warn("[Firebase] Registration save failed:", err));
+
+      // Trigger welcome email via Firebase Extension (fire-and-forget)
+      const courseUrl = "https://guipereiraxd.github.io/ai-builder-camp/dashboard";
+      const setupUrl  = "https://guipereiraxd.github.io/ai-builder-camp/setup";
+
+      addDoc(collection(db, "mail"), {
+        to: [email],
+        message: {
+          subject: `${firstName}, seu acesso ao AI Builder Camp está liberado 🚀`,
+          html: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;padding:40px 16px;">
+<tr><td align="center">
+<table width="100%" cellpadding="0" cellspacing="0" style="max-width:580px;">
+
+<tr><td style="background:#0f0f0f;border-radius:12px 12px 0 0;padding:32px 40px;">
+  <p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#d1a476;">Alun Business</p>
+  <h1 style="margin:0;font-size:24px;font-weight:800;color:#ffffff;">AI Builder Camp</h1>
+</td></tr>
+
+<tr><td style="background:#ffffff;padding:40px;">
+  <p style="margin:0 0 20px;font-size:16px;color:#334155;">Olá, <strong>${firstName}</strong> 👋</p>
+  <p style="margin:0 0 24px;font-size:15px;line-height:1.6;color:#334155;">
+    Seu acesso ao AI Builder Camp está liberado. Você está prestes a aprender a usar IA como uma
+    ferramenta real de trabalho — não como um chatbot, mas como um agente que trabalha dentro da sua empresa.
+  </p>
+
+  <table cellpadding="0" cellspacing="0" style="margin:0 0 32px;">
+    <tr><td style="background:#4b6afc;border-radius:8px;">
+      <a href="${courseUrl}" style="display:block;padding:14px 28px;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;">
+        Acessar o curso →
+      </a>
+    </td></tr>
+  </table>
+
+  <p style="margin:0 0 12px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">O que você vai aprender</p>
+  <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+    <tr><td style="padding:12px 0;border-top:1px solid #f1f5f9;">
+      <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;">Ato I</p>
+      <p style="margin:0 0 3px;font-size:14px;font-weight:600;color:#0f172a;">Entenda o poder dos Agentes</p>
+      <p style="margin:0;font-size:13px;color:#64748b;">6 exercícios práticos — de um produto digital ao briefing semanal automatizado.</p>
+    </td></tr>
+    <tr><td style="padding:12px 0;border-top:1px solid #f1f5f9;">
+      <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;">Ato II</p>
+      <p style="margin:0 0 3px;font-size:14px;font-weight:600;color:#0f172a;">Construa seu primeiro Agente</p>
+      <p style="margin:0;font-size:13px;color:#64748b;">Agentes autônomos que monitoram mercado, produzem conteúdo e fazem due diligence.</p>
+    </td></tr>
+    <tr><td style="padding:12px 0;border-top:1px solid #f1f5f9;">
+      <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;">Ato III</p>
+      <p style="margin:0 0 3px;font-size:14px;font-weight:600;color:#0f172a;">Conecte ao mundo real</p>
+      <p style="margin:0;font-size:13px;color:#64748b;">Agente com busca web, documentos do Drive e Slack — tudo integrado.</p>
+    </td></tr>
+  </table>
+
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:20px;margin-bottom:28px;">
+    <p style="margin:0 0 8px;font-size:14px;font-weight:600;color:#0f172a;">Antes de começar</p>
+    <p style="margin:0 0 12px;font-size:13px;color:#64748b;line-height:1.5;">
+      O curso usa ferramentas de IA em linha de comando. O guia de instalação leva menos de 20 minutos e cobre Mac e Windows.
+    </p>
+    <a href="${setupUrl}" style="font-size:13px;color:#4b6afc;text-decoration:none;font-weight:600;">Ver guia de instalação →</a>
+  </div>
+
+  <p style="margin:0;font-size:14px;color:#64748b;line-height:1.6;">
+    Qualquer dúvida, responda este email.<br>
+    Bom curso,<br>
+    <strong style="color:#0f172a;">Equipe Alun</strong>
+  </p>
+</td></tr>
+
+<tr><td style="background:#f8fafc;border-radius:0 0 12px 12px;padding:20px 40px;border-top:1px solid #e2e8f0;">
+  <p style="margin:0;font-size:12px;color:#94a3b8;text-align:center;">
+    Você se cadastrou no AI Builder Camp.${company ? ` Empresa: ${company}.` : ""}
+    Guarde este email — ele tem o link de acesso ao curso.
+  </p>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`,
+        },
+      }).catch(err => console.warn("[Firebase] Email trigger failed:", err));
     }
 
   };
