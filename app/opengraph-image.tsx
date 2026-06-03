@@ -49,7 +49,7 @@ export default function OGImage() {
             AI Builder Camp
           </div>
           <div style={{ fontSize: "28px", fontWeight: 500, color: "#d1a476", lineHeight: 1.3 }}>
-            Para quem lidera e precisa de alavancagem real.
+            Para quem lidera e quer alavancagem real com IA na prática.
           </div>
           <div style={{ fontSize: "20px", color: "#8b8f9a", lineHeight: 1.5, maxWidth: "700px" }}>
             Não mais teoria sobre IA. Você sai com ferramentas funcionando, não com slides sobre o futuro.
