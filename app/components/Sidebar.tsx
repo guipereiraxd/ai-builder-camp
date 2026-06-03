@@ -231,7 +231,11 @@ export default function Sidebar() {
               onMouseLeave={(e) => {
                 if (!active) {
                   (e.currentTarget as HTMLElement).style.background = "transparent";
-                  (e.currentTarget as HTMLElement).style.color = "var(--text-2)";
+                  (e.currentTarget as HTMLElement).style.color = isSecret
+                    ? "rgba(239,68,68,0.7)"
+                    : isCanvas
+                    ? "rgba(139,92,246,0.8)"
+                    : "var(--text-2)";
                 }
               }}
             >
