@@ -145,6 +145,24 @@ export default function Home() {
 </html>`,
         },
       }).catch(err => console.warn("[Firebase] Email trigger failed:", err));
+
+      // Admin notification
+      const now = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+      addDoc(collection(db, "mail"), {
+        to: ["gluizpereira@gmail.com"],
+        message: {
+          subject: `Novo cadastro — ${name}`,
+          html: `<div style="font-family:sans-serif;max-width:480px;padding:24px;">
+  <p style="margin:0 0 16px;font-size:14px;color:#64748b;">AI Builder Camp — Novo cadastro</p>
+  <table style="width:100%;border-collapse:collapse;font-size:14px;">
+    <tr><td style="padding:8px 0;border-bottom:1px solid #f1f5f9;color:#94a3b8;width:100px;">Nome</td><td style="padding:8px 0;border-bottom:1px solid #f1f5f9;color:#0f172a;font-weight:600;">${name}</td></tr>
+    <tr><td style="padding:8px 0;border-bottom:1px solid #f1f5f9;color:#94a3b8;">Email</td><td style="padding:8px 0;border-bottom:1px solid #f1f5f9;color:#0f172a;">${email}</td></tr>
+    <tr><td style="padding:8px 0;border-bottom:1px solid #f1f5f9;color:#94a3b8;">Empresa</td><td style="padding:8px 0;border-bottom:1px solid #f1f5f9;color:#0f172a;">${company || "—"}</td></tr>
+    <tr><td style="padding:8px 0;color:#94a3b8;">Horário</td><td style="padding:8px 0;color:#0f172a;">${now}</td></tr>
+  </table>
+</div>`,
+        },
+      }).catch(err => console.warn("[Firebase] Admin notification failed:", err));
     }
 
   };
