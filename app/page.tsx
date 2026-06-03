@@ -12,6 +12,7 @@ const deliverables = [
   { label: "Monitorar concorrentes e gerar inteligência de mercado", detail: "Um agente busca, analisa e entrega o resumo toda semana" },
   { label: "Criar conteúdo de qualidade", detail: "O agente gera, você revisa em minutos e aprova" },
   { label: "Nunca mais copiar e colar informações", detail: "Automatize fluxos de trabalho com agentes" },
+  { label: "Criar sistemas com múltiplos agentes trabalhando em paralelo", detail: "Um agente pesquisa, outro analisa, outro entrega — como um time digital coordenado" },
 ];
 
 const personas = [
