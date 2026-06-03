@@ -26,9 +26,22 @@ export default function Mission6() {
 
       {/* SaaS context callout */}
       <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid rgba(6,182,212,0.2)", background: "rgba(6,182,212,0.04)" }}>
-        <p className="text-sm font-semibold mb-2" style={{ color: "#22d3ee" }}>Por que um SaaS?</p>
+        <p className="text-sm font-semibold mb-2" style={{ color: "#22d3ee" }}>O que é um micro SaaS?</p>
         <p className="text-sm leading-relaxed mb-3" style={{ color: "var(--text-3)" }}>
-          SaaS (Software as a Service) é qualquer software acessível pela internet via assinatura ou uso.
+          Um micro SaaS é um software como serviço pequeno, nichado e recorrente — normalmente criado
+          por uma pessoa ou equipe pequena, para resolver um problema muito específico de um público bem definido.
+        </p>
+        <p className="text-sm leading-relaxed mb-3" style={{ color: "var(--text-3)" }}>
+          Exemplo simples: em vez de criar "uma plataforma completa de RH", você cria um micro SaaS que
+          gera descrições de vagas com IA para empresas de tecnologia. Em vez de criar "um CRM", você cria
+          uma ferramenta que analisa propostas comerciais e sugere melhorias antes do envio.
+        </p>
+        <div className="mb-4 px-4 py-3 rounded-lg" style={{ background: "rgba(6,182,212,0.08)", border: "1px solid rgba(6,182,212,0.15)" }}>
+          <p className="text-sm font-mono" style={{ color: "#22d3ee" }}>
+            problema pequeno + público específico + solução simples + cobrança recorrente
+          </p>
+        </div>
+        <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-3)" }}>
           Com IA e vibe-coding, o tempo entre "tenho uma ideia" e "está no ar" caiu de meses para horas.
           Esta missão mostra exatamente esse caminho — usando um Gerador de OKRs como produto-exemplo.
         </p>
