@@ -217,6 +217,34 @@ export default function ExercisesPage() {
               <span className="text-sm transition-colors" style={{ color: "rgba(209,164,118,0.6)" }}>→</span>
             </div>
           </Link>
+          {/* RAG divider */}
+          <div className="pt-3 pb-1">
+            <p className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: "rgba(109,40,217,0.6)" }}>RAG — Memória da empresa</p>
+          </div>
+          {[
+            { href: "/rag", n: "🧠", title: "O que é RAG", desc: "Conceito de Retrieval-Augmented Generation em linguagem de negócios.", time: "leitura" },
+            { href: "/exercises/m4", n: "M4", title: "RAG Simples", desc: "Base de conhecimento em arquivos .md — funciona com qualquer agente.", time: "25 min" },
+            { href: "/exercises/m5", n: "M5", title: "RAG Avançado", desc: "Busca vetorial com OpenAI Assistants — escalável, com citação de fontes.", time: "35 min" },
+          ].map(({ href, n, title, desc, time }) => (
+            <Link
+              key={href}
+              href={href}
+              className="flex items-start gap-5 p-4 rounded-lg group transition-all"
+              style={{ border: "1px solid rgba(109,40,217,0.15)", background: "rgba(109,40,217,0.03)" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(109,40,217,0.07)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(109,40,217,0.3)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(109,40,217,0.03)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(109,40,217,0.15)"; }}
+            >
+              <span className="text-sm font-mono pt-0.5 w-6 shrink-0" style={{ color: "rgba(109,40,217,0.75)" }}>{n}</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium" style={{ color: "var(--text-1)" }}>{title}</p>
+                <p className="text-xs mt-0.5" style={{ color: "var(--text-4)" }}>{desc}</p>
+              </div>
+              <div className="flex items-center gap-3 pt-0.5 shrink-0">
+                <span className="text-xs" style={{ color: "rgba(109,40,217,0.6)" }}>{time}</span>
+                <span className="text-sm" style={{ color: "rgba(109,40,217,0.5)" }}>→</span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
 

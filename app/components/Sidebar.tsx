@@ -31,6 +31,9 @@ const nav = [
   { label: "M1 Automatize uma reunião", href: "/exercises/m1", duration: "15 min", mission: true },
   { label: "M2 Gerador de propostas", href: "/exercises/m2", duration: "25 min", mission: true },
   { label: "M3 Analise um contrato", href: "/exercises/m3", duration: "20 min", mission: true },
+  { label: "🧠 O que é RAG", href: "/rag", canvas: true },
+  { label: "M4 RAG Simples", href: "/exercises/m4", duration: "25 min", mission: true },
+  { label: "M5 RAG Avançado", href: "/exercises/m5", duration: "35 min", mission: true },
 ];
 
 function LLMSwitcher() {
