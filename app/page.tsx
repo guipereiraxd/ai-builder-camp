@@ -7,6 +7,7 @@ import { db, REGISTERED_KEY } from "../lib/firebase";
 import { ThemeToggle } from "./components/ThemeToggle";
 
 const deliverables = [
+  { label: "Criar aplicações com vibe-coding", detail: "Descreva o que quer em linguagem natural — o agente escreve e entrega o app funcionando" },
   { label: "Criar ferramentas internas com uso de IA", detail: "De ideia a app funcionando em menos de 15 minutos" },
   { label: "Monitorar concorrentes e gerar inteligência de mercado", detail: "Um agente busca, analisa e entrega o resumo toda semana" },
   { label: "Criar conteúdo de qualidade", detail: "O agente gera, você revisa em minutos e aprova" },
