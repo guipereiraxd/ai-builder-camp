@@ -318,7 +318,7 @@ export function LLMSelector() {
       <p className="text-xs mb-4" style={{ color: "var(--text-4)" }}>
         Os comandos dos exercícios vão se adaptar à sua escolha.
       </p>
-      <div className="flex gap-3 flex-wrap">
+      <div className="grid grid-cols-3 gap-2">
         {(["claude", "openai", "gemini"] as LLMChoice[]).map((key) => {
           const cfg = LLM_CONFIG[key];
           const active = llm === key;
