@@ -207,7 +207,7 @@ export default function Home() {
           <p className="text-base leading-relaxed mb-2" style={{ color: "var(--text-2)" }}>
             Para quem lidera uma empresa ou área e precisa de alavancagem real —
             não de mais teoria sobre IA. Você sai com ferramentas funcionando,
-            não com slides sobre o futuro.
+            não com slides sobre o futuro. E ainda fomenta na prática cultura de experimentação.
           </p>
           <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--text-4)" }}>
             Funciona com <strong style={{ color: "var(--text-3)" }}>Claude, OpenAI ou Gemini</strong>.
