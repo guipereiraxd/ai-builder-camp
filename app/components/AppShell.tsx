@@ -19,9 +19,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   // Registration gate for exercise routes
   useEffect(() => {
-    const isExercise = pathname.startsWith("/exercises");
+    const isProtected = pathname.startsWith("/exercises") || pathname.startsWith("/secret-zone");
     const registered = localStorage.getItem(REGISTERED_KEY) === "true";
-    if (isExercise && !registered) {
+    if (isProtected && !registered) {
       router.push("/");
     } else {
       setAuthorized(true);

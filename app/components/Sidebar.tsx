@@ -10,6 +10,7 @@ const nav = [
   { label: "Início", href: "/" },
   { label: "Setup", href: "/setup" },
   { label: "Exercícios", href: "/exercises" },
+  { label: "🔒 Secret Zone", href: "/secret-zone", secret: true },
   { type: "divider", label: "Ato I — Entenda o poder dos Agentes" },
   { label: "1.1 Seu primeiro produto", href: "/exercises/1-1", duration: "10 min" },
   { label: "1.2 Com contexto da empresa", href: "/exercises/1-2", duration: "20 min" },
@@ -208,6 +209,7 @@ export default function Sidebar() {
 
           const active = pathname === item.href;
           const isMission = item.mission;
+          const isSecret = item.secret;
           return (
             <Link
               key={item.href}
@@ -215,8 +217,8 @@ export default function Sidebar() {
               className="flex items-center justify-between px-3 py-2 rounded-md text-sm transition-all"
               style={
                 active
-                  ? { background: isMission ? "rgba(209,164,118,0.12)" : "rgba(75,106,252,0.12)", color: isMission ? "#d1a476" : "#4b6afc" }
-                  : { color: "var(--text-2)" }
+                  ? { background: isSecret ? "rgba(239,68,68,0.12)" : isMission ? "rgba(209,164,118,0.12)" : "rgba(75,106,252,0.12)", color: isSecret ? "#f87171" : isMission ? "#d1a476" : "#4b6afc" }
+                  : { color: isSecret ? "rgba(239,68,68,0.7)" : "var(--text-2)" }
               }
               onMouseEnter={(e) => {
                 if (!active) {
