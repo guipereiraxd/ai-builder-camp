@@ -34,6 +34,7 @@ const nav = [
   { label: "🧠 O que é RAG", href: "/rag", canvas: true },
   { label: "M4 RAG Simples", href: "/exercises/m4", duration: "25 min", mission: true },
   { label: "M5 RAG Avançado", href: "/exercises/m5", duration: "35 min", mission: true },
+  { label: "M6 Do zero ao SaaS", href: "/exercises/m6", duration: "45 min", mission: true },
 ];
 
 function LLMSwitcher() {

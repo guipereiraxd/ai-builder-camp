@@ -193,8 +193,8 @@ Gere um checklist mensal de manutenção.`}</Prompt>
         <Link href="/exercises/m4" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "var(--text-4)" }}>
           ← M4 RAG Simples
         </Link>
-        <Link href="/exercises" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "var(--text-4)" }}>
-          Ver todas as missões →
+        <Link href="/exercises/m6" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "#22d3ee" }}>
+          M6 Do zero ao SaaS →
         </Link>
       </div>
     </AppShell>

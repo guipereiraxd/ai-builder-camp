@@ -23,13 +23,14 @@ const ALL_EXERCISES = [
   { href: "/exercises/m3",  title: "Analise um contrato em minutos",     act: "Missões",  duration: "20 min" },
   { href: "/exercises/m4",  title: "RAG Simples",                         act: "Missões",  duration: "25 min" },
   { href: "/exercises/m5",  title: "RAG Avançado",                        act: "Missões",  duration: "35 min" },
+  { href: "/exercises/m6",  title: "Do zero ao SaaS",                     act: "Missões",  duration: "45 min" },
 ];
 
 const ACTS = [
   { label: "Ato I — Entenda o poder dos Agentes", key: "Ato I",   color: "#4b6afc", total: 6 },
   { label: "Ato II — Construa o Agente",          key: "Ato II",  color: "#4b6afc", total: 3 },
   { label: "Ato III — Conecte ao Mundo Real",     key: "Ato III", color: "#4b6afc", total: 3 },
-  { label: "Ato IV — Missões",                    key: "Missões", color: "#d1a476", total: 5 },
+  { label: "Ato IV — Missões",                    key: "Missões", color: "#d1a476", total: 6 },
 ];
 
 export default function Dashboard() {
