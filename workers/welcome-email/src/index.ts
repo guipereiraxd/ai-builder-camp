@@ -140,7 +140,7 @@ export default {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "AI Builder Camp <noreply@alun.com.br>",
+        from: "AI Builder Camp <onboarding@resend.dev>",
         to:   email,
         subject: `${name.split(" ")[0]}, seu acesso ao AI Builder Camp está liberado`,
         html:    buildEmail(name, company),
