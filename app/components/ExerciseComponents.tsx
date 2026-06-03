@@ -456,3 +456,63 @@ export function CompletedButton() {
     </div>
   );
 }
+
+// ─────────────────────────────────────────────
+// Glossary tooltip
+// ─────────────────────────────────────────────
+
+/** Wraps a technical term with a dashed underline and a tooltip on hover/tap */
+export function Term({ def, children }: { def: string; children: React.ReactNode }) {
+  const [show, setShow] = useState(false);
+
+  return (
+    <span
+      className="relative inline"
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
+      onClick={() => setShow(v => !v)}
+    >
+      <span
+        style={{
+          borderBottom: "1px dashed var(--text-4)",
+          cursor: "help",
+          textDecorationSkipInk: "none",
+        }}
+      >
+        {children}
+      </span>
+
+      {show && (
+        <span
+          className="absolute z-50 rounded-lg px-3 py-2.5 text-xs leading-relaxed shadow-xl pointer-events-none"
+          style={{
+            bottom: "calc(100% + 6px)",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "220px",
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            color: "var(--text-2)",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.3)",
+          }}
+        >
+          {def}
+          {/* Arrow */}
+          <span
+            className="absolute"
+            style={{
+              top: "100%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: 0,
+              height: 0,
+              borderLeft: "5px solid transparent",
+              borderRight: "5px solid transparent",
+              borderTop: "5px solid var(--border)",
+            }}
+          />
+        </span>
+      )}
+    </span>
+  );
+}
