@@ -263,7 +263,7 @@ export const LLM_CONFIG: Record<LLMChoice, {
     installPkg: "@anthropic-ai/claude-code",
     accountUrl: "https://console.anthropic.com", accountLabel: "console.anthropic.com",
     pricingNote: "Pague pelo uso — o curso completo custa aproximadamente $5–10.",
-    color: "#d1a476", bg: "rgba(209,164,118,0.1)",
+    color: "#d1a476", bg: "rgba(209,164,118,0.18)",
   },
   openai: {
     name: "ChatGPT", vendor: "OpenAI", command: "codex",
@@ -271,7 +271,7 @@ export const LLM_CONFIG: Record<LLMChoice, {
     installPkg: "@openai/codex",
     accountUrl: "https://platform.openai.com", accountLabel: "platform.openai.com",
     pricingNote: "Pague pelo uso — custo similar ao Claude para o curso completo.",
-    color: "#10a37f", bg: "rgba(16,163,127,0.1)",
+    color: "#10a37f", bg: "rgba(16,163,127,0.15)",
   },
   gemini: {
     name: "Gemini", vendor: "Google", command: "gemini",
@@ -279,7 +279,7 @@ export const LLM_CONFIG: Record<LLMChoice, {
     installPkg: "@google/gemini-cli",
     accountUrl: "https://aistudio.google.com", accountLabel: "aistudio.google.com",
     pricingNote: "O Google AI Studio tem um plano gratuito generoso — suficiente para o curso inteiro.",
-    color: "#8ab4f8", bg: "rgba(138,180,248,0.1)",
+    color: "#8ab4f8", bg: "rgba(138,180,248,0.15)",
   },
 };
 

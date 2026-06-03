@@ -162,7 +162,7 @@ export default function Sidebar() {
         <Link href="/" className="flex flex-col gap-2 group">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/ai-builder-camp/logo-alun-white.svg" alt="Alun Business" width={110} height={13} style={{ opacity: 0.9 }} />
-          <span className="text-[10px] font-medium tracking-[0.18em] uppercase" style={{ color: "#d1a476" }}>
+          <span className="text-[10px] font-medium tracking-[0.18em] uppercase" style={{ color: "var(--gold)" }}>
             AI Builder Camp
           </span>
         </Link>

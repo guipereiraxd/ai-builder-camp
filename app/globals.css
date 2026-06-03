@@ -18,6 +18,7 @@
   --tint-5:      rgba(255,255,255,0.05);
   --code-text:   #e8e8eb;
   --green-btn:   #6ee87a;
+  --gold:        #d1a476;
 }
 
 [data-theme="light"] {
@@ -37,6 +38,7 @@
   --tint-5:      rgba(0,0,0,0.05);
   --code-text:   #1e293b;
   --green-btn:   #15803d;
+  --gold:        #a06b2a;
 }
 
 /* ─── Logo inversion in light mode ───────────────────────────── */
