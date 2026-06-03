@@ -271,12 +271,12 @@ export default function Home() {
                 className="flex items-start gap-4 p-3 rounded-lg"
                 style={{ border: "1px solid #1e2026", background: "rgba(255,255,255,0.015)" }}
               >
-                <span className="text-xs font-mono pt-0.5 shrink-0 w-14 whitespace-nowrap" style={{ color: (act as { gold?: boolean }).gold ? "rgba(209,164,118,0.4)" : "var(--border)" }}>{act.n}</span>
+                <span className="text-xs font-mono pt-0.5 shrink-0 w-14 whitespace-nowrap" style={{ color: (act as { gold?: boolean }).gold ? "rgba(209,164,118,0.7)" : "var(--text-5)" }}>{act.n}</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.75)" }}>{act.title}</p>
+                  <p className="text-sm font-medium" style={{ color: "var(--text-1)" }}>{act.title}</p>
                   <p className="text-xs mt-0.5" style={{ color: "var(--text-4)" }}>{act.description}</p>
                 </div>
-                <span className="text-xs shrink-0 pt-0.5" style={{ color: (act as { gold?: boolean }).gold ? "rgba(209,164,118,0.4)" : "var(--border)" }}>{act.time}</span>
+                <span className="text-xs shrink-0 pt-0.5" style={{ color: (act as { gold?: boolean }).gold ? "rgba(209,164,118,0.7)" : "var(--text-5)" }}>{act.time}</span>
               </div>
             ))}
           </div>
