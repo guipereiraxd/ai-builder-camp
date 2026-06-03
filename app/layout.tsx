@@ -3,8 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://guipereiraxd.github.io/ai-builder-camp"),
-  title: "AI Builder Camp",
-  description: "Curso prático de IA com a mão na massa. Construa soluções reais, automatize tarefas e transforme problemas do dia a dia em entregas.",
+  title: "AI Builder Camp — Alun Business",
+  description: "Para quem lidera uma empresa ou área e precisa de alavancagem real. 12 exercícios práticos com Claude, OpenAI ou Gemini — sem escrever código. Em até 5 horas.",
 };
 
 export default function RootLayout({

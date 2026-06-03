@@ -221,7 +221,7 @@ export default function Home() {
           >
             {[
               { value: "12", label: "exercícios práticos" },
-              { value: "3", label: "atos progressivos" },
+              { value: "4", label: "atos progressivos" },
               { value: "5h", label: "do zero à IA Agêntica" },
               { value: "3", label: "ferramentas compatíveis" },
             ].map(({ value, label }) => (
