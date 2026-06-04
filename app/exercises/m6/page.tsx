@@ -242,8 +242,8 @@ Para cada item, me dê o nível de esforço (alto/médio/baixo) e o impacto espe
         <Link href="/exercises/m5" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "var(--text-4)" }}>
           ← M5 RAG Avançado
         </Link>
-        <Link href="/exercises" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "var(--text-4)" }}>
-          Ver todas as missões →
+        <Link href="/auto-research" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "#fb923c" }}>
+          🔬 AutoResearch →
         </Link>
       </div>
     </AppShell>
