@@ -506,6 +506,28 @@ export default function SetupPage() {
         <Command>code .</Command>
       </Step>
 
+      {/* Self-help box */}
+      <div
+        className="mt-8 p-4 rounded-xl flex gap-3"
+        style={{ background: "rgba(75,106,252,0.06)", border: "1px solid rgba(75,106,252,0.15)" }}
+      >
+        <span className="text-lg shrink-0">🤖</span>
+        <div>
+          <p className="text-sm font-semibold mb-1" style={{ color: "#8ba3ff" }}>Algo deu errado? O agente resolve.</p>
+          <p className="text-sm leading-relaxed mb-2" style={{ color: "var(--text-3)" }}>
+            Cada computador é diferente — versões, sistemas operacionais, configurações.
+            Se um passo não funcionar como esperado, cole a mensagem de erro direto no agente e pergunte:
+          </p>
+          <div
+            className="rounded-lg px-3 py-2 font-mono text-xs"
+            style={{ background: "var(--code-bg)", color: "var(--text-3)", border: "1px solid var(--border)" }}
+          >
+            Estou seguindo o AI Builder Camp e recebi este erro: [COLE O ERRO]<br />
+            Meu sistema é [Mac/Windows]. O que deu errado e como resolver?
+          </div>
+        </div>
+      </div>
+
       {/* Done */}
       <div
         className="mt-4 p-5 rounded-xl"

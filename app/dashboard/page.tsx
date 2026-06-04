@@ -164,6 +164,22 @@ export default function Dashboard() {
         </div>
       </div>
 
+      {/* Self-help box */}
+      <div
+        className="mb-8 p-4 rounded-xl flex gap-3"
+        style={{ background: "rgba(75,106,252,0.06)", border: "1px solid rgba(75,106,252,0.15)" }}
+      >
+        <span className="text-lg shrink-0">🤖</span>
+        <div>
+          <p className="text-sm font-semibold mb-1" style={{ color: "#8ba3ff" }}>Algo deu errado? O agente resolve.</p>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-3)" }}>
+            Se um comando falhar, uma versão for diferente ou algo não funcionar como esperado —
+            cole a mensagem de erro direto no agente e peça ajuda. A IA conhece seu sistema operacional
+            e sabe diagnosticar problemas de configuração. É sua primeira linha de suporte.
+          </p>
+        </div>
+      </div>
+
       {/* Quick links */}
       <div className="mb-8">
         <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>
