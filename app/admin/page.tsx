@@ -4,7 +4,14 @@ import { useState, useEffect } from "react";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 
-// SHA-256 hash of the admin password — set via NEXT_PUBLIC_ADMIN_HASH GitHub Secret
+// Client-side password check: this page runs entirely in the browser, so server-based auth
+// (bcrypt, sessions) isn't an option. SHA-256 via Web Crypto is the strongest hash available
+// in-browser — it's not salted, but the threat model here is an unguessed URL, not a
+// targeted brute-force attack on a leaked hash.
+//
+// To generate the hash for a new password:
+//   echo -n "your-password" | openssl dgst -sha256 | awk '{print $2}'
+// Then set NEXT_PUBLIC_ADMIN_HASH in .env.local (dev) or as a GitHub/Vercel secret (prod).
 const ADMIN_HASH = process.env.NEXT_PUBLIC_ADMIN_HASH ?? "";
 const ADMIN_KEY  = "aibc_admin";
 

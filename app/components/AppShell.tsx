@@ -17,7 +17,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setDrawerOpen(false);
   }, [pathname]);
 
-  // Registration gate for exercise routes
+  // All course content routes require registration. Unregistered visitors are redirected to
+  // the landing page (/) to complete the form. setAuthorized starts as false and we return
+  // null above, preventing a content flash while the localStorage check runs on mount.
+  // This is a UX gate, not a security boundary — content lives in the JS bundle.
+  // Unprotected routes: /setup, /privacy, /admin.
   useEffect(() => {
     const isProtected = pathname.startsWith("/exercises") || pathname.startsWith("/secret-zone") || pathname.startsWith("/dashboard") || pathname.startsWith("/canvas") || pathname.startsWith("/rag") || pathname.startsWith("/mindset") || pathname.startsWith("/auto-research") || pathname.startsWith("/github") || pathname.startsWith("/exercises/m6");
     const registered = localStorage.getItem(REGISTERED_KEY) === "true";

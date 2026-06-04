@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import AppShell from "../components/AppShell";
 import { PROGRESS_KEY } from "../components/ExerciseComponents";
 
+// Order matters: nextExercise walks this array to find the first incomplete item,
+// so the sequence here defines the suggested curriculum path shown on the dashboard.
 const ALL_EXERCISES = [
   { href: "/exercises/1-1", title: "Seu primeiro produto digital",       act: "Ato I",    duration: "10 min" },
   { href: "/exercises/1-2", title: "Com contexto da empresa",            act: "Ato I",    duration: "20 min" },
@@ -28,6 +30,7 @@ const ALL_EXERCISES = [
   { href: "/exercises/m8",  title: "AutoResearch Karpathy",               act: "Missões",  duration: "40 min" },
 ];
 
+// total must match the number of exercises with that act key in ALL_EXERCISES above.
 const ACTS = [
   { label: "Ato I — Entenda o poder dos Agentes", key: "Ato I",   color: "#4b6afc", total: 6 },
   { label: "Ato II — Construa o Agente",          key: "Ato II",  color: "#4b6afc", total: 3 },

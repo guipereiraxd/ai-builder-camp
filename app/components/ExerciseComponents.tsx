@@ -251,6 +251,9 @@ export function ExerciseHeader({
 export const LLM_KEY = "preferred-llm";
 export type LLMChoice = "claude" | "openai" | "gemini";
 
+// Central source of truth for all LLM-specific strings used across exercise pages.
+// To add a new LLM: add an entry here, extend the LLMChoice type above, and update
+// the grid columns in LLMSelector (currently hardcoded to grid-cols-3).
 export const LLM_CONFIG: Record<LLMChoice, {
   name: string; vendor: string; command: string;
   contextFile: string; apiKeyVar: string;
@@ -283,6 +286,13 @@ export const LLM_CONFIG: Record<LLMChoice, {
   },
 };
 
+/**
+ * Persists the user's LLM choice in localStorage and syncs it across all mounted components.
+ * Uses StorageEvent for cross-tab sync (native browser behavior) and manually dispatches
+ * the same event for same-tab sync — avoids prop drilling through the exercise page tree.
+ * Returns [current, setter, mounted]. mounted is false on first render (SSR/hydration);
+ * callers should suppress LLM-specific output until true to avoid a hydration mismatch.
+ */
 function useLLMPreference(): [LLMChoice, (v: LLMChoice) => void, boolean] {
   const [llm, setLlm] = useState<LLMChoice>("claude");
   const [mounted, setMounted] = useState(false);
@@ -388,6 +398,12 @@ export function CopyContextFile({ from = "ex-1-2" }: { from?: string }) {
 
 export const PROGRESS_KEY = "aibc-progress";
 
+/**
+ * Persists completed exercise hrefs as a JSON array in localStorage (Set isn't serializable)
+ * and syncs across all mounted components via the same StorageEvent pattern as useLLMPreference:
+ * manually dispatched for same-tab sync, native event for cross-tab sync.
+ * Returns { mounted, isCompleted(href: string), mark(href: string, done: boolean) }.
+ */
 export function useProgress() {
   const [completed, setCompleted] = useState<Set<string>>(new Set());
   const [mounted, setMounted] = useState(false);
