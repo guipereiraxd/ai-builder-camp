@@ -81,7 +81,7 @@ export default function MobileHeader({ onMenuClick }: { onMenuClick: () => void 
     >
       <Link href="/" className="flex flex-col gap-0.5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/ai-builder-camp/logo-alun-white.svg" alt="Alun Business" width={90} height={11} style={{ opacity: 0.9 }} />
+        <img src="/logo-alun-white.svg" alt="Alun Business" width={90} height={11} style={{ opacity: 0.9 }} />
         <span className="text-[9px] font-medium tracking-[0.18em] uppercase" style={{ color: "#d1a476" }}>
           AI Builder Camp
         </span>

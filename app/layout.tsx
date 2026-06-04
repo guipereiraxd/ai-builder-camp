@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://guipereiraxd.github.io/ai-builder-camp"),
+  metadataBase: new URL("https://ai-builder-camp.alura.com.br"),
   title: "AI Builder Camp — Alun Business",
   description: "Para quem lidera uma empresa ou área e precisa de alavancagem real. 12 exercícios práticos com Claude, OpenAI ou Gemini — sem escrever código. Em até 5 horas.",
 };

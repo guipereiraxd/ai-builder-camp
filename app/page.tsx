@@ -64,8 +64,8 @@ export default function Home() {
       }).catch(err => console.warn("[Firebase] Registration save failed:", err));
 
       // Trigger welcome email via Firebase Extension (fire-and-forget)
-      const courseUrl = "https://guipereiraxd.github.io/ai-builder-camp/dashboard";
-      const setupUrl  = "https://guipereiraxd.github.io/ai-builder-camp/setup";
+      const courseUrl = "https://ai-builder-camp.alura.com.br/dashboard";
+      const setupUrl  = "https://ai-builder-camp.alura.com.br/setup";
 
       addDoc(collection(db, "mail"), {
         to: [email],
@@ -177,7 +177,7 @@ export default function Home() {
       {/* Top bar */}
       <div className="flex items-center justify-between px-6 py-5 max-w-5xl mx-auto">
         <div className="flex items-center gap-3">
-          <img src="/ai-builder-camp/logo-alun-white.svg" alt="Alun" className="h-6 w-auto" />
+          <img src="/logo-alun-white.svg" alt="Alun" className="h-6 w-auto" />
           <span className="text-sm font-semibold" style={{ color: "#d1a476" }}>AI Builder Camp</span>
         </div>
         <div className="flex items-center gap-3">
@@ -367,7 +367,7 @@ export default function Home() {
       </div>
       {/* Footer */}
       <div className="max-w-5xl mx-auto px-6 pb-8 flex justify-end">
-        <a href="/ai-builder-camp/privacy" className="text-xs transition-colors hover:text-white/30" style={{ color: "var(--border-sub)" }}>
+        <a href="/privacy" className="text-xs transition-colors hover:text-white/30" style={{ color: "var(--border-sub)" }}>
           Política de Privacidade
         </a>
       </div>
