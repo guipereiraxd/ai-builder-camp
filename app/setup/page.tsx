@@ -516,13 +516,22 @@ export default function SetupPage() {
           Você está pronto para começar. O primeiro exercício leva 15 minutos e você
           vai criar uma aplicação web funcional com um único prompt — sem escrever código.
         </p>
-        <Link
-          href="/exercises/1-1"
-          className="inline-flex mt-4 items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-90"
-          style={{ background: "#4b6afc", color: "#ffffff" }}
-        >
-          Começar o exercício 1.1 →
-        </Link>
+        <div className="flex flex-wrap gap-3 mt-4">
+          <Link
+            href="/exercises/1-1"
+            className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-90"
+            style={{ background: "#4b6afc", color: "#ffffff" }}
+          >
+            Começar o exercício 1.1 →
+          </Link>
+          <Link
+            href="/mindset"
+            className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-80"
+            style={{ background: "rgba(75,106,252,0.1)", color: "#8ba3ff", border: "1px solid rgba(75,106,252,0.2)" }}
+          >
+            🧠 Ver Product Thinking antes
+          </Link>
+        </div>
       </div>
     </AppShell>
   );

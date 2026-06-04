@@ -135,11 +135,18 @@ export default function MindsetPage() {
         className="mt-12 p-5 rounded-xl"
         style={{ border: "1px solid rgba(75,106,252,0.15)", background: "rgba(75,106,252,0.04)" }}
       >
-        <p className="text-sm leading-relaxed" style={{ color: "var(--text-3)" }}>
+        <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-3)" }}>
           Esses princípios não são regras — são lentes. Você vai usá-los sem perceber
           enquanto progride pelos exercícios do curso. Quando algo não funcionar como esperado,
           volte aqui. A resposta geralmente está num destes sete.
         </p>
+        <Link
+          href="/exercises"
+          className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-opacity hover:opacity-90"
+          style={{ background: "#4b6afc", color: "#ffffff" }}
+        >
+          Ver lista de exercícios →
+        </Link>
       </div>
     </AppShell>
   );
