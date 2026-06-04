@@ -5,7 +5,7 @@ const principles = [
   {
     n: "01",
     title: "Defina o problema antes da solução",
-    body: "A maior causa de desperdício em projetos de IA é construir algo bem-feito para o problema errado. A pergunta certa não é "o que vou automatizar?" — é "que trabalho precisa mudar e por quê?"",
+    body: `A maior causa de desperdício em projetos de IA é construir algo bem-feito para o problema errado. A pergunta certa não é "o que vou automatizar?" — é "que trabalho precisa mudar e por quê?"`,
     callout: {
       text: "Antes de construir qualquer agente, use o Canvas de Agente de IA para estruturar as 12 decisões que separam um agente que funciona de um que cria problemas.",
       link: "/canvas",
@@ -15,22 +15,22 @@ const principles = [
   {
     n: "02",
     title: "Comece pelo menor escopo possível",
-    body: "MVP não é sobre ser rápido — é sobre aprender rápido. O primeiro agente deve fazer uma coisa só, e bem. Expansão vem depois de validação. Um agente que responde e-mails de suporte é mais valioso do que um que "faz tudo" e nada direito.",
+    body: `MVP não é sobre ser rápido — é sobre aprender rápido. O primeiro agente deve fazer uma coisa só, e bem. Expansão vem depois de validação. Um agente que responde e-mails de suporte é mais valioso do que um que "faz tudo" e nada direito.`,
   },
   {
     n: "03",
     title: "Teste antes de confiar",
-    body: "Nunca coloque um agente em produção sem testá-lo com dados reais e casos extremos primeiro. "Funcionou no meu exemplo" não é o mesmo que "funciona". Crie um ambiente de teste, simule erros, tente quebrar antes que usuários reais quebrem.",
+    body: `Nunca coloque um agente em produção sem testá-lo com dados reais e casos extremos primeiro. "Funcionou no meu exemplo" não é o mesmo que "funciona". Crie um ambiente de teste, simule erros, tente quebrar antes que usuários reais quebrem.`,
   },
   {
     n: "04",
     title: "Mantenha humanos onde importa",
-    body: "Automação deve amplificar julgamento humano, não substituí-lo em decisões de alto impacto. Um checkpoint explícito — "aguarde aprovação antes de executar" — não é fraqueza, é design correto. Saber onde colocar esse freio é uma das habilidades mais valiosas de quem constrói com IA.",
+    body: `Automação deve amplificar julgamento humano, não substituí-lo em decisões de alto impacto. Um checkpoint explícito — "aguarde aprovação antes de executar" — não é fraqueza, é design correto. Saber onde colocar esse freio é uma das habilidades mais valiosas de quem constrói com IA.`,
   },
   {
     n: "05",
     title: "Segurança não é detalhe",
-    body: "API keys, dados de clientes, acesso a sistemas — essas decisões moldam o que você pode construir sem criar risco. Tratar segurança como "resolve depois" é o caminho mais curto para um incidente. Ela precisa entrar no design desde o início.",
+    body: `API keys, dados de clientes, acesso a sistemas — essas decisões moldam o que você pode construir sem criar risco. Tratar segurança como "resolve depois" é o caminho mais curto para um incidente. Ela precisa entrar no design desde o início.`,
     callout: {
       text: "A Secret Zone do curso tem os 8 tópicos essenciais de segurança para quem constrói com IA.",
       link: "/secret-zone",
@@ -45,7 +45,7 @@ const principles = [
   {
     n: "07",
     title: "Documente enquanto constrói",
-    body: "Não para o processo — para você mesmo daqui a três meses, e para o colega que vai precisar entender o que você fez. Um parágrafo de "por que fiz assim" vale mais do que dez de "como funciona". Conhecimento que só existe na sua cabeça não é um ativo — é um risco.",
+    body: `Não para o processo — para você mesmo daqui a três meses, e para o colega que vai precisar entender o que você fez. Um parágrafo de "por que fiz assim" vale mais do que dez de "como funciona". Conhecimento que só existe na sua cabeça não é um ativo — é um risco.`,
   },
 ];
 
