@@ -171,7 +171,8 @@ export default function Dashboard() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {[
-            { href: "/mindset",     icon: "🧠", label: "Product Thinking", desc: "7 princípios para construir com IA", color: "rgba(75,106,252,0.08)", border: "rgba(75,106,252,0.2)", text: "#4b6afc" },
+            { href: "/mindset",      icon: "🧠", label: "Product Thinking",  desc: "7 princípios para construir com IA",  color: "rgba(75,106,252,0.08)",  border: "rgba(75,106,252,0.2)",  text: "#4b6afc" },
+            { href: "/auto-research", icon: "🔬", label: "AutoResearch",       desc: "Pesquisa autônoma com IA",            color: "rgba(249,115,22,0.08)",  border: "rgba(249,115,22,0.2)",  text: "#fb923c" },
             { href: "/canvas",      icon: "📐", label: "Canvas de Agente", desc: "12 decisões antes de construir",    color: "rgba(139,92,246,0.08)", border: "rgba(139,92,246,0.2)", text: "#a78bfa" },
             { href: "/secret-zone", icon: "🔒", label: "Secret Zone",      desc: "Segurança e boas práticas",         color: "rgba(239,68,68,0.08)",  border: "rgba(239,68,68,0.2)",  text: "#f87171" },
             { href: "/exercises",   icon: "◈",  label: "Exercícios",        desc: "Ver todos os exercícios",           color: "rgba(75,106,252,0.08)", border: "rgba(75,106,252,0.2)", text: "#4b6afc" },
