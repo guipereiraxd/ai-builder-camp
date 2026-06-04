@@ -513,10 +513,11 @@ export default function SetupPage() {
       >
         <span className="text-lg shrink-0">🤖</span>
         <div>
-          <p className="text-sm font-semibold mb-1" style={{ color: "#8ba3ff" }}>Algo deu errado? O agente resolve.</p>
+          <p className="text-sm font-semibold mb-1" style={{ color: "#8ba3ff" }}>Algo deu errado? O seu próprio agente resolve.</p>
           <p className="text-sm leading-relaxed mb-2" style={{ color: "var(--text-3)" }}>
             Cada computador é diferente — versões, sistemas operacionais, configurações.
-            Se um passo não funcionar como esperado, cole a mensagem de erro direto no agente e pergunte:
+            Se um passo não funcionar como esperado, cole a mensagem de erro direto no seu agente de IA e pergunte.
+            Se tiver dúvidas dos exercícios, você pode também perguntar para ele!
           </p>
           <div
             className="rounded-lg px-3 py-2 font-mono text-xs"

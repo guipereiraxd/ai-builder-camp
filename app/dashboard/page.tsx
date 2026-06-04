@@ -171,11 +171,12 @@ export default function Dashboard() {
       >
         <span className="text-lg shrink-0">🤖</span>
         <div>
-          <p className="text-sm font-semibold mb-1" style={{ color: "#8ba3ff" }}>Algo deu errado? O agente resolve.</p>
+          <p className="text-sm font-semibold mb-1" style={{ color: "#8ba3ff" }}>Algo deu errado? O seu próprio agente resolve.</p>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-3)" }}>
             Se um comando falhar, uma versão for diferente ou algo não funcionar como esperado —
-            cole a mensagem de erro direto no agente e peça ajuda. A IA conhece seu sistema operacional
+            cole a mensagem de erro direto no seu agente de IA e peça ajuda. A IA conhece seu sistema operacional
             e sabe diagnosticar problemas de configuração. É sua primeira linha de suporte.
+            Se tiver dúvidas dos exercícios, você pode também perguntar para ela!
           </p>
         </div>
       </div>
