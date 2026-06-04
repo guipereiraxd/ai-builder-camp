@@ -97,10 +97,17 @@ export default function AutoResearchPage() {
           do Karpathy diretamente do GitHub para a nossa máquina — exatamente como se fosse um download,
           mas com a vantagem de receber atualizações automáticas quando o autor melhora a ferramenta.
         </p>
-        <p className="text-sm leading-relaxed" style={{ color: "var(--text-3)" }}>
+        <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-3)" }}>
           Na Missão 6 você já usou o GitHub para publicar o gerador de OKRs. Se fez aquela missão,
-          já tem conta e já conhece o básico.
+          já tem conta e já conhece o básico. Se ainda não tem conta, o guia abaixo leva menos de 5 minutos.
         </p>
+        <Link
+          href="/github"
+          className="inline-flex items-center gap-2 text-sm font-medium transition-opacity hover:opacity-80"
+          style={{ color: "#fb923c" }}
+        >
+          📋 Guia: como criar sua conta no GitHub →
+        </Link>
       </div>
 
       {/* CTAs */}

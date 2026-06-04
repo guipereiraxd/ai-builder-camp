@@ -19,7 +19,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   // Registration gate for exercise routes
   useEffect(() => {
-    const isProtected = pathname.startsWith("/exercises") || pathname.startsWith("/secret-zone") || pathname.startsWith("/dashboard") || pathname.startsWith("/canvas") || pathname.startsWith("/rag") || pathname.startsWith("/mindset") || pathname.startsWith("/auto-research") || pathname.startsWith("/exercises/m6");
+    const isProtected = pathname.startsWith("/exercises") || pathname.startsWith("/secret-zone") || pathname.startsWith("/dashboard") || pathname.startsWith("/canvas") || pathname.startsWith("/rag") || pathname.startsWith("/mindset") || pathname.startsWith("/auto-research") || pathname.startsWith("/github") || pathname.startsWith("/exercises/m6");
     const registered = localStorage.getItem(REGISTERED_KEY) === "true";
     if (isProtected && !registered) {
       router.push("/");
