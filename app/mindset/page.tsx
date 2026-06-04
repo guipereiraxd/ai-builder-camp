@@ -58,7 +58,7 @@ export default function MindsetPage() {
           Fundamentos
         </p>
         <h1 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: "var(--text-1)" }}>
-          Pensar como engenheiro de produto
+          Product Thinking
         </h1>
         <p className="text-sm leading-relaxed" style={{ color: "var(--text-5)" }}>
           7 princípios para construir com IA de forma responsável e eficaz
