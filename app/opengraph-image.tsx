@@ -45,14 +45,14 @@ export default function OGImage() {
 
         {/* Main content */}
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          <div style={{ fontSize: "60px", fontWeight: 800, color: "#ffffff", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
-            AI Builder Camp
+          <div style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#64687a", marginBottom: "4px" }}>
+            AI Builder Camp · Alun Business
           </div>
-          <div style={{ fontSize: "28px", fontWeight: 500, color: "#d1a476", lineHeight: 1.3 }}>
-            Para quem lidera e quer alavancagem real com IA na prática.
+          <div style={{ fontSize: "52px", fontWeight: 800, color: "#d1a476", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+            De usuários de IA a builders de soluções reais.
           </div>
-          <div style={{ fontSize: "20px", color: "#8b8f9a", lineHeight: 1.5, maxWidth: "700px" }}>
-            Não mais teoria sobre IA. Você sai com ferramentas funcionando, não com slides sobre o futuro.
+          <div style={{ fontSize: "22px", color: "#8b8f9a", lineHeight: 1.5, maxWidth: "760px" }}>
+            Um camp intensivo para profissionais que querem sair do prompt solto e criar agentes, automações e workflows com IA aplicados ao negócio.
           </div>
         </div>
 

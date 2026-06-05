@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://ai-builder-camp.alura.com.br"),
   title: "AI Builder Camp — Alun Business",
-  description: "Para quem lidera uma empresa ou área e precisa de alavancagem real. 12 exercícios práticos com Claude, OpenAI ou Gemini — sem escrever código. Em até 5 horas.",
+  description: "De usuários de IA a builders de soluções reais. Um camp intensivo para profissionais que querem sair do prompt solto e criar agentes, automações e workflows com IA aplicados ao negócio.",
 };
 
 export default function RootLayout({
