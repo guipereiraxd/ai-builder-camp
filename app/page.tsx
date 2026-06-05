@@ -229,14 +229,12 @@ export default function Home() {
         <div>
           {/* Headline */}
           <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
-            IA na prática,<br />
-            <span style={{ color: "#d1a476" }}>para gerar resultado e entrega direto ao ponto.</span>
+            <span style={{ color: "#d1a476" }}>De usuários de IA a builders de soluções reais.</span>
           </h1>
 
           <p className="text-base leading-relaxed mb-2" style={{ color: "var(--text-2)" }}>
-            Para quem lidera uma empresa ou área e precisa de alavancagem real —
-            não de mais teoria sobre IA. Você sai com ferramentas funcionando,
-            não com slides sobre o futuro. E ainda fomenta na prática cultura de experimentação.
+            Um camp intensivo para profissionais que querem sair do prompt solto
+            e aprender a criar agentes, automações e workflows com IA aplicados ao negócio.
           </p>
           <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--text-4)" }}>
             Funciona com <strong style={{ color: "var(--text-3)" }}>Claude, OpenAI ou Gemini</strong>.
