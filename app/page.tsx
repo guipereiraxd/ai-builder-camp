@@ -241,6 +241,16 @@ export default function Home() {
             Em até 5 horas, sem escrever código.
           </p>
 
+          {/* Transition copy */}
+          <div className="mb-8 py-5" style={{ borderTop: "1px solid #1e2026", borderBottom: "1px solid #1e2026" }}>
+            <p className="text-base font-medium leading-relaxed" style={{ color: "var(--text-3)" }}>
+              A primeira onda da IA foi aprender a usar ferramentas.
+            </p>
+            <p className="text-base font-semibold leading-relaxed" style={{ color: "var(--text-1)" }}>
+              A próxima é aprender a construir sistemas.
+            </p>
+          </div>
+
           {/* Social proof bar */}
           <div
             className="grid grid-cols-2 gap-x-6 gap-y-3 mb-8 pb-8"
@@ -271,6 +281,26 @@ export default function Home() {
                 <span style={{ color: "#4b6afc" }}>{icon}</span>
                 {label}
               </span>
+            ))}
+          </div>
+
+          {/* Before / After */}
+          <div className="mb-8 rounded-xl overflow-hidden" style={{ border: "1px solid #1e2026" }}>
+            <div className="grid grid-cols-2 text-xs font-semibold uppercase tracking-widest" style={{ borderBottom: "1px solid #1e2026" }}>
+              <div className="px-4 py-2.5" style={{ color: "var(--text-5)", borderRight: "1px solid #1e2026" }}>Antes</div>
+              <div className="px-4 py-2.5" style={{ color: "#4b6afc" }}>Depois</div>
+            </div>
+            {[
+              ["Usa IA como ferramenta pontual", "Cria soluções com IA"],
+              ["Faz prompts isolados", "Desenha workflows completos"],
+              ["Depende de especialistas técnicos", "Prototipa com autonomia"],
+              ["Enxerga IA como produtividade individual", "Aplica IA em processos e times"],
+              ["Consome conteúdo", "Constrói entregáveis"],
+            ].map(([before, after], i) => (
+              <div key={i} className="grid grid-cols-2 text-xs" style={{ borderBottom: i < 4 ? "1px solid #1e2026" : "none" }}>
+                <div className="px-4 py-3 leading-relaxed" style={{ color: "var(--text-5)", borderRight: "1px solid #1e2026" }}>{before}</div>
+                <div className="px-4 py-3 leading-relaxed" style={{ color: "var(--text-2)" }}>{after}</div>
+              </div>
             ))}
           </div>
 
@@ -308,8 +338,32 @@ export default function Home() {
             ))}
           </div>
 
+          {/* Alun institutional proof */}
+          <div className="mt-8 mb-6 p-5 rounded-xl" style={{ border: "1px solid #1e2026", background: "rgba(255,255,255,0.015)" }}>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: "var(--text-5)" }}>Criado por quem já capacitou milhares de empresas em IA</p>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-3)" }}>
+              Uma experiência da <strong style={{ color: "var(--text-2)" }}>Alun Business</strong>, ecossistema formado por{" "}
+              <strong style={{ color: "var(--text-2)" }}>Alura, FIAP, PM3 e StartSe</strong> para desenvolver tecnologia,
+              negócios e liderança em escala.
+            </p>
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { value: "6M+", label: "pessoas impactadas" },
+                { value: "13K+", label: "empresas atendidas" },
+                { value: "3K+", label: "treinadas em IA" },
+                { value: "2K+", label: "cursos" },
+                { value: "1K+", label: "educadores" },
+              ].map(({ value, label }) => (
+                <div key={label}>
+                  <p className="text-base font-bold" style={{ color: "var(--text-1)" }}>{value}</p>
+                  <p className="text-xs" style={{ color: "var(--text-5)" }}>{label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Bottom reassurance */}
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-4 flex flex-wrap gap-4">
             {[
               "Sem pré-requisitos técnicos",
               "Claude, OpenAI ou Gemini — você escolhe",
