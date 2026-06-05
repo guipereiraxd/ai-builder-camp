@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { db, REGISTERED_KEY } from "../lib/firebase";
 import { ThemeToggle } from "./components/ThemeToggle";
 
@@ -34,6 +34,36 @@ export default function Home() {
   const [form, setForm] = useState({ name: "", email: "", company: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+
+  // Recovery mode
+  const [mode, setMode] = useState<"register" | "recover">("register");
+  const [recoveryEmail, setRecoveryEmail] = useState("");
+  const [recoveryStatus, setRecoveryStatus] = useState<"idle" | "loading" | "found" | "notfound" | "error">("idle");
+
+  const handleRecover = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!recoveryEmail.trim() || !db) return;
+    setRecoveryStatus("loading");
+    try {
+      const q = query(
+        collection(db, "registrations"),
+        where("email", "==", recoveryEmail.trim().toLowerCase())
+      );
+      const snap = await getDocs(q);
+      if (!snap.empty) {
+        const data = snap.docs[0].data();
+        localStorage.setItem(REGISTERED_KEY, "true");
+        localStorage.setItem("user_name", data.name ?? "");
+        setRecoveryStatus("found");
+        setTimeout(() => router.push("/dashboard"), 1200);
+      } else {
+        setRecoveryStatus("notfound");
+      }
+    } catch (err) {
+      console.error(err);
+      setRecoveryStatus("error");
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -301,13 +331,68 @@ export default function Home() {
             className="p-6 rounded-2xl"
             style={{ border: "1px solid #2a2d35", background: "var(--tint-3)" }}
           >
-            {status === "success" ? (
+            {/* Success states */}
+            {(status === "success" || recoveryStatus === "found") ? (
               <div className="py-10 text-center">
                 <div className="text-4xl mb-4" style={{ color: "#4b6afc" }}>✓</div>
-                <p className="text-white font-semibold mb-1">Acesso liberado!</p>
-                <p className="text-sm" style={{ color: "var(--text-4)" }}>Redirecionando para os exercícios…</p>
+                <p className="text-white font-semibold mb-1">
+                  {recoveryStatus === "found" ? "Acesso restaurado!" : "Acesso liberado!"}
+                </p>
+                <p className="text-sm" style={{ color: "var(--text-4)" }}>Redirecionando…</p>
               </div>
+
+            ) : mode === "recover" ? (
+              /* ── Recovery mode ── */
+              <>
+                <button
+                  onClick={() => { setMode("register"); setRecoveryStatus("idle"); setRecoveryEmail(""); }}
+                  className="flex items-center gap-1.5 text-xs mb-4 transition-opacity hover:opacity-70"
+                  style={{ color: "var(--text-4)" }}
+                >
+                  ← Voltar ao cadastro
+                </button>
+                <p className="text-base font-semibold text-white mb-0.5">Recuperar acesso</p>
+                <p className="text-sm mb-5" style={{ color: "var(--text-4)" }}>
+                  Digite o e-mail que usou no cadastro e restauramos sua sessão.
+                </p>
+                <form onSubmit={handleRecover} className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-3)" }}>E-mail do cadastro</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="voce@empresa.com"
+                      value={recoveryEmail}
+                      onChange={(e) => { setRecoveryEmail(e.target.value); setRecoveryStatus("idle"); }}
+                      className="w-full px-3.5 py-2.5 rounded-lg text-sm text-white placeholder-white/20 outline-none"
+                      style={{ background: "var(--tint-4)", border: "1px solid var(--border)" }}
+                      onFocus={(e) => (e.target.style.borderColor = "#4b6afc")}
+                      onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
+                    />
+                  </div>
+                  {recoveryStatus === "notfound" && (
+                    <p className="text-xs" style={{ color: "#f87171" }}>
+                      E-mail não encontrado. Verifique ou faça um novo cadastro.
+                    </p>
+                  )}
+                  {recoveryStatus === "error" && (
+                    <p className="text-xs" style={{ color: "#f87171" }}>
+                      Algo deu errado. Tente novamente.
+                    </p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={recoveryStatus === "loading"}
+                    className="w-full py-3 rounded-lg text-sm font-semibold transition-opacity hover:opacity-90 disabled:opacity-50"
+                    style={{ background: "#4b6afc", color: "#ffffff" }}
+                  >
+                    {recoveryStatus === "loading" ? "Buscando…" : "Restaurar acesso →"}
+                  </button>
+                </form>
+              </>
+
             ) : (
+              /* ── Register mode ── */
               <>
                 <p className="text-base font-semibold text-white mb-0.5">Comece agora, é gratuito</p>
                 <p className="text-sm mb-5" style={{ color: "var(--text-4)" }}>
@@ -348,7 +433,7 @@ export default function Home() {
                   </button>
                 </form>
 
-                {/* Mini trust signals below button */}
+                {/* Trust signals + recovery link */}
                 <div className="mt-5 pt-5 space-y-2" style={{ borderTop: "1px solid #1e2026" }}>
                   {[
                     "Acesso imediato após o cadastro",
@@ -359,6 +444,13 @@ export default function Home() {
                       <span style={{ color: "#4b6afc" }}>✓</span> {item}
                     </p>
                   ))}
+                  <button
+                    onClick={() => setMode("recover")}
+                    className="text-xs pt-2 transition-opacity hover:opacity-70 text-left"
+                    style={{ color: "var(--text-5)" }}
+                  >
+                    Já se cadastrou antes? Recupere seu acesso →
+                  </button>
                 </div>
               </>
             )}
