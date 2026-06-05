@@ -202,6 +202,8 @@ Depois, crie um arquivo README.md explicando como o time deve usar o gerador (3-
         </p>
       </div>
 
+      <CompletedButton />
+
       <div className="mt-6 flex items-center justify-between">
         <Link href="/exercises/m1" className="inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors" style={{ color: "var(--text-4)" }}>
           ← M1 Automatize uma reunião
