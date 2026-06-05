@@ -446,7 +446,7 @@ export default function Home() {
                   <button
                     onClick={() => setMode("recover")}
                     className="text-xs pt-2 transition-opacity hover:opacity-70 text-left"
-                    style={{ color: "var(--text-5)" }}
+                    style={{ color: "var(--text-4)" }}
                   >
                     Já se cadastrou antes? Recupere seu acesso →
                   </button>
@@ -458,7 +458,7 @@ export default function Home() {
       </div>
       {/* Footer */}
       <div className="max-w-5xl mx-auto px-6 pb-8 flex justify-end">
-        <a href="/privacy" className="text-xs transition-colors hover:text-white/30" style={{ color: "var(--border-sub)" }}>
+        <a href="/privacy" className="text-xs transition-colors hover:opacity-70" style={{ color: "var(--text-4)" }}>
           Política de Privacidade
         </a>
       </div>
