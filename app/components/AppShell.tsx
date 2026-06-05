@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import Sidebar from "./Sidebar";
 import MobileHeader from "./MobileHeader";
 import { REGISTERED_KEY } from "../../lib/firebase";
+import { restoreFromCookie } from "../../lib/session";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -24,6 +25,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   // Unprotected routes: /setup, /privacy, /admin.
   useEffect(() => {
     const isProtected = pathname.startsWith("/exercises") || pathname.startsWith("/secret-zone") || pathname.startsWith("/dashboard") || pathname.startsWith("/canvas") || pathname.startsWith("/rag") || pathname.startsWith("/mindset") || pathname.startsWith("/auto-research") || pathname.startsWith("/github") || pathname.startsWith("/exercises/m6");
+    // Try to restore session from cookie before checking (handles cache-cleared localStorage)
+    restoreFromCookie();
     const registered = localStorage.getItem(REGISTERED_KEY) === "true";
     if (isProtected && !registered) {
       router.push("/");

@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
-import { db, REGISTERED_KEY } from "../lib/firebase";
+import { db } from "../lib/firebase";
+import { REGISTERED_KEY, setSession } from "../lib/session";
 import { ThemeToggle } from "./components/ThemeToggle";
 
 const deliverables = [
@@ -52,8 +53,7 @@ export default function Home() {
       const snap = await getDocs(q);
       if (!snap.empty) {
         const data = snap.docs[0].data();
-        localStorage.setItem(REGISTERED_KEY, "true");
-        localStorage.setItem("user_name", data.name ?? "");
+        setSession(data.name ?? "");
         setRecoveryStatus("found");
         setTimeout(() => router.push("/dashboard"), 1200);
       } else {
@@ -77,8 +77,7 @@ export default function Home() {
     if (!form.name.trim() || !form.email.trim() || !form.company.trim()) return;
 
     // Grant access immediately — never block UX on Firebase availability
-    localStorage.setItem(REGISTERED_KEY, "true");
-    localStorage.setItem("user_name", form.name.trim());
+    setSession(form.name.trim());
     setStatus("success");
     setTimeout(() => router.push("/dashboard"), 1200);
 
