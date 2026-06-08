@@ -230,9 +230,9 @@ export default function SetupPage() {
         {/* What you'll need */}
         <div className="grid grid-cols-3 gap-2 mt-6">
           {[
-            { icon: "⬡", label: "Node.js", desc: "Base técnica" },
-            { icon: "◈", label: "CLI de IA", desc: "O agente de IA" },
-            { icon: "🔑", label: "API Key", desc: "Sua credencial" },
+            { icon: "⬡", label: "Node.js", desc: "Necessário para rodar as ferramentas" },
+            { icon: "◈", label: "Ferramenta de IA", desc: "O agente que você vai usar" },
+            { icon: "🔑", label: "Chave de acesso", desc: "Fica só na sua máquina" },
           ].map((item) => (
             <div
               key={item.label}
@@ -261,8 +261,8 @@ export default function SetupPage() {
       {/* Step 1 */}
       <Step n={1} title="Abra o terminal">
         <p>
-          O terminal é uma janela de texto onde você digita comandos direto para o computador.
-          Parece intimidador, mas você vai usar apenas 4 ou 5 comandos durante todo o curso.
+          O terminal é uma janela de texto onde você digita instruções para o computador.
+          Parece assustador, mas calma — você vai usar no máximo 4 ou 5 comandos durante todo o curso, e todos estão escritos aqui.
         </p>
         <TerminalHelp />
         <p className="mt-2">
@@ -287,7 +287,7 @@ export default function SetupPage() {
           <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">
             nodejs.org
           </a>{" "}
-          e baixe a versão <strong className="text-white">LTS</strong> (a recomendada, mais estável).
+          e baixe a versão <strong className="text-white">LTS</strong> (Long Term Support — a versão mais estável e recomendada para iniciantes).
           Ou instale direto pelo terminal:
         </p>
         <OSTabs
@@ -323,13 +323,12 @@ export default function SetupPage() {
       {/* Step 3 */}
       <Step n={3} title="Instale a ferramenta de IA">
         <LLMTabs
-          claude={<p>O <strong className="text-white">Claude Code</strong> da Anthropic transforma seu terminal em um agente que entende linguagem natural, lê arquivos e executa tarefas.</p>}
-          openai={<p>O <strong className="text-white">OpenAI Codex CLI</strong> é a ferramenta agêntica open source da OpenAI — funciona de forma similar ao Claude Code, direto no terminal.</p>}
-          gemini={<p>O <strong className="text-white">Gemini CLI</strong> do Google é a ferramenta agêntica lançada em 2025 — funciona de forma similar ao Claude Code, direto no terminal.</p>}
+          claude={<p>O <strong className="text-white">Claude Code</strong> é a ferramenta da Anthropic que transforma seu terminal num assistente inteligente: você escreve em português o que quer fazer, e ele executa.</p>}
+          openai={<p>O <strong className="text-white">OpenAI Codex CLI</strong> é a ferramenta da OpenAI — você escreve o que quer em linguagem natural e ele executa direto no seu computador.</p>}
+          gemini={<p>O <strong className="text-white">Gemini CLI</strong> é a ferramenta do Google — você escreve o que quer em linguagem natural e ele executa direto no seu computador.</p>}
         />
         <p className="mt-3">
-          Se estiver no <strong className="text-white">Windows</strong>, rode este comando primeiro para
-          liberar a execução de scripts no PowerShell:
+          Se estiver no <strong className="text-white">Windows</strong>, rode este comando primeiro — ele diz ao Windows que pode confiar nos scripts que você mesmo instala:
         </p>
         <OSTabs
           mac="# Não é necessário no Mac"
@@ -360,10 +359,30 @@ export default function SetupPage() {
       </Step>
 
       {/* Step 4 */}
-      <Step n={4} title="Crie sua conta e obtenha a API Key">
+      <Step n={4} title="Crie sua conta e gere sua chave de acesso">
         <p>
-          A API Key é como uma senha que identifica você para os servidores da IA.
-          A ferramenta usa ela para fazer as chamadas. Você paga pelo uso —{" "}
+          A <strong className="text-white">chave de acesso</strong> (ou API Key) é uma senha gerada automaticamente
+          que identifica você para o serviço de IA. A ferramenta usa ela nos bastidores — você não precisa digitá-la toda vez.
+        </p>
+
+        {/* Privacy reassurance */}
+        <div
+          className="my-4 p-4 rounded-lg flex gap-3"
+          style={{ background: "rgba(74,222,128,0.06)", border: "1px solid rgba(74,222,128,0.2)" }}
+        >
+          <span className="text-base shrink-0">🔒</span>
+          <div>
+            <p className="text-sm font-semibold mb-1" style={{ color: "#4ade80" }}>Sua chave fica só na sua máquina</p>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-3)" }}>
+              Nenhum site, app ou pessoa consegue ver sua chave — ela fica guardada localmente no seu computador,
+              como a senha do seu Wi-Fi. O curso não tem acesso a ela. A Alun Business não tem acesso a ela.
+              Só você.
+            </p>
+          </div>
+        </div>
+
+        <p>
+          Você paga pelo uso —{" "}
           <LLMTabs
             claude={<span>o curso completo custa aproximadamente <strong className="text-white">$5–10</strong> na Anthropic.</span>}
             openai={<span>o custo é similar ao Claude para o curso completo na OpenAI.</span>}
@@ -418,17 +437,14 @@ export default function SetupPage() {
           }
         />
         <Warning>
-          Nunca compartilhe sua API Key. Não coloque ela em e-mails, documentos compartilhados
-          ou arquivos que vão para o Git. Trate como uma senha bancária.
+          Nunca compartilhe sua chave com ninguém — não mande por e-mail, WhatsApp ou coloque em documentos compartilhados. Trate como a senha do seu cartão: funciona sozinha, não precisa aparecer para ninguém.
         </Warning>
       </Step>
 
       {/* Step 5 */}
-      <Step n={5} title="Configure a API Key no terminal">
+      <Step n={5} title="Guarde sua chave de acesso no computador">
         <p>
-          A ferramenta de IA precisa encontrar sua chave automaticamente toda vez que você abre
-          o terminal. Para isso, vamos salvá-la como uma{" "}
-          <strong className="text-white">variável de ambiente</strong>.
+          A ferramenta de IA precisa saber sua chave para funcionar. Vamos guardá-la de forma segura na sua máquina — como uma configuração que o computador lembra automaticamente.
         </p>
         <p className="mt-3">
           Substitua <code>sua-chave-aqui</code> pela chave que você copiou:
@@ -454,8 +470,7 @@ export default function SetupPage() {
           }
         />
         <Tip>
-          <strong>Mac:</strong> se o seu terminal usar bash em vez de zsh, troque{" "}
-          <code>~/.zshrc</code> por <code>~/.bashrc</code>.
+          <strong>Mac:</strong> se aparecer um erro dizendo que "zshrc" não existe, troque <code>~/.zshrc</code> por <code>~/.bashrc</code> no comando acima.
           <br />
           <strong>Windows:</strong> após rodar o comando, feche e reabra o PowerShell para
           a variável entrar em vigor.
