@@ -36,7 +36,8 @@
       "Bash(git commit -m 'fix: update stat label '\\\\''≤5h do zero ao agente'\\\\'' → '\\\\''5h do zero à IA Agêntica'\\\\'' *)",
       "Bash(git commit -m 'feat: update hero deliverables section copy and title *)",
       "Bash(gh workflow *)",
-      "Bash(git commit -m 'fix: light mode contrast in exercises page — mission cards and exercise list *)"
+      "Bash(git commit -m 'fix: light mode contrast in exercises page — mission cards and exercise list *)",
+      "Bash(git -C /Users/guilhermepereira/Projetos/AIBuilderCamp log -2 --oneline)"
     ]
   }
 }

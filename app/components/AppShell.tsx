@@ -24,7 +24,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   // This is a UX gate, not a security boundary — content lives in the JS bundle.
   // Unprotected routes: /setup, /privacy, /admin.
   useEffect(() => {
-    const isProtected = pathname.startsWith("/exercises") || pathname.startsWith("/secret-zone") || pathname.startsWith("/dashboard") || pathname.startsWith("/canvas") || pathname.startsWith("/rag") || pathname.startsWith("/mindset") || pathname.startsWith("/auto-research") || pathname.startsWith("/github") || pathname.startsWith("/exercises/m6");
+    const isProtected = pathname.startsWith("/exercises") || pathname.startsWith("/secret-zone") || pathname.startsWith("/dashboard") || pathname.startsWith("/canvas") || pathname.startsWith("/rag") || pathname.startsWith("/mindset") || pathname.startsWith("/auto-research") || pathname.startsWith("/oportunidades") || pathname.startsWith("/github") || pathname.startsWith("/exercises/m6");
     // Try to restore session from cookie before checking (handles cache-cleared localStorage)
     restoreFromCookie();
     const registered = localStorage.getItem(REGISTERED_KEY) === "true";

@@ -19,6 +19,7 @@ const nav = [
   { label: "2.3 Dashboard executivo", href: "/exercises/2-3", duration: "20 min" },
   { label: "2.4 Briefing semanal", href: "/exercises/2-4", duration: "20 min" },
   { label: "🧠 Product Thinking", href: "/mindset", canvas: true },
+  { label: "🎯 3 Oportunidades de IA", href: "/oportunidades", canvas: true },
   { label: "📐 Canvas de Agente de IA", href: "/canvas", canvas: true },
   { type: "divider", label: "Ato II — Construa o Agente" },
   { label: "3 Agente de monitoramento", href: "/exercises/3", duration: "30 min" },

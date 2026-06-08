@@ -173,6 +173,23 @@ export default function CanvasPage() {
         <div className="mt-6" style={{ borderTop: "1px solid var(--border)" }} />
       </div>
 
+      {/* Oportunidades callout */}
+      <div
+        className="mb-8 p-4 rounded-lg flex items-start gap-3"
+        style={{ background: "rgba(75,106,252,0.06)", border: "1px solid rgba(75,106,252,0.15)" }}
+      >
+        <span className="text-base shrink-0">🎯</span>
+        <div>
+          <p className="text-sm font-semibold mb-0.5" style={{ color: "#8ba3ff" }}>Ainda não sabe qual oportunidade priorizar?</p>
+          <p className="text-xs leading-relaxed mb-1.5" style={{ color: "var(--text-3)" }}>
+            Antes de preencher o Canvas, use o guia de diagnóstico para identificar as 3 melhores oportunidades de IA no seu time.
+          </p>
+          <Link href="/oportunidades" className="text-xs font-medium" style={{ color: "#4b6afc" }}>
+            Como identificar 3 oportunidades de IA →
+          </Link>
+        </div>
+      </div>
+
       {/* Intro */}
       <div className="mb-10 space-y-4 text-sm leading-relaxed" style={{ color: "var(--text-2)" }}>
         <p>
