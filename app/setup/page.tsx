@@ -221,10 +221,31 @@ export default function SetupPage() {
           <span className="text-xs" style={{ color: "var(--text-4)" }}>~20 min</span>
         </div>
         <h1 className="text-2xl md:text-3xl font-bold text-white mb-4">Configuração inicial</h1>
+
+        {/* Why do I need to do this? */}
+        <div
+          className="mb-5 p-4 rounded-xl"
+          style={{ background: "rgba(75,106,252,0.06)", border: "1px solid rgba(75,106,252,0.15)" }}
+        >
+          <p className="text-sm font-semibold mb-2" style={{ color: "#8ba3ff" }}>Por que preciso instalar isso?</p>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-3)" }}>
+            Ferramentas como ChatGPT ou Gemini web são ótimas para conversar — mas ficam presas dentro do navegador.
+            Não conseguem ler seus arquivos, automatizar tarefas ou trabalhar enquanto você faz outra coisa.
+          </p>
+          <p className="text-sm leading-relaxed mt-2" style={{ color: "var(--text-3)" }}>
+            As ferramentas deste curso rodam direto no seu computador. Por isso conseguem abrir pastas,
+            criar documentos, conectar com outros sistemas e executar tarefas de ponta a ponta — sem você precisar
+            ficar copiando e colando. É essa diferença que torna possível tudo que você vai construir nos exercícios.
+          </p>
+          <p className="text-sm leading-relaxed mt-2 font-medium" style={{ color: "var(--text-2)" }}>
+            Vale os 20 minutos. Você faz uma vez e não precisa repetir.
+          </p>
+        </div>
+
         <p className="text-base leading-relaxed" style={{ color: "var(--text-2)" }}>
-          Você vai instalar o <strong className="text-white">Node.js</strong> (base técnica),
+          Você vai instalar o <strong className="text-white">Node.js</strong> (necessário para as ferramentas rodarem),
           a <strong className="text-white">ferramenta de IA</strong> da sua escolha (Claude, OpenAI ou Gemini)
-          e configurar sua <strong className="text-white">chave de API</strong>. Leva cerca de 20 minutos.
+          e configurar sua <strong className="text-white">chave de acesso</strong>. Leva cerca de 20 minutos.
         </p>
 
         {/* What you'll need */}
