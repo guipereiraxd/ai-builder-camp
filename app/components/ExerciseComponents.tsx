@@ -111,18 +111,29 @@ export function Command({ children }: { children: string }) {
   };
 
   return (
-    <div
-      className="flex items-center gap-3 px-4 py-3 rounded-lg my-3 group cursor-pointer"
-      style={{ background: "var(--code-bg)", border: `1px solid ${BORDER}` }}
-      onClick={copy}
-    >
-      <span className="font-mono text-sm shrink-0" style={{ color: "#4b6afc" }}>$</span>
-      <code className="flex-1 text-sm font-mono" style={{ background: "transparent", padding: 0, color: "var(--code-text)" }}>
-        {children}
-      </code>
-      <span className="transition-opacity opacity-0 group-hover:opacity-100" style={{ color: "var(--text-4)" }}>
-        {copied ? <Check size={14} style={{ color: BRAND }} /> : <Copy size={14} />}
-      </span>
+    <div className="my-3 rounded-lg overflow-hidden cursor-pointer" style={{ border: `1px solid ${BORDER}` }} onClick={copy}>
+      <div
+        className="flex items-center justify-between px-4 py-2"
+        style={{ background: "var(--tint-3)", borderBottom: `1px solid ${BORDER}` }}
+      >
+        <div className="flex items-center gap-2 text-xs" style={{ color: "var(--text-4)" }}>
+          <Terminal size={12} />
+          <span>Terminal</span>
+        </div>
+        <span
+          className="flex items-center gap-1.5 text-xs transition-colors"
+          style={{ color: copied ? BRAND : "var(--text-4)" }}
+        >
+          {copied ? <Check size={12} /> : <Copy size={12} />}
+          {copied ? "Copiado!" : "Copiar"}
+        </span>
+      </div>
+      <div className="flex items-center gap-3 px-4 py-3" style={{ background: "var(--code-bg)" }}>
+        <span className="font-mono text-sm shrink-0" style={{ color: "#4b6afc" }}>$</span>
+        <code className="flex-1 text-sm font-mono" style={{ background: "transparent", padding: 0, color: "var(--code-text)" }}>
+          {children}
+        </code>
+      </div>
     </div>
   );
 }
@@ -132,6 +143,7 @@ export const OS_KEY = "preferred-os";
 export function OSTabs({ mac, windows }: { mac: string; windows: string }) {
   const [os, setOs] = useState<"mac" | "windows">("mac");
   const [mounted, setMounted] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem(OS_KEY);
@@ -150,6 +162,12 @@ export function OSTabs({ mac, windows }: { mac: string; windows: string }) {
   const select = (val: "mac" | "windows") => {
     setOs(val);
     localStorage.setItem(OS_KEY, val);
+  };
+
+  const copy = () => {
+    navigator.clipboard.writeText(os === "mac" ? mac : windows);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   const active = {
@@ -183,23 +201,32 @@ export function OSTabs({ mac, windows }: { mac: string; windows: string }) {
       </div>
       {/* Command with copy */}
       {mounted && (
-        <div
-          className="flex items-center gap-3 px-4 py-3 rounded-b-lg rounded-tr-lg group cursor-pointer"
-          style={{ background: "var(--code-bg)", border: `1px solid ${BORDER}` }}
-          onClick={() => {
-            navigator.clipboard.writeText(os === "mac" ? mac : windows);
-          }}
-        >
-          <span className="font-mono text-sm shrink-0" style={{ color: "#4b6afc" }}>$</span>
-          <code
-            className="flex-1 text-sm font-mono"
-            style={{ background: "transparent", padding: 0, color: "var(--code-text)" }}
+        <div className="rounded-b-lg rounded-tr-lg overflow-hidden cursor-pointer" style={{ border: `1px solid ${BORDER}` }} onClick={copy}>
+          <div
+            className="flex items-center justify-between px-4 py-2"
+            style={{ background: "var(--tint-3)", borderBottom: `1px solid ${BORDER}` }}
           >
-            {os === "mac" ? mac : windows}
-          </code>
-          <span className="transition-opacity opacity-0 group-hover:opacity-100" style={{ color: "var(--text-4)" }}>
-            <Copy size={14} />
-          </span>
+            <div className="flex items-center gap-2 text-xs" style={{ color: "var(--text-4)" }}>
+              <Terminal size={12} />
+              <span>Terminal</span>
+            </div>
+            <span
+              className="flex items-center gap-1.5 text-xs transition-colors"
+              style={{ color: copied ? BRAND : "var(--text-4)" }}
+            >
+              {copied ? <Check size={12} /> : <Copy size={12} />}
+              {copied ? "Copiado!" : "Copiar"}
+            </span>
+          </div>
+          <div className="flex items-center gap-3 px-4 py-3" style={{ background: "var(--code-bg)" }}>
+            <span className="font-mono text-sm shrink-0" style={{ color: "#4b6afc" }}>$</span>
+            <code
+              className="flex-1 text-sm font-mono"
+              style={{ background: "transparent", padding: 0, color: "var(--code-text)" }}
+            >
+              {os === "mac" ? mac : windows}
+            </code>
+          </div>
         </div>
       )}
     </div>
