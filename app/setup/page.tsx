@@ -372,7 +372,15 @@ export default function SetupPage() {
           gemini={<Command>gemini --version</Command>}
         />
         <Tip>
-          <strong>Erro de permissão no Mac/Linux?</strong> Adicione <code>sudo</code> antes do comando de instalação.
+          <strong>Erro <code>EACCES: permission denied</code> no Mac/Linux?</strong> Significa que seu usuário
+          não tem permissão para instalar pacotes globais. Rode o mesmo comando de instalação adicionando{" "}
+          <code>sudo</code> na frente (vai pedir sua senha do Mac). Exemplo:
+          <br />
+          <LLMTabs
+            claude={<code>sudo npm install -g @anthropic-ai/claude-code</code>}
+            openai={<code>sudo npm install -g @openai/codex</code>}
+            gemini={<code>sudo npm install -g @google/gemini-cli</code>}
+          />
           <br />
           <strong>Erro "scripts disabled" no Windows?</strong> Rode primeiro:{" "}
           <code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code>
