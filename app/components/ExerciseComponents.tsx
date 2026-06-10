@@ -405,10 +405,14 @@ export function ExerciseStart({
   folder,
   folderByLLM,
   continuing,
+  showFolderInfo,
 }: {
   folder?: string;
   folderByLLM?: Record<LLMChoice, string>;
   continuing?: boolean;
+  /** Set on the very first exercise to explain where the folder lives on disk — this
+   *  pattern repeats for every exercise, only the folder name changes. */
+  showFolderInfo?: boolean;
 }) {
   const [llm, , mounted] = useLLMPreference();
   const f = folderByLLM ? (mounted ? folderByLLM[llm] : folderByLLM.claude) : folder!;
@@ -429,6 +433,23 @@ export function ExerciseStart({
         mac={`mkdir -p ~/ai-builder-camp/${f} && cd ~/ai-builder-camp/${f}`}
         windows={`mkdir $HOME\\ai-builder-camp\\${f}; cd $HOME\\ai-builder-camp\\${f}`}
       />
+      {showFolderInfo && !continuing && (
+        <div className="mt-3 p-3 rounded-lg text-xs leading-relaxed" style={{ background: "var(--tint-3)", color: "var(--text-3)" }}>
+          <p className="mb-1.5">
+            <strong className="text-white">Onde fica essa pasta?</strong> O comando acima cria (ou entra em)
+            uma pasta chamada <code>{f}</code> dentro de <code>ai-builder-camp</code>, na sua pasta pessoal:
+          </p>
+          <ul className="list-disc pl-4 space-y-0.5">
+            <li>Mac: <code>/Users/SeuUsuario/ai-builder-camp/{f}</code> (equivalente a <code>~/ai-builder-camp/{f}</code>)</li>
+            <li>Windows: <code>C:\Users\SeuUsuario\ai-builder-camp\{f}</code></li>
+          </ul>
+          <p className="mt-1.5">
+            É nessa pasta que o agente vai criar e ler arquivos durante o exercício — você pode abri-la
+            no Finder/Explorador de Arquivos para ver o que foi gerado. Todo exercício segue esse mesmo
+            padrão; só o nome da pasta muda (<code>ex-1-1</code>, <code>ex-1-2</code>, <code>ex-2-1</code>...).
+          </p>
+        </div>
+      )}
       <p className="text-sm mt-3 mb-2" style={{ color: "var(--text-2)" }}>
         <strong className="text-white">2.</strong> Abra o agente nesta pasta:
       </p>

@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, ExerciseStart, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, OSTabs, ExerciseHeader, ExerciseStart, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Exercise11() {
   return (
@@ -14,7 +14,7 @@ export default function Exercise11() {
         description="Você vai criar uma aplicação web funcional com um único prompt. Nenhum conhecimento de programação necessário. O objetivo é sentir o que é possível — e entender por que isso muda tudo."
       />
 
-      <ExerciseStart folder="ex-1-1" />
+      <ExerciseStart folder="ex-1-1" showFolderInfo />
 
       <div className="mb-8 p-4 rounded-lg bg-white/3 border border-white/8">
         <p className="text-sm text-white/50 font-medium mb-1">O que você vai construir</p>
@@ -25,16 +25,7 @@ export default function Exercise11() {
         </p>
       </div>
 
-      <Step n={1} title="Abra o terminal e crie uma pasta de trabalho">
-        <p>Todo exercício tem sua própria pasta. Isso ajuda o agente a manter o contexto.</p>
-        <OSTabs
-          mac="mkdir ~/ai-builder-camp/ex-1-1 && cd ~/ai-builder-camp/ex-1-1"
-          windows="mkdir $HOME\ai-builder-camp\ex-1-1; cd $HOME\ai-builder-camp\ex-1-1"
-        />
-        <AgentCommand />
-      </Step>
-
-      <Step n={2} title="Cole este prompt no agente">
+      <Step n={1} title="Cole este prompt no agente">
         <p>
           Copie o prompt abaixo e cole diretamente na interface do agente
           (sem modificar nada primeiro). Observe o que acontece.
@@ -61,7 +52,7 @@ Use um design escuro e profissional. A lógica de extração deve usar a API do 
         </Tip>
       </Step>
 
-      <Step n={3} title="Abra o arquivo gerado">
+      <Step n={2} title="Abra o arquivo gerado">
         <p>
           Quando o agente terminar, ele vai ter criado um arquivo <code>index.html</code>.
           Abra-o no navegador:
@@ -70,7 +61,7 @@ Use um design escuro e profissional. A lógica de extração deve usar a API do 
         <p className="mt-1">Ou simplesmente navegue até a pasta e dê dois cliques no arquivo.</p>
       </Step>
 
-      <Step n={4} title="Teste com um exemplo real">
+      <Step n={3} title="Teste com um exemplo real">
         <p>Cole o texto abaixo no campo da aplicação e clique em "Gerar Ata":</p>
         <div className="mt-3 p-4 bg-[#0d1117] rounded-lg border border-white/10 text-sm text-white/60 font-mono leading-relaxed">
           {`reunião de planejamento q3 terça 14h
@@ -87,7 +78,7 @@ próxima reunião semana que vem mesma hora`}
         </div>
       </Step>
 
-      <Step n={5} title="Itere com linguagem natural">
+      <Step n={4} title="Itere com linguagem natural">
         <p>
           Volte ao agente (que ainda está aberto) e peça ajustes. Experimente:
         </p>
