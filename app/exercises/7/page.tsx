@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader, AgentCommand, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader, ExerciseStart, AgentCommand, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
 
 const MCP_CONFIG = `{
   "mcpServers": {
@@ -48,6 +48,8 @@ export default function Exercise7() {
         duration="30 min"
         description="Você tem documentos espalhados. O agente tem inteligência para analisá-los. Neste exercício você conecta os dois — o agente passa a ler contratos, relatórios e apresentações sem você precisar copiar nada."
       />
+
+      <ExerciseStart folder="ex-7" />
 
       {/* Context box per LLM */}
       <LLMTabs
@@ -186,10 +188,10 @@ export default function Exercise7() {
                 Formatos recomendados: <code>.pdf</code>, <code>.txt</code>, <code>.docx</code> ou <code>.md</code>.
               </p>
               <OSTabs
-                mac="mkdir ~/ai-builder-camp/ex-7 && mkdir ~/ai-builder-camp/ex-7/docs"
-                windows="mkdir $HOME\ai-builder-camp\ex-7; mkdir $HOME\ai-builder-camp\ex-7\docs"
+                mac="mkdir docs"
+                windows="mkdir docs"
               />
-              <p className="mt-3">Coloque os documentos exportados dentro de <code>ex-7/docs/</code>. Comece com 5-10 arquivos.</p>
+              <p className="mt-3">Coloque os documentos exportados dentro da pasta <code>docs/</code>. Comece com 5-10 arquivos.</p>
               <Tip>
                 No Google Drive, você pode exportar Docs como PDF clicando em <strong>Arquivo → Fazer download → PDF</strong>.
                 Para Sheets, exporte como CSV ou PDF.
@@ -214,10 +216,10 @@ export default function Exercise7() {
                 O Gemini entende bem os formatos Google — <code>.pdf</code>, <code>.txt</code> e <code>.docx</code> funcionam muito bem.
               </p>
               <OSTabs
-                mac="mkdir ~/ai-builder-camp/ex-7 && mkdir ~/ai-builder-camp/ex-7/docs"
-                windows="mkdir $HOME\ai-builder-camp\ex-7; mkdir $HOME\ai-builder-camp\ex-7\docs"
+                mac="mkdir docs"
+                windows="mkdir docs"
               />
-              <p className="mt-3">Coloque os documentos exportados dentro de <code>ex-7/docs/</code>. Comece com 5-10 arquivos.</p>
+              <p className="mt-3">Coloque os documentos exportados dentro da pasta <code>docs/</code>. Comece com 5-10 arquivos.</p>
               <Tip>
                 No Google Drive, exporte Docs como PDF: <strong>Arquivo → Fazer download → PDF</strong>.
                 O Gemini analisa PDFs com muito boa qualidade.

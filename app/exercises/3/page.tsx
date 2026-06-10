@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader, ExerciseStart, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Exercise3() {
   return (
@@ -14,6 +14,8 @@ export default function Exercise3() {
         description="Até agora, você deu um prompt e recebeu um resultado. Agora vamos construir algo diferente: um agente que executa múltiplos passos de forma autônoma, toma pequenas decisões sozinho, e entrega um relatório completo sem intervenção a cada etapa."
       />
 
+      <ExerciseStart folder="ex-3" />
+
       <div className="mb-8 p-4 rounded-lg bg-white/3 border border-white/8">
         <p className="text-sm text-white/50 font-medium mb-1">O que muda no Ato II</p>
         <p className="text-sm text-white/70 leading-relaxed">
@@ -24,10 +26,6 @@ export default function Exercise3() {
       </div>
 
       <Step n={1} title="Configure o ambiente do Ato II">
-        <OSTabs
-          mac="mkdir ~/ai-builder-camp/ex-3 && cd ~/ai-builder-camp/ex-3"
-          windows="mkdir $HOME\ai-builder-camp\ex-3; cd $HOME\ai-builder-camp\ex-3"
-        />
         <CopyContextFile />
         <p className="mt-3">
           Antes de abrir o agente, vamos criar o arquivo de configuração.

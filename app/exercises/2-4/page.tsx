@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, ExerciseStart, AgentCommand, CopyContextFile, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Exercise24() {
   return (
@@ -14,6 +14,8 @@ export default function Exercise24() {
         description="O briefing semanal é o ritual mais valioso de um executivo — e o que mais tempo consome para montar. Aqui você vai criar um comando que gera automaticamente seu briefing a partir de notas e dados dispersos."
       />
 
+      <ExerciseStart folder="ex-2-4" />
+
       <div className="mb-8 p-4 rounded-lg bg-white/3 border border-white/8">
         <p className="text-sm text-white/50 font-medium mb-1">O conceito: automação de ritual</p>
         <p className="text-sm text-white/70 leading-relaxed">
@@ -24,10 +26,6 @@ export default function Exercise24() {
       </div>
 
       <Step n={1} title="Defina a estrutura do seu briefing ideal">
-        <OSTabs
-          mac="mkdir ~/ai-builder-camp/ex-2-4 && cd ~/ai-builder-camp/ex-2-4"
-          windows="mkdir $HOME\ai-builder-camp\ex-2-4; cd $HOME\ai-builder-camp\ex-2-4"
-        />
         <CopyContextFile />
         <AgentCommand />
         <p className="mt-3">Primeiro, vamos definir o que um briefing excelente contém:</p>

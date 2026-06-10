@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, ExerciseStart, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
 
 const EXAMPLE_CONTRACT = `ACORDO DE CONFIDENCIALIDADE (NDA)
 
@@ -52,6 +52,8 @@ export default function Mission3() {
         description="NDAs, contratos de fornecedor, acordos de parceria — você recebe, não entende metade, e assina assim mesmo. Esta missão transforma qualquer contrato em linguagem simples, com red flags destacados e pontos de negociação prontos."
       />
 
+      <ExerciseStart folder="missao-3" />
+
       <div className="mb-8 p-4 rounded-lg" style={{ border: "1px solid rgba(209,164,118,0.15)", background: "rgba(209,164,118,0.04)" }}>
         <p className="text-sm font-semibold mb-1" style={{ color: "#d1a476" }}>Quando usar esta missão</p>
         <p className="text-sm leading-relaxed" style={{ color: "var(--text-3)" }}>
@@ -61,15 +63,9 @@ export default function Mission3() {
         </p>
       </div>
 
-      <Step n={1} title="Prepare o ambiente e cole o contrato">
-        <p>Crie uma pasta para a análise e abra o agente:</p>
-        <OSTabs
-          mac="mkdir ~/ai-builder-camp/missao-3 && cd ~/ai-builder-camp/missao-3"
-          windows="mkdir $HOME\ai-builder-camp\missao-3; cd $HOME\ai-builder-camp\missao-3"
-        />
-        <AgentCommand />
-        <p className="mt-3">
-          Crie um arquivo <code>contrato.md</code> e cole o texto completo do contrato.
+      <Step n={1} title="Cole o contrato">
+        <p>
+          Na pasta que você já abriu acima, crie um arquivo <code>contrato.md</code> e cole o texto completo do contrato.
           Ou use o exemplo abaixo para testar agora — é um NDA com algumas cláusulas problemáticas propositais:
         </p>
         <div className="my-4 rounded-lg overflow-hidden" style={{ border: "1px solid var(--border)" }}>
@@ -87,7 +83,9 @@ export default function Mission3() {
       </Step>
 
       <Step n={2} title="Análise completa do contrato">
-        <p>Este é o prompt principal. Entrega tudo de uma vez:</p>
+        <p>Com o arquivo salvo, abra o agente na mesma pasta:</p>
+        <AgentCommand />
+        <p className="mt-3">Este é o prompt principal. Entrega tudo de uma vez:</p>
         <Prompt>{`Leia o arquivo contrato.md e produza uma análise completa em 5 blocos:
 
 ## 1. RESUMO EXECUTIVO

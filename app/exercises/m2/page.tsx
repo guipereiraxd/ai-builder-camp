@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, ExerciseStart, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Mission2() {
   return (
@@ -25,6 +25,8 @@ export default function Mission2() {
         description="Toda proposta comercial que sai da empresa começa do zero — e fica desigual dependendo de quem escreveu. Esta missão cria um app que gera propostas no tom e estrutura exatos da sua empresa, com um clique."
       />
 
+      <ExerciseStart folder="missao-2" />
+
       <div className="mb-8 p-4 rounded-lg" style={{ border: "1px solid rgba(209,164,118,0.15)", background: "rgba(209,164,118,0.04)" }}>
         <p className="text-sm font-semibold mb-2" style={{ color: "#d1a476" }}>A diferença do exercício 1.1</p>
         <p className="text-sm leading-relaxed" style={{ color: "var(--text-3)" }}>
@@ -38,12 +40,16 @@ export default function Mission2() {
       <Step n={1} title="Adicione dados de proposta ao seu arquivo de contexto">
         <p>
           O app vai usar seu arquivo de contexto para pré-carregar tudo automaticamente.
-          Abra o arquivo da pasta <code>ex-1-2</code> e adicione uma seção específica de proposta:
+          Para isso, vamos voltar à pasta do exercício 1.2 e adicionar uma seção específica de proposta
+          ao arquivo de contexto que você já criou lá. Abra um novo terminal (não precisa fechar o desta missão)
+          e entre na pasta:
         </p>
         <OSTabs
-          mac="cd ~/ai-builder-camp/ex-1-2 && claude"
-          windows="cd $HOME\ai-builder-camp\ex-1-2; claude"
+          mac="cd ~/ai-builder-camp/ex-1-2"
+          windows="cd $HOME\ai-builder-camp\ex-1-2"
         />
+        <p className="mt-3">Abra o agente nessa pasta:</p>
+        <AgentCommand />
         <Prompt>{`Adicione ao arquivo de contexto uma nova seção chamada "## Para propostas comerciais" com:
 
 1. PRODUTOS/SERVIÇOS (liste cada um com nome, o que entrega e faixa de preço ou como é precificado)

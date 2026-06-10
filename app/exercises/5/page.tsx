@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader, ExerciseStart, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Exercise5() {
   return (
@@ -14,6 +14,8 @@ export default function Exercise5() {
         description="O exercício mais avançado do curso. Você vai construir um agente de research que conduz uma due diligence completa de forma autônoma — o tipo de análise que uma consultoria cobraria R$50.000 para fazer."
       />
 
+      <ExerciseStart folder="ex-5" />
+
       <div className="mb-8 p-4 rounded-lg bg-white/3 border border-white/8">
         <p className="text-sm text-white/50 font-medium mb-1">O que é um research loop</p>
         <p className="text-sm text-white/70 leading-relaxed">
@@ -24,10 +26,6 @@ export default function Exercise5() {
       </div>
 
       <Step n={1} title="Defina o escopo da due diligence">
-        <OSTabs
-          mac="mkdir ~/ai-builder-camp/ex-5 && cd ~/ai-builder-camp/ex-5"
-          windows="mkdir $HOME\ai-builder-camp\ex-5; cd $HOME\ai-builder-camp\ex-5"
-        />
         <CopyContextFile />
         <p className="mt-3">
           Escolha um alvo para a due diligence. Pode ser:

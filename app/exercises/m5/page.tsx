@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, ExerciseStart, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Mission5() {
   return (
@@ -24,6 +24,8 @@ export default function Mission5() {
         duration="35 min"
         description="Quando a base de conhecimento cresce demais para caber no contexto, é hora de usar busca vetorial real. Esta missão cria um assistente que indexa seus documentos e busca apenas o que é relevante para cada pergunta."
       />
+
+      <ExerciseStart folder="missao-5" />
 
       <div className="mb-8 p-4 rounded-lg" style={{ border: "1px solid rgba(109,40,217,0.2)", background: "rgba(109,40,217,0.05)" }}>
         <p className="text-sm font-semibold mb-1" style={{ color: "#a78bfa" }}>Por que avançar do RAG Simples</p>

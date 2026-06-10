@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, ExerciseStart, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
 
 const EXAMPLE_NOTES = `reunião de planejamento q3 — terça 15h
 presentes: ana (produto), carlos (tech), beatriz (comercial), renata (ceo)
@@ -39,6 +39,8 @@ export default function Mission1() {
         description="Você sai de toda reunião com notas bagunçadas. Esta missão transforma qualquer rascunho em ata profissional, lista de próximos passos e donos por tarefa — em segundos."
       />
 
+      <ExerciseStart folder="missao-1" />
+
       <div className="mb-8 p-4 rounded-lg" style={{ border: "1px solid rgba(209,164,118,0.15)", background: "rgba(209,164,118,0.04)" }}>
         <p className="text-sm font-semibold mb-1" style={{ color: "#d1a476" }}>O que é uma Missão?</p>
         <p className="text-sm leading-relaxed" style={{ color: "var(--text-3)" }}>
@@ -49,13 +51,8 @@ export default function Mission1() {
         </p>
       </div>
 
-      <Step n={1} title="Prepare o ambiente">
-        <OSTabs
-          mac="mkdir ~/ai-builder-camp/missao-1 && cd ~/ai-builder-camp/missao-1"
-          windows="mkdir $HOME\ai-builder-camp\missao-1; cd $HOME\ai-builder-camp\missao-1"
-        />
-        <AgentCommand />
-        <p className="mt-2">
+      <Step n={1} title="Prepare suas notas">
+        <p>
           Crie um arquivo <code>notas.md</code> e cole suas notas brutas de uma reunião real.
           Ou use o exemplo abaixo para testar agora:
         </p>

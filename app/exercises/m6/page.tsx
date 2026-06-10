@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, ExerciseStart, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Mission6() {
   return (
@@ -24,6 +24,8 @@ export default function Mission6() {
         duration="45 min"
         description="Você vai construir um produto real, colocar no ar com uma URL pública e compartilhar com quem quiser. Do prompt ao deploy, tudo com o agente. No final desta missão, você tem um SaaS funcionando."
       />
+
+      <ExerciseStart folder="missao-6" />
 
       {/* SaaS context callout */}
       <div className="mb-8 p-5 rounded-xl" style={{ border: "1px solid rgba(6,182,212,0.2)", background: "rgba(6,182,212,0.04)" }}>

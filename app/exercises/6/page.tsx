@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader, AgentCommand, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader, ExerciseStart, AgentCommand, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
 
 const SETTINGS_MAC = `{
   "mcpServers": {
@@ -36,6 +36,8 @@ export default function Exercise6() {
         duration="20 min"
         description="Até agora, o agente trabalhava só com o que você colava e com o que ele já sabia. Neste exercício você conecta o agente à internet — ele passa a pesquisar agora, em tempo real."
       />
+
+      <ExerciseStart folder="ex-6" />
 
       {/* Context box — adapts per LLM */}
       <LLMTabs
@@ -148,10 +150,11 @@ export default function Exercise6() {
             </Step>
 
             <Step n={3} title="Reinicie e confirme a conexão">
-              <OSTabs
-                mac="mkdir ~/ai-builder-camp/ex-6 && cd ~/ai-builder-camp/ex-6"
-                windows="mkdir $HOME\ai-builder-camp\ex-6; cd $HOME\ai-builder-camp\ex-6"
-              />
+              <p>
+                As mudanças no <code>settings.json</code> só valem para uma nova sessão. Volte ao
+                terminal onde o agente está aberto, pressione <code>Ctrl+C</code> para sair e abra de novo
+                na mesma pasta:
+              </p>
               <AgentCommand />
               <Prompt>{`Quais ferramentas você tem disponíveis agora? Liste os MCPs conectados.`}</Prompt>
               <p className="mt-2">O Claude deve mencionar o <strong className="text-white">Brave Search</strong> na lista.</p>
@@ -159,13 +162,8 @@ export default function Exercise6() {
           </>
         }
         openai={
-          <Step n={1} title="Abra o Codex — nenhuma configuração necessária">
-            <p>A busca web já está disponível. Abra o agente na pasta do exercício:</p>
-            <OSTabs
-              mac="mkdir ~/ai-builder-camp/ex-6 && cd ~/ai-builder-camp/ex-6"
-              windows="mkdir $HOME\ai-builder-camp\ex-6; cd $HOME\ai-builder-camp\ex-6"
-            />
-            <AgentCommand />
+          <Step n={1} title="Nenhuma configuração necessária">
+            <p>A busca web já está disponível no agente que você abriu acima.</p>
             <p className="mt-3">Confirme que a busca web está funcionando:</p>
             <Prompt>{`Pesquise o que aconteceu nos últimos 7 dias com as principais empresas de tecnologia do Brasil. Cite as fontes e datas.`}</Prompt>
             <p className="mt-2">
@@ -179,14 +177,8 @@ export default function Exercise6() {
           </Step>
         }
         gemini={
-          <Step n={1} title="Abra o Gemini — o Google Search já está integrado">
-            <p>Nenhuma configuração necessária. Abra o agente na pasta do exercício:</p>
-            <OSTabs
-              mac="mkdir ~/ai-builder-camp/ex-6 && cd ~/ai-builder-camp/ex-6"
-              windows="mkdir $HOME\ai-builder-camp\ex-6; cd $HOME\ai-builder-camp\ex-6"
-            />
-            <AgentCommand />
-            <p className="mt-3">Confirme que a busca está funcionando:</p>
+          <Step n={1} title="Nenhuma configuração necessária">
+            <p>O Google Search já está integrado no agente que você abriu acima. Confirme que a busca está funcionando:</p>
             <Prompt>{`Pesquise o que aconteceu nos últimos 7 dias com as principais empresas de tecnologia do Brasil. Cite as fontes e datas.`}</Prompt>
             <p className="mt-2">
               O Gemini vai usar o Google Search automaticamente e retornar resultados com fontes.

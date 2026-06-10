@@ -390,6 +390,53 @@ export function AgentCommand() {
   return <Command>{mounted ? LLM_CONFIG[llm].command : "claude"}</Command>;
 }
 
+/**
+ * Standardized "how to start this exercise" block, shown right after ExerciseHeader.
+ * Tells the user explicitly: open a (new) terminal, navigate to the exercise folder,
+ * and open the agent there — adapting to the user's OS and chosen LLM tool.
+ *
+ * - `folder`: same folder for every LLM (most exercises)
+ * - `folderByLLM`: pass when the working folder differs by LLM choice (e.g. exercise 8,
+ *   which continues the project created in exercise 6 for Claude or 7 for Codex/Gemini)
+ * - `continuing`: set when this exercise picks up a folder/project created in a previous
+ *   exercise, instead of starting a brand-new one
+ */
+export function ExerciseStart({
+  folder,
+  folderByLLM,
+  continuing,
+}: {
+  folder?: string;
+  folderByLLM?: Record<LLMChoice, string>;
+  continuing?: boolean;
+}) {
+  const [llm, , mounted] = useLLMPreference();
+  const f = folderByLLM ? (mounted ? folderByLLM[llm] : folderByLLM.claude) : folder!;
+
+  return (
+    <div className="mb-8 p-5 rounded-xl" style={{ border: `1px solid ${BORDER}`, background: "var(--tint-2)" }}>
+      <p className="text-sm font-semibold text-white mb-1">Como começar este exercício</p>
+      <p className="text-xs mb-4" style={{ color: "var(--text-4)" }}>
+        {continuing
+          ? "Este exercício continua o projeto de um exercício anterior — abra o agente na mesma pasta dele."
+          : "Se o agente de outro exercício ainda estiver aberto no terminal, pressione Ctrl+C para sair antes de continuar."}
+      </p>
+      <p className="text-sm mb-2" style={{ color: "var(--text-2)" }}>
+        <strong className="text-white">1.</strong> Abra o terminal e entre na pasta {continuing ? "do projeto" : "deste exercício"}
+        {continuing ? "" : " (ela é criada automaticamente se ainda não existir)"}:
+      </p>
+      <OSTabs
+        mac={`mkdir -p ~/ai-builder-camp/${f} && cd ~/ai-builder-camp/${f}`}
+        windows={`mkdir $HOME\\ai-builder-camp\\${f}; cd $HOME\\ai-builder-camp\\${f}`}
+      />
+      <p className="text-sm mt-3 mb-2" style={{ color: "var(--text-2)" }}>
+        <strong className="text-white">2.</strong> Abra o agente nesta pasta:
+      </p>
+      <AgentCommand />
+    </div>
+  );
+}
+
 /** Shows different content per selected LLM */
 export function LLMTabs({
   claude, openai, gemini,

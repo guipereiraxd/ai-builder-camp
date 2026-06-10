@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, LLMTabs, ContextFileName, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, ExerciseStart, LLMTabs, ContextFileName, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Exercise12() {
   return (
@@ -14,6 +14,8 @@ export default function Exercise12() {
         description="Um agente sem contexto é genérico. Um agente com contexto é seu. Neste exercício você vai criar o arquivo de contexto do agente — a memória permanente — e ver como isso transforma completamente a qualidade das respostas."
       />
 
+      <ExerciseStart folder="ex-1-2" />
+
       <div className="mb-8 p-4 rounded-lg bg-white/3 border border-white/8">
         <p className="text-sm text-white/50 font-medium mb-1">O conceito central</p>
         <LLMTabs
@@ -23,12 +25,8 @@ export default function Exercise12() {
         />
       </div>
 
-      <Step n={1} title="Crie uma pasta e o arquivo de contexto">
-        <OSTabs
-          mac="mkdir ~/ai-builder-camp/ex-1-2 && cd ~/ai-builder-camp/ex-1-2"
-          windows="mkdir $HOME\ai-builder-camp\ex-1-2; cd $HOME\ai-builder-camp\ex-1-2"
-        />
-        <p className="mt-3">Abra um editor de texto qualquer e crie o arquivo <ContextFileName />.
+      <Step n={1} title="Crie o arquivo de contexto">
+        <p>Na pasta que você já abriu acima, crie o arquivo <ContextFileName />.
         Use o template abaixo como ponto de partida — e customize com informações reais da sua empresa:</p>
         <Prompt>{`# Contexto da Empresa
 

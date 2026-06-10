@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, ExerciseStart, AgentCommand, CopyContextFile, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Exercise22() {
   return (
@@ -14,6 +14,8 @@ export default function Exercise22() {
         description="Escrever bem e rápido é uma vantagem competitiva. Neste exercício você vai criar um comando personalizado que gera emails no tom exato da sua empresa — e que qualquer pessoa do time pode usar."
       />
 
+      <ExerciseStart folder="ex-2-2" />
+
       <div className="mb-8 p-4 rounded-lg bg-white/3 border border-white/8">
         <p className="text-sm text-white/50 font-medium mb-1">O conceito: slash commands</p>
         <p className="text-sm text-white/70 leading-relaxed">
@@ -25,10 +27,6 @@ export default function Exercise22() {
       </div>
 
       <Step n={1} title="Prepare o ambiente e defina o tom de voz">
-        <OSTabs
-          mac="mkdir ~/ai-builder-camp/ex-2-2 && cd ~/ai-builder-camp/ex-2-2"
-          windows="mkdir $HOME\ai-builder-camp\ex-2-2; cd $HOME\ai-builder-camp\ex-2-2"
-        />
         <CopyContextFile />
         <p className="mt-3">
           Primeiro, vamos criar um arquivo com exemplos reais de emails bons da sua empresa.

@@ -26,6 +26,13 @@ export default function Mission8() {
       />
 
       <div className="mb-8 p-4 rounded-lg" style={{ border: "1px solid rgba(249,115,22,0.2)", background: "rgba(249,115,22,0.05)" }}>
+        <p className="text-sm font-semibold mb-1" style={{ color: "#fb923c" }}>Como começar esta missão</p>
+        <p className="text-xs leading-relaxed mb-3" style={{ color: "var(--text-3)" }}>
+          Diferente dos outros exercícios, aqui você não abre o agente de cara — primeiro
+          configura GitHub e Python (passos 1-2), depois clona o projeto (passo 3) e só então abre
+          o agente dentro da pasta <code>autoresearch</code> que será criada. Pode usar o mesmo
+          terminal das missões anteriores; não precisa fechar nada.
+        </p>
         <p className="text-sm font-semibold mb-1" style={{ color: "#fb923c" }}>Pré-requisitos desta missão</p>
         <div className="space-y-1 mt-2">
           {[

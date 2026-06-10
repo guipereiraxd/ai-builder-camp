@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, ExerciseStart, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Mission4() {
   return (
@@ -25,6 +25,8 @@ export default function Mission4() {
         description="Toda empresa tem conhecimento espalhado em documentos que ninguém lê. Esta missão organiza esse conhecimento e cria um agente que responde perguntas com base nele — sem alucinação, sem esquecer."
       />
 
+      <ExerciseStart folder="missao-4" />
+
       <div className="mb-8 p-4 rounded-lg" style={{ border: "1px solid rgba(109,40,217,0.2)", background: "rgba(109,40,217,0.05)" }}>
         <p className="text-sm font-semibold mb-1" style={{ color: "#a78bfa" }}>Como funciona esta abordagem</p>
         <p className="text-sm leading-relaxed" style={{ color: "var(--text-3)" }}>
@@ -35,11 +37,11 @@ export default function Mission4() {
         </p>
       </div>
 
-      <Step n={1} title="Prepare o ambiente e estruture os documentos">
-        <p>Crie a pasta da missão e a estrutura de conhecimento:</p>
+      <Step n={1} title="Estruture os documentos">
+        <p>Na pasta que você já abriu acima, crie uma subpasta para os documentos de conhecimento:</p>
         <OSTabs
-          mac="mkdir ~/ai-builder-camp/missao-4 && cd ~/ai-builder-camp/missao-4 && mkdir knowledge"
-          windows="mkdir $HOME\ai-builder-camp\missao-4; cd $HOME\ai-builder-camp\missao-4; mkdir knowledge"
+          mac="mkdir knowledge"
+          windows="mkdir knowledge"
         />
         <p className="mt-3">
           Dentro da pasta <code>knowledge/</code>, crie arquivos <code>.md</code> com o conhecimento da empresa.

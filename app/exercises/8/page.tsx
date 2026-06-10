@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader, AgentCommand, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Command, OSTabs, Tip, Warning, Prompt, ExerciseHeader, ExerciseStart, AgentCommand, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
 
 const MCP_CONFIG = `{
   "mcpServers": {
@@ -65,6 +65,11 @@ export default function Exercise8() {
         title="Agente no Slack"
         duration="35 min"
         description="O último elo da cadeia: o agente não só analisa e gera — ele entrega os resultados direto onde sua equipe trabalha. Neste exercício você conecta o agente ao Slack e o briefing semanal passa a ser postado automaticamente no canal certo."
+      />
+
+      <ExerciseStart
+        folderByLLM={{ claude: "ex-6", openai: "ex-7", gemini: "ex-7" }}
+        continuing
       />
 
       {/* Context box per LLM */}

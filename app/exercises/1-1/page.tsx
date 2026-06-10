@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, ExerciseStart, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Exercise11() {
   return (
@@ -13,6 +13,8 @@ export default function Exercise11() {
         duration="10 min"
         description="Você vai criar uma aplicação web funcional com um único prompt. Nenhum conhecimento de programação necessário. O objetivo é sentir o que é possível — e entender por que isso muda tudo."
       />
+
+      <ExerciseStart folder="ex-1-1" />
 
       <div className="mb-8 p-4 rounded-lg bg-white/3 border border-white/8">
         <p className="text-sm text-white/50 font-medium mb-1">O que você vai construir</p>

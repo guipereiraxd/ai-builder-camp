@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Command, OSTabs, ExerciseHeader, ExerciseStart, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Exercise21() {
   return (
@@ -14,6 +14,8 @@ export default function Exercise21() {
         description="Monitorar concorrentes é crítico mas consome tempo. Neste exercício você vai criar um pipeline que pesquisa, sintetiza e formata uma análise competitiva completa — o tipo de trabalho que levaria horas de um analista."
       />
 
+      <ExerciseStart folder="ex-2-1" />
+
       <div className="mb-8 p-4 rounded-lg bg-white/3 border border-white/8">
         <p className="text-sm text-white/50 font-medium mb-1">O que você vai construir</p>
         <p className="text-sm text-white/70 leading-relaxed">
@@ -24,10 +26,6 @@ export default function Exercise21() {
       </div>
 
       <Step n={1} title="Prepare o ambiente">
-        <OSTabs
-          mac="mkdir ~/ai-builder-camp/ex-2-1 && cd ~/ai-builder-camp/ex-2-1"
-          windows="mkdir $HOME\ai-builder-camp\ex-2-1; cd $HOME\ai-builder-camp\ex-2-1"
-        />
         <p className="mt-2">
           Copie o arquivo de contexto do exercício anterior para esta pasta — assim
           o agente já conhece o contexto da sua empresa:

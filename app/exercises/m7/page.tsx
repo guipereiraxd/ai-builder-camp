@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, AgentCommand, OSTabs, ExerciseHeader, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, AgentCommand, OSTabs, ExerciseHeader, ExerciseStart, LLMTabs, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Mission7() {
   return (
@@ -24,6 +24,8 @@ export default function Mission7() {
         duration="25 min"
         description="Usando as ferramentas que você já tem no curso, vamos construir um agente que pesquisa, sintetiza e entrega relatórios completos — de forma autônoma, sem você precisar direcionar cada passo."
       />
+
+      <ExerciseStart folder="missao-7" />
 
       <div className="mb-8 p-4 rounded-lg" style={{ border: "1px solid rgba(249,115,22,0.2)", background: "rgba(249,115,22,0.05)" }}>
         <p className="text-sm font-semibold mb-1" style={{ color: "#fb923c" }}>O que torna essa abordagem "simples"</p>
