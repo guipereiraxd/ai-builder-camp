@@ -223,7 +223,7 @@ export default function Home() {
 
       {/* Hero + Form */}
 
-      <div className="max-w-5xl mx-auto px-6 pt-10 pb-8 grid md:grid-cols-2 gap-14 items-start">
+      <div className="hero-grid max-w-5xl mx-auto px-6 pt-10 pb-8 grid md:grid-cols-2 gap-14 items-start">
 
         {/* Left — copy */}
         <div>
@@ -380,7 +380,7 @@ export default function Home() {
         <div className="md:sticky md:top-10">
           <div
             className="p-6 rounded-2xl"
-            style={{ border: "1px solid #2a2d35", background: "var(--tint-3)" }}
+            style={{ border: "1px solid #2a2d35", background: "var(--surface)" }}
           >
             {/* Success states */}
             {(status === "success" || recoveryStatus === "found") ? (

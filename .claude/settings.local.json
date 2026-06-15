@@ -37,7 +37,9 @@
       "Bash(git commit -m 'feat: update hero deliverables section copy and title *)",
       "Bash(gh workflow *)",
       "Bash(git commit -m 'fix: light mode contrast in exercises page — mission cards and exercise list *)",
-      "Bash(git -C /Users/guilhermepereira/Projetos/AIBuilderCamp log -2 --oneline)"
+      "Bash(git -C /Users/guilhermepereira/Projetos/AIBuilderCamp log -2 --oneline)",
+      "Bash(git commit -m 'feat: redirect /privacy to fiap.com.br/privacidade *)",
+      "mcp__visualize__show_widget"
     ]
   }
 }
