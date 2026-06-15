@@ -240,7 +240,7 @@ export default function Home() {
           </span>
 
           {/* Headline */}
-          <h1 className="text-4xl md:text-[3.25rem] font-bold leading-[1.08] tracking-tight mb-5 text-balance">
+          <h1 className="font-display text-[2.75rem] md:text-[3.5rem] font-bold leading-[1.05] tracking-[-0.03em] mb-5 text-balance">
             <span className="text-white">De usuários de IA a </span>
             <span style={{ color: "#d1a476" }}>builders de soluções reais.</span>
           </h1>

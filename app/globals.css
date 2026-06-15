@@ -92,6 +92,11 @@
   box-sizing: border-box;
 }
 
+/* ─── Display font for headlines ──────────────────────────────── */
+.font-display {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
+
 /* ─── Hero dot-grid backdrop ──────────────────────────────────── */
 .hero-grid {
   background-image: radial-gradient(
