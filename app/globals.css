@@ -92,6 +92,38 @@
   box-sizing: border-box;
 }
 
+/* ─── Hero dot-grid backdrop ──────────────────────────────────── */
+.hero-grid {
+  background-image: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--text-1) 12%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    #000 0%,
+    transparent 75%
+  );
+  mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    #000 0%,
+    transparent 75%
+  );
+}
+
+.hero-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 50% 45% at 30% 18%,
+    rgba(75, 106, 252, 0.1),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
 body {
   background: var(--bg);
   color: var(--text-2);

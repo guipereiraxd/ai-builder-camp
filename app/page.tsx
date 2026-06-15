@@ -203,8 +203,12 @@ export default function Home() {
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)", color: "var(--text-2)" }}>
 
+      {/* Grid backdrop behind top bar + hero */}
+      <div className="relative">
+        <div className="hero-grid absolute inset-x-0 top-0 h-[600px] pointer-events-none" aria-hidden="true" />
+
       {/* Top bar */}
-      <div className="flex items-center justify-between px-6 py-5 max-w-5xl mx-auto">
+      <div className="relative flex items-center justify-between px-6 py-5 max-w-5xl mx-auto">
         <div className="flex items-center gap-3">
           <img src="/logo-alun-white.svg" alt="Alun" className="h-6 w-auto" />
           <span className="text-sm font-semibold" style={{ color: "#d1a476" }}>AI Builder Camp</span>
@@ -212,7 +216,7 @@ export default function Home() {
         <div className="flex items-center gap-3">
           <div
             className="hidden sm:inline-flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full"
-            style={{ color: "#4b6afc", background: "rgba(75,106,252,0.1)" }}
+            style={{ color: "#8fa8ff", background: "rgba(75,106,252,0.1)", border: "1px solid rgba(75,106,252,0.2)" }}
           >
             <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#4b6afc" }} />
             Acesso gratuito · 12 exercícios
@@ -223,13 +227,22 @@ export default function Home() {
 
       {/* Hero + Form */}
 
-      <div className="max-w-5xl mx-auto px-6 pt-10 pb-8 grid md:grid-cols-2 gap-14 items-start">
+      <div className="relative max-w-5xl mx-auto px-6 pt-10 pb-8 grid md:grid-cols-2 gap-14 items-start">
 
         {/* Left — copy */}
         <div>
+          {/* Eyebrow */}
+          <span
+            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest mb-5 px-3 py-1.5 rounded-full"
+            style={{ color: "#d1a476", background: "rgba(209,164,118,0.08)", border: "1px solid rgba(209,164,118,0.2)" }}
+          >
+            AI Builder Camp
+          </span>
+
           {/* Headline */}
-          <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
-            <span style={{ color: "#d1a476" }}>De usuários de IA a builders de soluções reais.</span>
+          <h1 className="text-4xl md:text-[3.25rem] font-bold leading-[1.08] tracking-tight mb-5 text-balance">
+            <span className="text-white">De usuários de IA a </span>
+            <span style={{ color: "#d1a476" }}>builders de soluções reais.</span>
           </h1>
 
           <p className="text-base leading-relaxed mb-2" style={{ color: "var(--text-2)" }}>
@@ -507,6 +520,7 @@ export default function Home() {
             )}
           </div>
         </div>
+      </div>
       </div>
       {/* Footer */}
       <div className="max-w-5xl mx-auto px-6 pb-8 flex justify-end">
