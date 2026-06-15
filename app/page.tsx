@@ -229,7 +229,8 @@ export default function Home() {
         <div>
           {/* Headline */}
           <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
-            <span style={{ color: "#d1a476" }}>De usuários de IA a builders de soluções reais.</span>
+            <span className="text-white">De usuários de IA a </span>
+            <span style={{ color: "#d1a476" }}>builders de soluções reais.</span>
           </h1>
 
           <p className="text-base leading-relaxed mb-2" style={{ color: "var(--text-2)" }}>
