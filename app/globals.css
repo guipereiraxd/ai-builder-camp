@@ -124,6 +124,58 @@
   pointer-events: none;
 }
 
+/* ─── Form card highlight ─────────────────────────────────────── */
+.form-card {
+  position: relative;
+  box-shadow:
+    0 0 0 1px rgba(75, 106, 252, 0.08),
+    0 20px 60px -20px rgba(0, 0, 0, 0.7),
+    0 0 80px -40px rgba(75, 106, 252, 0.45);
+}
+
+/* glowing accent line at the top of the card */
+.form-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(75, 106, 252, 0.8),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* ─── CTA button ──────────────────────────────────────────────── */
+.cta-button {
+  background: #4b6afc;
+  color: #ffffff;
+  box-shadow: 0 8px 24px -8px rgba(75, 106, 252, 0.6);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.cta-button:hover:not(:disabled) {
+  background: #5d79ff;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 32px -8px rgba(75, 106, 252, 0.8);
+}
+
+.cta-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.cta-button:disabled {
+  opacity: 0.5;
+  box-shadow: none;
+}
+
 body {
   background: var(--bg);
   color: var(--text-2);

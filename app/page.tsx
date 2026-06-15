@@ -392,7 +392,7 @@ export default function Home() {
         {/* Right — form (sticky) */}
         <div className="md:sticky md:top-10">
           <div
-            className="p-6 rounded-2xl"
+            className="form-card p-6 rounded-2xl"
             style={{ border: "1px solid #2a2d35", background: "var(--tint-3)" }}
           >
             {/* Success states */}
@@ -447,8 +447,7 @@ export default function Home() {
                   <button
                     type="submit"
                     disabled={recoveryStatus === "loading"}
-                    className="w-full py-3 rounded-lg text-sm font-semibold transition-opacity hover:opacity-90 disabled:opacity-50"
-                    style={{ background: "#4b6afc", color: "#ffffff" }}
+                    className="cta-button w-full py-3 rounded-lg text-sm font-semibold"
                   >
                     {recoveryStatus === "loading" ? "Buscando…" : "Restaurar acesso →"}
                   </button>
@@ -490,8 +489,7 @@ export default function Home() {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="w-full py-3 rounded-lg text-sm font-semibold transition-opacity hover:opacity-90 disabled:opacity-50"
-                    style={{ background: "#4b6afc", color: "#ffffff" }}
+                    className="cta-button w-full py-3 rounded-lg text-sm font-semibold"
                   >
                     {status === "loading" ? "Enviando…" : "Acessar o curso gratuitamente →"}
                   </button>
