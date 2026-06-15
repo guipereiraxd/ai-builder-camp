@@ -255,18 +255,18 @@ export default function Home() {
           </p>
 
           {/* Transition copy */}
-          <div className="mb-8 py-5" style={{ borderTop: "1px solid #1e2026", borderBottom: "1px solid #1e2026" }}>
-            <p className="text-base font-medium leading-relaxed" style={{ color: "var(--text-3)" }}>
+          <div className="my-10 py-8" style={{ borderTop: "1px solid #1e2026", borderBottom: "1px solid #1e2026" }}>
+            <p className="font-display text-lg md:text-xl font-medium leading-snug tracking-tight" style={{ color: "var(--text-3)" }}>
               A primeira onda da IA foi aprender a usar ferramentas.
             </p>
-            <p className="text-base font-semibold leading-relaxed" style={{ color: "var(--text-1)" }}>
+            <p className="font-display text-lg md:text-xl font-semibold leading-snug tracking-tight mt-1" style={{ color: "var(--text-1)" }}>
               A próxima é aprender a construir sistemas.
             </p>
           </div>
 
           {/* Social proof bar */}
           <div
-            className="grid grid-cols-2 gap-x-6 gap-y-3 mb-8 pb-8"
+            className="grid grid-cols-2 gap-x-6 gap-y-3 mb-10 pb-10"
             style={{ borderBottom: "1px solid #1e2026" }}
           >
             {[
@@ -276,15 +276,15 @@ export default function Home() {
               { value: "3", label: "ferramentas compatíveis" },
             ].map(({ value, label }) => (
               <div key={label} className="flex items-baseline gap-1.5">
-                <span className="text-lg font-bold text-white">{value}</span>
+                <span className="font-display text-xl font-bold text-white tracking-tight">{value}</span>
                 <span className="text-xs" style={{ color: "var(--text-4)" }}>{label}</span>
               </div>
             ))}
           </div>
 
           {/* Who it's for */}
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>Para quem é</p>
-          <div className="flex flex-wrap gap-2 mb-8">
+          <p className="font-display text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>Para quem é</p>
+          <div className="flex flex-wrap gap-2 mb-10">
             {personas.map(({ icon, label }) => (
               <span
                 key={label}
@@ -318,7 +318,7 @@ export default function Home() {
           </div>
 
           {/* What you'll build */}
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>O que você vai conseguir fazer</p>
+          <p className="font-display text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>O que você vai conseguir fazer</p>
           <div className="space-y-3 mb-8">
             {deliverables.map(({ label, detail }) => (
               <div key={label} className="flex items-start gap-3">
@@ -333,7 +333,7 @@ export default function Home() {
           </div>
 
           {/* Acts */}
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>Estrutura do curso</p>
+          <p className="font-display text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>Estrutura do curso</p>
           <div className="space-y-2">
             {acts.map((act) => (
               <div
@@ -415,7 +415,7 @@ export default function Home() {
                 >
                   ← Voltar ao cadastro
                 </button>
-                <p className="text-base font-semibold text-white mb-0.5">Recuperar acesso</p>
+                <p className="font-display text-lg font-semibold text-white mb-0.5 tracking-tight">Recuperar acesso</p>
                 <p className="text-sm mb-5" style={{ color: "var(--text-4)" }}>
                   Digite o e-mail que usou no cadastro e restauramos sua sessão.
                 </p>
@@ -457,7 +457,7 @@ export default function Home() {
             ) : (
               /* ── Register mode ── */
               <>
-                <p className="text-base font-semibold text-white mb-0.5">Comece agora, é gratuito</p>
+                <p className="font-display text-lg font-semibold text-white mb-0.5 tracking-tight">Comece agora, é gratuito</p>
                 <p className="text-sm mb-5" style={{ color: "var(--text-4)" }}>
                   Preencha seus dados e acesse os 12 exercícios na hora.
                 </p>
