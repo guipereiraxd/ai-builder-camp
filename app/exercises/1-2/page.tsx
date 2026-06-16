@@ -25,6 +25,99 @@ export default function Exercise12() {
         />
       </div>
 
+      {/* Markdown explainer */}
+      <details className="mb-8 group">
+        <summary className="cursor-pointer list-none flex items-center justify-between p-4 rounded-lg border border-white/8 bg-white/3 hover:bg-white/5 transition-colors">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ background: "rgba(75,106,252,0.15)", color: "#4b6afc" }}>Leitura complementar</span>
+            <span className="text-sm font-semibold text-white">Por que usamos arquivos <code>.md</code>? Como ler e escrever Markdown</span>
+          </div>
+          <span className="text-white/30 text-xs group-open:hidden">▼ expandir</span>
+          <span className="text-white/30 text-xs hidden group-open:inline">▲ recolher</span>
+        </summary>
+
+        <div className="mt-3 rounded-lg border border-white/8 overflow-hidden">
+
+          {/* Intro */}
+          <div className="p-5 border-b border-white/8" style={{ background: "rgba(255,255,255,0.02)" }}>
+            <p className="text-sm text-white/70 leading-relaxed mb-3">
+              Os arquivos <code>.md</code> funcionam como uma <strong className="text-white/90">ponte universal entre a linguagem humana e os sistemas de computação</strong>.
+              Eles estruturam textos simples para que qualquer plataforma — incluindo IAs — entenda a hierarquia e o propósito de cada frase, sem a poluição visual de formatos complexos.
+            </p>
+            <p className="text-sm text-white/60 leading-relaxed mb-3">
+              Pense no <code>.md</code> como um <strong className="text-white/80">contrato de comunicação clara</strong> com a IA. Quando você envia texto comum, ela precisa adivinhar o que é título, lista ou instrução. Com Markdown, você elimina a ambiguidade:
+            </p>
+            <ul className="space-y-1.5 text-sm text-white/60">
+              <li className="flex gap-2"><span style={{ color: "#4b6afc" }}>✓</span> <span><strong className="text-white/80">Fim da ambiguidade:</strong> a IA não confunde lista com parágrafo corrido.</span></li>
+              <li className="flex gap-2"><span style={{ color: "#4b6afc" }}>✓</span> <span><strong className="text-white/80">Economia de tokens:</strong> diferente de <code>.docx</code> ou <code>.pdf</code> (cheios de metadados invisíveis), o <code>.md</code> entrega só o conteúdo puro — respostas mais rápidas e precisas.</span></li>
+              <li className="flex gap-2"><span style={{ color: "#4b6afc" }}>✓</span> <span><strong className="text-white/80">Portabilidade total:</strong> abre igual no Bloco de Notas, no GitHub, no Notion ou em qualquer API de IA.</span></li>
+            </ul>
+          </div>
+
+          {/* Syntax guide */}
+          <div className="p-5 space-y-6">
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--text-4)" }}>Guia de sintaxe — os formatos que você vai usar</p>
+
+            {/* 1. Títulos */}
+            <div>
+              <p className="text-sm font-semibold text-white mb-2">1. Títulos e hierarquia</p>
+              <p className="text-xs text-white/50 mb-2">Use <code>#</code> seguido de espaço. Mais hashtags = título menor.</p>
+              <pre className="text-xs"><code>{`# Título Principal (H1 — tema geral)
+## Subtítulo (H2 — seções)
+### Tópico Específico (H3 — subseções)`}</code></pre>
+            </div>
+
+            {/* 2. Ênfase */}
+            <div>
+              <p className="text-sm font-semibold text-white mb-2">2. Ênfase no texto</p>
+              <p className="text-xs text-white/50 mb-2">Destaque termos importantes sem precisar de barra de ferramentas.</p>
+              <pre className="text-xs"><code>{`*itálico*
+**negrito**
+***negrito e itálico***
+~~riscado~~`}</code></pre>
+            </div>
+
+            {/* 3. Listas */}
+            <div>
+              <p className="text-sm font-semibold text-white mb-2">3. Listas</p>
+              <p className="text-xs text-white/50 mb-2">Ideal para passar instruções passo a passo ou listar requisitos para a IA.</p>
+              <pre className="text-xs"><code>{`# Lista não ordenada
+* Item A
+* Item B
+
+# Lista ordenada
+1. Primeiro passo
+2. Segundo passo`}</code></pre>
+            </div>
+
+            {/* 4. Blocos de código */}
+            <div>
+              <p className="text-sm font-semibold text-white mb-2">4. Blocos de código</p>
+              <p className="text-xs text-white/50 mb-2">Essencial para isolar prompts ou instruções operacionais do resto do texto. Use três crases.</p>
+              <pre className="text-xs"><code>{`\`\`\`python
+# A IA entenderá estritamente como código executável
+print("Olá, Mundo!")
+\`\`\``}</code></pre>
+            </div>
+
+            {/* 5. Links */}
+            <div>
+              <p className="text-sm font-semibold text-white mb-2">5. Links e imagens</p>
+              <pre className="text-xs"><code>{`[Texto do link](https://exemplo.com)
+![Texto alternativo](imagem.jpg)`}</code></pre>
+            </div>
+
+            {/* 6. Citações */}
+            <div>
+              <p className="text-sm font-semibold text-white mb-2">6. Citações (blockquotes)</p>
+              <p className="text-xs text-white/50 mb-2">Use para destacar avisos, regras ou instruções que a IA não deve ignorar.</p>
+              <pre className="text-xs"><code>{`> **Regra do contrato:** a IA nunca deve alterar os dados históricos desta seção.`}</code></pre>
+            </div>
+
+          </div>
+        </div>
+      </details>
+
       <Step n={1} title="Crie o arquivo de contexto">
         <p>Na pasta que você já abriu acima, crie o arquivo <ContextFileName />.
         Use o template abaixo como ponto de partida — e customize com informações reais da sua empresa:</p>
