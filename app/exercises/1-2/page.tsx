@@ -29,7 +29,7 @@ export default function Exercise12() {
       <details className="mb-8 group">
         <summary className="cursor-pointer list-none flex items-center justify-between p-4 rounded-lg border border-white/8 bg-white/3 hover:bg-white/5 transition-colors">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ background: "rgba(75,106,252,0.15)", color: "#4b6afc" }}>Leitura complementar</span>
+            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ background: "rgba(209,164,118,0.15)", color: "#d1a476" }}>Leitura complementar</span>
             <span className="text-sm font-semibold text-white">Por que usamos arquivos <code>.md</code>? Como ler e escrever Markdown</span>
           </div>
           <span className="text-white/30 text-xs group-open:hidden">▼ expandir</span>
