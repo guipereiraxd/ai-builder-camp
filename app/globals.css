@@ -140,6 +140,44 @@ body {
   background: radial-gradient(closest-side, rgba(75, 106, 252, 0.10), transparent 70%);
 }
 
+/* ─── Dashboard hero block ────────────────────────────────────── */
+.dashboard-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.dashboard-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(to right, var(--border-sub) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-sub) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: linear-gradient(to bottom right, black 30%, transparent 90%);
+  mask-image: linear-gradient(to bottom right, black 30%, transparent 90%);
+  opacity: 0.7;
+}
+
+.dashboard-hero::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  z-index: -1;
+  background: radial-gradient(closest-side, rgba(75, 106, 252, 0.18), transparent 70%);
+  pointer-events: none;
+}
+
+[data-theme="light"] .dashboard-hero::before { opacity: 0.4; }
+[data-theme="light"] .dashboard-hero::after {
+  background: radial-gradient(closest-side, rgba(75, 106, 252, 0.10), transparent 70%);
+}
+
 pre {
   background: var(--code-bg);
   border: 1px solid var(--border);

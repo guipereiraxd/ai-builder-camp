@@ -66,61 +66,74 @@ export default function Dashboard() {
 
   return (
     <AppShell>
-      {/* Welcome */}
-      <div className="mb-8">
+      {/* Hero block */}
+      <div
+        className="dashboard-hero mb-8 p-6 rounded-2xl"
+        style={{ border: "1px solid var(--border-sub)" }}
+      >
+        {/* Decorative dots */}
+        <div className="flex gap-1.5 mb-5">
+          <span className="w-2 h-2 rounded-full" style={{ background: "#4b6afc" }} />
+          <span className="w-2 h-2 rounded-full" style={{ background: "#8b5cf6" }} />
+          <span className="w-2 h-2 rounded-full" style={{ background: "#d1a476" }} />
+        </div>
+
+        {/* Welcome */}
         <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "var(--text-5)" }}>Início</p>
-        <h1 className="text-2xl md:text-3xl font-bold mb-1" style={{ color: "var(--text-1)" }}>
-          {name ? `Olá, ${name.split(" ")[0]} 👋` : "Bem-vindo de volta 👋"}
+        <h1 className="text-3xl md:text-4xl font-bold mb-2 leading-tight" style={{ color: "var(--text-1)" }}>
+          {name
+            ? <><span style={{ color: "#d1a476" }}>Olá, {name.split(" ")[0]}</span> 👋</>
+            : "Bem-vindo de volta 👋"}
         </h1>
-        <p className="text-base" style={{ color: "var(--text-4)" }}>
+        <p className="text-sm mb-6" style={{ color: "var(--text-4)" }}>
           {totalDone === 0
             ? "Você ainda não completou exercícios. Que tal começar agora?"
             : totalDone === totalExercises
             ? "Você completou todos os exercícios. Impressionante!"
             : `Você concluiu ${totalDone} de ${totalExercises} exercícios. Continue assim.`}
         </p>
-      </div>
 
-      {/* Stats */}
-      <div
-        className="grid grid-cols-3 gap-3 mb-8 p-4 rounded-xl"
-        style={{ background: "var(--tint-2)", border: "1px solid var(--border)" }}
-      >
-        {[
-          { value: `${totalDone}/${totalExercises}`, label: "concluídos" },
-          { value: `${pct}%`, label: "do curso" },
-          { value: `${ACTS.filter(a => completedByAct(a.key) === a.total).length}/4`, label: "atos completos" },
-        ].map(({ value, label }) => (
-          <div key={label} className="text-center">
-            <p className="text-xl font-bold" style={{ color: "var(--text-1)" }}>{value}</p>
-            <p className="text-xs mt-0.5" style={{ color: "var(--text-4)" }}>{label}</p>
-          </div>
-        ))}
-      </div>
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-3 mb-6">
+          {[
+            { value: `${totalDone}`, sub: `/${totalExercises}`, label: "concluídos" },
+            { value: `${pct}%`, sub: "", label: "do curso" },
+            { value: `${ACTS.filter(a => completedByAct(a.key) === a.total).length}`, sub: "/4", label: "atos completos" },
+          ].map(({ value, sub, label }) => (
+            <div
+              key={label}
+              className="rounded-xl p-4 text-center"
+              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid var(--border-sub)" }}
+            >
+              <p className="text-2xl font-bold leading-none mb-1" style={{ color: "var(--text-1)" }}>
+                {value}<span className="text-base font-normal" style={{ color: "var(--text-4)" }}>{sub}</span>
+              </p>
+              <p className="text-xs" style={{ color: "var(--text-4)" }}>{label}</p>
+            </div>
+          ))}
+        </div>
 
-      {/* Next exercise */}
-      {nextExercise && (
-        <div className="mb-8">
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-5)" }}>
-            Continue de onde parou
-          </p>
+        {/* Next exercise */}
+        {nextExercise && (
           <Link
             href={nextExercise.href}
-            className="flex items-center justify-between p-4 rounded-xl transition-all group"
-            style={{ background: "rgba(75,106,252,0.08)", border: "1px solid rgba(75,106,252,0.2)" }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(75,106,252,0.14)"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(75,106,252,0.08)"; }}
+            className="flex items-center justify-between p-4 rounded-xl transition-all"
+            style={{ background: "rgba(75,106,252,0.10)", border: "1px solid rgba(75,106,252,0.25)" }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(75,106,252,0.18)"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(75,106,252,0.10)"; }}
           >
             <div>
-              <p className="text-xs mb-1" style={{ color: "rgba(75,106,252,0.7)" }}>{nextExercise.act} · {nextExercise.duration}</p>
+              <p className="text-xs mb-1" style={{ color: "rgba(75,106,252,0.7)" }}>
+                Continuar — {nextExercise.act} · {nextExercise.duration}
+              </p>
               <p className="text-sm font-semibold" style={{ color: "var(--text-1)" }}>{nextExercise.title}</p>
             </div>
-            <span className="text-xl" style={{ color: "#4b6afc" }}>→</span>
+            <span className="text-xl shrink-0 ml-4" style={{ color: "#4b6afc" }}>→</span>
           </Link>
-        </div>
-      )}
+        )}
+      </div>
 
-      {totalDone === totalExercises && (
+      {totalDone === totalExercises && nextExercise === null && (
         <div
           className="mb-8 p-4 rounded-xl"
           style={{ background: "rgba(74,222,128,0.08)", border: "1px solid rgba(74,222,128,0.2)" }}
