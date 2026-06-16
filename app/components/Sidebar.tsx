@@ -161,25 +161,45 @@ export default function Sidebar() {
 
   const isOpen = (label: string) => !mounted || !collapsed.has(label);
 
+  const exerciseItems = nav.filter(item => item.href && item.duration);
+  const totalExercises = exerciseItems.length;
+  const completedCount = mounted ? exerciseItems.filter(item => isCompleted(item.href!)).length : 0;
+  const progressPct = totalExercises > 0 ? Math.round((completedCount / totalExercises) * 100) : 0;
+
   return (
     <aside
       className="w-64 shrink-0 h-screen sticky top-0 overflow-y-auto flex flex-col"
       style={{ background: "var(--bg)", borderRight: "1px solid var(--border)" }}
     >
       {/* Logo + theme toggle */}
-      <div className="px-5 py-4 flex items-start justify-between" style={{ borderBottom: "1px solid var(--border)" }}>
-        <Link href="/" className="flex flex-col gap-2 group">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-alun-white.svg" alt="Alun Business" width={110} height={13} style={{ opacity: 0.9 }} />
-          <span className="text-[10px] font-medium tracking-[0.18em] uppercase" style={{ color: "var(--gold)" }}>
-            AI Builder Camp
-          </span>
-        </Link>
-        <ThemeToggle />
+      <div className="px-5 py-4" style={{ background: "var(--surface)", borderBottom: "1px solid var(--border)" }}>
+        <div className="flex items-start justify-between mb-3">
+          <Link href="/" className="flex flex-col gap-2 group">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo-alun-white.svg" alt="Alun Business" width={110} height={13} style={{ opacity: 0.9 }} />
+            <span className="text-[10px] font-medium tracking-[0.18em] uppercase" style={{ color: "var(--gold)" }}>
+              AI Builder Camp
+            </span>
+          </Link>
+          <ThemeToggle />
+        </div>
+        {/* Progress bar */}
+        <div>
+          <div className="flex justify-between mb-1">
+            <span className="text-[10px]" style={{ color: "var(--text-5)" }}>Progresso geral</span>
+            <span className="text-[10px] font-semibold" style={{ color: "var(--text-4)" }}>{completedCount}/{totalExercises}</span>
+          </div>
+          <div className="h-1 rounded-full overflow-hidden" style={{ background: "var(--border)" }}>
+            <div
+              className="h-full rounded-full transition-all duration-500"
+              style={{ width: `${progressPct}%`, background: progressPct === 100 ? "#4ade80" : "#4b6afc" }}
+            />
+          </div>
+        </div>
       </div>
 
       {/* LLM Switcher */}
-      <div className="px-3 py-3" style={{ borderBottom: "1px solid var(--border)" }}>
+      <div className="px-3 py-3" style={{ background: "var(--surface)", borderBottom: "1px solid var(--border)" }}>
         <p className="text-[10px] uppercase tracking-widest mb-1.5 px-1" style={{ color: "var(--text-5)" }}>Ferramenta de IA</p>
         <LLMSwitcher />
       </div>
@@ -195,15 +215,21 @@ export default function Sidebar() {
                 onClick={() => toggle(item.label!)}
                 className="w-full flex items-center justify-between pt-5 pb-1.5 px-2 group"
               >
-                <p
-                  className="text-[10px] font-semibold uppercase tracking-widest text-left"
-                  style={{ color: item.gold ? "rgba(209,164,118,0.6)" : "var(--text-4)" }}
-                >
-                  {item.label}
-                </p>
+                <div className="flex items-center gap-2 min-w-0">
+                  <span
+                    className="shrink-0 h-px w-3"
+                    style={{ background: item.gold ? "rgba(209,164,118,0.4)" : "var(--border)" }}
+                  />
+                  <p
+                    className="text-[10px] font-semibold uppercase tracking-widest text-left truncate"
+                    style={{ color: item.gold ? "rgba(209,164,118,0.6)" : "var(--text-4)" }}
+                  >
+                    {item.label}
+                  </p>
+                </div>
                 <svg
                   width="10" height="10" viewBox="0 0 10 10" fill="none"
-                  className="transition-transform duration-200 shrink-0"
+                  className="transition-transform duration-200 shrink-0 ml-1"
                   style={{
                     transform: open ? "rotate(0deg)" : "rotate(-90deg)",
                     color: item.gold ? "rgba(209,164,118,0.4)" : "var(--text-5)",
@@ -221,15 +247,25 @@ export default function Sidebar() {
           const isMission = item.mission;
           const isSecret = item.secret;
           const isCanvas = item.canvas;
+
+          const accentColor = isSecret ? "#f87171" : isMission ? "#d1a476" : isCanvas ? "#a78bfa" : "#4b6afc";
+          const inactiveColor = isSecret ? "rgba(239,68,68,0.7)" : isCanvas ? "rgba(139,92,246,0.8)" : "var(--text-2)";
+
           return (
             <Link
               key={item.href}
               href={item.href!}
-              className="flex items-center justify-between px-3 py-2 rounded-md text-sm transition-all"
+              className="flex items-center justify-between py-2 rounded-md text-sm transition-all"
               style={
                 active
-                  ? { background: isSecret ? "rgba(239,68,68,0.12)" : isMission ? "rgba(209,164,118,0.12)" : isCanvas ? "rgba(139,92,246,0.12)" : "rgba(75,106,252,0.12)", color: isSecret ? "#f87171" : isMission ? "#d1a476" : isCanvas ? "#a78bfa" : "#4b6afc" }
-                  : { color: isSecret ? "rgba(239,68,68,0.7)" : isCanvas ? "rgba(139,92,246,0.8)" : "var(--text-2)" }
+                  ? {
+                      paddingLeft: "10px",
+                      paddingRight: "12px",
+                      background: isSecret ? "rgba(239,68,68,0.10)" : isMission ? "rgba(209,164,118,0.10)" : isCanvas ? "rgba(139,92,246,0.10)" : "rgba(75,106,252,0.10)",
+                      color: accentColor,
+                      borderLeft: `2px solid ${accentColor}`,
+                    }
+                  : { paddingLeft: "12px", paddingRight: "12px", color: inactiveColor }
               }
               onMouseEnter={(e) => {
                 if (!active) {
@@ -240,11 +276,7 @@ export default function Sidebar() {
               onMouseLeave={(e) => {
                 if (!active) {
                   (e.currentTarget as HTMLElement).style.background = "transparent";
-                  (e.currentTarget as HTMLElement).style.color = isSecret
-                    ? "rgba(239,68,68,0.7)"
-                    : isCanvas
-                    ? "rgba(139,92,246,0.8)"
-                    : "var(--text-2)";
+                  (e.currentTarget as HTMLElement).style.color = inactiveColor;
                 }
               }}
             >
@@ -269,7 +301,7 @@ export default function Sidebar() {
 
       {/* Footer */}
       <div className="p-4" style={{ borderTop: "1px solid var(--border)" }}>
-        <p className="text-[11px] leading-relaxed" style={{ color: "var(--text-4)" }}>
+        <p className="text-[11px] leading-relaxed" style={{ color: "var(--text-5)" }}>
           Use apenas em ambientes sandbox. Não faça upload de dados confidenciais.
         </p>
       </div>
