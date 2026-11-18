@@ -200,7 +200,7 @@ Tom direto, sem floreios. Não inventar informações que não estejam nas notas
         <div className="space-y-3 mt-4 p-4 rounded-lg" style={{ border: "1px solid var(--border)", background: "var(--tint-2)" }}>
           {[
             <>Grave a reunião (Zoom, Meet, Teams — todos têm gravação nativa).</>,
-            <>Transcreva o áudio com <a href="https://otter.ai" target="_blank" rel="noopener noreferrer">Otter.ai</a>, <a href="https://fireflies.ai" target="_blank" rel="noopener noreferrer">Fireflies</a> ou <a href="https://whisper.openai.com" target="_blank" rel="noopener noreferrer">Whisper (OpenAI)</a> — todos têm plano gratuito.</>,
+            <>Transcreva o áudio com <a href="https://otter.ai" target="_blank" rel="noopener noreferrer">Otter.ai</a> ou <a href="https://fireflies.ai" target="_blank" rel="noopener noreferrer">Fireflies</a> — ambos têm plano gratuito.</>,
             <>Exporte a transcrição como texto e cole em <code>notas.md</code>.</>,
             <>Rode o comando de reunião — o agente vai lidar com transcrições longas e filtrar o que importa.</>,
           ].map((text, i) => (

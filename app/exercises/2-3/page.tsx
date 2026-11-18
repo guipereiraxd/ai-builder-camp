@@ -4,16 +4,16 @@ import AppShell from "../../components/AppShell";
 import { Step, Prompt, Tip, Warning, Command, OSTabs, ExerciseHeader, ExerciseStart, AgentCommand, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
 
 const SAMPLE_CSV = `data,produto,regiao,vendedor,valor,status
-2025-07-01,Plano Pro,Sul,Maria,4800,fechado
-2025-07-02,Plano Starter,Sudeste,João,1200,fechado
-2025-07-03,Plano Enterprise,Norte,Ana,15000,em_negociacao
-2025-07-05,Plano Pro,Nordeste,Carlos,4800,fechado
-2025-07-08,Plano Starter,Sudeste,Maria,1200,perdido
-2025-07-10,Plano Enterprise,Sul,João,15000,fechado
-2025-07-12,Plano Pro,Centro-Oeste,Ana,4800,em_negociacao
-2025-07-15,Plano Starter,Norte,Carlos,1200,fechado
-2025-07-18,Plano Enterprise,Sudeste,Maria,15000,fechado
-2025-07-20,Plano Pro,Sul,João,4800,fechado`;
+2026-07-01,Plano Pro,Sul,Maria,4800,fechado
+2026-07-02,Plano Starter,Sudeste,João,1200,fechado
+2026-07-03,Plano Enterprise,Norte,Ana,15000,em_negociacao
+2026-07-05,Plano Pro,Nordeste,Carlos,4800,fechado
+2026-07-08,Plano Starter,Sudeste,Maria,1200,perdido
+2026-07-10,Plano Enterprise,Sul,João,15000,fechado
+2026-07-12,Plano Pro,Centro-Oeste,Ana,4800,em_negociacao
+2026-07-15,Plano Starter,Norte,Carlos,1200,fechado
+2026-07-18,Plano Enterprise,Sudeste,Maria,15000,fechado
+2026-07-20,Plano Pro,Sul,João,4800,fechado`;
 
 export default function Exercise23() {
   return (

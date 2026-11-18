@@ -245,6 +245,55 @@ export default function ExercisesPage() {
               </div>
             </Link>
           ))}
+          {/* SaaS divider */}
+          <div className="pt-3 pb-1">
+            <p className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: "rgba(6,182,212,0.6)" }}>SaaS — Do produto ao deploy</p>
+          </div>
+          <Link
+            href="/exercises/m6"
+            className="flex items-start gap-5 p-4 rounded-lg group transition-all"
+            style={{ border: "1px solid rgba(6,182,212,0.15)", background: "rgba(6,182,212,0.03)" }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(6,182,212,0.07)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(6,182,212,0.3)"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(6,182,212,0.03)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(6,182,212,0.15)"; }}
+          >
+            <span className="text-sm font-mono pt-0.5 w-6 shrink-0" style={{ color: "rgba(6,182,212,0.75)" }}>M6</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium" style={{ color: "var(--text-1)" }}>Do zero ao SaaS</p>
+              <p className="text-xs mt-0.5" style={{ color: "var(--text-4)" }}>Construa e coloque no ar um micro SaaS — do prompt ao deploy com URL pública.</p>
+            </div>
+            <div className="flex items-center gap-3 pt-0.5 shrink-0">
+              <span className="text-xs" style={{ color: "rgba(6,182,212,0.6)" }}>45 min</span>
+              <span className="text-sm" style={{ color: "rgba(6,182,212,0.5)" }}>→</span>
+            </div>
+          </Link>
+          {/* AutoResearch divider */}
+          <div className="pt-3 pb-1">
+            <p className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: "rgba(249,115,22,0.6)" }}>AutoResearch — Pesquisa autônoma</p>
+          </div>
+          {[
+            { href: "/auto-research", n: "🔬", title: "O que é AutoResearch", desc: "Como estruturar prompts para pesquisa profunda e autônoma.", time: "leitura" },
+            { href: "/exercises/m7", n: "M7", title: "AutoResearch Simples", desc: "Protocolo de pesquisa autônoma com as ferramentas que você já tem.", time: "25 min" },
+            { href: "/exercises/m8", n: "M8", title: "AutoResearch Karpathy", desc: "Pesquisa de nível acadêmico: múltiplas fontes, síntese e validação cruzada.", time: "40 min" },
+          ].map(({ href, n, title, desc, time }) => (
+            <Link
+              key={href}
+              href={href}
+              className="flex items-start gap-5 p-4 rounded-lg group transition-all"
+              style={{ border: "1px solid rgba(249,115,22,0.15)", background: "rgba(249,115,22,0.03)" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(249,115,22,0.07)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(249,115,22,0.3)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(249,115,22,0.03)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(249,115,22,0.15)"; }}
+            >
+              <span className="text-sm font-mono pt-0.5 w-6 shrink-0" style={{ color: "rgba(249,115,22,0.75)" }}>{n}</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium" style={{ color: "var(--text-1)" }}>{title}</p>
+                <p className="text-xs mt-0.5" style={{ color: "var(--text-4)" }}>{desc}</p>
+              </div>
+              <div className="flex items-center gap-3 pt-0.5 shrink-0">
+                <span className="text-xs" style={{ color: "rgba(249,115,22,0.6)" }}>{time}</span>
+                <span className="text-sm" style={{ color: "rgba(249,115,22,0.5)" }}>→</span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
 

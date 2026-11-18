@@ -1,7 +1,7 @@
 // Static exercise content — edit the JSX directly to update text, prompts, and steps.
 import Link from "next/link";
 import AppShell from "../../components/AppShell";
-import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, ExerciseStart, CompletedButton } from "../../components/ExerciseComponents";
+import { Step, Prompt, Tip, Warning, AgentCommand, OSTabs, ExerciseHeader, ExerciseStart, CopyContextFile, CompletedButton } from "../../components/ExerciseComponents";
 
 export default function Mission2() {
   return (
@@ -70,10 +70,7 @@ Use informações reais. Pode ser bullet points simples — não precisa ser for
           mac="mkdir ~/ai-builder-camp/missao-2 && cd ~/ai-builder-camp/missao-2"
           windows="mkdir $HOME\ai-builder-camp\missao-2; cd $HOME\ai-builder-camp\missao-2"
         />
-        <OSTabs
-          mac="cp ~/ai-builder-camp/ex-1-2/CLAUDE.md ."
-          windows="copy $HOME\ai-builder-camp\ex-1-2\CLAUDE.md ."
-        />
+        <CopyContextFile from="ex-1-2" />
         <AgentCommand />
         <Prompt>{`Leia o arquivo de contexto e construa um Gerador de Proposta Comercial como um único arquivo HTML+CSS+JS.
 

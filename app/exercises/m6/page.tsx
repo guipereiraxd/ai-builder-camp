@@ -98,7 +98,7 @@ Seja específico — vamos construir exatamente o que você descrever aqui.`}</P
 ESTRUTURA DO APP:
 Seção 1 — Formulário de inputs:
 - Nome do time
-- Período (ex: Q3 2025)
+- Período (ex: Q3 2026)
 - Missão ou foco do time em 1-2 linhas
 - Principais desafios ou problemas que enfrentam
 - Métricas atuais (opcional — o que já medem hoje)

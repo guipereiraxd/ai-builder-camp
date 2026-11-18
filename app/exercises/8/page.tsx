@@ -246,7 +246,7 @@ export default function Exercise8() {
         <LLMTabs
           claude={<Prompt>{SHARED_ORCHESTRATION_CLAUDE}</Prompt>}
           openai={<Prompt>{SHARED_ORCHESTRATION_OPENAI}</Prompt>}
-          gemini={<Prompt>{SHARED_ORCHESTRATION_OPENAI.replace(/codex/g, "gemini")}</Prompt>}
+          gemini={<Prompt>{SHARED_ORCHESTRATION_OPENAI}</Prompt>}
         />
         <Tip>
           O checkpoint "aguarde minha confirmação" é proposital. Mesmo com tudo conectado,

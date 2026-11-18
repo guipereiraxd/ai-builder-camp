@@ -168,7 +168,7 @@ export default function Exercise7() {
 
             <Step n={5} title="Autentique e teste a conexão">
               <p>Na primeira vez, o Claude vai abrir o navegador para você autorizar o acesso ao Drive.</p>
-              <OSTabs mac="cd ~/ai-builder-camp/ex-6 && claude" windows="cd $HOME\ai-builder-camp\ex-6; claude" />
+              <OSTabs mac="cd ~/ai-builder-camp/ex-7 && claude" windows="cd $HOME\ai-builder-camp\ex-7; claude" />
               <Prompt>{`Liste os arquivos e pastas disponíveis no meu Google Drive.`}</Prompt>
               <p className="mt-2">Se for a primeira vez, o terminal mostrará uma URL. Abra no navegador, faça login e clique em <strong className="text-white">Permitir</strong>.</p>
               <Warning>

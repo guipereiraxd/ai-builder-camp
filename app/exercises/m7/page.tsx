@@ -112,7 +112,7 @@ Salve o relatório em pesquisa-[TEMA]-[DATA].md
 PERGUNTA DE PESQUISA:
 [SUBSTITUA AQUI — exemplos:
 - "Qual é o estado atual da adoção de IA em empresas de médio porte no Brasil?"
-- "Quais são os modelos de precificação de SaaS B2B mais usados em 2025?"
+- "Quais são os modelos de precificação de SaaS B2B mais usados atualmente?"
 - "O que as maiores empresas do setor [SEU SETOR] estão fazendo com IA?"]
 
 PROFUNDIDADE: [superficial / médio / profundo]
