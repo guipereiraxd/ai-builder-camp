@@ -215,7 +215,7 @@ export default function Home() {
             style={{ color: "#4b6afc", background: "rgba(75,106,252,0.1)" }}
           >
             <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#4b6afc" }} />
-            Acesso gratuito · 12 exercícios
+            Acesso gratuito · 19+ exercícios
           </div>
           <ThemeToggle />
         </div>
@@ -258,7 +258,7 @@ export default function Home() {
             style={{ borderBottom: "1px solid #1e2026" }}
           >
             {[
-              { value: "12", label: "exercícios práticos" },
+              { value: "19+", label: "exercícios no total" },
               { value: "4", label: "atos progressivos" },
               { value: "5h", label: "do zero à IA Agêntica" },
               { value: "3", label: "ferramentas compatíveis" },
@@ -351,7 +351,7 @@ export default function Home() {
               {[
                 { value: "6M+", label: "pessoas impactadas" },
                 { value: "13K+", label: "empresas atendidas" },
-                { value: "3K+", label: "treinadas em IA" },
+                { value: "100K+", label: "treinadas em IA" },
                 { value: "2K+", label: "cursos" },
                 { value: "1K+", label: "educadores" },
               ].map(({ value, label }) => (
@@ -448,7 +448,7 @@ export default function Home() {
               <>
                 <p className="text-base font-semibold text-white mb-0.5">Comece agora, é gratuito</p>
                 <p className="text-sm mb-5" style={{ color: "var(--text-4)" }}>
-                  Preencha seus dados e acesse os 12 exercícios na hora.
+                  Preencha seus dados e acesse o curso na hora.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
