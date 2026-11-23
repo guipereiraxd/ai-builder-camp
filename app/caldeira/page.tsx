@@ -180,7 +180,7 @@ export default function CaldeiraCamp() {
       <div style={{ background: C.black, color: C.offwhite }}>
         <div className="max-w-5xl mx-auto px-6 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
           <p style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: C.salmon, margin: 0 }}>
-            Inteligência artificial na prática, entre pares.
+            Inteligência artificial na prática.
           </p>
           <p style={{ fontSize: "12px", color: "rgba(247,248,241,0.5)", margin: 0, letterSpacing: "0.04em" }}>
             Instituto Caldeira · Navegantes, Porto Alegre · 01.12.26
