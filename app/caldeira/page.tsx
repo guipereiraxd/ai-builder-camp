@@ -160,8 +160,7 @@ export default function CaldeiraCamp() {
       <div style={{ borderBottom: `1px solid ${C.line}` }}>
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="/logo-alun-dark.svg" alt="Alun" className="h-5 w-auto"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+            <img src="/logo-alun-dark.svg" alt="Alun" className="h-5 w-auto" />
             <span style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em", color: C.black }}>AI Builder Camp</span>
           </div>
           <div
