@@ -208,7 +208,7 @@ export default function CaldeiraCamp() {
             automações e workflows com IA aplicados ao negócio.
           </p>
           <p style={{ fontSize: "13px", lineHeight: 1.6, color: "#9a9a94", marginBottom: "32px" }}>
-            Funciona com <strong style={{ color: C.black }}>Claude, OpenAI ou Gemini</strong>. Em até 5 horas, sem escrever código.
+            Funciona com <strong style={{ color: C.black }}>Claude, OpenAI, Gemini e Microsoft Copilot</strong>. Em até 5 horas, sem escrever código.
           </p>
 
           {/* Stats */}
@@ -220,11 +220,45 @@ export default function CaldeiraCamp() {
               { value: "19+", label: "exercícios no total" },
               { value: "4",   label: "atos progressivos" },
               { value: "5h",  label: "do zero à IA Agêntica" },
-              { value: "3",   label: "ferramentas compatíveis" },
+              { value: "4",   label: "ferramentas compatíveis" },
             ].map(({ value, label }) => (
               <div key={label}>
                 <span style={{ fontSize: "22px", fontWeight: 800, color: C.black, display: "block", lineHeight: 1 }}>{value}</span>
                 <span style={{ fontSize: "11px", letterSpacing: "0.06em", color: C.muted, textTransform: "uppercase", marginTop: "4px", display: "block" }}>{label}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Tools */}
+          <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.muted, marginBottom: "12px" }}>
+            Ferramentas suportadas
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "8px", marginBottom: "32px" }}>
+            {[
+              { name: "Claude",            vendor: "Anthropic",  color: "#d97706", active: true  },
+              { name: "ChatGPT / Codex",   vendor: "OpenAI",     color: "#10a37f", active: true  },
+              { name: "Gemini",            vendor: "Google",     color: "#4285f4", active: true  },
+              { name: "Microsoft Copilot", vendor: "Microsoft",  color: "#0078d4", active: false },
+            ].map(({ name, vendor, color, active }) => (
+              <div
+                key={name}
+                style={{
+                  padding: "10px 12px",
+                  border: `1px solid ${active ? C.line : "rgba(0,0,0,0.07)"}`,
+                  display: "flex", alignItems: "center", gap: "10px",
+                  opacity: active ? 1 : 0.6,
+                }}
+              >
+                <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: color, flexShrink: 0 }} />
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <p style={{ fontSize: "13px", fontWeight: 600, color: C.black, margin: 0, lineHeight: 1.2 }}>{name}</p>
+                  <p style={{ fontSize: "11px", color: C.muted, margin: 0 }}>{vendor}</p>
+                </div>
+                {!active && (
+                  <span style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: C.salmon, padding: "2px 6px", border: `1px solid ${C.salmon}`, flexShrink: 0 }}>
+                    em breve
+                  </span>
+                )}
               </div>
             ))}
           </div>
