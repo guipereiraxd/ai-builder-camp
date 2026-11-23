@@ -238,7 +238,7 @@ export default function CaldeiraCamp() {
               { name: "Claude",            vendor: "Anthropic",  color: "#d97706", active: true  },
               { name: "ChatGPT / Codex",   vendor: "OpenAI",     color: "#10a37f", active: true  },
               { name: "Gemini",            vendor: "Google",     color: "#4285f4", active: true  },
-              { name: "Microsoft Copilot", vendor: "Microsoft",  color: "#0078d4", active: false },
+              { name: "Microsoft Copilot", vendor: "Microsoft",  color: "#0078d4", active: true  },
             ].map(({ name, vendor, color, active }) => (
               <div
                 key={name}
@@ -254,11 +254,6 @@ export default function CaldeiraCamp() {
                   <p style={{ fontSize: "13px", fontWeight: 600, color: C.black, margin: 0, lineHeight: 1.2 }}>{name}</p>
                   <p style={{ fontSize: "11px", color: C.muted, margin: 0 }}>{vendor}</p>
                 </div>
-                {!active && (
-                  <span style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: C.salmon, padding: "2px 6px", border: `1px solid ${C.salmon}`, flexShrink: 0 }}>
-                    em breve
-                  </span>
-                )}
               </div>
             ))}
           </div>
