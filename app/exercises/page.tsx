@@ -294,6 +294,36 @@ export default function ExercisesPage() {
               </div>
             </Link>
           ))}
+          {/* Copilot 365 divider */}
+          <div className="pt-3 pb-1">
+            <p className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: "rgba(0,120,212,0.6)" }}>Copilot 365 — Microsoft 365 com IA</p>
+          </div>
+          {[
+            { href: "/exercises/cp1", n: "CP1", title: "Configure seu agente no Copilot Studio", desc: "Crie um agente personalizado com instruções da empresa e publique no Teams.", time: "30 min" },
+            { href: "/exercises/cp2", n: "CP2", title: "Automatize reuniões no Teams", desc: "Transcrição, resumo e action items automáticos — sem tomar nota.", time: "20 min" },
+            { href: "/exercises/cp3", n: "CP3", title: "Pesquisa e análise com Bing", desc: "Inteligência de mercado com dados de hoje, direto no Copilot.", time: "25 min" },
+            { href: "/exercises/cp4", n: "CP4", title: "Base de conhecimento corporativa", desc: "Conecte o agente ao SharePoint — ele passa a responder com seus documentos.", time: "35 min" },
+            { href: "/exercises/cp5", n: "CP5", title: "Copilot no Word, Excel e PowerPoint", desc: "Prompts práticos para acelerar documentos, análises e apresentações.", time: "25 min" },
+          ].map(({ href, n, title, desc, time }) => (
+            <Link
+              key={href}
+              href={href}
+              className="flex items-start gap-5 p-4 rounded-lg group transition-all"
+              style={{ border: "1px solid rgba(0,120,212,0.15)", background: "rgba(0,120,212,0.03)" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(0,120,212,0.07)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,120,212,0.3)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(0,120,212,0.03)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,120,212,0.15)"; }}
+            >
+              <span className="text-sm font-mono pt-0.5 w-6 shrink-0" style={{ color: "rgba(0,120,212,0.75)" }}>{n}</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium" style={{ color: "var(--text-1)" }}>{title}</p>
+                <p className="text-xs mt-0.5" style={{ color: "var(--text-4)" }}>{desc}</p>
+              </div>
+              <div className="flex items-center gap-3 pt-0.5 shrink-0">
+                <span className="text-xs" style={{ color: "rgba(0,120,212,0.6)" }}>{time}</span>
+                <span className="text-sm" style={{ color: "rgba(0,120,212,0.5)" }}>→</span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
 
