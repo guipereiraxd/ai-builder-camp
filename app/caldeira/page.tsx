@@ -165,9 +165,10 @@ export default function CaldeiraCamp() {
           </div>
           <div
             style={{
-              fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em",
+              fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em",
               textTransform: "uppercase", color: C.salmon,
-              padding: "4px 12px", border: `1px solid ${C.salmon}`,
+              padding: "4px 10px", border: `1px solid ${C.salmon}`,
+              whiteSpace: "nowrap",
             }}
           >
             AI Day Caldeira 2026
@@ -182,7 +183,7 @@ export default function CaldeiraCamp() {
             Inteligência artificial na prática.
           </p>
           <p style={{ fontSize: "12px", color: "rgba(247,248,241,0.5)", margin: 0, letterSpacing: "0.04em" }}>
-            Instituto Caldeira · Navegantes, Porto Alegre · 01.12.26
+            Instituto Caldeira · Porto Alegre · 01.12.26
           </p>
         </div>
       </div>
@@ -411,7 +412,7 @@ export default function CaldeiraCamp() {
                     type="submit" disabled={status === "loading"}
                     style={{ padding: "13px", fontSize: "13px", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", background: C.salmon, color: C.black, border: "none", cursor: "pointer", opacity: status === "loading" ? 0.5 : 1, marginTop: "4px" }}
                   >
-                    {status === "loading" ? "Enviando…" : "Acessar o curso gratuitamente →"}
+                    {status === "loading" ? "Enviando…" : "Acessar gratuitamente →"}
                   </button>
                 </form>
 
