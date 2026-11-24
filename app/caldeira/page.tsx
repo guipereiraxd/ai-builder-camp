@@ -384,7 +384,7 @@ export default function CaldeiraCamp() {
                   <span style={{ fontSize: "11px", color: "rgba(247,248,241,0.3)", letterSpacing: "0.06em" }}>acesso especial</span>
                 </div>
 
-                <p style={{ fontSize: "16px", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>Comece agora, é gratuito</p>
+                <p style={{ fontSize: "16px", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>Comece agora</p>
                 <p style={{ fontSize: "13px", color: "rgba(247,248,241,0.45)", marginBottom: "20px" }}>
                   Preencha seus dados e acesse o curso na hora.
                 </p>
@@ -412,14 +412,13 @@ export default function CaldeiraCamp() {
                     type="submit" disabled={status === "loading"}
                     style={{ padding: "13px", fontSize: "13px", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", background: C.salmon, color: C.black, border: "none", cursor: "pointer", opacity: status === "loading" ? 0.5 : 1, marginTop: "4px" }}
                   >
-                    {status === "loading" ? "Enviando…" : "Acessar gratuitamente →"}
+                    {status === "loading" ? "Enviando…" : "Acessar o curso →"}
                   </button>
                 </form>
 
                 <div style={{ marginTop: "20px", paddingTop: "20px", borderTop: `1px solid ${C.darkBorder}`, display: "flex", flexDirection: "column", gap: "8px" }}>
                   {[
                     "Acesso imediato após o cadastro",
-                    "Sem cartão de crédito",
                     "Sem compromisso — avance no seu ritmo",
                   ].map((item) => (
                     <p key={item} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "12px", color: "rgba(247,248,241,0.35)", margin: 0 }}>
