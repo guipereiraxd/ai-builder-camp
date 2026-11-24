@@ -428,14 +428,14 @@ export function ExerciseStart({
   showFolderInfo,
 }: {
   folder?: string;
-  folderByLLM?: Record<LLMChoice, string>;
+  folderByLLM?: Partial<Record<LLMChoice, string>>;
   continuing?: boolean;
   /** Set on the very first exercise to explain where the folder lives on disk — this
    *  pattern repeats for every exercise, only the folder name changes. */
   showFolderInfo?: boolean;
 }) {
   const [llm, , mounted] = useLLMPreference();
-  const f = folderByLLM ? (mounted ? folderByLLM[llm] : folderByLLM.claude) : folder!;
+  const f = folderByLLM ? (mounted ? (folderByLLM[llm] ?? folderByLLM.claude ?? folder!) : folderByLLM.claude ?? folder!) : folder!;
 
   return (
     <div className="mb-8 p-5 rounded-xl" style={{ border: `1px solid ${BORDER}`, background: "var(--tint-2)" }}>
