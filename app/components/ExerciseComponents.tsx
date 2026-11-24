@@ -276,16 +276,18 @@ export function ExerciseHeader({
 // ─────────────────────────────────────────────
 
 export const LLM_KEY = "preferred-llm";
-export type LLMChoice = "claude" | "openai" | "gemini";
+export type LLMChoice = "claude" | "openai" | "gemini" | "copilot";
 
 // Central source of truth for all LLM-specific strings used across exercise pages.
 // To add a new LLM: add an entry here, extend the LLMChoice type above, and update
-// the grid columns in LLMSelector (currently hardcoded to grid-cols-3).
+// the grid columns in LLMSelector (currently grid-cols-2 sm:grid-cols-4).
 export const LLM_CONFIG: Record<LLMChoice, {
   name: string; vendor: string; command: string;
   contextFile: string; apiKeyVar: string;
   installPkg: string; accountUrl: string; accountLabel: string;
   pricingNote: string; color: string; bg: string;
+  // false for tools that are app-based and have no CLI command
+  hasCLI?: boolean;
 }> = {
   claude: {
     name: "Claude", vendor: "Anthropic", command: "claude",
@@ -294,6 +296,7 @@ export const LLM_CONFIG: Record<LLMChoice, {
     accountUrl: "https://console.anthropic.com", accountLabel: "console.anthropic.com",
     pricingNote: "Pague pelo uso — o curso completo custa aproximadamente $5–10.",
     color: "#d1a476", bg: "rgba(209,164,118,0.18)",
+    hasCLI: true,
   },
   openai: {
     name: "ChatGPT", vendor: "OpenAI", command: "codex",
@@ -302,6 +305,7 @@ export const LLM_CONFIG: Record<LLMChoice, {
     accountUrl: "https://platform.openai.com", accountLabel: "platform.openai.com",
     pricingNote: "Pague pelo uso — custo similar ao Claude para o curso completo.",
     color: "#10a37f", bg: "rgba(16,163,127,0.15)",
+    hasCLI: true,
   },
   gemini: {
     name: "Gemini", vendor: "Google", command: "gemini",
@@ -310,6 +314,16 @@ export const LLM_CONFIG: Record<LLMChoice, {
     accountUrl: "https://aistudio.google.com", accountLabel: "aistudio.google.com",
     pricingNote: "O Google AI Studio tem um plano gratuito generoso — suficiente para o curso inteiro.",
     color: "#8ab4f8", bg: "rgba(138,180,248,0.15)",
+    hasCLI: true,
+  },
+  copilot: {
+    name: "Copilot", vendor: "Microsoft", command: "",
+    contextFile: "Instructions (Copilot Studio)", apiKeyVar: "",
+    installPkg: "",
+    accountUrl: "https://copilotstudio.microsoft.com", accountLabel: "copilotstudio.microsoft.com",
+    pricingNote: "Incluído no plano Microsoft 365 com licença Copilot (E3/E5 ou Copilot Studio add-on).",
+    color: "#0078d4", bg: "rgba(0,120,212,0.15)",
+    hasCLI: false,
   },
 };
 
@@ -326,10 +340,10 @@ function useLLMPreference(): [LLMChoice, (v: LLMChoice) => void, boolean] {
 
   useEffect(() => {
     const saved = localStorage.getItem(LLM_KEY);
-    if (saved === "claude" || saved === "openai" || saved === "gemini") setLlm(saved);
+    if (saved === "claude" || saved === "openai" || saved === "gemini" || saved === "copilot") setLlm(saved);
     setMounted(true);
     const handler = (e: StorageEvent) => {
-      if (e.key === LLM_KEY && (e.newValue === "claude" || e.newValue === "openai" || e.newValue === "gemini"))
+      if (e.key === LLM_KEY && (e.newValue === "claude" || e.newValue === "openai" || e.newValue === "gemini" || e.newValue === "copilot"))
         setLlm(e.newValue);
     };
     window.addEventListener("storage", handler);
@@ -355,8 +369,8 @@ export function LLMSelector() {
       <p className="text-xs mb-4" style={{ color: "var(--text-4)" }}>
         Os comandos dos exercícios vão se adaptar à sua escolha.
       </p>
-      <div className="grid grid-cols-3 gap-2">
-        {(["claude", "openai", "gemini"] as LLMChoice[]).map((key) => {
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        {(["claude", "openai", "gemini", "copilot"] as LLMChoice[]).map((key) => {
           const cfg = LLM_CONFIG[key];
           const active = llm === key;
           return (
@@ -376,9 +390,15 @@ export function LLMSelector() {
         })}
       </div>
       <p className="text-xs mt-3" style={{ color: "var(--text-4)" }}>
-        ✓ Usando <strong style={{ color: "var(--text-2)" }}>{LLM_CONFIG[llm].name}</strong> — comando:{" "}
-        <code style={{ color: LLM_CONFIG[llm].color }}>{LLM_CONFIG[llm].command}</code>.
-        Você pode mudar a qualquer momento.
+        {LLM_CONFIG[llm].hasCLI ? (
+          <>✓ Usando <strong style={{ color: "var(--text-2)" }}>{LLM_CONFIG[llm].name}</strong> — comando:{" "}
+          <code style={{ color: LLM_CONFIG[llm].color }}>{LLM_CONFIG[llm].command}</code>.
+          Você pode mudar a qualquer momento.</>
+        ) : (
+          <>✓ Usando <strong style={{ color: "var(--text-2)" }}>{LLM_CONFIG[llm].name}</strong> — acesse pelo Teams ou{" "}
+          <a href={LLM_CONFIG[llm].accountUrl} target="_blank" rel="noopener noreferrer" style={{ color: LLM_CONFIG[llm].color }}>{LLM_CONFIG[llm].accountLabel}</a>.
+          Veja os exercícios da trilha Copilot 365 abaixo.</>
+        )}
       </p>
     </div>
   );
